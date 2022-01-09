@@ -1,0 +1,645 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C44C67B3278B684600522F10 /* TMBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67B2278B684600522F10 /* TMBuddyApp.swift */; };
+		C44C67B5278B684600522F10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67B4278B684600522F10 /* ContentView.swift */; };
+		C44C67B7278B684800522F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C44C67B6278B684800522F10 /* Assets.xcassets */; };
+		C44C67D9278B695C00522F10 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67D8278B695C00522F10 /* FinderSync.swift */; };
+		C44C67DE278B695C00522F10 /* TMBuddyFinder.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C44C67D6278B695C00522F10 /* TMBuddyFinder.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C44C67E3278B6D0100522F10 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */; };
+		C44C67E5278B723B00522F10 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */; };
+		C44C67E7278B72C100522F10 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E6278B72C100522F10 /* Sugar.swift */; };
+		C44C67EF278B860400522F10 /* TMBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67EE278B860400522F10 /* TMBuddyTests.swift */; };
+		C44C67F5278B861F00522F10 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */; };
+		C44C67F7278B865A00522F10 /* TmUtilIsExcludedOutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C44C67F6278B865A00522F10 /* TmUtilIsExcludedOutput.txt */; };
+		C44C67F8278B871600522F10 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E6278B72C100522F10 /* Sugar.swift */; };
+		C453DE99278E4D5900AC9CCE /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C453DE98278E4D5900AC9CCE /* Icons.xcassets */; };
+		C45EAC19278E321000EC54D1 /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D70278DFC7D0089E8AB /* Tracing.swift */; };
+		C48CA0A0278B9AF2000246E0 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */; };
+		C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */; };
+		C48CA0A2278B9EA0000246E0 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */; };
+		C48CA0A3278B9EA6000246E0 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E6278B72C100522F10 /* Sugar.swift */; };
+		C4F83D71278DFC7D0089E8AB /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D70278DFC7D0089E8AB /* Tracing.swift */; };
+		C4F83D73278E2A200089E8AB /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D72278E2A200089E8AB /* Launching.swift */; };
+		C4F83D74278E2A760089E8AB /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D72278E2A200089E8AB /* Launching.swift */; };
+		C4F83D76278E2A7A0089E8AB /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D72278E2A200089E8AB /* Launching.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C44C67DC278B695C00522F10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C44C67A7278B684600522F10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C44C67D5278B695C00522F10;
+			remoteInfo = TMBuddyFinder;
+		};
+		C44C67F0278B860400522F10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C44C67A7278B684600522F10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C44C67AE278B684600522F10;
+			remoteInfo = TMBuddy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C44C67D1278B689200522F10 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C44C67DE278B695C00522F10 /* TMBuddyFinder.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C44C67AF278B684600522F10 /* TMBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C44C67B2278B684600522F10 /* TMBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBuddyApp.swift; sourceTree = "<group>"; };
+		C44C67B4278B684600522F10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C44C67B6278B684800522F10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C44C67BB278B684800522F10 /* TMBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TMBuddy.entitlements; sourceTree = "<group>"; };
+		C44C67D6278B695C00522F10 /* TMBuddyFinder.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TMBuddyFinder.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C44C67D8278B695C00522F10 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
+		C44C67DA278B695C00522F10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C44C67DB278B695C00522F10 /* TMBuddyFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TMBuddyFinder.entitlements; sourceTree = "<group>"; };
+		C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMStatusProvider.swift; sourceTree = "<group>"; };
+		C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMUtilLauncher.swift; sourceTree = "<group>"; };
+		C44C67E6278B72C100522F10 /* Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sugar.swift; sourceTree = "<group>"; };
+		C44C67EC278B860400522F10 /* TMBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C44C67EE278B860400522F10 /* TMBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBuddyTests.swift; sourceTree = "<group>"; };
+		C44C67F6278B865A00522F10 /* TmUtilIsExcludedOutput.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TmUtilIsExcludedOutput.txt; sourceTree = "<group>"; };
+		C453DE98278E4D5900AC9CCE /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		C4F83D70278DFC7D0089E8AB /* Tracing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracing.swift; sourceTree = "<group>"; };
+		C4F83D72278E2A200089E8AB /* Launching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launching.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C44C67AC278B684600522F10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C44C67D3278B695C00522F10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C44C67E9278B860400522F10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C44C67A6278B684600522F10 = {
+			isa = PBXGroup;
+			children = (
+				C44C67B1278B684600522F10 /* TMBuddy */,
+				C44C67D7278B695C00522F10 /* TMBuddyFinder */,
+				C44C67ED278B860400522F10 /* TMBuddyTests */,
+				C44C67B0278B684600522F10 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C44C67B0278B684600522F10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C44C67AF278B684600522F10 /* TMBuddy.app */,
+				C44C67D6278B695C00522F10 /* TMBuddyFinder.appex */,
+				C44C67EC278B860400522F10 /* TMBuddyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C44C67B1278B684600522F10 /* TMBuddy */ = {
+			isa = PBXGroup;
+			children = (
+				C44C67B2278B684600522F10 /* TMBuddyApp.swift */,
+				C44C67B4278B684600522F10 /* ContentView.swift */,
+				C453DE98278E4D5900AC9CCE /* Icons.xcassets */,
+				C44C67B6278B684800522F10 /* Assets.xcassets */,
+				C44C67BB278B684800522F10 /* TMBuddy.entitlements */,
+			);
+			path = TMBuddy;
+			sourceTree = "<group>";
+		};
+		C44C67D7278B695C00522F10 /* TMBuddyFinder */ = {
+			isa = PBXGroup;
+			children = (
+				C44C67E6278B72C100522F10 /* Sugar.swift */,
+				C44C67D8278B695C00522F10 /* FinderSync.swift */,
+				C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */,
+				C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */,
+				C4F83D72278E2A200089E8AB /* Launching.swift */,
+				C4F83D70278DFC7D0089E8AB /* Tracing.swift */,
+				C44C67DA278B695C00522F10 /* Info.plist */,
+				C44C67DB278B695C00522F10 /* TMBuddyFinder.entitlements */,
+			);
+			path = TMBuddyFinder;
+			sourceTree = "<group>";
+		};
+		C44C67ED278B860400522F10 /* TMBuddyTests */ = {
+			isa = PBXGroup;
+			children = (
+				C44C67EE278B860400522F10 /* TMBuddyTests.swift */,
+				C44C67F6278B865A00522F10 /* TmUtilIsExcludedOutput.txt */,
+			);
+			path = TMBuddyTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C44C67AE278B684600522F10 /* TMBuddy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C44C67BE278B684800522F10 /* Build configuration list for PBXNativeTarget "TMBuddy" */;
+			buildPhases = (
+				C44C67AB278B684600522F10 /* Sources */,
+				C44C67AC278B684600522F10 /* Frameworks */,
+				C44C67AD278B684600522F10 /* Resources */,
+				C44C67D1278B689200522F10 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C44C67DD278B695C00522F10 /* PBXTargetDependency */,
+			);
+			name = TMBuddy;
+			productName = TMBuddy;
+			productReference = C44C67AF278B684600522F10 /* TMBuddy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C44C67D5278B695C00522F10 /* TMBuddyFinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C44C67DF278B695C00522F10 /* Build configuration list for PBXNativeTarget "TMBuddyFinder" */;
+			buildPhases = (
+				C44C67D2278B695C00522F10 /* Sources */,
+				C44C67D3278B695C00522F10 /* Frameworks */,
+				C44C67D4278B695C00522F10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TMBuddyFinder;
+			productName = TMBuddyFinder;
+			productReference = C44C67D6278B695C00522F10 /* TMBuddyFinder.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C44C67EB278B860400522F10 /* TMBuddyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C44C67F2278B860400522F10 /* Build configuration list for PBXNativeTarget "TMBuddyTests" */;
+			buildPhases = (
+				C44C67E8278B860400522F10 /* Sources */,
+				C44C67E9278B860400522F10 /* Frameworks */,
+				C44C67EA278B860400522F10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C44C67F1278B860400522F10 /* PBXTargetDependency */,
+			);
+			name = TMBuddyTests;
+			productName = TMBuddyTests;
+			productReference = C44C67EC278B860400522F10 /* TMBuddyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C44C67A7278B684600522F10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					C44C67AE278B684600522F10 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					C44C67D5278B695C00522F10 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					C44C67EB278B860400522F10 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = C44C67AA278B684600522F10 /* Build configuration list for PBXProject "TMBuddy" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C44C67A6278B684600522F10;
+			productRefGroup = C44C67B0278B684600522F10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C44C67AE278B684600522F10 /* TMBuddy */,
+				C44C67D5278B695C00522F10 /* TMBuddyFinder */,
+				C44C67EB278B860400522F10 /* TMBuddyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C44C67AD278B684600522F10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C44C67B7278B684800522F10 /* Assets.xcassets in Resources */,
+				C453DE99278E4D5900AC9CCE /* Icons.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C44C67D4278B695C00522F10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C44C67EA278B860400522F10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C44C67F7278B865A00522F10 /* TmUtilIsExcludedOutput.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C44C67AB278B684600522F10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C48CA0A3278B9EA6000246E0 /* Sugar.swift in Sources */,
+				C45EAC19278E321000EC54D1 /* Tracing.swift in Sources */,
+				C4F83D74278E2A760089E8AB /* Launching.swift in Sources */,
+				C48CA0A2278B9EA0000246E0 /* TMUtilLauncher.swift in Sources */,
+				C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */,
+				C44C67B5278B684600522F10 /* ContentView.swift in Sources */,
+				C44C67B3278B684600522F10 /* TMBuddyApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C44C67D2278B695C00522F10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C44C67E7278B72C100522F10 /* Sugar.swift in Sources */,
+				C4F83D73278E2A200089E8AB /* Launching.swift in Sources */,
+				C44C67D9278B695C00522F10 /* FinderSync.swift in Sources */,
+				C44C67E5278B723B00522F10 /* TMUtilLauncher.swift in Sources */,
+				C44C67E3278B6D0100522F10 /* TMStatusProvider.swift in Sources */,
+				C4F83D71278DFC7D0089E8AB /* Tracing.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C44C67E8278B860400522F10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4F83D76278E2A7A0089E8AB /* Launching.swift in Sources */,
+				C44C67F5278B861F00522F10 /* TMUtilLauncher.swift in Sources */,
+				C48CA0A0278B9AF2000246E0 /* TMStatusProvider.swift in Sources */,
+				C44C67EF278B860400522F10 /* TMBuddyTests.swift in Sources */,
+				C44C67F8278B871600522F10 /* Sugar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C44C67DD278B695C00522F10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C44C67D5278B695C00522F10 /* TMBuddyFinder */;
+			targetProxy = C44C67DC278B695C00522F10 /* PBXContainerItemProxy */;
+		};
+		C44C67F1278B860400522F10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C44C67AE278B684600522F10 /* TMBuddy */;
+			targetProxy = C44C67F0278B860400522F10 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C44C67BC278B684800522F10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C44C67BD278B684800522F10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		C44C67BF278B684800522F10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TMBuddy/TMBuddy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BV57B67TB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C44C67C0278B684800522F10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TMBuddy/TMBuddy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BV57B67TB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C44C67E0278B695C00522F10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TMBuddyFinder/TMBuddyFinder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BV57B67TB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TMBuddyFinder/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TMBuddyFinder;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy.Finder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C44C67E1278B695C00522F10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TMBuddyFinder/TMBuddyFinder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BV57B67TB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TMBuddyFinder/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TMBuddyFinder;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy.Finder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C44C67F3278B860400522F10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BV57B67TB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C44C67F4278B860400522F10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BV57B67TB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C44C67AA278B684600522F10 /* Build configuration list for PBXProject "TMBuddy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C44C67BC278B684800522F10 /* Debug */,
+				C44C67BD278B684800522F10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C44C67BE278B684800522F10 /* Build configuration list for PBXNativeTarget "TMBuddy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C44C67BF278B684800522F10 /* Debug */,
+				C44C67C0278B684800522F10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C44C67DF278B695C00522F10 /* Build configuration list for PBXNativeTarget "TMBuddyFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C44C67E0278B695C00522F10 /* Debug */,
+				C44C67E1278B695C00522F10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C44C67F2278B860400522F10 /* Build configuration list for PBXNativeTarget "TMBuddyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C44C67F3278B860400522F10 /* Debug */,
+				C44C67F4278B860400522F10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C44C67A7278B684600522F10 /* Project object */;
+}
