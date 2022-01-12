@@ -29,19 +29,15 @@ let statusProvider = TMStatusProvider()
 
 class FinderSync: FIFinderSync {
 
-    let sandboxedBookmarksResolver = SandboxedBookmarksResolver()
+    let sandboxedBookmarksResolver = SandboxedBookmarksResolver { urls in
+        syncController.directoryURLs = Set(urls)
+    }
     
     override init() {
         super.init()
         
         dump(Bundle.main.bundlePath, name: "mainBundlePath")
 
-        // Set up the directory we are syncing.
-        syncController.directoryURLs = [
-            URL(fileURLWithPath: "/"),
-            URL(fileURLWithPath: "/Volumes/Ginger")
-        ]
-        
         for status in TMStatus.allCases {
             if let image = imageForStatus(status) {
                 syncController.setBadgeImage(image, label: labelForStatus(status), forBadgeIdentifier: badgeIdentifierForStatus(status))
