@@ -30,6 +30,7 @@ let statusProvider = TMStatusProvider()
 class FinderSync: FIFinderSync {
 
     let sandboxedBookmarksResolver = SandboxedBookmarksResolver { urls in
+        dump(urls.map { $0.path }, name: "newSyncDirectories")
         syncController.directoryURLs = Set(urls)
     }
     
