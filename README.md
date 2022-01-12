@@ -10,9 +10,9 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
    
    ![](.Images/Finder-Extensions.png)
 
-3. Make sure that TMBuddy is in the list of System Settings > Security & Privacy > Full Disk Access:
+3. Select "Grant (Read-Only) Access to Disks..." in the application, navigate to and select all the disks for which you want to see Time Machine exclusions in Finder:
    
-   ![](.Images/Full-Disk-Access.png)
+   ![](.Images/Disk-Selection.png)
 
 ## What works
 
@@ -25,9 +25,5 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
 - Speedup lookups
 
 - Add support for managing exclusion from backup via contextual menu command
-
-- Add support for other disks than the system disk
-
-## Hints
-
-If you don't give it full-disk permissions, it will highlight only the items which exclusion is sticky, i.e. does not depend on the current location of the item.
+  
+  
