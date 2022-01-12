@@ -20,10 +20,15 @@ func runAndCaptureOutput(executableURL: URL, arguments: [String] = []) -> Task<D
             dump((executable: executableURL.path, arguments: arguments, status: process.terminationStatus), name: "terminated")
         }
         dump((executable: executableURL.path, arguments: arguments), name: "launched")
-        guard let data = try pipe.fileHandleForReading.readToEnd() else {
-            throw dump(RunAndCaptureOutputTaskError.noDataRead)
+        if #available(macOS 10.15.4, *) {
+            guard let data = try pipe.fileHandleForReading.readToEnd() else {
+                throw dump(RunAndCaptureOutputTaskError.noDataRead)
+            }
+            return data
+        } else {
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            return data
         }
-        return data
     }
 }
 
