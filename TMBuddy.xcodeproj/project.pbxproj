@@ -79,6 +79,7 @@
 		C44C67EE278B860400522F10 /* TMBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBuddyTests.swift; sourceTree = "<group>"; };
 		C44C67F6278B865A00522F10 /* TmUtilIsExcludedOutput.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TmUtilIsExcludedOutput.txt; sourceTree = "<group>"; };
 		C453DE98278E4D5900AC9CCE /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		C453DE9A278EE09A00AC9CCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C4F83D70278DFC7D0089E8AB /* Tracing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracing.swift; sourceTree = "<group>"; };
 		C4F83D72278E2A200089E8AB /* Launching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launching.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +132,7 @@
 		C44C67B1278B684600522F10 /* TMBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				C453DE9A278EE09A00AC9CCE /* Info.plist */,
 				C44C67B2278B684600522F10 /* TMBuddyApp.swift */,
 				C44C67B4278B684600522F10 /* ContentView.swift */,
 				C453DE98278E4D5900AC9CCE /* Icons.xcassets */,
@@ -475,6 +477,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TMBuddy/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -502,6 +505,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TMBuddy/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
