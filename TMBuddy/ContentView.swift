@@ -10,6 +10,9 @@ struct ContentView: View {
         VStack {
             Text("Please see [Instructions](https://github.com/grigorye/TMBuddy#installation) on how to enable \(appName) in \(finderName).")
                 .fixedSize()
+            
+            Divider().hidden()
+            
             SandboxAccessView()
         }
         .padding()
