@@ -20,6 +20,8 @@
 		C44C67F7278B865A00522F10 /* TmUtilIsExcludedOutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C44C67F6278B865A00522F10 /* TmUtilIsExcludedOutput.txt */; };
 		C44C67F8278B871600522F10 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E6278B72C100522F10 /* Sugar.swift */; };
 		C453DE99278E4D5900AC9CCE /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C453DE98278E4D5900AC9CCE /* Icons.xcassets */; };
+		C453DED8278EFC3500AC9CCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C453DED7278EFC3500AC9CCE /* Main.storyboard */; };
+		C453DEDA278F10AB00AC9CCE /* DisplayNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C453DED9278F10AB00AC9CCE /* DisplayNames.swift */; };
 		C45EAC19278E321000EC54D1 /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D70278DFC7D0089E8AB /* Tracing.swift */; };
 		C48CA0A0278B9AF2000246E0 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */; };
 		C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */; };
@@ -80,6 +82,8 @@
 		C44C67F6278B865A00522F10 /* TmUtilIsExcludedOutput.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TmUtilIsExcludedOutput.txt; sourceTree = "<group>"; };
 		C453DE98278E4D5900AC9CCE /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		C453DE9A278EE09A00AC9CCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C453DED7278EFC3500AC9CCE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C453DED9278F10AB00AC9CCE /* DisplayNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNames.swift; sourceTree = "<group>"; };
 		C4F83D70278DFC7D0089E8AB /* Tracing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracing.swift; sourceTree = "<group>"; };
 		C4F83D72278E2A200089E8AB /* Launching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launching.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,7 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				C453DE9A278EE09A00AC9CCE /* Info.plist */,
+				C453DED7278EFC3500AC9CCE /* Main.storyboard */,
 				C44C67B2278B684600522F10 /* TMBuddyApp.swift */,
+				C453DED9278F10AB00AC9CCE /* DisplayNames.swift */,
 				C44C67B4278B684600522F10 /* ContentView.swift */,
 				C453DE98278E4D5900AC9CCE /* Icons.xcassets */,
 				C44C67B6278B684800522F10 /* Assets.xcassets */,
@@ -269,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C453DED8278EFC3500AC9CCE /* Main.storyboard in Resources */,
 				C44C67B7278B684800522F10 /* Assets.xcassets in Resources */,
 				C453DE99278E4D5900AC9CCE /* Icons.xcassets in Resources */,
 			);
@@ -303,6 +310,7 @@
 				C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */,
 				C44C67B5278B684600522F10 /* ContentView.swift in Sources */,
 				C44C67B3278B684600522F10 /* TMBuddyApp.swift in Sources */,
+				C453DEDA278F10AB00AC9CCE /* DisplayNames.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +389,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -399,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -443,7 +451,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -455,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -480,6 +488,8 @@
 				INFOPLIST_FILE = TMBuddy/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -508,6 +518,8 @@
 				INFOPLIST_FILE = TMBuddy/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -532,6 +544,7 @@
 				INFOPLIST_FILE = TMBuddyFinder/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TMBuddyFinder;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -558,6 +571,7 @@
 				INFOPLIST_FILE = TMBuddyFinder/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TMBuddyFinder;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
