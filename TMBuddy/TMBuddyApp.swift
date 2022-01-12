@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let contentView = ContentView()
         
         let window = NSWindow(
-            contentRect: .zero,
+            contentRect: .init(origin: .zero, size: .init(width: 320, height: 480)),
             styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
             backing: .buffered,
             defer: false
