@@ -29,6 +29,8 @@ let statusProvider = TMStatusProvider()
 
 class FinderSync: FIFinderSync {
 
+    let sandboxedBookmarksResolver = SandboxedBookmarksResolver()
+    
     override init() {
         super.init()
         
