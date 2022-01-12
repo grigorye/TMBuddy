@@ -29,6 +29,11 @@ extension NSObject {
     public func dump<T>(_ value: T, name: String? = nil, file: String = #fileID, function: String = #function, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
         Imp.dump(value, name: name, file: file, function: "\(type(of: self)).\(function)")
     }
+    
+    @discardableResult
+    public class func dump<T>(_ value: T, name: String? = nil, file: String = #fileID, function: String = #function, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
+        Imp.dump(value, name: name, file: file, function: "\(Self.self).\(function)")
+    }
 }
 
 private let defaults = UserDefaults.standard
