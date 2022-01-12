@@ -25,6 +25,20 @@
 		C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */; };
 		C48CA0A2278B9EA0000246E0 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */; };
 		C48CA0A3278B9EA6000246E0 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E6278B72C100522F10 /* Sugar.swift */; };
+		C4D1B307278F4B7800B4F3E7 /* SandboxAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */; };
+		C4D1B30B278F554900B4F3E7 /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */; };
+		C4D1B30D278F56B600B4F3E7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */; };
+		C4D1B30E278F56B600B4F3E7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */; };
+		C4D1B310278F5C6900B4F3E7 /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30F278F5C6900B4F3E7 /* UserDefaultsObserver.swift */; };
+		C4D1B311278F5C6900B4F3E7 /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30F278F5C6900B4F3E7 /* UserDefaultsObserver.swift */; };
+		C4D1B313278F67FB00B4F3E7 /* SandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B312278F67FB00B4F3E7 /* SandboxedBookmarks.swift */; };
+		C4D1B314278F67FB00B4F3E7 /* SandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B312278F67FB00B4F3E7 /* SandboxedBookmarks.swift */; };
+		C4D1B317278F692E00B4F3E7 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B316278F692E00B4F3E7 /* DefaultsKey.swift */; };
+		C4D1B318278F692E00B4F3E7 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B316278F692E00B4F3E7 /* DefaultsKey.swift */; };
+		C4D1B31A278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B319278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift */; };
+		C4D1B31B278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B319278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift */; };
+		C4D1B31C278F698A00B4F3E7 /* ScopedSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B315278F681F00B4F3E7 /* ScopedSandboxedBookmarks.swift */; };
+		C4D1B31D278F698A00B4F3E7 /* ScopedSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B315278F681F00B4F3E7 /* ScopedSandboxedBookmarks.swift */; };
 		C4F83D71278DFC7D0089E8AB /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D70278DFC7D0089E8AB /* Tracing.swift */; };
 		C4F83D73278E2A200089E8AB /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D72278E2A200089E8AB /* Launching.swift */; };
 		C4F83D74278E2A760089E8AB /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83D72278E2A200089E8AB /* Launching.swift */; };
@@ -80,6 +94,14 @@
 		C44C67F6278B865A00522F10 /* TmUtilIsExcludedOutput.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TmUtilIsExcludedOutput.txt; sourceTree = "<group>"; };
 		C453DE98278E4D5900AC9CCE /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		C453DE9A278EE09A00AC9CCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxAccessView.swift; sourceTree = "<group>"; };
+		C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxedBookmarksResolver.swift; sourceTree = "<group>"; };
+		C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
+		C4D1B30F278F5C6900B4F3E7 /* UserDefaultsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsObserver.swift; sourceTree = "<group>"; };
+		C4D1B312278F67FB00B4F3E7 /* SandboxedBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxedBookmarks.swift; sourceTree = "<group>"; };
+		C4D1B315278F681F00B4F3E7 /* ScopedSandboxedBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopedSandboxedBookmarks.swift; sourceTree = "<group>"; };
+		C4D1B316278F692E00B4F3E7 /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
+		C4D1B319278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+DefaultsKey.swift"; sourceTree = "<group>"; };
 		C4F83D70278DFC7D0089E8AB /* Tracing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracing.swift; sourceTree = "<group>"; };
 		C4F83D72278E2A200089E8AB /* Launching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launching.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +157,12 @@
 				C453DE9A278EE09A00AC9CCE /* Info.plist */,
 				C44C67B2278B684600522F10 /* TMBuddyApp.swift */,
 				C44C67B4278B684600522F10 /* ContentView.swift */,
+				C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */,
+				C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */,
+				C4D1B316278F692E00B4F3E7 /* DefaultsKey.swift */,
+				C4D1B319278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift */,
+				C4D1B312278F67FB00B4F3E7 /* SandboxedBookmarks.swift */,
+				C4D1B315278F681F00B4F3E7 /* ScopedSandboxedBookmarks.swift */,
 				C453DE98278E4D5900AC9CCE /* Icons.xcassets */,
 				C44C67B6278B684800522F10 /* Assets.xcassets */,
 				C44C67BB278B684800522F10 /* TMBuddy.entitlements */,
@@ -147,6 +175,8 @@
 			children = (
 				C44C67E6278B72C100522F10 /* Sugar.swift */,
 				C44C67D8278B695C00522F10 /* FinderSync.swift */,
+				C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */,
+				C4D1B30F278F5C6900B4F3E7 /* UserDefaultsObserver.swift */,
 				C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */,
 				C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */,
 				C4F83D72278E2A200089E8AB /* Launching.swift */,
@@ -296,12 +326,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D1B30D278F56B600B4F3E7 /* SharedDefaults.swift in Sources */,
 				C48CA0A3278B9EA6000246E0 /* Sugar.swift in Sources */,
 				C45EAC19278E321000EC54D1 /* Tracing.swift in Sources */,
+				C4D1B317278F692E00B4F3E7 /* DefaultsKey.swift in Sources */,
 				C4F83D74278E2A760089E8AB /* Launching.swift in Sources */,
 				C48CA0A2278B9EA0000246E0 /* TMUtilLauncher.swift in Sources */,
+				C4D1B31D278F698A00B4F3E7 /* ScopedSandboxedBookmarks.swift in Sources */,
+				C4D1B313278F67FB00B4F3E7 /* SandboxedBookmarks.swift in Sources */,
+				C4D1B307278F4B7800B4F3E7 /* SandboxAccessView.swift in Sources */,
 				C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */,
+				C4D1B31A278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift in Sources */,
 				C44C67B5278B684600522F10 /* ContentView.swift in Sources */,
+				C4D1B310278F5C6900B4F3E7 /* UserDefaultsObserver.swift in Sources */,
 				C44C67B3278B684600522F10 /* TMBuddyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,11 +347,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D1B30B278F554900B4F3E7 /* SandboxedBookmarksResolver.swift in Sources */,
 				C44C67E7278B72C100522F10 /* Sugar.swift in Sources */,
 				C4F83D73278E2A200089E8AB /* Launching.swift in Sources */,
+				C4D1B318278F692E00B4F3E7 /* DefaultsKey.swift in Sources */,
+				C4D1B31B278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift in Sources */,
+				C4D1B30E278F56B600B4F3E7 /* SharedDefaults.swift in Sources */,
+				C4D1B31C278F698A00B4F3E7 /* ScopedSandboxedBookmarks.swift in Sources */,
+				C4D1B314278F67FB00B4F3E7 /* SandboxedBookmarks.swift in Sources */,
 				C44C67D9278B695C00522F10 /* FinderSync.swift in Sources */,
 				C44C67E5278B723B00522F10 /* TMUtilLauncher.swift in Sources */,
 				C44C67E3278B6D0100522F10 /* TMStatusProvider.swift in Sources */,
+				C4D1B311278F5C6900B4F3E7 /* UserDefaultsObserver.swift in Sources */,
 				C4F83D71278DFC7D0089E8AB /* Tracing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
