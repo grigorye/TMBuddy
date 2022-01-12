@@ -3,10 +3,19 @@ import SwiftUI
 struct SandboxAccessView: View {
     
     var body: some View {
-        Button("Grant (Read-Only) Access to Disks…") {
-            selectDisks()
+        VStack {
+            Button("Grant (Read-Only) Access to Disks…") {
+                selectDisks()
+            }
+            Button("Revoke Access") {
+                revokeAccess()
+            }
         }
     }
+}
+
+private func revokeAccess() {
+    processURLs([])
 }
 
 private func selectDisks() {
