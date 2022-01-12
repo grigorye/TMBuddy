@@ -10,7 +10,7 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
    
    ![](.Images/Finder-Extensions.png)
 
-3. Select "Grant (Read-Only) Access to Disks..." in the application, navigate to and select all the disks for which you want to see Time Machine exclusions in Finder:
+3. Select "Grant (Read-Only) Access to Disks..." in the application, navigate to Computer and select all the disks for which you want to see Time Machine exclusions in Finder:
    
    ![](.Images/Disk-Selection.png)
 
@@ -25,5 +25,3 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
 - Speedup lookups
 
 - Add support for managing exclusion from backup via contextual menu command
-  
-  
