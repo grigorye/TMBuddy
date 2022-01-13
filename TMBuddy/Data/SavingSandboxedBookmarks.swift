@@ -21,9 +21,3 @@ func saveSandboxedBookmark(urls: [URL], in defaults: UserDefaults) throws {
 }
 
 private let defaults = UserDefaults()
-
-extension Array where Element == URL {
-    var paths: [String] {
-        map { $0.path }
-    }
-}
