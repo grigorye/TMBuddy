@@ -12,5 +12,9 @@
 	<true/>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
+	<key>com.apple.security.temporary-exception.files.absolute-path.read-only</key>
+	<array>
+		<string>/Library/Preferences/com.apple.TimeMachine.plist</string>
+	</array>
 </dict>
 </plist>
