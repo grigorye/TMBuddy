@@ -12,7 +12,7 @@ struct CheckpointView<Content: View>: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 4) {
-            completed ? greenCheckmark: redXMark
+            completed ? greenCheckmark : redXMark
             
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 2) {
