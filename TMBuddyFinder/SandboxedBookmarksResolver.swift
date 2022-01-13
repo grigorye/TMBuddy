@@ -22,15 +22,15 @@ class SandboxedBookmarksResolver {
     private let observer: UserDefaultsObserver
 }
 
-func resolveBookmarks(_ bookmarks: [Data]) -> [URL] {
+func resolveBookmarks(_ bookmarks: [Data], options: URL.BookmarkResolutionOptions = []) -> [URL] {
     bookmarks.compactMap { bookmark in
         do {
             var isStale = false
-            let url = try URL(resolvingBookmarkData: bookmark, bookmarkDataIsStale: &isStale)
-            dump((url, isStale: isStale), name: "resolvedSandboxedBookmark")
+            let url = try URL(resolvingBookmarkData: bookmark, options: options, bookmarkDataIsStale: &isStale)
+            dump((url.path, options: options, isStale: isStale), name: "resolvedBookmark")
             return url
         } catch {
-            dump((error, bookmark: bookmark), name: "sandboxBookmarkResolutionFailed")
+            dump((error, options: options, bookmark: bookmark), name: "bookmarkResolutionFailed")
             return nil
         }
     }
