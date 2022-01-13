@@ -10,6 +10,7 @@ targets:
       - Targets/TMBuddyShared
       - Targets/OtherModules
     settings:
+      ENABLE_HARDENED_RUNTIME: YES
       INFOPLIST_FILE: Targets/TMBuddy/Bundle/Info.plist
       INFOPLIST_KEY_NSPrincipalClass: NSApplication
       INFOPLIST_KEY_NSMainStoryboardFile: Main
@@ -28,6 +29,7 @@ targets:
       - Targets/TMBuddyShared
       - Targets/OtherModules
     settings:
+      ENABLE_HARDENED_RUNTIME: YES
       INFOPLIST_FILE: Targets/TMBuddyFinder/Bundle/Info.plist
       INFOPLIST_KEY_NSPrincipalClass: NSApplication
       INFOPLIST_KEY_CFBundleDisplayName: TMBuddy
