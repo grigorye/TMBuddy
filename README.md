@@ -1,3 +1,5 @@
+[![build-app](https://github.com/grigorye/TMBuddy/actions/workflows/build-app.yml/badge.svg)](https://github.com/grigorye/TMBuddy/actions/workflows/build-app.yml)
+
 # TMBuddy
 
 See and manipulate exclusions from Time Machine backup, right in Finder.
