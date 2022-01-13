@@ -1,14 +1,45 @@
 import SwiftUI
 
+class BookmarkCountProvider: ObservableObject {
+    
+    @Published var bookmarkCount: Int = 0
+    
+    var userDefaultsObserver: UserDefaultsObserver?
+    
+    init() {
+        userDefaultsObserver = .init(defaults: defaults, key: DefaultsKey.scopedSandboxedBookmarks.rawValue, options: [.initial]) { [weak self] change in
+            self?.bookmarkCount = defaults.scopedSandboxedBookmarks?.count ?? 0
+        }
+    }
+}
+
 struct SandboxAccessView: View {
     
+    @ObservedObject var bookmarksCountProvider = BookmarkCountProvider()
+
     var body: some View {
         VStack {
             Button("Grant (Read-Only) Access to Disks…") {
                 selectDisks()
             }
-            Button("Revoke Access") {
-                revokeAccess()
+            
+            Divider().hidden()
+
+            let bookmarkCount = bookmarksCountProvider.bookmarkCount
+                        
+            if bookmarkCount > 0 {
+                HStack {
+                    Text("Tracked locations: \(bookmarksCountProvider.bookmarkCount)")
+                    if false, #available(macOS 11.0, *) {
+                        Button(action: revokeAccess) {
+                            Image(systemName: "xmark.circle.fill")
+                        }.buttonStyle(PlainButtonStyle())
+                    } else {
+                        Button(action: revokeAccess) {
+                            Text("Revoke")
+                        }
+                    }
+                }
             }
         }
     }
