@@ -76,7 +76,7 @@ private func selectDisks() {
 }
 
 private func processURLs(_ urls: [URL]) {
-    dump(urls, name: "urls")
+    dump(urls.paths, name: "paths")
     
     try! saveScopedSandboxedBookmark(urls: urls, in: defaults)
     try! saveSandboxedBookmark(urls: urls, in: sharedDefaults)
@@ -90,7 +90,7 @@ private func processURLs(_ urls: [URL]) {
 func saveScopedSandboxedBookmark(urls: [URL], in defaults: UserDefaults) throws {
     let bookmarks: [Data] = try urls.map { url in
         let bookmark = try url.bookmarkData(options: [.withSecurityScope, .securityScopeAllowOnlyReadAccess])
-        dump((url.path, bookmark), name: "bookmark")
+        dump((path: url.path, bookmark), name: "bookmark")
         return bookmark
     }
     
@@ -100,7 +100,7 @@ func saveScopedSandboxedBookmark(urls: [URL], in defaults: UserDefaults) throws 
 func saveSandboxedBookmark(urls: [URL], in defaults: UserDefaults) throws {
     let bookmarks: [Data] = try urls.map { url in
         let bookmark = try url.bookmarkData(options: [])
-        dump((url.path, bookmark), name: "bookmark")
+        dump((path: url.path, bookmark), name: "bookmark")
         return bookmark
     }
     
@@ -108,3 +108,9 @@ func saveSandboxedBookmark(urls: [URL], in defaults: UserDefaults) throws {
 }
 
 private let defaults = UserDefaults()
+
+extension Array where Element == URL {
+    var paths: [String] {
+        map { $0.path }
+    }
+}
