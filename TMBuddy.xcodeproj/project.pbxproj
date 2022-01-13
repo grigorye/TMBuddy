@@ -616,6 +616,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Targets/TMBuddy/Bundle/TMBuddy.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Targets/TMBuddy/Bundle/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -635,6 +636,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Targets/TMBuddyFinder/Bundle/TMBuddyFinder.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Targets/TMBuddyFinder/Bundle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TMBuddy;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -797,6 +799,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Targets/TMBuddyFinder/Bundle/TMBuddyFinder.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Targets/TMBuddyFinder/Bundle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TMBuddy;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -817,6 +820,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Targets/TMBuddy/Bundle/TMBuddy.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Targets/TMBuddy/Bundle/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
