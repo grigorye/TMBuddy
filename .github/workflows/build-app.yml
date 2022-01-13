@@ -121,7 +121,7 @@ jobs:
     - name: Save .xcarchive
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.run-config.scheme }}.xcarchive
+        name: xcarchive
         path: |
           ${{ env.ARCHIVE_PATH }}
 
@@ -168,17 +168,10 @@ jobs:
     - name: Save .dmg
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.run-config.scheme }}.dmg
+        name: dmg
         path: |
           ${{ env.DMG_PATH }}
     
-    - name: Save .xcarchive
-      uses: actions/upload-artifact@v2
-      with:
-        name: ${{ matrix.run-config.scheme }}.xcarchive
-        path: |
-          ${{ env.ARCHIVE_PATH }}
-
     - name: Upload to TestFlight
       run: |
         # create variables
