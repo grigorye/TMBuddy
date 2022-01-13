@@ -30,6 +30,13 @@
 		C4A3B97B278FA72600B30B3E /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */; };
 		C4A3B97D278FF29600B30B3E /* SavingSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A3B97C278FF29600B30B3E /* SavingSandboxedBookmarks.swift */; };
 		C4A3B97E278FF2AF00B30B3E /* SavingSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A3B97C278FF29600B30B3E /* SavingSandboxedBookmarks.swift */; };
+		C4C7D29827902C9C000A1319 /* FoldersSelectionImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D29727902C9C000A1319 /* FoldersSelectionImp.swift */; };
+		C4C7D29A27902D0E000A1319 /* FullDiskAccessCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D29627902C5C000A1319 /* FullDiskAccessCheckpointView.swift */; };
+		C4C7D29D27902DB5000A1319 /* FullDiskAccessImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D29C27902DB5000A1319 /* FullDiskAccessImp.swift */; };
+		C4C7D29E27902DFC000A1319 /* FoldersSelectionCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D29B27902D80000A1319 /* FoldersSelectionCheckpointView.swift */; };
+		C4C7D2A027902E70000A1319 /* CheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D29F27902E70000A1319 /* CheckpointView.swift */; };
+		C4C7D2A227902E9E000A1319 /* FinderExtensionCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D2A127902E9E000A1319 /* FinderExtensionCheckpointView.swift */; };
+		C4C7D2A427904294000A1319 /* FinderSyncStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D2A327904294000A1319 /* FinderSyncStatusProvider.swift */; };
 		C4D1B307278F4B7800B4F3E7 /* SandboxAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */; };
 		C4D1B30B278F554900B4F3E7 /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */; };
 		C4D1B30D278F56B600B4F3E7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */; };
@@ -102,6 +109,13 @@
 		C453DED7278EFC3500AC9CCE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C453DED9278F10AB00AC9CCE /* DisplayNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNames.swift; sourceTree = "<group>"; };
 		C4A3B97C278FF29600B30B3E /* SavingSandboxedBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSandboxedBookmarks.swift; sourceTree = "<group>"; };
+		C4C7D29627902C5C000A1319 /* FullDiskAccessCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDiskAccessCheckpointView.swift; sourceTree = "<group>"; };
+		C4C7D29727902C9C000A1319 /* FoldersSelectionImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersSelectionImp.swift; sourceTree = "<group>"; };
+		C4C7D29B27902D80000A1319 /* FoldersSelectionCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersSelectionCheckpointView.swift; sourceTree = "<group>"; };
+		C4C7D29C27902DB5000A1319 /* FullDiskAccessImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDiskAccessImp.swift; sourceTree = "<group>"; };
+		C4C7D29F27902E70000A1319 /* CheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointView.swift; sourceTree = "<group>"; };
+		C4C7D2A127902E9E000A1319 /* FinderExtensionCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderExtensionCheckpointView.swift; sourceTree = "<group>"; };
+		C4C7D2A327904294000A1319 /* FinderSyncStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncStatusProvider.swift; sourceTree = "<group>"; };
 		C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxAccessView.swift; sourceTree = "<group>"; };
 		C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxedBookmarksResolver.swift; sourceTree = "<group>"; };
 		C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
@@ -168,6 +182,13 @@
 				C453DED9278F10AB00AC9CCE /* DisplayNames.swift */,
 				C44C67B4278B684600522F10 /* ContentView.swift */,
 				C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */,
+				C4C7D29F27902E70000A1319 /* CheckpointView.swift */,
+				C4C7D29B27902D80000A1319 /* FoldersSelectionCheckpointView.swift */,
+				C4C7D29727902C9C000A1319 /* FoldersSelectionImp.swift */,
+				C4C7D29627902C5C000A1319 /* FullDiskAccessCheckpointView.swift */,
+				C4C7D29C27902DB5000A1319 /* FullDiskAccessImp.swift */,
+				C4C7D2A127902E9E000A1319 /* FinderExtensionCheckpointView.swift */,
+				C4C7D2A327904294000A1319 /* FinderSyncStatusProvider.swift */,
 				C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */,
 				C4D1B316278F692E00B4F3E7 /* DefaultsKey.swift */,
 				C4D1B319278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift */,
@@ -343,13 +364,20 @@
 				C4A3B97D278FF29600B30B3E /* SavingSandboxedBookmarks.swift in Sources */,
 				C45EAC19278E321000EC54D1 /* Tracing.swift in Sources */,
 				C4D1B317278F692E00B4F3E7 /* DefaultsKey.swift in Sources */,
+				C4C7D2A427904294000A1319 /* FinderSyncStatusProvider.swift in Sources */,
+				C4C7D29A27902D0E000A1319 /* FullDiskAccessCheckpointView.swift in Sources */,
 				C4F83D74278E2A760089E8AB /* Launching.swift in Sources */,
+				C4C7D29D27902DB5000A1319 /* FullDiskAccessImp.swift in Sources */,
 				C48CA0A2278B9EA0000246E0 /* TMUtilLauncher.swift in Sources */,
 				C4D1B31D278F698A00B4F3E7 /* ScopedSandboxedBookmarks.swift in Sources */,
 				C4D1B313278F67FB00B4F3E7 /* SandboxedBookmarks.swift in Sources */,
+				C4C7D29E27902DFC000A1319 /* FoldersSelectionCheckpointView.swift in Sources */,
 				C4D1B307278F4B7800B4F3E7 /* SandboxAccessView.swift in Sources */,
+				C4C7D29827902C9C000A1319 /* FoldersSelectionImp.swift in Sources */,
 				C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */,
 				C4D1B31A278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift in Sources */,
+				C4C7D2A027902E70000A1319 /* CheckpointView.swift in Sources */,
+				C4C7D2A227902E9E000A1319 /* FinderExtensionCheckpointView.swift in Sources */,
 				C44C67B5278B684600522F10 /* ContentView.swift in Sources */,
 				C4A3B97B278FA72600B30B3E /* SandboxedBookmarksResolver.swift in Sources */,
 				C4D1B310278F5C6900B4F3E7 /* UserDefaultsObserver.swift in Sources */,
