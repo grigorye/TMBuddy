@@ -27,6 +27,7 @@
 		C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E2278B6D0100522F10 /* TMStatusProvider.swift */; };
 		C48CA0A2278B9EA0000246E0 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */; };
 		C48CA0A3278B9EA6000246E0 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E6278B72C100522F10 /* Sugar.swift */; };
+		C4A3B97B278FA72600B30B3E /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */; };
 		C4D1B307278F4B7800B4F3E7 /* SandboxAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */; };
 		C4D1B30B278F554900B4F3E7 /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */; };
 		C4D1B30D278F56B600B4F3E7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */; };
@@ -345,6 +346,7 @@
 				C48CA0A1278B9E9C000246E0 /* TMStatusProvider.swift in Sources */,
 				C4D1B31A278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift in Sources */,
 				C44C67B5278B684600522F10 /* ContentView.swift in Sources */,
+				C4A3B97B278FA72600B30B3E /* SandboxedBookmarksResolver.swift in Sources */,
 				C4D1B310278F5C6900B4F3E7 /* UserDefaultsObserver.swift in Sources */,
 				C44C67B3278B684600522F10 /* TMBuddyApp.swift in Sources */,
 				C453DEDA278F10AB00AC9CCE /* DisplayNames.swift in Sources */,
