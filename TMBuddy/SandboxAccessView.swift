@@ -30,7 +30,7 @@ struct SandboxAccessView: View {
             if bookmarkCount > 0 {
                 HStack {
                     Text("Tracked locations: \(bookmarksCountProvider.bookmarkCount)")
-                    if false, #available(macOS 11.0, *) {
+                    if #available(macOS 11.0, *) {
                         Button(action: revokeAccess) {
                             Image(systemName: "xmark.circle.fill")
                         }.buttonStyle(PlainButtonStyle())
