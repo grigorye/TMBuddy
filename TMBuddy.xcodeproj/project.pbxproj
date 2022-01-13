@@ -442,7 +442,7 @@
 		7B2DC5F21E7612DB102197DF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1321;
 				TargetAttributes = {
 					3B17EF830032880250B139E3 = {
 						DevelopmentTeam = 5BV57B67TB;
