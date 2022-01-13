@@ -31,7 +31,17 @@ class FinderSync: FIFinderSync {
 
     let sandboxedBookmarksResolver = SandboxedBookmarksResolver { urls in
         dump(urls.map { $0.path }, name: "newSyncDirectories")
-        syncController.directoryURLs = Set(urls)
+        try! saveScopedSandboxedBookmark(urls: urls, in: defaults)
+        let scopedURLs = resolveBookmarks(defaults.scopedSandboxedBookmarks ?? [], options: [.withSecurityScope])
+        
+        for url in syncController.directoryURLs {
+            url.stopAccessingSecurityScopedResource()
+        }
+        syncController.directoryURLs = Set(scopedURLs)
+        for url in syncController.directoryURLs {
+            let succeeded = url.startAccessingSecurityScopedResource()
+            dump((path: url.path, succeeded: succeeded), name: "startAccessingScoped")
+        }
     }
     
     override init() {
@@ -97,3 +107,5 @@ class FinderSync: FIFinderSync {
         }
     }
 }
+
+private let defaults = UserDefaults.standard
