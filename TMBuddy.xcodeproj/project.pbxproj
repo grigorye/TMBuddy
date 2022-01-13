@@ -28,6 +28,8 @@
 		C48CA0A2278B9EA0000246E0 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E4278B723B00522F10 /* TMUtilLauncher.swift */; };
 		C48CA0A3278B9EA6000246E0 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44C67E6278B72C100522F10 /* Sugar.swift */; };
 		C4A3B97B278FA72600B30B3E /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */; };
+		C4A3B97D278FF29600B30B3E /* SavingSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A3B97C278FF29600B30B3E /* SavingSandboxedBookmarks.swift */; };
+		C4A3B97E278FF2AF00B30B3E /* SavingSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A3B97C278FF29600B30B3E /* SavingSandboxedBookmarks.swift */; };
 		C4D1B307278F4B7800B4F3E7 /* SandboxAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */; };
 		C4D1B30B278F554900B4F3E7 /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */; };
 		C4D1B30D278F56B600B4F3E7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */; };
@@ -99,6 +101,7 @@
 		C453DE9A278EE09A00AC9CCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C453DED7278EFC3500AC9CCE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C453DED9278F10AB00AC9CCE /* DisplayNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNames.swift; sourceTree = "<group>"; };
+		C4A3B97C278FF29600B30B3E /* SavingSandboxedBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSandboxedBookmarks.swift; sourceTree = "<group>"; };
 		C4D1B306278F4B7800B4F3E7 /* SandboxAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxAccessView.swift; sourceTree = "<group>"; };
 		C4D1B30A278F554900B4F3E7 /* SandboxedBookmarksResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxedBookmarksResolver.swift; sourceTree = "<group>"; };
 		C4D1B30C278F56B600B4F3E7 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 				C4D1B319278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift */,
 				C4D1B312278F67FB00B4F3E7 /* SandboxedBookmarks.swift */,
 				C4D1B315278F681F00B4F3E7 /* ScopedSandboxedBookmarks.swift */,
+				C4A3B97C278FF29600B30B3E /* SavingSandboxedBookmarks.swift */,
 				C453DE98278E4D5900AC9CCE /* Icons.xcassets */,
 				C44C67B6278B684800522F10 /* Assets.xcassets */,
 				C44C67BB278B684800522F10 /* TMBuddy.entitlements */,
@@ -336,6 +340,7 @@
 			files = (
 				C4D1B30D278F56B600B4F3E7 /* SharedDefaults.swift in Sources */,
 				C48CA0A3278B9EA6000246E0 /* Sugar.swift in Sources */,
+				C4A3B97D278FF29600B30B3E /* SavingSandboxedBookmarks.swift in Sources */,
 				C45EAC19278E321000EC54D1 /* Tracing.swift in Sources */,
 				C4D1B317278F692E00B4F3E7 /* DefaultsKey.swift in Sources */,
 				C4F83D74278E2A760089E8AB /* Launching.swift in Sources */,
@@ -359,6 +364,7 @@
 			files = (
 				C4D1B30B278F554900B4F3E7 /* SandboxedBookmarksResolver.swift in Sources */,
 				C44C67E7278B72C100522F10 /* Sugar.swift in Sources */,
+				C4A3B97E278FF2AF00B30B3E /* SavingSandboxedBookmarks.swift in Sources */,
 				C4F83D73278E2A200089E8AB /* Launching.swift in Sources */,
 				C4D1B318278F692E00B4F3E7 /* DefaultsKey.swift in Sources */,
 				C4D1B31B278F695000B4F3E7 /* UserDefaults+DefaultsKey.swift in Sources */,
