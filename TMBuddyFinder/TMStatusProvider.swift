@@ -8,7 +8,7 @@ class TMStatusProvider {
         do {
             let tmUtilStatuses = try await tmUtilController.isExcluded(urls: [url])
             guard let tmUtilStatus = tmUtilStatuses[url] else {
-                dump((url: url, statuses: tmUtilStatuses), name: "matchFailure")
+                dump((url: url.path, statuses: tmUtilStatuses), name: "matchFailure")
                 return .unknown
             }
             let status: TMStatus = tmUtilStatus ? .excluded : .included
