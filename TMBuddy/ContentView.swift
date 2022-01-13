@@ -4,41 +4,14 @@ import Foundation
 struct ContentView: View {
     
     var body: some View {
-        VStack {
-            prompt()
+        VStack(alignment: .leading) {
+            Text("Please check the list below to let \(appName) do its job.")
+                .font(.headline)
                 .fixedSize()
-            
-            Divider().hidden()
             
             SandboxAccessView()
         }
         .padding()
-    }
-}
-
-@ViewBuilder
-private func prompt() -> some View {
-    if #available(macOS 12, *) {
-        Text("Please see [Instructions](https://github.com/grigorye/TMBuddy#installation) on how to enable \(appName) in \(finderName).")
-    } else {
-        Button(
-            action: {
-                NSWorkspace.shared.open(URL(string: "https://github.com/grigorye/TMBuddy#installation")!)
-            },
-            label: {
-                Text("How to enable \(appName) in \(finderName).")
-                    .underline()
-                    .foregroundColor(Color.blue)
-            }
-        )
-            .buttonStyle(PlainButtonStyle())
-            .onHover { inside in
-                if inside {
-                    NSCursor.pointingHand.push()
-                } else {
-                    NSCursor.pop()
-                }
-            }
     }
 }
 
