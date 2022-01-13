@@ -18,7 +18,7 @@ struct CheckpointView<Content: View>: View {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 4) {
                         Text(title + ":")
-                        Text(value).font(.callout)
+                        Text(value)
                     }
                     if let subtitle = subtitle {
                         Text(" * " + subtitle)
@@ -31,8 +31,8 @@ struct CheckpointView<Content: View>: View {
     }
 }
 
-private let greenCheckmark = Text("􀁣").foregroundColor(.green)
-private let redXMark = Text("􀁠").foregroundColor(.red)
+private let greenCheckmark = Image(nsImage: NSImage(named: NSImage.statusAvailableName)!)
+private let redXMark = Image(nsImage: NSImage(named: NSImage.statusUnavailableName)!)
 
 struct CheckpointView_Previews : PreviewProvider {
     
