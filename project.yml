@@ -60,3 +60,4 @@ settings:
 name: TMBuddy
 options:
   bundleIdPrefix: com.grigorye
+  xcodeVersion: 13.2.1
