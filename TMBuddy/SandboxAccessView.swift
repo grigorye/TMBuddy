@@ -67,9 +67,12 @@ private func selectDisks() {
     }
     
     let urls = panel.urls
-    dump(urls, name: "urlsSelected")
+    let existingURLs = resolveBookmarks(sharedDefaults.sandboxedBookmarks ?? [])
+    let updatedURLs = Array(Set(urls + existingURLs))
     
-    processURLs(urls)
+    dump((existing: existingURLs.paths, selected: urls.paths, new: updatedURLs.paths), name: "paths")
+    
+    processURLs(updatedURLs)
 }
 
 private func processURLs(_ urls: [URL]) {
