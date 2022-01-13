@@ -16,7 +16,7 @@ defaults:
 jobs:
   build:
     name: ${{ matrix.run-config.scheme }}
-    runs-on: self-hosted
+    runs-on: macos-latest
     strategy:
       matrix:
         run-config:
