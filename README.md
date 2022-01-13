@@ -6,13 +6,13 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
 
 1. Get the app
 
-2. Make sure TMBuddyFinder is selected in System Settings > Extensions > Finder Extensions:
-   
-   ![](.Images/Finder-Extensions.png)
+2. Launch the app and follow the checklist, so that the all red lights:
+   ![Checklist-Red.png](.Images/Checklist-Red.png)
+   turn into green:
+   ![Checklist-Green.png](.Images/Checklist-Green.png)
 
-3. Select "Grant (Read-Only) Access to Disks..." in the application, navigate to Computer and select all the disks for which you want to see Time Machine exclusions in Finder:
-   
-   ![](.Images/Disk-Selection.png)
+When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
+![](.Images/Disk-Selection.png)
 
 ## What works
 
