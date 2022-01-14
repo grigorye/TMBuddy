@@ -1,6 +1,6 @@
 import Foundation
 
-class TMStatusProvider {
+class TMUtilBasedStatusProvider {
 
     func statusForItem(_ url: URL) async throws -> TMStatus {
         let url = url.resolvingSymlinksInPath()
