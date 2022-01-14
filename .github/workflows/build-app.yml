@@ -38,8 +38,7 @@ jobs:
 
     - name: Setup Environment
       run: |
-        echo 'ARCHIVE_PATH=${{ runner.temp }}/build.xcarchive' >> $GITHUB_ENV
-        echo 'DMG_PATH=${{ runner.temp }}/build.dmg' >> $GITHUB_ENV
+        echo 'PRODUCT_NAME=${{ matrix.run-config.scheme }}' >> $GITHUB_ENV
         echo 'EXPORT_PATH_APPSTORE=${{ runner.temp }}/build.export/appstore' >> $GITHUB_ENV
         echo 'EXPORT_PATH_DEVELOPER_ID=${{ runner.temp }}/build.export/developer-id' >> $GITHUB_ENV
         echo 'AUTHENTICATION_KEY_PATH=${{ runner.temp }}/authentication.p8' >> $GITHUB_ENV
@@ -56,6 +55,16 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+
+    - name: Setup Version Dependent Environment
+      run: |
+        # Create variables
+        BUNDLE_VERSION=$(git log --pretty=format:"%h" | wc -l | awk '{print $1}')
+
+        echo "BUNDLE_VERSION=$BUNDLE_VERSION" >> $GITHUB_ENV
+        echo "PRODUCT_NAME=$PRODUCT_NAME" >> $GITHUB_ENV
+        echo "ARCHIVE_PATH=$RUNNER_TEMP/$PRODUCT_NAME-$BUNDLE_VERSION.xcarchive" >> $GITHUB_ENV
+        echo "DMG_PATH=$RUNNER_TEMP/$PRODUCT_NAME-$BUNDLE_VERSION.dmg" >> $GITHUB_ENV
     
     - name: Create Keychain
       env:
@@ -103,9 +112,6 @@ jobs:
 
     - name: Build .xcarchive
       run: |
-        # create variables
-        BUNDLE_VERSION=$(git log --pretty=format:"%h" | wc -l | awk '{print $1}')
-
         # build
         xcodebuild archive \
           -archivePath "$ARCHIVE_PATH" \
