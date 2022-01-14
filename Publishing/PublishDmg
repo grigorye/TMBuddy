@@ -1,0 +1,13 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+dmg="$1"; shift
+bucket="$1"; shift
+
+dmgName=$(basename "$dmg")
+
+aws s3api put-object --bucket "$bucket" --key "$dmgName" --body "$dmg"
+
+echo "https://$bucket.s3.amazonaws.com/$dmgName"

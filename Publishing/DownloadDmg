@@ -1,0 +1,10 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+shopt -s expand_aliases
+
+dmgDir="$1"
+shift
+
+gh run download --name dmg --dir "$dmgDir"
