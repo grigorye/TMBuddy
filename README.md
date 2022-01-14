@@ -7,10 +7,17 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
 ## Installation
 
 1. Get the app
+   
+   - from TestFlight:
+     [Join the ™ Buddy beta - TestFlight - Apple](https://testflight.apple.com/join/gQCBR8p7)
+   
+   - from Homebrew:
+     ```brew install grigorye/tools/time-machine-buddy
+     ```
 
-2. Launch the app and follow the checklist, so that the all red lights:
+2. Launch the app and follow the checklist, making sure all the red lights:
    ![Checklist-Red.png](.Images/Checklist-Red.png)
-   turn into green:
+   turned green:
    ![Checklist-Green.png](.Images/Checklist-Green.png)
 
 When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
