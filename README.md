@@ -36,3 +36,7 @@ When selecting folders for the application, typically you want to navigate to Co
 - Speedup lookups
 
 - Add support for managing exclusion from backup via contextual menu command
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
