@@ -12,7 +12,9 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
      [Join the ™ Buddy beta - TestFlight - Apple](https://testflight.apple.com/join/gQCBR8p7)
    
    - from Homebrew:
-     ```brew install grigorye/tools/time-machine-buddy
+     
+     ```
+     brew install grigorye/tools/time-machine-buddy
      ```
 
 2. Launch the app and follow the checklist, making sure all the red lights:
