@@ -32,9 +32,14 @@ jobs:
     
     steps:
 
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    
     - name: Dump Environment
       run: |
         env | sort
+        git log
 
     - name: Setup Environment
       run: |
@@ -52,10 +57,6 @@ jobs:
       run: |
         echo -n "$APP_STORE_AUTHENTICATION_KEY_BASE64" | base64 --decode --output "$AUTHENTICATION_KEY_PATH"
     
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-
     - name: Setup Version Dependent Environment
       run: |
         # Create variables
