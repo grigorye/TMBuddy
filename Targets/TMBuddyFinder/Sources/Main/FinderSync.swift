@@ -25,7 +25,7 @@ func labelForStatus(_ status: TMStatus) -> String {
 }
 
 let syncController = FIFinderSyncController.default()
-let statusProvider = TMStatusProvider()
+let statusProvider = TMUtilBasedStatusProvider()
 
 class FinderSync: FIFinderSync {
 
