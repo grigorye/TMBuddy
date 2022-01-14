@@ -3,7 +3,7 @@ name: build-app
 on:
   push:
     branches: [ main ]
-  pull_request:
+  pull_request_target: # https://github.community/t/run-actions-on-pull-requests-with-merge-conflicts/17104/26
     branches: [ main ]
   workflow_dispatch:
 
@@ -30,6 +30,11 @@ jobs:
     
     steps:
 
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: ${{ github.head_ref }} # https://github.community/t/run-actions-on-pull-requests-with-merge-conflicts/17104/26
+
     - name: Dump Environment
       run: |
         env | sort
@@ -50,10 +55,6 @@ jobs:
       run: |
         echo -n "$APP_STORE_AUTHENTICATION_KEY_BASE64" | base64 --decode --output "$AUTHENTICATION_KEY_PATH"
     
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-
     - name: Setup Version Dependent Environment
       run: |
         # Create variables
