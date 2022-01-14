@@ -3,8 +3,19 @@
 set -x
 set -euo pipefail
 
+trunk="main"
+
 commitsFromRoot=$(git rev-list --count HEAD)
 
-bundleVersion="$commitsFromRoot"
+pr=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH" || true)
+
+if [ "$pr" != "null" ]; then
+    git fetch --no-tags origin "$trunk":"$trunk"
+    commitsInBranch=$(git rev-list --count "$trunk"..HEAD)
+    commitsInTrunk=$((commitsFromRoot - commitsInBranch))
+    bundleVersion="$commitsInTrunk.$pr.$commitsInBranch"
+else
+    bundleVersion="$commitsFromRoot"
+fi
 
 echo "$bundleVersion"
