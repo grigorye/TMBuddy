@@ -58,7 +58,7 @@ jobs:
     - name: Setup Version Dependent Environment
       run: |
         # Create variables
-        BUNDLE_VERSION=$(git log --pretty=format:"%h" | wc -l | awk '{print $1}')
+        BUNDLE_VERSION=$(git rev-list --count HEAD)
 
         echo "BUNDLE_VERSION=$BUNDLE_VERSION" >> $GITHUB_ENV
         echo "PRODUCT_NAME=$PRODUCT_NAME" >> $GITHUB_ENV
