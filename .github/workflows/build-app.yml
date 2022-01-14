@@ -2,11 +2,9 @@ name: build-app
 
 on:
   push:
-    branches:
-    - master
-    - 'feature/*'
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
 
 defaults:
