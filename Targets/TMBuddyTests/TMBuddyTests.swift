@@ -9,11 +9,6 @@ class TMBuddyTests: XCTestCase {
         XCTAssertGreaterThan(responses.count, 0)
     }
     
-    func testStatus() async throws {
-        let status = try await TMStatusProvider().statusForItem(URL(fileURLWithPath: "/tmp"))
-        XCTAssertEqual(status, .excluded)
-    }
-    
     func testExclusion() async throws {
         dump(Bundle.main)
         try await TMUtilLauncher().addExclusion(urls: [URL(fileURLWithPath: "/tmp")])
