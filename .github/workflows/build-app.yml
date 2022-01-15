@@ -131,6 +131,7 @@ jobs:
           ${{ env.ARCHIVE_PATH }}
 
     - name: Export archive for AppStore
+      if: github.ref == 'refs/heads/main'
       run: |
         # create variables
         EXPORT_OPTIONS_PLIST='dist/appstore-exportOptions.plist'
@@ -178,6 +179,7 @@ jobs:
           ${{ env.DMG_PATH }}
     
     - name: Upload to TestFlight
+      if: github.ref == 'refs/heads/main'
       run: |
         # create variables
         API_KEY_NAME="$APP_STORE_AUTHENTICATION_KEY_ID"
