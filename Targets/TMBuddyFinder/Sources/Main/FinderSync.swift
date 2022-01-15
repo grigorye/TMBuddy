@@ -25,7 +25,13 @@ func labelForStatus(_ status: TMStatus) -> String {
 }
 
 let syncController = FIFinderSyncController.default()
-let statusProvider = DirectLookupBasedStatusProvider()
+
+let statusProvider: TMStatusProvider = {
+    guard UserDefaults.standard.bool(forKey: "ForceTMUtilBasedStatusProvider") == false else {
+        return TMUtilBasedStatusProvider()
+    }
+    return DirectLookupBasedStatusProvider()
+}()
 
 class FinderSync: FIFinderSync {
 
