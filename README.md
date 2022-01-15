@@ -33,8 +33,6 @@ When selecting folders for the application, typically you want to navigate to Co
 
 ## TODO
 
-- Speedup lookups
-
 - Add support for managing exclusion from backup via contextual menu command
 
 ## License
