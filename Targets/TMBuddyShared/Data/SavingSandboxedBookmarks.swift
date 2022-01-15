@@ -2,7 +2,7 @@ import Foundation
 
 func saveScopedSandboxedBookmark(urls: [URL], in defaults: UserDefaults) throws {
     let bookmarks: [Data] = try urls.map { url in
-        let bookmark = try url.bookmarkData(options: [.withSecurityScope, .securityScopeAllowOnlyReadAccess])
+        let bookmark = try url.bookmarkData(options: [.withSecurityScope])
         dump((path: url.path, bookmark), name: "bookmark")
         return bookmark
     }
