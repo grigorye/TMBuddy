@@ -14,8 +14,9 @@ struct TMUtilLauncher {
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
     }
     
-    func addExclusion(urls: [URL]) async throws {
-        let tmUtilArguments = ["-e", "do shell script \"tmutil addexclusion -p ~/tmp\" with administrator privileges"]
+    func setExcludedWithPath(_ excluded: Bool, urls: [URL]) async throws {
+        let command = [excluded ? "removeexclusion" : "addexclusion"]
+        let tmUtilArguments = ["-e", "do shell script \"tmutil \(command) -p ~/tmp\" with administrator privileges"]
         
         let data = try await runAndCaptureOutput(executableURL: osascriptURL, arguments: tmUtilArguments).result.get()
         
