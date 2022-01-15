@@ -38,6 +38,7 @@
 		4BF45FC248895952280FDC80 /* TMUtilBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859E3E168BE4A66524302FC /* TMUtilBasedStatusProviderTests.swift */; };
 		4F1814D3E349E361BC74A194 /* TMUtilBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFAC1C26EF29F64B4162E1F /* TMUtilBasedStatusProvider.swift */; };
 		5451E42C4A8C7D25AF907427 /* TmUtilIsExcludedOutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = 72BE772E3F1177828A03CD71 /* TmUtilIsExcludedOutput.txt */; };
+		584164EB890A8D0B7461B354 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7656536CBDE702A03F6ED /* TMStatusProvider.swift */; };
 		5BE9412169B98AADB31F5B34 /* BackupMetadataFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955246551027F988AF53ACF6 /* BackupMetadataFilter.swift */; };
 		6092E7774E708712B771B561 /* FullDiskAccessCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A138D08E00F3F72C49D4A07 /* FullDiskAccessCheckpointView.swift */; };
 		6DC0A8620026651157B7096E /* VolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A02D2184D24D82A81CE2C9 /* VolumeFilter.swift */; };
@@ -56,6 +57,7 @@
 		A27419AE82BB186EC333983C /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3CC5F2630243D69DDD741 /* Sugar.swift */; };
 		A45BF14AB20B7F9670EB6F22 /* TimeMachinePathFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B887F90DB4B9731C75DC9C61 /* TimeMachinePathFilter.swift */; };
 		A4B83300B870FA37105EDA9E /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE55D079B06C52D59943F175 /* DefaultsKey.swift */; };
+		A51BBD40FA120950CA4B3932 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7656536CBDE702A03F6ED /* TMStatusProvider.swift */; };
 		AE439C31FC726408DD975EF7 /* Array+URLPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */; };
 		AF2456622AFB86B9B8F19AC3 /* CheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2268116C403E8A3AEEC2A0 /* CheckpointView.swift */; };
 		AF471D23A16C8C161ECF97C7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1780AFA9840706BEF22666C3 /* SharedDefaults.swift */; };
@@ -120,6 +122,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09C7656536CBDE702A03F6ED /* TMStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMStatusProvider.swift; sourceTree = "<group>"; };
 		0DEFDDEECB748E89AEE3E43B /* FoldersSelectionImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersSelectionImp.swift; sourceTree = "<group>"; };
 		1780AFA9840706BEF22666C3 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
 		1A138D08E00F3F72C49D4A07 /* FullDiskAccessCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDiskAccessCheckpointView.swift; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 		A9A27CD9AC5212E0D5C3171D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				09C7656536CBDE702A03F6ED /* TMStatusProvider.swift */,
 				2303DC1638FCFC87EA3967D2 /* DirectLookup */,
 				D69CF826676B25E520599711 /* TMUtil */,
 			);
@@ -603,6 +607,7 @@
 				E644016F784656DD6CC498D2 /* SharedDefaults.swift in Sources */,
 				87CD74414A532ABB5396BFF5 /* Sugar.swift in Sources */,
 				38D01DA3EAD22EB435B200BA /* TMStatus.swift in Sources */,
+				584164EB890A8D0B7461B354 /* TMStatusProvider.swift in Sources */,
 				4AFFB8FBD2E18552AA843D0F /* TMUtilBasedStatusProvider.swift in Sources */,
 				EDDF4E005E411F0E1654731F /* TMUtilLauncher.swift in Sources */,
 				A45BF14AB20B7F9670EB6F22 /* TimeMachinePathFilter.swift in Sources */,
@@ -643,6 +648,7 @@
 				A27419AE82BB186EC333983C /* Sugar.swift in Sources */,
 				B4F62BFF15B83AE231E0A475 /* TMBuddyTests.swift in Sources */,
 				D697553E8BD00A7FABF911C3 /* TMStatus.swift in Sources */,
+				A51BBD40FA120950CA4B3932 /* TMStatusProvider.swift in Sources */,
 				4F1814D3E349E361BC74A194 /* TMUtilBasedStatusProvider.swift in Sources */,
 				4BF45FC248895952280FDC80 /* TMUtilBasedStatusProviderTests.swift in Sources */,
 				F384F257E02E7060461714F1 /* TMUtilLauncher.swift in Sources */,
