@@ -74,7 +74,10 @@ class FinderSync: FIFinderSync {
     
     override func requestBadgeIdentifier(for url: URL) {
         dump(url.path)
-
+        updateBadgeIdentifier(for: url)
+    }
+    
+    func updateBadgeIdentifier(for url: URL) {
         Task {
             let status = try! await statusProvider.statusForItem(url)
             dump((status, path: url.path), name: "status")
@@ -83,6 +86,11 @@ class FinderSync: FIFinderSync {
         }
     }
     
+    func refreshItem(at url: URL) {
+        dump(url)
+        updateBadgeIdentifier(for: url)
+    }
+
     // MARK: - Menu and toolbar item support
     
     override var toolbarItemName: String {
@@ -99,17 +107,61 @@ class FinderSync: FIFinderSync {
     
     override func menu(for menuKind: FIMenuKind) -> NSMenu {
         let menu = NSMenu(title: "")
-        menu.addItem(withTitle: "Exclude from Time Machine", action: #selector(excludeFromTimeMachine(_:)), keyEquivalent: "")
+        
+        let itemURLs = syncController.selectedItemURLs() ?? []
+        let exclusions = itemURLs.map { metadataReader.excludedBasedOnMetadata($0) }
+        let mask = Set(exclusions)
+        
+        if mask.contains(true) {
+            menu.addItem(
+                withTitle: "Remove Exclusion from Time Machine",
+                action: #selector(removeExclusionFromTimeMachine(_:)),
+                keyEquivalent: ""
+            )
+        }
+        if mask.contains(false) {
+            menu.addItem(
+                withTitle: "Exclude from Time Machine",
+                action: #selector(excludeFromTimeMachine(_:)),
+                keyEquivalent: ""
+            )
+        }
         return menu
     }
     
-    @IBAction func excludeFromTimeMachine(_ sender: AnyObject?) {
+    @IBAction func removeExclusionFromTimeMachine(_ sender: AnyObject?) {
+        dump(self)
         guard let itemURLs = syncController.selectedItemURLs() else {
             return
         }
         dump(itemURLs.map { $0.path }, name: "items")
         Task {
-            try await TMUtilLauncher().removeExclusion(urls: itemURLs)
+            defer {
+                dump(itemURLs.map { $0.path }, name: "itemsToRefresh")
+                for itemURL in itemURLs {
+                    refreshItem(at: itemURL)
+                }
+            }
+            
+            try await metadataWriter.setExcluded(false, urls: itemURLs)
+        }
+    }
+    
+    @IBAction func excludeFromTimeMachine(_ sender: AnyObject?) {
+        dump(self)
+        guard let itemURLs = syncController.selectedItemURLs() else {
+            return
+        }
+        dump(itemURLs.map { $0.path }, name: "items")
+        Task {
+            defer {
+                dump(itemURLs.map { $0.path }, name: "itemsToRefresh")
+                for itemURL in itemURLs {
+                    refreshItem(at: itemURL)
+                }
+            }
+            
+            try await metadataWriter.setExcluded(true, urls: itemURLs)
         }
     }
 }
