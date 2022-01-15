@@ -5,8 +5,9 @@ struct TMUtilLauncher {
     let tmUtilURL = URL(fileURLWithPath: "/usr/bin/tmutil")
     let osascriptURL = URL(fileURLWithPath: "/usr/bin/osascript")
 
-    func removeExclusion(urls: [URL]) async throws {
-        let tmUtilArguments = ["addexclusion", "-p"] + urls.map { $0.standardized.path }
+    func setExcluded(_ excluded: Bool, urls: [URL]) async throws {
+        dump((excluded, path: urls.paths))
+        let tmUtilArguments = [excluded ? "removeexclusion" : "addexclusion"] + urls.map { $0.standardized.path }
         
         let data = try await runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments).result.get()
         
