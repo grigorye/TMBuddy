@@ -1,6 +1,7 @@
 #! /bin/bash
 
-set -eu -o pipefail
+set -x
+set -euo pipefail
 
 formulaDir="$1"
 shift
