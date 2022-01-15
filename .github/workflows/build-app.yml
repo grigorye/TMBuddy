@@ -47,7 +47,6 @@ jobs:
         echo 'AUTHENTICATION_KEY_PATH=${{ runner.temp }}/authentication.p8' >> $GITHUB_ENV
 
     - uses: maxim-lobanov/setup-xcode@v1.4.1
-      if: ${{ runner.name == 'Hosted Agent' }}
       with:
         xcode-version: '13.2.1'
     
