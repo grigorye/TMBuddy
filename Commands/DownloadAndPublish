@@ -1,0 +1,35 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+shopt -s nullglob
+
+secretsDir="$1"; shift
+casksDir="$1"; shift
+
+bn=$(basename "$0")
+tmpdir=$(mktemp -d /tmp/"$bn".XXXXXX)
+
+bundleID="com.grigorye.TMBuddy"
+bucket="tmbuddy"
+formulaName="time-machine-buddy"
+appName="TMBuddy"
+
+./Publishing/DownloadDmg "$tmpdir"/dmg
+
+dmgs=("$tmpdir"/dmg/*.dmg)
+dmg="${dmgs[0]}"
+dmgBasename=$(basename "$dmg")
+version=$(echo "$dmgBasename" | cut -d '-' -f 2 | sed -e 's/\.dmg$//')
+
+./Publishing/NotarizeDmg "$tmpdir"/dmg/*.dmg "$tmpdir"/notarized "$secretsDir" "$bundleID"
+
+publishedUrl=$(./Publishing/PublishDmg "$tmpdir"/notarized/*.dmg "$bucket")
+
+./Publishing/GenBrewFormula \
+    "$casksDir" \
+    "$formulaName" \
+    "$appName" \
+    "$tmpdir"/notarized/*.dmg \
+    "$publishedUrl" \
+    "$version"
