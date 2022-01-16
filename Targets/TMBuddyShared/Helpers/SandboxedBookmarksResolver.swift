@@ -3,23 +3,33 @@ import Foundation
 class SandboxedBookmarksResolver {
     
     init(handleResolvedBookmarkURLs: @escaping ([URL]) -> Void) {
-        observer = UserDefaultsObserver(defaults: sharedDefaults, key: DefaultsKey.sandboxedBookmarks.rawValue, options: [.new, .initial]) { change in
-            
-            guard let changeBookmarks = change![.newKey] as? [Data]? else {
-                dump(change, name: "invalidChange")
-                fatalError("Invalid change, expecting Data?")
-            }
-            
-            guard let bookmarks = changeBookmarks else {
-                return
-            }
-            
-            let resolvedBookmarkURLs = resolveBookmarks(bookmarks)
-            handleResolvedBookmarkURLs(resolvedBookmarkURLs)
+        self.handleResolvedBookmarkURLs = handleResolvedBookmarkURLs
+        
+        observer = UserDefaultsObserver(
+            defaults: sharedDefaults,
+            key: DefaultsKey.sandboxedBookmarks.rawValue,
+            options: [.new, .initial]
+        ) { [weak self] change in
+            self?.observeSandboxedBookmarks(change)
         }
     }
     
-    private let observer: UserDefaultsObserver
+    func observeSandboxedBookmarks(_ change: [NSKeyValueChangeKey : Any]?) {
+        guard let changeBookmarks = change![.newKey] as? [Data]? else {
+            dump(change, name: "invalidChange")
+            fatalError("Invalid change, expecting Data?")
+        }
+        
+        guard let bookmarks = changeBookmarks else {
+            return
+        }
+        
+        let resolvedBookmarkURLs = resolveBookmarks(bookmarks)
+        handleResolvedBookmarkURLs(resolvedBookmarkURLs)
+    }
+    
+    private var observer: UserDefaultsObserver?
+    private let handleResolvedBookmarkURLs: ([URL]) -> Void
 }
 
 func resolveBookmarks(_ bookmarks: [Data], options: URL.BookmarkResolutionOptions = []) -> [URL] {
@@ -35,3 +45,5 @@ func resolveBookmarks(_ bookmarks: [Data], options: URL.BookmarkResolutionOption
         }
     }
 }
+
+extension SandboxedBookmarksResolver: Traceable {}
