@@ -3,6 +3,9 @@ import Foundation
 class DirectLookupBasedStatusProvider {
     
     func statusForItem(_ url: URL) async throws -> TMStatus {
+        guard metadataReader.excludedBasedOnMetadata(url) == false else {
+            return .stickyExcluded
+        }
         guard (try? volumeFilter.isExcluded(url)) == false else {
             return .excluded
         }
