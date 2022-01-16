@@ -6,3 +6,9 @@ protocol TMStatusProvider {
 
 extension DirectLookupBasedStatusProvider: TMStatusProvider {}
 extension TMUtilBasedStatusProvider: TMStatusProvider {}
+
+var statusProvider: TMStatusProvider {
+    UserDefaults.standard.bool(forKey: DefaultsKey.forceTMUtilBasedStatusProvider)
+    ? TMUtilBasedStatusProvider()
+    : DirectLookupBasedStatusProvider()
+}
