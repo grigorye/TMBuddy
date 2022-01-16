@@ -3,4 +3,4 @@
 set -x
 set -euo pipefail
 
-log stream --predicate "(process == 'TMBuddyFinder') && (sender == 'libswiftFoundation.dylib')"
+log stream --predicate "(process == 'TMBuddyFinder') && (sender == 'libswiftFoundation.dylib')"  --style compact
