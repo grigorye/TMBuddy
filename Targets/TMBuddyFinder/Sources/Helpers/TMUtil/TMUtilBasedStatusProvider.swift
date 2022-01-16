@@ -20,3 +20,5 @@ class TMUtilBasedStatusProvider {
         }
     }
 }
+
+extension TMUtilBasedStatusProvider: Traceable {}
