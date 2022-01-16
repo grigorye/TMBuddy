@@ -28,7 +28,7 @@ struct PlugInFullDiskAccessCheckPointView: View {
             completed: isFullDiskAccessGranted == true
         ) {
             VStack(alignment: .leading) {
-                Button("Reveal the extension in \(finderName)") {
+                Button("Reveal Extension in \(finderName)") {
                     NSWorkspace.shared.activateFileViewerSelecting([plugInURL!])
                 }
                 Button("Full Disk Access Settings") {
