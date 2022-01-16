@@ -6,3 +6,9 @@ protocol MetadataReader {
 
 extension MDItemBackupController: MetadataReader {}
 extension ExtendedAttributesBackupController: MetadataReader {}
+
+var metadataReader: MetadataReader {
+    UserDefaults.standard.bool(forKey: DefaultsKey.forceMDItemMetadataReader)
+    ? MDItemBackupController()
+    : ExtendedAttributesBackupController()
+}
