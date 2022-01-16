@@ -2,7 +2,8 @@ import Cocoa
 import FinderSync
 
 let includedImage: NSImage? = nil
-let excludedImage = NSImage(named: NSImage.statusPartiallyAvailableName)
+let excludedImage = NSImage(named: NSImage.statusNoneName)
+let pathExcludedImage = NSImage(named: NSImage.statusPartiallyAvailableName)
 let stickyExcludedImage = NSImage(named: NSImage.statusUnavailableName)
 let unknownImage = NSImage(named: NSImage.statusNoneName)
 
@@ -14,6 +15,8 @@ func imageForStatus(_ status: TMStatus) -> NSImage? {
         return excludedImage
     case .stickyExcluded:
         return stickyExcludedImage
+    case .pathExcluded:
+        return pathExcludedImage
     case .unknown:
         return unknownImage
     }
