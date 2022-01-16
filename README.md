@@ -27,21 +27,19 @@ When selecting folders for the application, typically you want to navigate to Co
 
 ## What works
 
-
-
 - Shows exclusion status for every item on each monitored folder/disk:
   
   - Item excluded by path via Time Machine Settings:
     
-    ![](.Images/Finder-Badge-Path-Excluded.png)
+    <img src=".Images/Finder-Badge-Path-Excluded.png" title="" alt="" width="120">
   
   - Item excluded via sticky non-backup attribute:
     
-    ![](.Images/Finder-Badge-Sticky-Excluded.png)
+    <img src=".Images/Finder-Badge-Sticky-Excluded.png" title="" alt="" width="120">
   
   - Item excluded as it resides in a folder excluded from backup (this will be default for all items in excluded folders):
-        
-    ![](.Images/Finder-Badge-Parent-Excluded.png)
+    
+    <img src=".Images/Finder-Badge-Parent-Excluded.png" title="" alt="" width="120">
 
 - Toggling *sticky* exclusion via contextual menu (or toolbar item):
 
