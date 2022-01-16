@@ -62,3 +62,5 @@ struct PlutilIsExcludedResponse: Codable {
 enum TMUtilIsExcludedOutputParseError: Swift.Error {
     case unrecognizableIsExcluded(PlutilIsExcludedResponse)
 }
+
+extension TMUtilLauncher: Traceable {}
