@@ -24,10 +24,16 @@ extension FileManager {
         guard ignoringSandbox else {
             return homeDirectory(forUser: user)
         }
-        
-        let pw = getpwnam(user)
-        
-        let home = pw!.pointee.pw_dir!
+		
+		guard let pw = getpwnam(user) else {
+			dump(user, name: "getpwnamFailure")
+			return nil
+		}
+		
+		guard let home = pw.pointee.pw_dir else {
+			return nil
+		}
+		
         let homePath = self.string(
             withFileSystemRepresentation: home,
             length: strlen(home)
