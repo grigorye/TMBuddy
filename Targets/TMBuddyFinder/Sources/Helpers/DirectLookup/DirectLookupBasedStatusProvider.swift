@@ -6,6 +6,9 @@ class DirectLookupBasedStatusProvider {
         guard metadataReader.excludedBasedOnMetadata(url) == false else {
             return .stickyExcluded
         }
+        guard pathFilter.skipPaths.contains(url.path) == false else {
+            return .pathExcluded
+        }
         guard (try? volumeFilter.isExcluded(url)) == false else {
             return .excluded
         }
