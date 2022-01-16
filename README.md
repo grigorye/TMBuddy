@@ -43,9 +43,15 @@ When selecting folders for the application, typically you want to navigate to Co
         
     ![](.Images/Finder-Badge-Parent-Excluded.png)
 
+- Toggling *sticky* exclusion via contextual menu (or toolbar item):
+
+<img src=".Images/Finder-Contextual-Exclude.png" title="" alt="" height="400">
+  <img title="" src=".Images/Finder-Contextual-Remove-Exclusion.png" alt="" height="400">
+
 ## TODO
 
-- Add support for managing exclusion from backup via contextual menu command
+- Add support for toggling fixed-path exclusions
+- Menu bar item
 
 ## License
 
