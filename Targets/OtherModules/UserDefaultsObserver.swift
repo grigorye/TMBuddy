@@ -27,8 +27,10 @@ class UserDefaultsObserver: NSObject {
         guard context == KVOContext else {
             return
         }
-        
-        dump(change, name: "change")
+
+        if UserDefaults.standard.bool(forKey: DefaultsKey.debug) {
+            dump(change, name: "change")
+        }
         
         handle(change)
     }
