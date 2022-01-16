@@ -1,9 +1,10 @@
 import Cocoa
 import FinderSync
 
-let includedImage: NSImage? = nil // NSImage(named: NSImage.userName)
-let excludedImage = NSImage(named: NSImage.cautionName)
-let unknownImage = NSImage(named: NSImage.colorPanelName)
+let includedImage: NSImage? = nil
+let excludedImage = NSImage(named: NSImage.statusPartiallyAvailableName)
+let stickyExcludedImage = NSImage(named: NSImage.statusUnavailableName)
+let unknownImage = NSImage(named: NSImage.statusNoneName)
 
 func imageForStatus(_ status: TMStatus) -> NSImage? {
     switch status {
@@ -11,6 +12,8 @@ func imageForStatus(_ status: TMStatus) -> NSImage? {
         return includedImage
     case .excluded:
         return excludedImage
+    case .stickyExcluded:
+        return stickyExcludedImage
     case .unknown:
         return unknownImage
     }
