@@ -31,7 +31,12 @@ class PlugInConnectionController {
         let response: FinderSyncInfoResponse?
         if let payload = defaults.finderSyncInfoResponsePayload {
             do {
-                response = try JSONDecoder().decode(FinderSyncInfoResponse.self, from: payload)
+                let untrustedResponse = try JSONDecoder().decode(FinderSyncInfoResponse.self, from: payload)
+                let untrustedResponseVersion = untrustedResponse.version
+                if untrustedResponseVersion != plugInHostConnectionVersion {
+                    dump((responseVersion: untrustedResponseVersion, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
+                }
+                response = untrustedResponse
             } catch {
                 dump((error, payload: payload), name: "responseDecodingFailed")
                 response = nil
