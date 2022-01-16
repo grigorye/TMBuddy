@@ -3,14 +3,17 @@ import SwiftUI
 struct PlugInFullDiskAccessCheckPointView: View {
     
     @ObservedObject var checkpointProvider = PlugInFullDiskAccessCheckPointProvider()
-    
+    @ObservedObject var extensionStatusProvider = FinderSyncExtensionStatusProvider()
+
     var body: some View {
         let isFullDiskAccessGranted = checkpointProvider.accessGranted
         
         let checkpointValue: String = {
             switch isFullDiskAccessGranted {
             case .none:
-                return "access unknown, force quit Finder?"
+                return extensionStatusProvider.isEnabled
+                ? "checking..."
+                : "access unknown as extension is disabled."
             case .some(true):
                 return "access granted"
             case .some(false):
