@@ -4,6 +4,15 @@ func reportTimeMachinePermissions() {
     dumpTimeMachinePreferences()
 }
 
+func timeMachinePreferencesAccessError() -> Error? {
+    do {
+        _ = try Data(contentsOf: URL(fileURLWithPath: "/Library/Preferences/com.apple.TimeMachine.plist"))
+        return nil
+    } catch {
+        return error
+    }
+}
+
 func dumpTimeMachinePreferences() {
     do {
         let data = try Data(contentsOf: URL(fileURLWithPath: "/Library/Preferences/com.apple.TimeMachine.plist"))
