@@ -6,24 +6,29 @@ class TimeMachineVolumeFilter {
     
     init() {
         userDefaultsObserver = .init(
-            defaults: UserDefaults(suiteName: "com.apple.TimeMachine")!,
-            key: "ExcludedVolumeUUIDs",
+            defaults: timeMachineUserDefaults,
+            key: TimeMachineUserDefaultsKey.excludedVolumeUUIDs.rawValue,
             options: [.initial, .new]
         ) { [weak self] change in
-            let newExcludedVolumeUUIDs: [String]
-            dump(change, name: "change")
-            switch change?[.newKey] {
-            case _ as NSNull:
-                newExcludedVolumeUUIDs = []
-            case let volumeUUIDs as [String]:
-                newExcludedVolumeUUIDs = volumeUUIDs
-            default:
-                dump(change, name: "unrecognizedChange")
-                newExcludedVolumeUUIDs = []
-            }
-            dump(newExcludedVolumeUUIDs, name: "newExcludedVolumeUUIDs")
-            self?.excludedVolumeUUIDs = newExcludedVolumeUUIDs
+            self?.observeExcludedVolumeUUIDs(change)
         }
+    }
+    
+    func observeExcludedVolumeUUIDs(_ change: [NSKeyValueChangeKey : Any]?) {
+        let newExcludedVolumeUUIDs: [String]
+        dump(change, name: "change")
+        switch change?[.newKey] {
+        case _ as NSNull:
+            newExcludedVolumeUUIDs = []
+        case let volumeUUIDs as [String]:
+            newExcludedVolumeUUIDs = volumeUUIDs
+        default:
+            dump(change, name: "unrecognizedChange")
+            newExcludedVolumeUUIDs = []
+        }
+        dump(newExcludedVolumeUUIDs, name: "newExcludedVolumeUUIDs")
+        
+        self.excludedVolumeUUIDs = newExcludedVolumeUUIDs
     }
     
     func isExcluded(_ url: URL) throws -> Bool {
@@ -36,3 +41,5 @@ class TimeMachineVolumeFilter {
         .init(excludedVolumeUUIDs: excludedVolumeUUIDs)
     }
 }
+
+extension TimeMachineVolumeFilter: Traceable {}

@@ -6,25 +6,29 @@ class TimeMachinePathFilter {
     
     init() {
         userDefaultsObserver = .init(
-            defaults: UserDefaults(suiteName: "com.apple.TimeMachine")!,
-            key: "SkipPaths",
+            defaults: timeMachineUserDefaults,
+            key: TimeMachineUserDefaultsKey.skipPaths.rawValue,
             options: [.initial, .new]
         ) { [weak self] change in
-            let newSkipPaths: [String]
-            switch change?[.newKey] {
-            case _ as NSNull:
-                newSkipPaths = []
-            case let paths as [String]:
-                newSkipPaths = paths.map { ($0 as NSString).expandingTildeInPath }
-            default:
-                dump(change, name: "unrecognizedChange")
-                newSkipPaths = []
-            }
-            dump(newSkipPaths, name: "newSkipPaths")
-            self?.skipPaths = newSkipPaths
+            self?.observeTimeMachineSkipPaths(change)
         }
     }
     
+    func observeTimeMachineSkipPaths(_ change: [NSKeyValueChangeKey : Any]?) {
+        let newSkipPaths: [String]
+        switch change?[.newKey] {
+        case _ as NSNull:
+            newSkipPaths = []
+        case let paths as [String]:
+            newSkipPaths = paths.map { ($0 as NSString).expandingTildeInPath(ignoringSandbox: true) }
+        default:
+            dump(change, name: "unrecognizedChange")
+            newSkipPaths = []
+        }
+        dump(newSkipPaths, name: "newSkipPaths")
+        
+        self.skipPaths = newSkipPaths
+    }
     func isExcluded(_ url: URL) -> Bool {
         filter.isExcluded(url)
     }
@@ -35,3 +39,5 @@ class TimeMachinePathFilter {
         PathFilter(skipPaths: skipPaths)
     }
 }
+
+extension TimeMachinePathFilter: Traceable {}
