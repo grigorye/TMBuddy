@@ -5,36 +5,66 @@ private enum Imp {}
 extension Imp {
     
     @discardableResult
-    static func dump<T>(_ value: T, name: String?, file: String, function: String) -> T {
+    static func dump<T>(_ value: T, name: String?, file: String, function: String, indent: Int, maxDepth: Int, maxItems: Int) -> T {
         if dumpIsEnabled {
             let suffix = name.flatMap { ", " + $0 } ?? ""
-            Swift.dump(value, name: function + suffix)
+            Swift.dump(value, name: function + suffix, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
         }
         if nsLogIsEnabled {
             let prefix = name.flatMap { $0 + ": " } ?? ""
-            NSLog("\(function): \(prefix)\(value)")
+            let message = "\(function): \(prefix)\(value)"
+            NSLog(message)
         }
         return value
     }
 }
 
 @discardableResult
-func dump<T>(_ value: T, name: String? = nil, file: String = #fileID, function: String = #function) -> T {
-    Imp.dump(value, name: name, file: file, function: function)
+func dump<T>(_ value: T, name: String, function: String = #function) -> T {
+    Imp.dump(value, name: name, file: "file", function: function, indent: 0, maxDepth: .max, maxItems: .max)
 }
 
-extension NSObject {
+@discardableResult
+func dump<T>(_ value: T, name: String, maxDepth: Int, function: String = #function) -> T {
+    Imp.dump(value, name: name, file: "file", function: function, indent: 0, maxDepth: maxDepth, maxItems: .max)
+}
+
+@discardableResult
+func dump<T>(_ value: T, name: String, maxDepth: Int, maxItems: Int, function: String = #function) -> T {
+    Imp.dump(value, name: name, file: "file", function: function, indent: 0, maxDepth: maxDepth, maxItems: maxItems)
+}
+
+protocol Traceable {}
+
+extension Traceable {
 
     @discardableResult
-    public func dump<T>(_ value: T, name: String? = nil, file: String = #fileID, function: String = #function, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
-        Imp.dump(value, name: name, file: file, function: "\(type(of: self)).\(function)")
+    func dump<T>(_ value: T, name: String, function: String = #function) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", indent: 0, maxDepth: .max, maxItems: .max)
+    }
+
+    @discardableResult
+    func dump<T>(_ value: T, name: String, maxDepth: Int, function: String = #function) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", indent: 0, maxDepth: maxDepth, maxItems: .max)
     }
     
     @discardableResult
-    public class func dump<T>(_ value: T, name: String? = nil, file: String = #fileID, function: String = #function, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
-        Imp.dump(value, name: name, file: file, function: "\(Self.self).\(function)")
+    func dump<T>(_ value: T, name: String, maxDepth: Int, maxItems: Int, function: String = #function) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", indent: 0, maxDepth: maxDepth, maxItems: maxItems)
+    }
+
+    @discardableResult
+    public func dump<T>(_ value: T, name: String? = nil, function: String = #function, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", indent: indent, maxDepth: maxDepth, maxItems: maxItems)
+    }
+    
+    @discardableResult
+    public static func dump<T>(_ value: T, name: String? = nil, function: String = #function, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(Self.self).\(function)", indent: indent, maxDepth: maxDepth, maxItems: maxItems)
     }
 }
+
+extension NSObject: Traceable {}
 
 private let defaults = UserDefaults.standard
 
