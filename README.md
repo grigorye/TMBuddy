@@ -27,9 +27,21 @@ When selecting folders for the application, typically you want to navigate to Co
 
 ## What works
 
-- Shows exclusion status for every item on the system disk (if you see the caution icon ⚠️ by the item, it means that the item is for sure not backed up):
+
+
+- Shows exclusion status for every item on each monitored folder/disk:
   
-  ![](.Images/Finder-Badge-On-Icon.png)
+  - Item excluded by path via Time Machine Settings:
+    
+    ![](.Images/Finder-Badge-Path-Excluded.png)
+  
+  - Item excluded via sticky non-backup attribute:
+    
+    ![](.Images/Finder-Badge-Sticky-Excluded.png)
+  
+  - Item excluded as it resides in a folder excluded from backup (this will be default for all items in excluded folders):
+        
+    ![](.Images/Finder-Badge-Parent-Excluded.png)
 
 ## TODO
 
