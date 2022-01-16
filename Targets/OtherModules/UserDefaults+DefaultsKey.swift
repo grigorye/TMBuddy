@@ -8,6 +8,12 @@ extension UserDefaults {
         data(forKey: key.rawValue)
     }
     
+    func bool<DefaultsKey>(forKey key: DefaultsKey) -> Bool
+    where DefaultsKey: RawRepresentable, DefaultsKey.RawValue == String
+    {
+        bool(forKey: key.rawValue)
+    }
+
     func array<DefaultsKey>(forKey key: DefaultsKey) -> [Data]?
     where DefaultsKey: RawRepresentable, DefaultsKey.RawValue == String
     {
