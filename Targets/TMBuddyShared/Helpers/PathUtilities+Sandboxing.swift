@@ -10,6 +10,20 @@ extension NSString {
         return string as String
     }
     
+    func abbreviatingWithTildeInPath(ignoringSandbox: Bool) -> String {
+        guard ignoringSandbox else {
+            return self.abbreviatingWithTildeInPath
+        }
+
+        let currentUserHomeDirectoryPath = FileManager.default.homeDirectoryForCurrentUser(ignoringSandbox: true).path
+        guard self.hasPrefix(currentUserHomeDirectoryPath) else {
+            return self as String
+        }
+        
+        return "~" + (self as String)[currentUserHomeDirectoryPath.count...]
+    }
+
+    
     private func expandingTildeInPathImp(ignoringSandbox: Bool) -> String {
         guard ignoringSandbox else {
             return self.expandingTildeInPath
