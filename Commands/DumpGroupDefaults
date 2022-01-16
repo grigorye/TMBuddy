@@ -1,0 +1,5 @@
+#! /bin/bash
+
+set -euo pipefail
+
+plutil -p ~/Library/Group\ Containers/5BV57B67TB.group.TMBuddy/Library/Preferences/5BV57B67TB.group.TMBuddy.plist
