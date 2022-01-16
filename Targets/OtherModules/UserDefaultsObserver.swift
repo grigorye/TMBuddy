@@ -28,7 +28,7 @@ class UserDefaultsObserver: NSObject {
             return
         }
 
-        if UserDefaults.standard.bool(forKey: DefaultsKey.debug) {
+        if debug {
             dump(change, name: "change")
         }
         
