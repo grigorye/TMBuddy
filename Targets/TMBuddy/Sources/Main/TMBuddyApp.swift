@@ -13,6 +13,7 @@ struct TMBuddyApp: App {
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        onLaunch()
         let contentView = ContentView()
         
         let window = NSWindow(
