@@ -4,7 +4,6 @@ targets:
     type: application
     platform: macOS
     deploymentTarget: "10.15"
-    scheme: {}
     sources:
       - Targets/TMBuddy
       - Targets/TMBuddyShared
@@ -16,6 +15,10 @@ targets:
       INFOPLIST_KEY_NSMainStoryboardFile: Main
       INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
       CODE_SIGN_ENTITLEMENTS: Targets/TMBuddy/Bundle/TMBuddy.entitlements
+    scheme:
+      commandLineArguments:
+        "-enableDump YES": true
+        "-suppressLog YES": true
     dependencies:
       - target: TMBuddyFinder
   
