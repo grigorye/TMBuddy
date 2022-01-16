@@ -1,7 +1,0 @@
-#! /bin/bash
-
-set -x
-set -euo pipefail
-
-defaults write com.grigorye.TMBuddy enableDump -bool true
-defaults write com.grigorye.TMBuddy suppressNSLog -bool true
