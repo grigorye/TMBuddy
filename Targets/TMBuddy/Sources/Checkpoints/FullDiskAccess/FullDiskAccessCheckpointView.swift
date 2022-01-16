@@ -10,8 +10,13 @@ struct FullDiskAccessCheckpointView: View {
             value: isFullDiskAccessGranted ? "access granted" : "access denied",
             completed: isFullDiskAccessGranted
         ) {
-            Button("Full Disk Access Settings") {
-                NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles")!)
+            HStack {
+                Button("Full Disk Access Settings") {
+                    NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles")!)
+                }
+                Button("Reveal \(appName) in \(finderName)") {
+                    NSWorkspace.shared.activateFileViewerSelecting([Bundle.main.bundleURL])
+                }
             }
         }
     }
