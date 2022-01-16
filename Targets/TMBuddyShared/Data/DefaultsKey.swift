@@ -6,6 +6,10 @@ enum DefaultsKey: String, CaseIterable {
     case suppressNSLog
     case enableDump
     
+    case finderSyncInfoRequestIndex
+    case finderSyncInfoResponseIndex
+    case finderSyncInfoResponsePayload
+    
     case forceTMUtilBasedStatusProvider
     case forceMDItemMetadataReader
     case forceTMUtilMetadataWriter

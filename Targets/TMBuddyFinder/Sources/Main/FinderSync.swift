@@ -34,6 +34,8 @@ let syncController = FIFinderSyncController.default()
 
 class FinderSync: FIFinderSync {
 
+    let hostAppConnectionController = HostAppConnectionController()
+    
     let sandboxedBookmarksResolver = SandboxedBookmarksResolver { urls in
         dump(urls.map { $0.path }, name: "newSyncDirectories")
         try! saveScopedSandboxedBookmark(urls: urls, in: defaults)
