@@ -80,7 +80,7 @@ class FinderSync: FIFinderSync {
     }
     
     func refreshItem(at url: URL) {
-        dump(url)
+        dump(url.path, name: "path")
         updateBadgeIdentifier(for: url)
     }
 
@@ -123,8 +123,8 @@ class FinderSync: FIFinderSync {
     }
     
     @IBAction func removeExclusionFromTimeMachine(_ sender: AnyObject?) {
-        dump(self)
         guard let itemURLs = syncController.selectedItemURLs() else {
+            dump(0, name: "itemCount")
             return
         }
         dump(itemURLs.map { $0.path }, name: "items")
@@ -141,8 +141,8 @@ class FinderSync: FIFinderSync {
     }
     
     @IBAction func excludeFromTimeMachine(_ sender: AnyObject?) {
-        dump(self)
         guard let itemURLs = syncController.selectedItemURLs() else {
+            dump(0, name: "itemCount")
             return
         }
         dump(itemURLs.map { $0.path }, name: "items")
