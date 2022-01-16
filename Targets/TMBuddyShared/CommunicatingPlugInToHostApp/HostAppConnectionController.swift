@@ -38,16 +38,6 @@ class HostAppConnectionController {
         defaults.finderSyncInfoResponsePayload = try! JSONEncoder().encode(response)
         defaults.finderSyncInfoResponseIndex = requestIndex
     }
-    
-    func isExcluded(_ url: URL) -> Bool {
-        filter.isExcluded(url)
-    }
-    
-    var skipPaths: [String] = []
-    
-    var filter: PathFilter {
-        PathFilter(skipPaths: skipPaths)
-    }
 }
 
 extension HostAppConnectionController: Traceable {}
