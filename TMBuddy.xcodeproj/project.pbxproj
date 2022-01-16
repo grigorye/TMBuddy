@@ -10,6 +10,7 @@
 		02551E268116BDD236866B47 /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
 		0AA3ABC2452EA7F4E93A66B1 /* DisplayNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8559AEA7078BAAF278B09AA6 /* DisplayNames.swift */; };
 		0AEAEDE91B518DBAD762FBCE /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
+		0B47B596343384031C320712 /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
 		0E48817EE8B983C57401F716 /* UserDefaults+DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD39E10FE5C0F9852587029 /* UserDefaults+DefaultsKey.swift */; };
 		141AB711AA16AFC38FD16D3B /* VolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A02D2184D24D82A81CE2C9 /* VolumeFilter.swift */; };
 		153D5F1372C7DA38F92BA474 /* ScopedSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC5A5C026805C9922B665F /* ScopedSandboxedBookmarks.swift */; };
@@ -26,6 +27,7 @@
 		259CED4FAA424F7E454F8A8A /* ExtendedAttributesBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374BDE2929CE87139B63F60F /* ExtendedAttributesBackupController.swift */; };
 		283242D6DEA155DF28CDA80A /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551C04BE645AD741F429489 /* UserDefaultsObserver.swift */; };
 		2A88BD9272B21CA61796169E /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
+		2B52E3B6F227C1CBD09B11EA /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
 		33330CC152E0724F959BB1AD /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3CC5F2630243D69DDD741 /* Sugar.swift */; };
 		33EBF5B1AC2299E1A7CBCF05 /* ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688A73E924E17AB042449119 /* ExtendedAttributes.swift */; };
 		36F06AA9DDE6DD4D3EED0502 /* CheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2268116C403E8A3AEEC2A0 /* CheckpointView.swift */; };
@@ -42,6 +44,7 @@
 		435BF08846543A906F51132B /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C2A999CAF70A0C4CEC90CB /* Icons.xcassets */; };
 		4568B114A4004D204D1FB9CD /* TimeMachinePathFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173068889EBA8B058F00D1A /* TimeMachinePathFilterTests.swift */; };
 		45C0B826ED1A9A1DE96C0BCE /* SandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CBB5A64727943DC1BBF0 /* SandboxedBookmarks.swift */; };
+		4913B3866EA16632B62373DE /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315A85237754BE0C28A00F1C /* BuildInfo.swift */; };
 		4AFFB8FBD2E18552AA843D0F /* TMUtilBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFAC1C26EF29F64B4162E1F /* TMUtilBasedStatusProvider.swift */; };
 		4BF45FC248895952280FDC80 /* TMUtilBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859E3E168BE4A66524302FC /* TMUtilBasedStatusProviderTests.swift */; };
 		4F1814D3E349E361BC74A194 /* TMUtilBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFAC1C26EF29F64B4162E1F /* TMUtilBasedStatusProvider.swift */; };
@@ -53,6 +56,7 @@
 		5C8075C37D316D0895B118E6 /* MetadataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849DE197ED6058E3288BBC7 /* MetadataWriter.swift */; };
 		6092E7774E708712B771B561 /* FullDiskAccessCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A138D08E00F3F72C49D4A07 /* FullDiskAccessCheckpointView.swift */; };
 		61B7A1F9CD832E605EADEEC0 /* TimeMachineUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D347A0B35FF7B51109D4D7 /* TimeMachineUserDefaults.swift */; };
+		63D8A0C020499760AFEFA279 /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
 		64F088506DCD6DF05394A52B /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
 		6C51FC87F29D35D5B57FC5AB /* MDItemBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC9C1D3AFD0F1EC459F85 /* MDItemBackupController.swift */; };
 		6DC0A8620026651157B7096E /* VolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A02D2184D24D82A81CE2C9 /* VolumeFilter.swift */; };
@@ -109,6 +113,7 @@
 		DE0E931933A8473C39111DEB /* MDItemBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC9C1D3AFD0F1EC459F85 /* MDItemBackupController.swift */; };
 		DEA1BEC65FCC3DF8A0FBAE6D /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
 		E4D77EA690B2BB4E1898B84C /* SanityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C8D1F63F14009D9FDBCDE6 /* SanityChecking.swift */; };
+		E538FE500EC25AB948191E8B /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315A85237754BE0C28A00F1C /* BuildInfo.swift */; };
 		E644016F784656DD6CC498D2 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1780AFA9840706BEF22666C3 /* SharedDefaults.swift */; };
 		E659E0FFE0B614FD75972974 /* SavingSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5303B562293DD78A04D02653 /* SavingSandboxedBookmarks.swift */; };
 		E74E1B38C475FD79F4428E7A /* SavingSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5303B562293DD78A04D02653 /* SavingSandboxedBookmarks.swift */; };
@@ -166,6 +171,7 @@
 		2B4FFE2A3FA843D85516307A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DCDC9C1D3AFD0F1EC459F85 /* MDItemBackupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDItemBackupController.swift; sourceTree = "<group>"; };
 		302EB0E7AAD313057B7F78E8 /* FinderExtensionCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderExtensionCheckpointView.swift; sourceTree = "<group>"; };
+		315A85237754BE0C28A00F1C /* BuildInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildInfo.swift; sourceTree = "<group>"; };
 		374BDE2929CE87139B63F60F /* ExtendedAttributesBackupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedAttributesBackupController.swift; sourceTree = "<group>"; };
 		37F58547D7798D62E4E697EF /* FileManager+Sandboxing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Sandboxing.swift"; sourceTree = "<group>"; };
 		38B056A6D06EBCAEFEA7935A /* TMStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMStatus.swift; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 		60A2CBB5A64727943DC1BBF0 /* SandboxedBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxedBookmarks.swift; sourceTree = "<group>"; };
 		688A73E924E17AB042449119 /* ExtendedAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedAttributes.swift; sourceTree = "<group>"; };
 		72BE772E3F1177828A03CD71 /* TmUtilIsExcludedOutput.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TmUtilIsExcludedOutput.txt; sourceTree = "<group>"; };
+		7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SourceLevel-3.swift"; sourceTree = "<group>"; };
 		77A2F12AB3EA6F894C720426 /* FullDiskAccessImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDiskAccessImp.swift; sourceTree = "<group>"; };
 		78DACA7261D3F92843A2EC0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7A12A5FFD2A673AB334FB2A7 /* TMBuddyFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TMBuddyFinder.entitlements; sourceTree = "<group>"; };
@@ -291,6 +298,7 @@
 				4BF9793CDFA76DBF0DDD7ADE /* Data */,
 				DAB3843853D765DBC2F2A05D /* Globals */,
 				6EAFD11C20C0E48902E7A9DA /* Helpers */,
+				BCA741F1A7D66407FA4A503B /* Magic */,
 			);
 			name = TMBuddyShared;
 			path = Targets/TMBuddyShared;
@@ -438,6 +446,7 @@
 		A9F85B4BFA0252E71407A15C /* AppGlobals */ = {
 			isa = PBXGroup;
 			children = (
+				315A85237754BE0C28A00F1C /* BuildInfo.swift */,
 				8559AEA7078BAAF278B09AA6 /* DisplayNames.swift */,
 			);
 			path = AppGlobals;
@@ -451,6 +460,14 @@
 				C28E5D1175F0981D002318CB /* FullDiskAccess */,
 			);
 			path = Checkpoints;
+			sourceTree = "<group>";
+		};
+		BCA741F1A7D66407FA4A503B /* Magic */ = {
+			isa = PBXGroup;
+			children = (
+				7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */,
+			);
+			path = Magic;
 			sourceTree = "<group>";
 		};
 		C28E5D1175F0981D002318CB /* FullDiskAccess */ = {
@@ -628,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE439C31FC726408DD975EF7 /* Array+URLPaths.swift in Sources */,
+				E538FE500EC25AB948191E8B /* BuildInfo.swift in Sources */,
 				AF2456622AFB86B9B8F19AC3 /* CheckpointView.swift in Sources */,
 				DD992DEEBC9236FA72C24828 /* ContentView.swift in Sources */,
 				A4B83300B870FA37105EDA9E /* DefaultsKey.swift in Sources */,
@@ -650,6 +668,7 @@
 				259697323557DD6D00D6D0EC /* SavingSandboxedBookmarks.swift in Sources */,
 				CDF3317113C7FCEE64C8C99F /* ScopedSandboxedBookmarks.swift in Sources */,
 				AF471D23A16C8C161ECF97C7 /* SharedDefaults.swift in Sources */,
+				63D8A0C020499760AFEFA279 /* SourceLevel-3.swift in Sources */,
 				195DDF8283D027993500C738 /* String+Ranges.swift in Sources */,
 				33330CC152E0724F959BB1AD /* Sugar.swift in Sources */,
 				3D32D81669C1C5DF21B2B62B /* TMBuddyApp.swift in Sources */,
@@ -685,6 +704,7 @@
 				E659E0FFE0B614FD75972974 /* SavingSandboxedBookmarks.swift in Sources */,
 				93B38095BF8735FF86B66204 /* ScopedSandboxedBookmarks.swift in Sources */,
 				E644016F784656DD6CC498D2 /* SharedDefaults.swift in Sources */,
+				0B47B596343384031C320712 /* SourceLevel-3.swift in Sources */,
 				FE72F8580C82ECD62770F8BC /* String+Ranges.swift in Sources */,
 				87CD74414A532ABB5396BFF5 /* Sugar.swift in Sources */,
 				38D01DA3EAD22EB435B200BA /* TMStatus.swift in Sources */,
@@ -708,6 +728,7 @@
 			files = (
 				B78E7A1691693BFD7BF600C8 /* Array+URLPaths.swift in Sources */,
 				3C8B31BF53AE2992880BE957 /* BackupMetadataFilter.swift in Sources */,
+				4913B3866EA16632B62373DE /* BuildInfo.swift in Sources */,
 				36F06AA9DDE6DD4D3EED0502 /* CheckpointView.swift in Sources */,
 				CD90BADFBD82319F2AE543ED /* ContentView.swift in Sources */,
 				F3FFFCC058C3D291967C6228 /* DefaultsKey.swift in Sources */,
@@ -736,6 +757,7 @@
 				E74E1B38C475FD79F4428E7A /* SavingSandboxedBookmarks.swift in Sources */,
 				153D5F1372C7DA38F92BA474 /* ScopedSandboxedBookmarks.swift in Sources */,
 				19D2F56E406BD3132FF8D46D /* SharedDefaults.swift in Sources */,
+				2B52E3B6F227C1CBD09B11EA /* SourceLevel-3.swift in Sources */,
 				D37B6303B297540357D69EA6 /* String+Ranges.swift in Sources */,
 				A27419AE82BB186EC333983C /* Sugar.swift in Sources */,
 				B4F62BFF15B83AE231E0A475 /* TMBuddyTests.swift in Sources */,
