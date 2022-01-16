@@ -59,6 +59,10 @@ settings:
   CODE_SIGN_STYLE: Automatic
   DEVELOPMENT_TEAM: 5BV57B67TB
 
+configFiles:
+  Debug: XCConfigs/Default.xcconfig
+  Release: XCConfigs/Default.xcconfig
+
 name: TMBuddy
 options:
   bundleIdPrefix: com.grigorye
