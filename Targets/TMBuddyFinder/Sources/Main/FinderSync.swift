@@ -46,8 +46,8 @@ class FinderSync: FIFinderSync {
     override init() {
         super.init()
         
-        dump(Bundle.main.bundlePath, name: "mainBundlePath")
-
+        checkSanity()
+        
         for status in TMStatus.allCases {
             if let image = imageForStatus(status) {
                 syncController.setBadgeImage(image, label: labelForStatus(status), forBadgeIdentifier: badgeIdentifierForStatus(status))
