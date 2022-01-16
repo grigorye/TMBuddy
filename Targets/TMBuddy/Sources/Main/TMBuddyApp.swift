@@ -28,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             $0.contentView = NSHostingView(rootView: contentView)
         }
         
+        window.title = buildInfoString
         window.makeKeyAndOrderFront(nil)
     }
     
