@@ -11,11 +11,11 @@ class HostAppConnectionController {
             key: DefaultsKey.finderSyncInfoRequestIndex.rawValue,
             options: [.initial, .new]
         ) { [weak self] change in
-            self?.observeFinderSyncInfoRequestDate(change)
+            self?.observeFinderSyncInfoIndex(change)
         }
     }
     
-    func observeFinderSyncInfoRequestDate(_ change: [NSKeyValueChangeKey : Any]?) {
+    func observeFinderSyncInfoIndex(_ change: [NSKeyValueChangeKey : Any]?) {
         let requestIndex = defaults.finderSyncInfoRequestIndex
         let responseIndex = defaults.finderSyncInfoResponseIndex
         debug { dump((requestIndex: requestIndex, responseIndex: responseIndex), name: "requestResponse") }
