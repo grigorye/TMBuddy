@@ -46,7 +46,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-suppressLog YES"
+            argument = "-suppressNSLog YES"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -77,7 +77,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-suppressLog YES"
+            argument = "-suppressNSLog YES"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -104,7 +104,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-suppressLog YES"
+            argument = "-suppressNSLog YES"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
