@@ -5,6 +5,7 @@ enum DefaultsKey: String, CaseIterable {
     case debug
     case suppressNSLog
     case enableDump
+    case forceAppStoreLikeWindowTitle
     
     case finderSyncInfoRequestIndex
     case finderSyncInfoResponseIndex

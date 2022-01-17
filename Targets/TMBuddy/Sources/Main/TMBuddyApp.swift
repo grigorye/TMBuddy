@@ -22,16 +22,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             backing: .buffered,
             defer: false
         ) ≈ {
-            $0.title = appName
+            $0.title = mainWindowTitle()
             $0.isReleasedWhenClosed = false
             $0.center()
             $0.contentView = NSHostingView(rootView: contentView)
         }
         
-        window.title = buildInfoString
         window.makeKeyAndOrderFront(nil)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
     }
 }
+
