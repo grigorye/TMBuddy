@@ -31,11 +31,11 @@ struct PlugInFullDiskAccessCheckPointView: View {
                 Button("Reveal Extension in \(finderName)") {
                     NSWorkspace.shared.activateFileViewerSelecting([plugInURL!])
                 }
-                Button("Full Disk Access Settings") {
+                Button("Full Disk Access Preferences") {
                     NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles")!)
                 }
                 let nl="\n"
-                Text("To grant \(appName) access to Time Machine settings, please unlock Full Disk Access Settings\(nl)and then drop \(plugInName) into the list of apps with allowed access.")
+                Text("To grant \(appName) access to Time Machine settings, please unlock Full Disk Access preferences\(nl)and then drop \(plugInName) into the list of apps with allowed access.")
                     .font(.footnote)
                     .lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)

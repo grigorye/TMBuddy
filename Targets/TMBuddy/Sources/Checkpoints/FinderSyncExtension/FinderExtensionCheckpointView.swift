@@ -15,7 +15,7 @@ struct FinderExtensionCheckpointView: View {
             completed: isExtensionEnabled
         ) {
             VStack(alignment: .leading) {
-                Button("Extensions Settings") {
+                Button("Extensions Preferences") {
                     FIFinderSyncController.showExtensionManagementInterface()
                 }
             }
