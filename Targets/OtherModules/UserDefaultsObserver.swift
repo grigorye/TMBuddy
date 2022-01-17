@@ -29,7 +29,11 @@ class UserDefaultsObserver: NSObject {
         }
 
         if debug {
-            dump(change, name: "change")
+            if let change = change {
+                dump((keyPath: keyPath ?? "nil", kind: change[.kindKey], new: change[.newKey], old: change[.oldKey]), name: "change", maxDepth: 1)
+            } else {
+                dump(change, name: "change")
+            }
         }
         
         handle(change)
