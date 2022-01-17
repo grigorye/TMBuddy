@@ -46,6 +46,10 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-forceAppStoreLikeWindowTitle YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-suppressNSLog YES"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -77,6 +81,10 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-forceAppStoreLikeWindowTitle YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-suppressNSLog YES"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -102,6 +110,10 @@
          <CommandLineArgument
             argument = "-enableDump YES"
             isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-forceAppStoreLikeWindowTitle YES"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-suppressNSLog YES"

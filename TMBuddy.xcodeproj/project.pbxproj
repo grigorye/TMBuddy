@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02551E268116BDD236866B47 /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
+		0377414F06A846DA26C4F30D /* MainWindowTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03FB3FD74C040B0C32C04A /* MainWindowTitle.swift */; };
 		0A74860A3BDA8CAFF1E2A1AC /* PlugInFullDiskAccessCheckPointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7092CB11747606EBA0AAE /* PlugInFullDiskAccessCheckPointProvider.swift */; };
 		0AA3ABC2452EA7F4E93A66B1 /* DisplayNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8559AEA7078BAAF278B09AA6 /* DisplayNames.swift */; };
 		0AEAEDE91B518DBAD762FBCE /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
@@ -27,6 +28,7 @@
 		1F4F2126017A2E3FBF5FAE86 /* DirectLookupBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEC50D66E25871967A01F94 /* DirectLookupBasedStatusProviderTests.swift */; };
 		1F5567D07A1479C7ED16D07B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D14690115275A479C5F50 /* Debug.swift */; };
 		1F91E508CA80C952116AB901 /* FinderSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65DD302B02506F84B735E5 /* FinderSyncResponse.swift */; };
+		22D5BF89219855E6526AA728 /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
 		248083F9D772A5E18221FC65 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D14690115275A479C5F50 /* Debug.swift */; };
 		259697323557DD6D00D6D0EC /* SavingSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5303B562293DD78A04D02653 /* SavingSandboxedBookmarks.swift */; };
 		259CED4FAA424F7E454F8A8A /* ExtendedAttributesBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374BDE2929CE87139B63F60F /* ExtendedAttributesBackupController.swift */; };
@@ -34,6 +36,7 @@
 		2A88BD9272B21CA61796169E /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
 		2B52E3B6F227C1CBD09B11EA /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
 		30028D62A6FF59404C00395E /* PlugInURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFD7A4AF382A0D6D64DDA2 /* PlugInURL.swift */; };
+		332A6C99FB9E059389857F4A /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
 		33330CC152E0724F959BB1AD /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3CC5F2630243D69DDD741 /* Sugar.swift */; };
 		33EBF5B1AC2299E1A7CBCF05 /* ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688A73E924E17AB042449119 /* ExtendedAttributes.swift */; };
 		343BE11559DF3A559C0BFA8D /* FinderSyncInfoRequestIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */; };
@@ -59,6 +62,7 @@
 		4BB8B37220063D10433352ED /* Bundle+PlugInURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1E2E4916A4606CA09A53B /* Bundle+PlugInURLs.swift */; };
 		4BF45FC248895952280FDC80 /* TMUtilBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859E3E168BE4A66524302FC /* TMUtilBasedStatusProviderTests.swift */; };
 		4F1814D3E349E361BC74A194 /* TMUtilBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFAC1C26EF29F64B4162E1F /* TMUtilBasedStatusProvider.swift */; };
+		52FF8670913AEBEAD346138C /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
 		53FBC6DDD1F8B2EDC8683129 /* MetadataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849DE197ED6058E3288BBC7 /* MetadataWriter.swift */; };
 		5451E42C4A8C7D25AF907427 /* TmUtilIsExcludedOutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = 72BE772E3F1177828A03CD71 /* TmUtilIsExcludedOutput.txt */; };
 		554C99F30F3800085EBBA56F /* PathUtilities+Sandboxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */; };
@@ -157,6 +161,7 @@
 		F12A1AA9F20EFA184137C3D1 /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551C04BE645AD741F429489 /* UserDefaultsObserver.swift */; };
 		F384F257E02E7060461714F1 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C66D62EB87BCFAF0337B626 /* TMUtilLauncher.swift */; };
 		F3FFFCC058C3D291967C6228 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE55D079B06C52D59943F175 /* DefaultsKey.swift */; };
+		F6E4126D79086072D590FB33 /* MainWindowTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03FB3FD74C040B0C32C04A /* MainWindowTitle.swift */; };
 		F77BDD7E28866275CEBA7A9F /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD95A8B7FBEEE09C0FDF90 /* SandboxedBookmarksResolver.swift */; };
 		F817DC3388C25BA31275B6E8 /* FinderSyncExtensionStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CC5E12ACA96F8D131323D3 /* FinderSyncExtensionStatusProvider.swift */; };
 		F856AA48429F377F6F6D84E3 /* PathUtilities+Sandboxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */; };
@@ -246,6 +251,7 @@
 		B887F90DB4B9731C75DC9C61 /* TimeMachinePathFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachinePathFilter.swift; sourceTree = "<group>"; };
 		BACD95A8B7FBEEE09C0FDF90 /* SandboxedBookmarksResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxedBookmarksResolver.swift; sourceTree = "<group>"; };
 		BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracing.swift; sourceTree = "<group>"; };
+		BE03FB3FD74C040B0C32C04A /* MainWindowTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowTitle.swift; sourceTree = "<group>"; };
 		BE55D079B06C52D59943F175 /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
 		C15F256F5EA839B4720B3186 /* PathFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFilter.swift; sourceTree = "<group>"; };
 		C551C04BE645AD741F429489 /* UserDefaultsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsObserver.swift; sourceTree = "<group>"; };
@@ -262,6 +268,7 @@
 		E130E31AA996BC776042650C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E173068889EBA8B058F00D1A /* TimeMachinePathFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachinePathFilterTests.swift; sourceTree = "<group>"; };
 		E8CC5E12ACA96F8D131323D3 /* FinderSyncExtensionStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncExtensionStatusProvider.swift; sourceTree = "<group>"; };
+		F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreDistribution.swift; sourceTree = "<group>"; };
 		F54AA8F116B8AAB9BA377CF0 /* FinderSyncInfoResponsePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncInfoResponsePayload.swift; sourceTree = "<group>"; };
 		F7D2CAE78C19E5BB9E46EDD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F80477CF83E4D4959FD6F4BB /* PlugInConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugInConnectionController.swift; sourceTree = "<group>"; };
@@ -309,6 +316,7 @@
 		1D2DE2B583BEA1082B7D9CCD /* OtherModules */ = {
 			isa = PBXGroup;
 			children = (
+				F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */,
 				CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */,
 				FCB1E2E4916A4606CA09A53B /* Bundle+PlugInURLs.swift */,
 				1E8D14690115275A479C5F50 /* Debug.swift */,
@@ -417,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				F7D2CAE78C19E5BB9E46EDD9 /* ContentView.swift */,
+				BE03FB3FD74C040B0C32C04A /* MainWindowTitle.swift */,
 				B62AF1768F105ECFC5822BFB /* SandboxAccessView.swift */,
 			);
 			path = AppViews;
@@ -717,6 +726,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FF8670913AEBEAD346138C /* AppStoreDistribution.swift in Sources */,
 				AE439C31FC726408DD975EF7 /* Array+URLPaths.swift in Sources */,
 				E538FE500EC25AB948191E8B /* BuildInfo.swift in Sources */,
 				370786C1F5209D504C7F3C97 /* Bundle+PlugInURLs.swift in Sources */,
@@ -739,6 +749,7 @@
 				B4F25A7EA1BBC9822B43C32F /* FullDiskAccessImp.swift in Sources */,
 				DD17A527BB136EBA8CEDCC1D /* HostAppConnectionController.swift in Sources */,
 				FB77745A8E8C74C6924C63A8 /* Launching.swift in Sources */,
+				F6E4126D79086072D590FB33 /* MainWindowTitle.swift in Sources */,
 				B1756E521E49E065D0B86446 /* OnLaunch.swift in Sources */,
 				F856AA48429F377F6F6D84E3 /* PathUtilities+Sandboxing.swift in Sources */,
 				D695BA356C8C9D6F981C561B /* PlugInConnectionController.swift in Sources */,
@@ -769,6 +780,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D5BF89219855E6526AA728 /* AppStoreDistribution.swift in Sources */,
 				BD6838D67A54A7AD72D8E998 /* Array+URLPaths.swift in Sources */,
 				5BE9412169B98AADB31F5B34 /* BackupMetadataFilter.swift in Sources */,
 				3FA2171693F7C4C528EC33C3 /* Bundle+PlugInURLs.swift in Sources */,
@@ -820,6 +832,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332A6C99FB9E059389857F4A /* AppStoreDistribution.swift in Sources */,
 				B78E7A1691693BFD7BF600C8 /* Array+URLPaths.swift in Sources */,
 				3C8B31BF53AE2992880BE957 /* BackupMetadataFilter.swift in Sources */,
 				4913B3866EA16632B62373DE /* BuildInfo.swift in Sources */,
@@ -847,6 +860,7 @@
 				DA50E8F5BB07283CE321439E /* HostAppConnectionController.swift in Sources */,
 				CE4F6412437ED123D9C5C55F /* Launching.swift in Sources */,
 				6C51FC87F29D35D5B57FC5AB /* MDItemBackupController.swift in Sources */,
+				0377414F06A846DA26C4F30D /* MainWindowTitle.swift in Sources */,
 				3AAA48EED6BE2C877ED8FBEB /* MetadataReader.swift in Sources */,
 				53FBC6DDD1F8B2EDC8683129 /* MetadataWriter.swift in Sources */,
 				3E7EE7FEE5CD2C679ADC4C73 /* PathFilter.swift in Sources */,
