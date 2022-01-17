@@ -18,7 +18,7 @@ targets:
     scheme:
       commandLineArguments:
         "-enableDump YES": true
-        "-suppressLog YES": true
+        "-suppressNSLog YES": true
     dependencies:
       - target: TMBuddyFinder
   
