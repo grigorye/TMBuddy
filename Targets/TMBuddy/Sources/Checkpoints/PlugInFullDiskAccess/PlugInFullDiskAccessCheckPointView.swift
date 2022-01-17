@@ -11,21 +11,23 @@ struct PlugInFullDiskAccessCheckPointView: View {
         let checkpointValue: String = {
             switch isFullDiskAccessGranted {
             case .none:
+                return "checking..."
+            case .unresponsive:
                 return extensionStatusProvider.isEnabled
-                ? "checking..."
-                : "access unknown as extension is disabled."
-            case .some(true):
-                return "access granted"
-            case .some(false):
-                return "access denied"
+                ? "unknown (toggle the extension off and on)"
+                : "unknown (enable the extension)"
+            case .granted:
+                return "granted"
+            case .denied:
+                return "denied"
             }
         }()
         
         CheckpointView(
-            title: "Time Machine settings",
+            title: "Time Machine settings access",
             subtitle: "\(appName) reads the list of paths excluded from backup from Time Machine settings.",
             value: checkpointValue,
-            completed: isFullDiskAccessGranted == true
+            completed: isFullDiskAccessGranted == .granted
         ) {
             VStack(alignment: .leading) {
                 Button("Reveal Extension in \(finderName)") {

@@ -2,7 +2,14 @@ import Foundation
 
 class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
     
-    @Published var accessGranted: Bool?
+    enum AccessState {
+        case granted
+        case denied
+        case unresponsive
+        case none
+    }
+    
+    @Published var accessGranted: AccessState = .none
     
     private var timer: Timer?
     
@@ -18,24 +25,24 @@ class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
     
     func invalidatePlugInInfoTick() {
         if plugInConnectionController.invalidatePluginInfo() == false {
-            accessGranted = nil
+            accessGranted = .unresponsive
         }
     }
     
     func handleResponse(_ response: FinderSyncInfoResponse?) {
         debug { dump(response == nil, name: "emptyResponse") }
         guard let response = response else {
-            accessGranted = false
+            accessGranted = .unresponsive
             return
         }
         debug { dump(response, name: "response") }
-        let newAccessGranted: Bool
+        let newAccessGranted: AccessState
         switch response.timeMachinePreferencesAccess {
         case let .denied(error):
             debug { dump(error, name: "receivedError") }
-            newAccessGranted = false
+            newAccessGranted = .denied
         case .granted:
-            newAccessGranted = true
+            newAccessGranted = .granted
         }
         debug { dump(newAccessGranted, name: "newAccessGranted") }
         self.accessGranted = newAccessGranted
