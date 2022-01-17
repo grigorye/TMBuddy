@@ -7,9 +7,6 @@ struct SandboxAccessView: View {
         VStack(alignment: .leading) {
             Group {
                 FinderExtensionCheckpointView()
-                if debug {
-                    FullDiskAccessCheckpointView()
-                }
                 PlugInFullDiskAccessCheckPointView()
                 FoldersSelectionCheckpointView()
             }
