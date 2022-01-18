@@ -8,7 +8,7 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
 
 1. Get the app
    
-   - from TestFlight:
+   - if you're on macOS 12 or later, from TestFlight:
      [Join the ™ Buddy beta - TestFlight - Apple](https://testflight.apple.com/join/gQCBR8p7)
    
    - from Homebrew:
@@ -50,6 +50,10 @@ When selecting folders for the application, typically you want to navigate to Co
 
 - Add support for toggling fixed-path exclusions
 - Menu bar item
+
+## System Requirements
+
+- macOS 10.15 or later
 
 ## License
 
