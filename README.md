@@ -18,12 +18,12 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
      ```
 
 2. Launch the app and follow the checklist, making sure all the red lights:
-   ![Checklist-Red.png](.Images/Checklist-Red.png)
+   <img src=".Images/Checklist-Red.png" alt="Checklist-Red.png" style="zoom:50%;" />
    turned green:
-   ![Checklist-Green.png](.Images/Checklist-Green.png)
+   <img src=".Images/Checklist-Green.png" alt="Checklist-Green.png" style="zoom:50%;" />
 
 When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
-![](.Images/Disk-Selection.png)
+<img src=".Images/Disk-Selection.png" style="zoom:50%;" />
 
 ## What works
 
@@ -31,20 +31,21 @@ When selecting folders for the application, typically you want to navigate to Co
   
   - Item excluded by path via Time Machine Settings:
     
-    <img src=".Images/Finder-Badge-Path-Excluded.png" title="" alt="" width="120">
+    <img src=".Images/Finder-Badge-Path-Excluded.png" style="zoom:50%;" >
   
   - Item excluded via sticky non-backup attribute:
     
-    <img src=".Images/Finder-Badge-Sticky-Excluded.png" title="" alt="" width="120">
+    <img src=".Images/Finder-Badge-Sticky-Excluded.png" style="zoom:50%;" >
   
   - Item excluded as it resides in a folder excluded from backup (this will be default for all items in excluded folders):
     
-    <img src=".Images/Finder-Badge-Parent-Excluded.png" title="" alt="" width="120">
+    <img src=".Images/Finder-Badge-Parent-Excluded.png" style="zoom:50%;" >
 
 - Toggling *sticky* exclusion via contextual menu (or toolbar item):
-
-<img src=".Images/Finder-Contextual-Exclude.png" title="" alt="" height="400">
-  <img title="" src=".Images/Finder-Contextual-Remove-Exclusion.png" alt="" height="400">
+  
+  <img src=".Images/Finder-Contextual-Exclude.png" style="zoom:50%;" >
+  
+  <img title="" src=".Images/Finder-Contextual-Remove-Exclusion.png" style="zoom:50%;" >
 
 ## TODO
 
