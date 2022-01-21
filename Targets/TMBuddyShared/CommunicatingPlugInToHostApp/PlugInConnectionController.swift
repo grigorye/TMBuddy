@@ -10,14 +10,14 @@ class PlugInConnectionController {
         self.pluginInfoDidChange = pluginInfoDidChange
         self.userDefaultsObserver = .init(
             defaults: defaults,
-            key: DefaultsKey.finderSyncInfoResponseIndex.rawValue,
+            key: DefaultsKey.finderSyncInfoResponsePayload.rawValue,
             options: [.initial, .new]
         ) { [weak self] change in
-            self?.observeFinderSyncInfoResponseIndex(change)
+            self?.observeFinderSyncInfoResponsePayload(change)
         }
     }
     
-    func observeFinderSyncInfoResponseIndex(_ change: [NSKeyValueChangeKey : Any]?) {
+    func observeFinderSyncInfoResponsePayload(_ change: [NSKeyValueChangeKey : Any]?) {
         let requestIndex = defaults.finderSyncInfoRequestIndex
         let responseIndex = defaults.finderSyncInfoResponseIndex
         debug { dump((requestIndex: requestIndex, responseIndex: responseIndex), name: "requestResponse") }
@@ -58,7 +58,13 @@ class PlugInConnectionController {
             return false
         }
         
-        defaults.finderSyncInfoRequestIndex += 1
+        let request = FinderSyncInfoRequest(
+            index: requestIndex + 1,
+            version: plugInHostConnectionVersion,
+            command: .checkStatus
+        )
+        defaults.finderSyncInfoRequestPayload = try! JSONEncoder().encode(request)
+
         return true
     }
 }
