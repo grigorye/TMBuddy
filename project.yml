@@ -44,7 +44,9 @@ targets:
     type: bundle.unit-test
     platform: macOS
     deploymentTarget: "10.15"
-    scheme: {}
+    scheme:
+      testTargets:
+        - TMBuddyTests
     sources:
       - Targets/TMBuddyTests
       - Targets/TMBuddyShared
