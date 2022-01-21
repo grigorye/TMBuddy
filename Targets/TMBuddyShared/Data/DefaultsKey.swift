@@ -7,8 +7,7 @@ enum DefaultsKey: String, CaseIterable {
     case enableDump
     case forceAppStoreLikeWindowTitle
     
-    case finderSyncInfoRequestIndex
-    case finderSyncInfoResponseIndex
+    case finderSyncInfoRequestPayload
     case finderSyncInfoResponsePayload
     
     case forceTMUtilBasedStatusProvider
