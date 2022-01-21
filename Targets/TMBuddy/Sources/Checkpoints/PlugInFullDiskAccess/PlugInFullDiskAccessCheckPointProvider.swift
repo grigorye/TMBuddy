@@ -37,7 +37,11 @@ class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
         }
         debug { dump(response, name: "response") }
         let newAccessGranted: AccessState
-        switch response.timeMachinePreferencesAccess {
+        guard case let .checkStatus(.timeMachinePreferencesAccess(timeMachinePreferencesAccess)) = response.info else {
+            dump((info: response.info, response: response), name: "unknownResponseInfo")
+            return
+        }
+        switch timeMachinePreferencesAccess {
         case let .denied(error):
             debug { dump(error, name: "receivedError") }
             newAccessGranted = .denied
