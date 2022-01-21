@@ -30,6 +30,16 @@
       onlyGenerateCoverageForSpecifiedTargets = "NO"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A98F0E37D43A5466DBBCD246"
+               BuildableName = "TMBuddyTests.xctest"
+               BlueprintName = "TMBuddyTests"
+               ReferencedContainer = "container:TMBuddy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
