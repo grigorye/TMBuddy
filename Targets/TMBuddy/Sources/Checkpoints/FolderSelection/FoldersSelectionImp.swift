@@ -3,7 +3,7 @@ import Foundation
 func processURLs(_ urls: [URL]) {
     dump(urls.paths, name: "paths")
     
-    try! saveScopedSandboxedBookmark(urls: urls, in: defaults)
+    saveScopedSandboxedBookmark(urls: urls, in: defaults)
     try! saveSandboxedBookmark(urls: urls, in: sharedDefaults)
     
     do {
