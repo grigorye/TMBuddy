@@ -20,6 +20,7 @@ targets:
         "-enableDump YES": true
         "-suppressNSLog YES": true
         "-forceAppStoreLikeWindowTitle YES": false
+        "-debug YES": false
     dependencies:
       - target: TMBuddyFinder
   
