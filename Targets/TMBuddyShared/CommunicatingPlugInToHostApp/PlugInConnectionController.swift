@@ -63,7 +63,7 @@ class PlugInConnectionController {
             version: plugInHostConnectionVersion,
             command: .checkStatus
         )
-        defaults.finderSyncInfoRequestPayload = try! JSONEncoder().encode(request)
+        defaults.finderSyncInfoRequestPayload = try! plistFromData(PropertyListEncoder().encode(request))
 
         return true
     }

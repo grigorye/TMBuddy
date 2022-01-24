@@ -67,7 +67,7 @@ class HostAppConnectionController {
                 .timeMachinePreferencesAccess(timeMachinePreferencesAccess)
             )
         )
-        defaults.finderSyncInfoResponsePayload = try! JSONEncoder().encode(response)
+        defaults.finderSyncInfoResponsePayload = try! plistFromData(PropertyListEncoder().encode(response))
     }
 }
 
