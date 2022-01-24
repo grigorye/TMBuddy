@@ -30,13 +30,38 @@ class PlugInConnectionController {
         
         let response: FinderSyncInfoResponse?
         if let payload = defaults.finderSyncInfoResponsePayload {
+            // Get the header first, provided that it should not depend on version.
+            let responseHeader: FinderSyncInfoResponseHeader
             do {
-                let untrustedResponse = try JSONDecoder().decode(FinderSyncInfoResponse.self, from: payload)
-                let untrustedResponseVersion = untrustedResponse.version
-                if untrustedResponseVersion != plugInHostConnectionVersion {
-                    dump((responseVersion: untrustedResponseVersion, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
+                responseHeader = try PropertyListDecoder().decode(FinderSyncInfoResponseHeader.self, from: PropertyListSerialization.data(fromPropertyList: payload, format: .binary, options: 0))
+            } catch {
+                dump((error, payload: payload), name: "responseHeaderDecodingFailed")
+                return
+            }
+            // Do nothing if the request did not originate from us.
+            guard responseHeader.requestHeader.version == plugInHostConnectionVersion else {
+                dump(responseHeader, name: "responseToAlienRequest")
+                return
+            }
+            // If the plugin is alien, neither we can trust the data it provides, nor the plugin should return anything but error.
+            if responseHeader.version != plugInHostConnectionVersion {
+                dump((responseHeader: responseHeader, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
+                let responseHeaderWithFailure: FinderSyncInfoResponseHeaderWithFailure
+                do {
+                    responseHeaderWithFailure = try PropertyListDecoder().decode(FinderSyncInfoResponseHeaderWithFailure.self, from: dataFromPlist(payload))
+                } catch {
+                    assertionFailure()
+                    dump((error, payload: payload), name: "responseHeaderWithFailureDecodingFailed")
+                    return
                 }
-                response = untrustedResponse
+                guard case .failure(.alienRequest) = responseHeaderWithFailure.result else {
+                    assertionFailure()
+                    dump(responseHeaderWithFailure, name: "responseHeaderWithFailureThatIsNotAlienRequest")
+                    return
+                }
+            }
+            do {
+                response = try PropertyListDecoder().decode(FinderSyncInfoResponse.self, from: dataFromPlist(payload))
             } catch {
                 dump((error, payload: payload), name: "responseDecodingFailed")
                 response = nil

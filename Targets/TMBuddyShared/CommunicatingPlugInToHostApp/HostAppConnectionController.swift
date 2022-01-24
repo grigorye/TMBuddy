@@ -31,42 +31,59 @@ class HostAppConnectionController {
             return
         }
         
-        let request: FinderSyncInfoRequest?
+        let requestHeader: FinderSyncInfoRequestHeader
+        let otherPartyIsAlien: Bool
         do {
-            let untrustedRequest = try JSONDecoder().decode(FinderSyncInfoRequest.self, from: payload)
-            let untrustedRequestVersion = untrustedRequest.version
-            if untrustedRequestVersion != plugInHostConnectionVersion {
+            requestHeader = try PropertyListDecoder().decode(FinderSyncInfoRequestHeader.self, from: dataFromPlist(payload))
+            let untrustedRequestVersion = requestHeader.version
+            otherPartyIsAlien = untrustedRequestVersion != plugInHostConnectionVersion
+            if otherPartyIsAlien {
                 dump((requestVersion: untrustedRequestVersion, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
             }
-            request = untrustedRequest
         } catch {
-            dump((error, payload: payload), name: "requestDecodingFailed")
-            request = nil
-        }
-        guard let request = request else {
-            return
-        }
-
-        guard case .checkStatus = request.command else {
-            dump((command: request.command, request: request), name: "unknownCommandInRequest")
+            dump((error, payload: payload), name: "requestHeaderDecodingFailed")
             return
         }
         
-        let timeMachinePreferencesAccess: TimeMachinePreferencesAccess = {
-            if let error = timeMachinePreferencesAccessError() {
-                return .denied(error.localizedDescription)
-            } else {
-                return .granted
+        let result: FinderSyncInfoResponse.Result = {
+            if otherPartyIsAlien {
+                return .failure(.alienRequest)
+            }
+            else {
+                let request: FinderSyncInfoRequest
+                do {
+                    request = try PropertyListDecoder().decode(FinderSyncInfoRequest.self, from: dataFromPlist(payload))
+                } catch {
+                    dump((error, payload: payload), name: "requestDecodingFailed")
+                    return .failure(.requestDecodingFailed)
+                }
+                
+                switch request.command {
+                case .checkStatus:
+                    let timeMachinePreferencesAccess: TimeMachinePreferencesAccess = {
+                        if let error = timeMachinePreferencesAccessError() {
+                            return .denied(error.localizedDescription)
+                        } else {
+                            return .granted
+                        }
+                    }()
+                    
+                    return .success(
+                        .checkStatus(
+                            .timeMachinePreferencesAccess(timeMachinePreferencesAccess)
+                        )
+                    )
+                }
             }
         }()
-        
         let response = FinderSyncInfoResponse(
             index: requestIndex,
             version: plugInHostConnectionVersion,
-            info: .checkStatus(
-                .timeMachinePreferencesAccess(timeMachinePreferencesAccess)
-            )
+            requestHeader: requestHeader,
+            info: .init(plugInPath: Bundle.main.bundlePath),
+            result: result
         )
+        dump(response, name: "response")
         defaults.finderSyncInfoResponsePayload = try! plistFromData(PropertyListEncoder().encode(response))
     }
 }

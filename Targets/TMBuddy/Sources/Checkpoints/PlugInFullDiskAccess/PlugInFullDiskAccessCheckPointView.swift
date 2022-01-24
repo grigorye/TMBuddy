@@ -13,9 +13,21 @@ struct PlugInFullDiskAccessCheckPointView: View {
             case .none:
                 return "checking..."
             case .unresponsive:
-                return extensionStatusProvider.isEnabled
-                ? "unknown (toggle the extension off and on)"
-                : "unknown (enable the extension)"
+                let extensionStatus = extensionStatusProvider.extensionStatus
+                switch (extensionStatus.enabled, extensionStatus.alienInfo) {
+                case (.some(true), .same):
+                    return "not yet connected"
+                case (.some(true), .alien):
+                    return "alien"
+                case (.some(true), .failing):
+                    return "failing"
+                case (.some(true), nil):
+                    return "unresponsive"
+                case (nil, _):
+                    return "unknown"
+                case (.some(false), _):
+                    return "unknown (enable the extension)"
+                }
             case .granted:
                 return "granted"
             case .denied:
