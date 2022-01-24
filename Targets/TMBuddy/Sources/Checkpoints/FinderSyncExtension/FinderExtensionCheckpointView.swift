@@ -8,18 +8,16 @@ struct FinderExtensionCheckpointView: View {
     var body: some View {
         let (completed, value) = checkpointStatus
         
-        let alien: Bool = {
-            if case .alien = extensionStatusProvider.extensionStatus.alienInfo {
-                return true
-            } else {
-                return false
-            }
-        }()
-        
         let subtitle: String? = {
-            if alien {
+            let extensionStatus = extensionStatusProvider.extensionStatus
+            switch (extensionStatus.enabled, extensionStatus.alienInfo) {
+            case (_, .alien):
                 return "Please reveal the alien extension in Finder, move it to Trash, and force relaunch Finder."
-            } else {
+            case (.some(false), .same):
+                return "Please force relaunch Finder to activate the other version of extension."
+            case (.some(true), nil):
+                return "Please force relaunch Finder to activate the extension"
+            default:
                 return nil
             }
         }()
@@ -48,8 +46,12 @@ struct FinderExtensionCheckpointView: View {
     var checkpointStatus: (Bool?, String) {
         let extensionStatus = extensionStatusProvider.extensionStatus
         switch (extensionStatus.enabled, extensionStatus.alienInfo) {
-        case (.none, _):
+        case (.none, nil):
             return (nil, "checking...")
+        case (.none, .some(.same)):
+            return (nil, "unknown")
+        case (.none, .some(.failing)):
+            return (nil, "failing")
         case (_, .alien):
             return (false, "alien")
         case (.some(true), nil):
@@ -60,9 +62,9 @@ struct FinderExtensionCheckpointView: View {
             return (false, "disabled")
         case (.some(true), .failing):
             return (false, "enabled (failing)")
-        case (.some(false), .some(.same)):
-            return (false, "likely enabled (still connected)")
-        case (.some(false), .some(.failing)):
+        case (.some(false), .same):
+            return (false, "likely enabled (still connected), but superseded by another version")
+        case (.some(false), .failing):
             return (false, "disabled (failing)")
         }
     }
