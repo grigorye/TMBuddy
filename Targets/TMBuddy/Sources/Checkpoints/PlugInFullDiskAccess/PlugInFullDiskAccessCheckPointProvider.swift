@@ -32,12 +32,16 @@ class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
     func handleResponse(_ response: FinderSyncInfoResponse?) {
         debug { dump(response == nil, name: "emptyResponse") }
         guard let response = response else {
-            accessGranted = .unresponsive
+            accessGranted = .none
             return
         }
         debug { dump(response, name: "response") }
         let newAccessGranted: AccessState
-        guard case let .checkStatus(.timeMachinePreferencesAccess(timeMachinePreferencesAccess)) = response.info else {
+        guard case let .success(successResult) = response.result else {
+            dump((result: response.result, response: response), name: "failureInResponse")
+            return
+        }
+        guard case let .checkStatus(.timeMachinePreferencesAccess(timeMachinePreferencesAccess)) = successResult else {
             dump((info: response.info, response: response), name: "unknownResponseInfo")
             return
         }
