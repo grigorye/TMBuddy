@@ -8,8 +8,10 @@ enum DefaultsKey: String, CaseIterable {
     case forceAppStoreLikeWindowTitle
     
     case finderSyncInfoRequestPayload
+    case finderSyncInfoRequestPayloadEncoding
     case finderSyncInfoResponsePayload
-    
+    case finderSyncInfoResponsePayloadEncoding
+
     case forceTMUtilBasedStatusProvider
     case forceMDItemMetadataReader
     case forceTMUtilMetadataWriter

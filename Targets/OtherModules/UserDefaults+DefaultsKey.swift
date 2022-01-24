@@ -2,6 +2,12 @@ import Foundation
 
 extension UserDefaults {
     
+    func removeObject<DefaultsKey>(forKey key: DefaultsKey)
+    where DefaultsKey: RawRepresentable, DefaultsKey.RawValue == String
+    {
+        removeObject(forKey: key.rawValue)
+    }
+    
     func object<DefaultsKey>(forKey key: DefaultsKey) -> Any?
     where DefaultsKey: RawRepresentable, DefaultsKey.RawValue == String
     {
@@ -12,6 +18,12 @@ extension UserDefaults {
     where DefaultsKey: RawRepresentable, DefaultsKey.RawValue == String
     {
         integer(forKey: key.rawValue)
+    }
+    
+    func string<DefaultsKey>(forKey key: DefaultsKey) -> String?
+    where DefaultsKey: RawRepresentable, DefaultsKey.RawValue == String
+    {
+        string(forKey: key.rawValue)
     }
 
     func data<DefaultsKey>(forKey key: DefaultsKey) -> Data?

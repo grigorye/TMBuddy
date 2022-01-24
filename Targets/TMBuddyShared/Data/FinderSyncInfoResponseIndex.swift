@@ -9,7 +9,7 @@ extension UserDefaults {
             return nil
         }
         do {
-            let responseHeader = try JSONDecoder().decode(FinderSyncInfoResponseHeader.self, from: payload)
+            let responseHeader = try PropertyListDecoder().decode(FinderSyncInfoResponseHeader.self, from: dataFromPlist(payload))
             return responseHeader
         } catch {
             dump((error: error, payload: payload), name: "payloadDecodingFailure")

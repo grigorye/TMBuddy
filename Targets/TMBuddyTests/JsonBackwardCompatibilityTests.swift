@@ -23,14 +23,14 @@ class PayloadBackwardCompatibilityTests: XCTestCase {
 
     func testCompatible() throws {
         let v2 = FinderSyncInfoRequestV2(version: "2", command: .checkStatus)
-        let data = try JSONEncoder().encode(v2)
-        let v1 = try JSONDecoder().decode(FinderSyncInfoRequestV1.self, from: data)
+        let data = try PropertyListEncoder().encode(v2)
+        let v1 = try PropertyListDecoder().decode(FinderSyncInfoRequestV1.self, from: data)
         XCTAssertEqual(v1.command, .checkStatus)
     }
     
     func testIncompatible() throws {
         let v2 = FinderSyncInfoRequestV2(version: "2", command: .newCommand(["x": "y"]))
-        let data = try JSONEncoder().encode(v2)
-        XCTAssertThrowsError(try JSONDecoder().decode(FinderSyncInfoRequestV1.self, from: data))
+        let data = try PropertyListEncoder().encode(v2)
+        XCTAssertThrowsError(try PropertyListDecoder().decode(FinderSyncInfoRequestV1.self, from: data))
     }
 }
