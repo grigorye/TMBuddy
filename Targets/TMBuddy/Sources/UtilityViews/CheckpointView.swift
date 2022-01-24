@@ -5,14 +5,23 @@ struct CheckpointView<Content: View>: View {
     let title: String
     let subtitle: String?
     let value: String
-    let completed: Bool
+    let completed: Bool?
     
     @ViewBuilder
     let content: () -> Content
     
     var body: some View {
         HStack(alignment: .top, spacing: 4) {
-            completed ? greenCheckmark : redXMark
+            { () -> Image in
+                switch completed {
+                case .none:
+                    return yellowCheckmark
+                case .some(true):
+                    return greenCheckmark
+                case .some(false):
+                    return redXMark
+                }
+            }()
             
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 2) {
@@ -32,6 +41,7 @@ struct CheckpointView<Content: View>: View {
 }
 
 private let greenCheckmark = Image(nsImage: NSImage(named: NSImage.statusAvailableName)!)
+private let yellowCheckmark = Image(nsImage: NSImage(named: NSImage.statusPartiallyAvailableName)!)
 private let redXMark = Image(nsImage: NSImage(named: NSImage.statusUnavailableName)!)
 
 struct CheckpointView_Previews : PreviewProvider {
