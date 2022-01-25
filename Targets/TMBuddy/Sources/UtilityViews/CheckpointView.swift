@@ -1,11 +1,18 @@
 import SwiftUI
 
+enum Readiness {
+    case notActual
+    case checking
+    case blocked
+    case ready
+}
+
 struct CheckpointView<Content: View>: View {
     
     let title: String
     let subtitle: String?
     let value: String
-    let completed: Bool?
+    let readiness: Readiness
     
     @ViewBuilder
     let content: () -> Content
@@ -13,13 +20,15 @@ struct CheckpointView<Content: View>: View {
     var body: some View {
         HStack(alignment: .top, spacing: 4) {
             { () -> Image in
-                switch completed {
-                case .none:
+                switch readiness {
+                case .checking:
                     return yellowCheckmark
-                case .some(true):
+                case .ready:
                     return greenCheckmark
-                case .some(false):
+                case .blocked:
                     return redXMark
+                case .notActual:
+                    return grayCheckmark
                 }
             }()
             
@@ -43,6 +52,7 @@ struct CheckpointView<Content: View>: View {
 private let greenCheckmark = Image(nsImage: NSImage(named: NSImage.statusAvailableName)!)
 private let yellowCheckmark = Image(nsImage: NSImage(named: NSImage.statusPartiallyAvailableName)!)
 private let redXMark = Image(nsImage: NSImage(named: NSImage.statusUnavailableName)!)
+private let grayCheckmark = Image(nsImage: NSImage(named: NSImage.statusNoneName)!)
 
 struct CheckpointView_Previews : PreviewProvider {
     
@@ -51,7 +61,7 @@ struct CheckpointView_Previews : PreviewProvider {
             title: "Title",
             subtitle: "Subtitle",
             value: "Value",
-            completed: true
+            readiness: .ready
         ) {
             Text("Content")
         }
