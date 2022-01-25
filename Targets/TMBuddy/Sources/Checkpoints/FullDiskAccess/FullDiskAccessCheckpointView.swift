@@ -8,7 +8,7 @@ struct FullDiskAccessCheckpointView: View {
             title: "Time Machine settings",
             subtitle: "\(appName) reads the list of items excluded from backup from Time Machine settings.",
             value: isFullDiskAccessGranted ? "access granted" : "access denied",
-            completed: isFullDiskAccessGranted
+            readiness: isFullDiskAccessGranted ? .ready : .blocked
         ) {
             HStack {
                 Button("Full Disk Access Settings") {
