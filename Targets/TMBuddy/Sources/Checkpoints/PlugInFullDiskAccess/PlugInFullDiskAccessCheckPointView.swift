@@ -6,40 +6,52 @@ struct PlugInFullDiskAccessCheckPointView: View {
     @ObservedObject var extensionStatusProvider = FinderSyncExtensionStatusProvider()
 
     var body: some View {
-        let isFullDiskAccessGranted = checkpointProvider.accessGranted
+        let accessGranted = checkpointProvider.accessGranted
         
-        let checkpointValue: String = {
-            switch isFullDiskAccessGranted {
+        let (completed, value): (Bool?, String) = {
+            switch accessGranted {
             case .none:
-                return "checking..."
+                let extensionStatus = extensionStatusProvider.extensionStatus
+                switch (extensionStatus.enabled, extensionStatus.alienInfo) {
+                case (.some(true), .same):
+                    return (nil, "checking...")
+                case (_, .alien):
+                    return (nil, "not available due to problem with extension")
+                case (_, .failing):
+                    return (nil, "not available due to problem with extension")
+                case (_, .none):
+                    return (nil, "checking...")
+                case (_, .some(.same)):
+                    return (nil, "checking...")
+                }
             case .unresponsive:
                 let extensionStatus = extensionStatusProvider.extensionStatus
                 switch (extensionStatus.enabled, extensionStatus.alienInfo) {
                 case (.some(true), .same):
-                    return "not yet connected"
+                    return (nil, "not yet connected")
                 case (.some(true), .alien):
-                    return "alien"
+                    return (false, "alien")
                 case (.some(true), .failing):
-                    return "failing"
+                    return (false, "failing")
                 case (.some(true), nil):
-                    return "unresponsive"
+                    return (false, "unresponsive")
                 case (nil, _):
-                    return "unknown"
+                    return (false, "unknown")
                 case (.some(false), _):
-                    return "unknown (enable the extension)"
+                    return (false, "unknown (enable the extension)")
                 }
             case .granted:
-                return "granted"
+                return (true, "granted")
             case .denied:
-                return "denied"
+                return (false, "denied")
             }
         }()
         
         CheckpointView(
             title: "Time Machine settings access",
             subtitle: "\(appName) reads the list of paths excluded from backup from Time Machine settings.",
-            value: checkpointValue,
-            completed: isFullDiskAccessGranted == .granted
+            value: value,
+            completed: completed
         ) {
             VStack(alignment: .leading) {
                 HStack {
