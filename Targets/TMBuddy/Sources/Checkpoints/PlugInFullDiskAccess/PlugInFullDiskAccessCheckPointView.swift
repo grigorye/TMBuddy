@@ -8,42 +8,42 @@ struct PlugInFullDiskAccessCheckPointView: View {
     var body: some View {
         let accessGranted = checkpointProvider.accessGranted
         
-        let (completed, value): (Bool?, String) = {
+        let (readiness, value): (Readiness, String) = {
             switch accessGranted {
             case .none:
                 let extensionStatus = extensionStatusProvider.extensionStatus
                 switch (extensionStatus.enabled, extensionStatus.alienInfo) {
                 case (.some(true), .same):
-                    return (nil, "checking...")
+                    return (.checking, "checking...")
                 case (_, .alien):
-                    return (nil, "not available due to problem with extension")
+                    return (.notActual, "unknown (alien extension)")
                 case (_, .failing):
-                    return (nil, "not available due to problem with extension")
+                    return (.notActual, "unknown (problem with extension)")
                 case (_, .none):
-                    return (nil, "checking...")
+                    return (.notActual, "checking...")
                 case (_, .some(.same)):
-                    return (nil, "checking...")
+                    return (.checking, "checking...")
                 }
             case .unresponsive:
                 let extensionStatus = extensionStatusProvider.extensionStatus
                 switch (extensionStatus.enabled, extensionStatus.alienInfo) {
                 case (.some(true), .same):
-                    return (nil, "not yet connected")
-                case (.some(true), .alien):
-                    return (false, "alien")
-                case (.some(true), .failing):
-                    return (false, "failing")
-                case (.some(true), nil):
-                    return (false, "unresponsive")
-                case (nil, _):
-                    return (false, "unknown")
+                    return (.checking, "not yet connected")
                 case (.some(false), _):
-                    return (false, "unknown (enable the extension)")
+                    return (.notActual, "unknown (enable the extension)")
+                case (_, .alien):
+                    return (.notActual, "unknown (alien extension)")
+                case (_, .failing):
+                    return (.notActual, "unknown (problem with extension)")
+                case (_, .none):
+                    return (.notActual, "unknown (no connection to extension)")
+                case (_, .some(.same)):
+                    return (.checking, "checking...")
                 }
             case .granted:
-                return (true, "granted")
+                return (.ready, "granted")
             case .denied:
-                return (false, "denied")
+                return (.blocked, "denied")
             }
         }()
         
@@ -51,7 +51,7 @@ struct PlugInFullDiskAccessCheckPointView: View {
             title: "Time Machine settings access",
             subtitle: "\(appName) reads the list of paths excluded from backup from Time Machine settings.",
             value: value,
-            completed: completed
+            readiness: readiness
         ) {
             VStack(alignment: .leading) {
                 HStack {
