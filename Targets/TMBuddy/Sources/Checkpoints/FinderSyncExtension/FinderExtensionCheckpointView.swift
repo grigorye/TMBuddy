@@ -6,7 +6,7 @@ struct FinderExtensionCheckpointView: View {
     @ObservedObject var extensionStatusProvider = FinderSyncExtensionStatusProvider()
     
     var body: some View {
-        let (completed, value) = checkpointStatus
+        let (readiness, value) = checkpointStatus
         
         let subtitle: String? = {
             let extensionStatus = extensionStatusProvider.extensionStatus
@@ -26,7 +26,7 @@ struct FinderExtensionCheckpointView: View {
             title: "Finder extension",
             subtitle: subtitle,
             value: value,
-            completed: completed
+            readiness: readiness
         ) {
             VStack(alignment: .leading) {
                 HStack {
@@ -43,29 +43,29 @@ struct FinderExtensionCheckpointView: View {
         }
     }
     
-    var checkpointStatus: (Bool?, String) {
+    var checkpointStatus: (Readiness, String) {
         let extensionStatus = extensionStatusProvider.extensionStatus
         switch (extensionStatus.enabled, extensionStatus.alienInfo) {
         case (.none, nil):
-            return (nil, "checking...")
+            return (.checking, "checking...")
         case (.none, .some(.same)):
-            return (nil, "unknown")
+            return (.checking, "unknown")
         case (.none, .some(.failing)):
-            return (nil, "failing")
+            return (.checking, "failing")
         case (_, .alien):
-            return (false, "alien")
+            return (.blocked, "alien")
         case (.some(true), nil):
-            return (nil, "enabled (no connection)...")
+            return (.checking, "enabled (no connection)...")
         case (.some(true), .same):
-            return (true, "enabled")
+            return (.ready, "enabled")
         case (.some(false), nil):
-            return (false, "disabled")
+            return (.blocked, "disabled")
         case (.some(true), .failing):
-            return (false, "enabled (failing)")
+            return (.blocked, "enabled (failing)")
         case (.some(false), .same):
-            return (false, "likely enabled (still connected), but superseded by another version")
+            return (.blocked, "likely enabled (still connected), but superseded by another version")
         case (.some(false), .failing):
-            return (false, "disabled (failing)")
+            return (.blocked, "disabled (failing)")
         }
     }
 }

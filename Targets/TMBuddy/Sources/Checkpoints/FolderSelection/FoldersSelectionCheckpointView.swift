@@ -11,7 +11,7 @@ struct FoldersSelectionCheckpointView: View {
             title: "Folders selected",
             subtitle: "\(appName) is enabled only in the selected folders (and any folders inside).",
             value: bookmarkCount > 0 ? "\(bookmarkCount)" : "none",
-            completed: bookmarkCount > 0
+            readiness: (bookmarkCount > 0) ? .ready : .blocked
         ) {
             VStack(alignment: .leading) {
                 HStack {
