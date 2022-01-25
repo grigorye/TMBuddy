@@ -25,27 +25,25 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
 When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
 <img src=".Images/Disk-Selection.png" style="zoom:50%;" />
 
-## What works
+## Features
 
-- Shows exclusion status for every item on each monitored folder/disk:
+- See exclusion status for every item of each monitored folder/disk:
   
-  - Item excluded by path via Time Machine Settings:
-    
-    <img src=".Images/Finder-Badge-Path-Excluded.png" style="zoom:50%;" >
+  |                             Icon                             | State                                      |
+  | :----------------------------------------------------------: | ------------------------------------------ |
+  | <img src=".Images/Finder-Badge-Path-Excluded.png" style="zoom:50%;" > | Excluded by path via Time Machine Settings |
+  | <img src=".Images/Finder-Badge-Sticky-Excluded.png" style="zoom:50%;" > | Excluded via sticky non-backup attribute   |
+  | <img src=".Images/Finder-Badge-Parent-Excluded.png" style="zoom:50%;" > | Excluded due to excluded parent            |
   
-  - Item excluded via sticky non-backup attribute:
-    
-    <img src=".Images/Finder-Badge-Sticky-Excluded.png" style="zoom:50%;" >
   
-  - Item excluded as it resides in a folder excluded from backup (this will be default for all items in excluded folders):
-    
-    <img src=".Images/Finder-Badge-Parent-Excluded.png" style="zoom:50%;" >
-
-- Toggling *sticky* exclusion via contextual menu (or toolbar item):
   
-  <img src=".Images/Finder-Contextual-Exclude.png" style="zoom:50%;" >
+- Toggle *sticky* exclusion via contextual menu (or toolbar item):
   
-  <img title="" src=".Images/Finder-Contextual-Remove-Exclusion.png" style="zoom:50%;" >
+  
+  
+  |                  Exclude from Time Machine                   |              Remove Exclusion from Time Machine              |
+  | :----------------------------------------------------------: | :----------------------------------------------------------: |
+  | <img src=".Images/Finder-Contextual-Exclude.png" style="zoom:50%;" > | <img title="" src=".Images/Finder-Contextual-Remove-Exclusion.png" style="zoom:50%;" > |
 
 ## TODO
 
