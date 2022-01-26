@@ -33,7 +33,8 @@ extension URL {
             let result = data.withUnsafeBytes {
                 setxattr(fileSystemPath, name, $0.baseAddress, data.count, 0, 0)
             }
-            guard result >= 0 else { throw POSIXError(errno: errno)  }
+            debug { dump((result, name: name, data: data), name: "result") }
+            guard result == 0 else { throw dump(POSIXError(errno: errno), name: "error") }
         }
     }
     
