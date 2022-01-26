@@ -154,7 +154,7 @@ class FinderSync: FIFinderSync {
             return
         }
         dump(itemURLs.map { $0.path }, name: "items")
-        Task {
+        let task = Task {
             defer {
                 dump(itemURLs.map { $0.path }, name: "itemsToRefresh")
                 for itemURL in itemURLs {
@@ -163,6 +163,10 @@ class FinderSync: FIFinderSync {
             }
             
             try await metadataWriter.setExcluded(true, urls: itemURLs)
+        }
+        Task {
+            let result = await task.result
+            dump((result, items: itemURLs.map { $0.path }), name: "result")
         }
     }
 }
