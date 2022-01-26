@@ -7,7 +7,7 @@ let finderName = fileManager.displayName(atPath: "/System/Library/CoreServices/F
 
 var plugInName: String {
     guard let plugInURL = plugInURL else {
-        dump("unknownPlugInURL")
+        dump((), name: "unknownPlugInURL")
         return plugInFallbackName
     }
     return fileManager.displayName(atPath: plugInURL.path)

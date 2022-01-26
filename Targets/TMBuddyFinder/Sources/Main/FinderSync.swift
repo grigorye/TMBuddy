@@ -66,15 +66,15 @@ class FinderSync: FIFinderSync {
     // MARK: - Primary Finder Sync protocol methods
     
     override func beginObservingDirectory(at url: URL) {
-        dump(url.path)
+        dump(url.path, name: "path")
     }
     
     override func endObservingDirectory(at url: URL) {
-        dump(url.path)
+        dump(url.path, name: "path")
     }
     
     override func requestBadgeIdentifier(for url: URL) {
-        dump(url.path)
+        dump(url.path, name: "path")
         updateBadgeIdentifier(for: url)
     }
     

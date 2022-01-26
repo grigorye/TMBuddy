@@ -79,7 +79,7 @@ class PlugInConnectionController {
 
         guard responseIndex == requestIndex else {
             assert(responseIndex < requestIndex)
-            debug { dump("requestIsAlreadyInProgress") }
+            debug { dump((), name: "requestIsAlreadyInProgress") }
             return false
         }
         

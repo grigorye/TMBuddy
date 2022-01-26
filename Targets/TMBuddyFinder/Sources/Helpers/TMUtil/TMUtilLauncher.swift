@@ -6,7 +6,7 @@ struct TMUtilLauncher {
     let osascriptURL = URL(fileURLWithPath: "/usr/bin/osascript")
 
     func setExcluded(_ excluded: Bool, urls: [URL]) async throws {
-        dump((excluded, path: urls.paths))
+        dump((excluded, path: urls.paths), name: "args")
         let tmUtilArguments = [excluded ? "removeexclusion" : "addexclusion"] + urls.map { $0.standardized.path }
         
         let data = try await runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments).result.get()
@@ -40,7 +40,7 @@ struct TMUtilLauncher {
                 case 1:
                     return true
                 default:
-                    throw dump(TMUtilIsExcludedOutputParseError.unrecognizableIsExcluded(response))
+                    throw dump(TMUtilIsExcludedOutputParseError.unrecognizableIsExcluded(response), name: "error")
                 }
             }()
             return (url, isExcluded)

@@ -22,7 +22,7 @@ func runAndCaptureOutput(executableURL: URL, arguments: [String] = []) -> Task<D
         dump((executable: executableURL.path, arguments: arguments), name: "launched")
         if #available(macOS 10.15.4, *) {
             guard let data = try pipe.fileHandleForReading.readToEnd() else {
-                throw dump(RunAndCaptureOutputTaskError.noDataRead)
+                throw dump(RunAndCaptureOutputTaskError.noDataRead, name: "failure")
             }
             return data
         } else {

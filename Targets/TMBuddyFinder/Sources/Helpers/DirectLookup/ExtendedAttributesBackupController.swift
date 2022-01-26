@@ -7,6 +7,7 @@ struct ExtendedAttributesBackupController {
     }
     
     func setExcluded(_ excluded: Bool, urls: [URL]) async throws {
+        dump((excluded, paths: urls.map { $0.path }), name: "excluded")
         for url in urls {
             if excluded {
                 addExcludedBasedOnExtendedAttributes(url)
@@ -32,13 +33,14 @@ func excludedBasedOnExtendedAttributes(_ url: URL) -> Bool {
         case POSIXError.ENOATTR:
             return false
         default:
-            dump(error)
+            dump(error, name: "error")
             return false
         }
     }
 }
 
 func addExcludedBasedOnExtendedAttributes(_ url: URL) {
+    debug { dump(url.path, name: "path") }
     do {
         try addStringExtendedAttribute(
             ExtendedAttributeForExcludingFromBackup.name,
@@ -46,21 +48,23 @@ func addExcludedBasedOnExtendedAttributes(_ url: URL) {
             to: url
         )
     } catch {
-        dump((error: error, path: url.path))
+        dump((error, path: url.path), name: "error")
     }
 }
 
 func removeExcludedBasedOnExtendedAttributes(_ url: URL) {
+    debug { dump(url.path, name: "path") }
     do {
         try url.removeExtendedAttribute(forName: ExtendedAttributeForExcludingFromBackup.name)
     } catch {
-        dump((error: error, path: url.path))
+        dump((error, path: url.path), name: "error")
     }
 }
 
 func addStringExtendedAttribute(_ name: String, value: String, to url: URL) throws {
+    debug { dump((name: name, value: value, path: url.path), name: "args") }
     guard let data = value.data(using: .utf8) else {
-        throw dump(Error.invalidStringValue(value: value, url: url, name: name))
+        throw dump(Error.invalidStringValue(value: value, url: url, name: name), name: "error")
     }
     try url.setExtendedAttribute(data: data, forName: name)
 }

@@ -19,7 +19,7 @@ func dumpTimeMachinePreferences() {
         let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
         
         guard let plist = plist as? [String: Any] else {
-            dump("plistUnreadable")
+            dump((), name: "plistUnreadable")
             return
         }
         
@@ -28,14 +28,14 @@ func dumpTimeMachinePreferences() {
         if let skipPaths = plist[TimeMachineUserDefaultsKey.skipPaths.rawValue] {
             dump(skipPaths, name: "skipPaths", maxDepth: 1, maxItems: .max)
         } else {
-            dump("skipPathsUnreadable")
+            dump((), name: "skipPathsUnreadable")
         }
         if let excludedVolumeUUIDs = plist[TimeMachineUserDefaultsKey.excludedVolumeUUIDs.rawValue] {
             dump(excludedVolumeUUIDs, name: "excludedVolumeUUIDs", maxDepth: 1, maxItems: .max)
         } else {
-            dump("excludedVolumeUUIDsUnreadable")
+            dump((), name: "excludedVolumeUUIDsUnreadable")
         }
     } catch {
-        dump(error)
+        dump(error, name: "error")
     }
 }

@@ -6,7 +6,7 @@ func isFullDiskAccessGranted() -> Bool {
         _ = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
         return true
     } catch {
-        dump(error)
+        dump(error, name: "error")
         return false
     }
 }
