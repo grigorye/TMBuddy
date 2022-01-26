@@ -45,6 +45,10 @@ When selecting folders for the application, typically you want to navigate to Co
   | :----------------------------------------------------------: | :----------------------------------------------------------: |
   | <img src=".Images/Finder-Contextual-Exclude.png" style="zoom:50%;" > | <img title="" src=".Images/Finder-Contextual-Remove-Exclusion.png" style="zoom:50%;" > |
 
+## Troubleshooting
+
+- Sometimes attempt to toggle sticky exclusion results in nothing. Try re-adding the monitored folders in this case.
+
 ## TODO
 
 - Add support for toggling fixed-path exclusions
