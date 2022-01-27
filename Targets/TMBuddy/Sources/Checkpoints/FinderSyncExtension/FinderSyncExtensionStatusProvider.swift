@@ -28,7 +28,7 @@ class FinderSyncExtensionStatusProvider: ObservableObject {
 
     private func updateExtensionStatus() {
         let extensionStatus = currentExtensionStatus()
-        dump(extensionStatus, name: "extensionStatus")
+        debug { dump(extensionStatus, name: "extensionStatus") }
         self.extensionStatus = extensionStatus
         self.oneTickAlienInfo = nil
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
