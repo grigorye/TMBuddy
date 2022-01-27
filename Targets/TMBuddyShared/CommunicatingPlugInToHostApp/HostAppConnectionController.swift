@@ -83,7 +83,7 @@ class HostAppConnectionController {
             info: .init(plugInPath: Bundle.main.bundlePath),
             result: result
         )
-        dump(response, name: "response")
+        debug { dump(response, name: "response") }
         defaults.finderSyncInfoResponsePayload = try! plistFromData(PropertyListEncoder().encode(response))
     }
 }
