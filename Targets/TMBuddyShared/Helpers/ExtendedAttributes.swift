@@ -11,7 +11,11 @@ extension URL {
             
             // Determine attribute size:
             let length = getxattr(fileSystemPath, name, nil, 0, 0, 0)
-            guard length >= 0 else { throw POSIXError(errno: errno) }
+            guard length >= 0 else {
+                let error = POSIXError(errno: errno)
+                debug { dump((error, path: self.path, name: name), name: "getxattrFailed") }
+                throw error
+            }
             
             // Create buffer with required size:
             var data = Data(count: length)
@@ -33,8 +37,12 @@ extension URL {
             let result = data.withUnsafeBytes {
                 setxattr(fileSystemPath, name, $0.baseAddress, data.count, 0, 0)
             }
-            debug { dump((result, name: name, data: data), name: "result") }
-            guard result == 0 else { throw dump(POSIXError(errno: errno), name: "error") }
+            debug { dump((result, path: self.path, name: name, data: data), name: "result") }
+            guard result == 0 else {
+                let error = POSIXError(errno: errno)
+                debug { dump((error, path: self.path, name: name, data: data), name: "setxattrFailed") }
+                throw error
+            }
         }
     }
     
@@ -43,7 +51,11 @@ extension URL {
         
         try self.withUnsafeFileSystemRepresentation { fileSystemPath in
             let result = removexattr(fileSystemPath, name, 0)
-            guard result >= 0 else { throw POSIXError(.init(rawValue: errno)!)  }
+            guard result >= 0 else {
+                let error = POSIXError(errno: errno)
+                debug { dump((error, path: self.path, name: name), name: "removexattrFailed") }
+                throw error
+            }
         }
     }
     
@@ -59,7 +71,11 @@ extension URL {
             
             // Retrieve attribute list:
             let result = listxattr(fileSystemPath, &namebuf, namebuf.count, 0)
-            guard result >= 0 else { throw POSIXError(errno: errno) }
+            guard result >= 0 else {
+                let error = POSIXError(errno: errno)
+                debug { dump((error, path: self.path), name: "listxattrFailed") }
+                throw error
+            }
             
             // Extract attribute names:
             let list = namebuf.split(separator: 0).compactMap {
