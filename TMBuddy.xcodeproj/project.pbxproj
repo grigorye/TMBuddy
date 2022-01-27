@@ -14,6 +14,7 @@
 		0AA3ABC2452EA7F4E93A66B1 /* DisplayNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8559AEA7078BAAF278B09AA6 /* DisplayNames.swift */; };
 		0AEAEDE91B518DBAD762FBCE /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
 		0B47B596343384031C320712 /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
+		0DF40ABFA66D34F50F5866BD /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */; };
 		0E48817EE8B983C57401F716 /* UserDefaults+DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD39E10FE5C0F9852587029 /* UserDefaults+DefaultsKey.swift */; };
 		119ADDDF5C0467B90FA127FC /* PlugInFullDiskAccessCheckPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41C8C8FC6F0EB52DFE86D9 /* PlugInFullDiskAccessCheckPointView.swift */; };
 		141AB711AA16AFC38FD16D3B /* VolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A02D2184D24D82A81CE2C9 /* VolumeFilter.swift */; };
@@ -82,6 +83,7 @@
 		6C51FC87F29D35D5B57FC5AB /* MDItemBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC9C1D3AFD0F1EC459F85 /* MDItemBackupController.swift */; };
 		6DC0A8620026651157B7096E /* VolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A02D2184D24D82A81CE2C9 /* VolumeFilter.swift */; };
 		6DFAD803F20BFBAEC7B77C35 /* HostAppConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8398849E6D927549E6D7FE /* HostAppConnectionController.swift */; };
+		71F6DE4F0F0799AF99766D1F /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */; };
 		7473CFA1C305738B6ECF334A /* FinderSyncInfoRequestIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */; };
 		769B34CA5F81C7D622656C19 /* PathFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15F256F5EA839B4720B3186 /* PathFilter.swift */; };
 		810B8AF85EBCF581E5F273BC /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6EAC65503209B9B9CA1C4B /* Launching.swift */; };
@@ -103,6 +105,7 @@
 		9BF8CF3B1FE9FD4B8CD6BB9D /* SandboxAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62AF1768F105ECFC5822BFB /* SandboxAccessView.swift */; };
 		9CBC7B9135EEC6EB45CCCE59 /* FinderSyncInfoResponseIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742427BAF6F6E55524E94BDC /* FinderSyncInfoResponseIndex.swift */; };
 		9D10E59393A0DAC5F7AD9E8C /* SandboxAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62AF1768F105ECFC5822BFB /* SandboxAccessView.swift */; };
+		A00944584E39752C9F96A364 /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */; };
 		A1CAAF0F962278938E4A8349 /* FileManager+Sandboxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F58547D7798D62E4E697EF /* FileManager+Sandboxing.swift */; };
 		A27419AE82BB186EC333983C /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3CC5F2630243D69DDD741 /* Sugar.swift */; };
 		A45BF14AB20B7F9670EB6F22 /* TimeMachinePathFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B887F90DB4B9731C75DC9C61 /* TimeMachinePathFilter.swift */; };
@@ -125,9 +128,6 @@
 		BF5290A7407D73C784DF15A2 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CDFE6410BDEBA2C330A47A /* FinderSync.swift */; };
 		C3627B8F6143E05677A2803C /* FinderSyncRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C11063E2341BD1B9EB527 /* FinderSyncRequest.swift */; };
 		C42A871C9E096C081F97B232 /* ExtendedAttributesBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374BDE2929CE87139B63F60F /* ExtendedAttributesBackupController.swift */; };
-		C4D1F8D4279E300200AE0A35 /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1F8D3279E300200AE0A35 /* PlistManipulation.swift */; };
-		C4D1F8D5279E300200AE0A35 /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1F8D3279E300200AE0A35 /* PlistManipulation.swift */; };
-		C4D1F8D6279E300200AE0A35 /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D1F8D3279E300200AE0A35 /* PlistManipulation.swift */; };
 		C80F671AF27EFE947E8AE9EE /* TimeMachineUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D347A0B35FF7B51109D4D7 /* TimeMachineUserDefaults.swift */; };
 		C84882B67D3DD33CD6DAC776 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B4FFE2A3FA843D85516307A /* Assets.xcassets */; };
 		CB416ED99F06761840AF407C /* MetadataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1E25C136AB3BAE6BD3AC1 /* MetadataReader.swift */; };
@@ -263,9 +263,9 @@
 		BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracing.swift; sourceTree = "<group>"; };
 		BC34A69ABFCA5DC796AA7F12 /* JsonBackwardCompatibilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonBackwardCompatibilityTests.swift; sourceTree = "<group>"; };
 		BE03FB3FD74C040B0C32C04A /* MainWindowTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowTitle.swift; sourceTree = "<group>"; };
+		BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistManipulation.swift; sourceTree = "<group>"; };
 		BE55D079B06C52D59943F175 /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
 		C15F256F5EA839B4720B3186 /* PathFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFilter.swift; sourceTree = "<group>"; };
-		C4D1F8D3279E300200AE0A35 /* PlistManipulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistManipulation.swift; sourceTree = "<group>"; };
 		C551C04BE645AD741F429489 /* UserDefaultsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsObserver.swift; sourceTree = "<group>"; };
 		C7CDFE6410BDEBA2C330A47A /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
 		C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncInfoRequestIndex.swift; sourceTree = "<group>"; };
@@ -454,9 +454,9 @@
 				688A73E924E17AB042449119 /* ExtendedAttributes.swift */,
 				37F58547D7798D62E4E697EF /* FileManager+Sandboxing.swift */,
 				295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */,
+				BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */,
 				BACD95A8B7FBEEE09C0FDF90 /* SandboxedBookmarksResolver.swift */,
 				860E9D098D06436BA18B2896 /* String+Ranges.swift */,
-				C4D1F8D3279E300200AE0A35 /* PlistManipulation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -771,8 +771,8 @@
 				FB77745A8E8C74C6924C63A8 /* Launching.swift in Sources */,
 				F6E4126D79086072D590FB33 /* MainWindowTitle.swift in Sources */,
 				B1756E521E49E065D0B86446 /* OnLaunch.swift in Sources */,
-				C4D1F8D4279E300200AE0A35 /* PlistManipulation.swift in Sources */,
 				F856AA48429F377F6F6D84E3 /* PathUtilities+Sandboxing.swift in Sources */,
+				0DF40ABFA66D34F50F5866BD /* PlistManipulation.swift in Sources */,
 				D695BA356C8C9D6F981C561B /* PlugInConnectionController.swift in Sources */,
 				0A74860A3BDA8CAFF1E2A1AC /* PlugInFullDiskAccessCheckPointProvider.swift in Sources */,
 				93015E968CFED0A0D7C8A4F9 /* PlugInFullDiskAccessCheckPointView.swift in Sources */,
@@ -816,7 +816,6 @@
 				D30509843811A20D6F687982 /* FinderSyncInfoRequestPayload.swift in Sources */,
 				D66E01B2421F74D5B269906B /* FinderSyncInfoResponseIndex.swift in Sources */,
 				EB9EB0C2B7BF2632814164C1 /* FinderSyncInfoResponsePayload.swift in Sources */,
-				C4D1F8D5279E300200AE0A35 /* PlistManipulation.swift in Sources */,
 				C3627B8F6143E05677A2803C /* FinderSyncRequest.swift in Sources */,
 				1F91E508CA80C952116AB901 /* FinderSyncResponse.swift in Sources */,
 				6DFAD803F20BFBAEC7B77C35 /* HostAppConnectionController.swift in Sources */,
@@ -826,6 +825,7 @@
 				5C8075C37D316D0895B118E6 /* MetadataWriter.swift in Sources */,
 				769B34CA5F81C7D622656C19 /* PathFilter.swift in Sources */,
 				D64549F2D3124D1D956C80CC /* PathUtilities+Sandboxing.swift in Sources */,
+				71F6DE4F0F0799AF99766D1F /* PlistManipulation.swift in Sources */,
 				ED245F6688F41BD2F78CCF40 /* PlugInConnectionController.swift in Sources */,
 				995B3509B36066C9EE8CDF83 /* PlugInHostConnectionVersion.swift in Sources */,
 				DE0E41BF4B4066BD2FBD2603 /* SandboxedBookmarks.swift in Sources */,
@@ -867,7 +867,6 @@
 				F3FFFCC058C3D291967C6228 /* DefaultsKey.swift in Sources */,
 				19776D65E3D781F3D100BDDF /* DirectLookupBasedStatusProvider.swift in Sources */,
 				1F4F2126017A2E3FBF5FAE86 /* DirectLookupBasedStatusProviderTests.swift in Sources */,
-				C4D1F8D6279E300200AE0A35 /* PlistManipulation.swift in Sources */,
 				88C6AC18DBAA1C45C6A5206D /* DisplayNames.swift in Sources */,
 				1B67785E9EA89411DB3C8A25 /* ExtendedAttributes.swift in Sources */,
 				C42A871C9E096C081F97B232 /* ExtendedAttributesBackupController.swift in Sources */,
@@ -893,6 +892,7 @@
 				53FBC6DDD1F8B2EDC8683129 /* MetadataWriter.swift in Sources */,
 				3E7EE7FEE5CD2C679ADC4C73 /* PathFilter.swift in Sources */,
 				554C99F30F3800085EBBA56F /* PathUtilities+Sandboxing.swift in Sources */,
+				A00944584E39752C9F96A364 /* PlistManipulation.swift in Sources */,
 				899A47042E80E5D912B8580F /* PlugInConnectionController.swift in Sources */,
 				EC7FA4614D9375BF57356311 /* PlugInFullDiskAccessCheckPointProvider.swift in Sources */,
 				119ADDDF5C0467B90FA127FC /* PlugInFullDiskAccessCheckPointView.swift in Sources */,
