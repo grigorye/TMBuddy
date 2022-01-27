@@ -36,19 +36,31 @@ class FinderSync: FIFinderSync {
 
     let hostAppConnectionController = HostAppConnectionController()
     
-    let sandboxedBookmarksResolver = SandboxedBookmarksResolver { urls in
-        dump(urls.map { $0.path }, name: "newSyncDirectories")
-        saveScopedSandboxedBookmark(urls: urls, in: defaults)
-        let scopedURLs = resolveBookmarks(defaults.scopedSandboxedBookmarks ?? [], options: [.withSecurityScope])
-        
-        for url in syncController.directoryURLs {
-            url.stopAccessingSecurityScopedResource()
+    private var directoryURLs: [URL] = [] {
+        willSet {
+            syncController.directoryURLs = Set(newValue)
         }
-        syncController.directoryURLs = Set(scopedURLs)
-        for url in syncController.directoryURLs {
-            let succeeded = url.startAccessingSecurityScopedResource()
-            dump((path: url.path, succeeded: succeeded), name: "startAccessingScoped")
+    }
+    
+    private func setDirectoryURLs(accessedScoped: Bool) {
+        for url in directoryURLs {
+            if accessedScoped {
+                let succeeded = url.startAccessingSecurityScopedResource()
+                dump((url.path, succeeded: succeeded), name: "startAccessingScoped")
+            } else {
+                dump((url.path), name: "stopAccessingScoped")
+                url.stopAccessingSecurityScopedResource()
+            }
         }
+    }
+    
+    private lazy var sandboxedBookmarksResolver = SandboxedBookmarksResolver { [weak self] urls in
+        self?.updateForResolvedURLs(urls)
+    }
+    
+    deinit {
+        dump(self.directoryURLs.map { $0.path }, name: "directoryURLs")
+        self.setDirectoryURLs(accessedScoped: false)
     }
     
     override init() {
@@ -61,6 +73,20 @@ class FinderSync: FIFinderSync {
                 syncController.setBadgeImage(image, label: labelForStatus(status), forBadgeIdentifier: badgeIdentifierForStatus(status))
             }
         }
+        
+        _ = sandboxedBookmarksResolver
+    }
+    
+    // MARK: -
+    
+    func updateForResolvedURLs(_ urls: [URL]) {
+        dump(urls.map { $0.path }, name: "newSyncDirectories")
+        saveScopedSandboxedBookmark(urls: urls, in: defaults)
+        let scopedURLs = resolveBookmarks(defaults.scopedSandboxedBookmarks ?? [], options: [.withSecurityScope])
+        
+        self.setDirectoryURLs(accessedScoped: false)
+        self.directoryURLs = scopedURLs
+        self.setDirectoryURLs(accessedScoped: true)
     }
     
     // MARK: - Primary Finder Sync protocol methods
