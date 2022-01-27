@@ -33,7 +33,7 @@ func excludedBasedOnExtendedAttributes(_ url: URL) -> Bool {
         case POSIXError.ENOATTR:
             return false
         default:
-            dump(error, name: "error")
+            dump((error, path: url.path), name: "error")
             return false
         }
     }
