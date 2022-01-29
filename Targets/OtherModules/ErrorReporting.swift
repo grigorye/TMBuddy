@@ -8,5 +8,9 @@ func reportError<T>(_ value: T, name: String, file: String, function: String, li
     let exceptionModel = ExceptionModel(name: name, reason: "\(Swift.dump(value))") ≈ {
         $0.stackTrace = callStack.returnAddresses.map { StackFrame(address: $0.uintValue) }
     }
+#if DEBUG
+    _ = exceptionModel
+#else
     Crashlytics.crashlytics().record(exceptionModel: exceptionModel)
+#endif
 }
