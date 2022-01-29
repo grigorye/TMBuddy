@@ -3,12 +3,18 @@ import FinderSync
 
 struct SandboxAccessView: View {
     
+    @ObservedObject private var debugFlagProvider = DebugFlagProvider()
+
     var body: some View {
         VStack(alignment: .leading) {
             Group {
                 FinderExtensionCheckpointView()
                 PlugInFullDiskAccessCheckPointView()
                 FoldersSelectionCheckpointView()
+                
+                if debugFlagProvider.debugIsEnabled {
+                    DebugCheckpointView()
+                }
             }
             .padding([.vertical], 4)
         }
