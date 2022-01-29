@@ -95,6 +95,7 @@ extension POSIXError {
     init(errno: Int32) {
         let code = POSIXError.Code(rawValue: errno) ?? {
             assertionFailure("Unsupported errno: \(errno)")
+            dump(errno, name: "posixErrorCodeFromErrnoFailed")
             return .ELAST
         }()
         self.init(code)
