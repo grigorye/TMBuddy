@@ -1,0 +1,10 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+shopt -s expand_aliases
+
+xcarchiveDir="$1"
+shift
+
+gh run download --name xcarchive --dir "$xcarchiveDir"
