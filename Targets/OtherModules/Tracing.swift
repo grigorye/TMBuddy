@@ -5,7 +5,7 @@ private enum Imp {}
 extension Imp {
     
     @discardableResult
-    static func dump<T>(_ value: T, name: String?, file: String, function: String, indent: Int, maxDepth: Int, maxItems: Int) -> T {
+    static func dump<T>(_ value: T, name: String?, file: String, function: String, line: Int, callStack: CallStack, indent: Int, maxDepth: Int, maxItems: Int) -> T {
         if dumpIsEnabled {
             let suffix = name.flatMap { ", " + $0 } ?? ""
             Swift.dump(value, name: function + suffix, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
@@ -15,23 +15,24 @@ extension Imp {
             let message = "\(function): \(prefix)\(value)"
             NSLog(message)
         }
+        postprocessDumpedValue(value, name: name, file: file, function: function, line: line, callStack: callStack)
         return value
     }
 }
 
 @discardableResult
-func dump<T>(_ value: T, name: String, function: String = #function) -> T {
-    Imp.dump(value, name: name, file: "file", function: function, indent: 0, maxDepth: .max, maxItems: .max)
+func dump<T>(_ value: T, name: String, function: String = #function, line: Int = #line, callStack: CallStack = .init()) -> T {
+    Imp.dump(value, name: name, file: "file", function: function, line: line, callStack: callStack, indent: 0, maxDepth: .max, maxItems: .max)
 }
 
 @discardableResult
-func dump<T>(_ value: T, name: String, maxDepth: Int, function: String = #function) -> T {
-    Imp.dump(value, name: name, file: "file", function: function, indent: 0, maxDepth: maxDepth, maxItems: .max)
+func dump<T>(_ value: T, name: String, maxDepth: Int, function: String = #function, line: Int = #line, callStack: CallStack = .init()) -> T {
+    Imp.dump(value, name: name, file: "file", function: function, line: line, callStack: callStack, indent: 0, maxDepth: maxDepth, maxItems: .max)
 }
 
 @discardableResult
-func dump<T>(_ value: T, name: String, maxDepth: Int, maxItems: Int, function: String = #function) -> T {
-    Imp.dump(value, name: name, file: "file", function: function, indent: 0, maxDepth: maxDepth, maxItems: maxItems)
+func dump<T>(_ value: T, name: String, maxDepth: Int, maxItems: Int, function: String = #function, line: Int = #line, callStack: CallStack = .init()) -> T {
+    Imp.dump(value, name: name, file: "file", function: function, line: line, callStack: callStack, indent: 0, maxDepth: maxDepth, maxItems: maxItems)
 }
 
 protocol Traceable {}
@@ -39,28 +40,28 @@ protocol Traceable {}
 extension Traceable {
 
     @discardableResult
-    func dump<T>(_ value: T, name: String, function: String = #function) -> T {
-        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", indent: 0, maxDepth: .max, maxItems: .max)
+    func dump<T>(_ value: T, name: String, function: String = #function, line: Int = #line, callStack: CallStack = .init()) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", line: line, callStack: callStack, indent: 0, maxDepth: .max, maxItems: .max)
     }
 
     @discardableResult
-    func dump<T>(_ value: T, name: String, maxDepth: Int, function: String = #function) -> T {
-        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", indent: 0, maxDepth: maxDepth, maxItems: .max)
+    func dump<T>(_ value: T, name: String, maxDepth: Int, function: String = #function, line: Int = #line, callStack: CallStack = .init()) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", line: line, callStack: callStack, indent: 0, maxDepth: maxDepth, maxItems: .max)
     }
     
     @discardableResult
-    func dump<T>(_ value: T, name: String, maxDepth: Int, maxItems: Int, function: String = #function) -> T {
-        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", indent: 0, maxDepth: maxDepth, maxItems: maxItems)
+    func dump<T>(_ value: T, name: String, maxDepth: Int, maxItems: Int, function: String = #function, line: Int = #line, callStack: CallStack = .init()) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", line: line, callStack: callStack, indent: 0, maxDepth: maxDepth, maxItems: maxItems)
     }
 
     @discardableResult
-    public func dump<T>(_ value: T, name: String? = nil, function: String = #function, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
-        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", indent: indent, maxDepth: maxDepth, maxItems: maxItems)
+    public func dump<T>(_ value: T, name: String? = nil, function: String = #function, line: Int = #line, callStack: CallStack = .init(), indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(type(of: self)).\(function)", line: line, callStack: callStack, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
     }
     
     @discardableResult
-    public static func dump<T>(_ value: T, name: String? = nil, function: String = #function, indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
-        Imp.dump(value, name: name, file: "file", function: "\(Self.self).\(function)", indent: indent, maxDepth: maxDepth, maxItems: maxItems)
+    public static func dump<T>(_ value: T, name: String? = nil, function: String = #function, line: Int = #line, callStack: CallStack = .init(), indent: Int = 0, maxDepth: Int = .max, maxItems: Int = .max) -> T {
+        Imp.dump(value, name: name, file: "file", function: "\(Self.self).\(function)", line: line, callStack: callStack, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
     }
 }
 
