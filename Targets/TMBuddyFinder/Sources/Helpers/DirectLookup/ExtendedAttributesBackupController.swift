@@ -25,17 +25,14 @@ enum ExtendedAttributeForExcludingFromBackup {
 
 func excludedBasedOnExtendedAttributes(_ url: URL) -> Bool {
     do {
-        let attribute = try url.extendedAttribute(forName: ExtendedAttributeForExcludingFromBackup.name)
+        guard let attribute = try url.extendedAttribute(forName: ExtendedAttributeForExcludingFromBackup.name) else {
+            return false
+        }
         let valueMatches = String(data: attribute, encoding: .utf8) == ExtendedAttributeForExcludingFromBackup.value
         return valueMatches
     } catch {
-        switch error {
-        case POSIXError.ENOATTR:
-            return false
-        default:
-            dump((error, path: url.path), name: "error")
-            return false
-        }
+        dump((error, path: url.path), name: "error")
+        return false
     }
 }
 
