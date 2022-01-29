@@ -10,6 +10,7 @@
 		02551E268116BDD236866B47 /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
 		0377414F06A846DA26C4F30D /* MainWindowTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03FB3FD74C040B0C32C04A /* MainWindowTitle.swift */; };
 		0A042894860D95DE3868734C /* JsonBackwardCompatibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC34A69ABFCA5DC796AA7F12 /* JsonBackwardCompatibilityTests.swift */; };
+		0A4A0C966D0191F9298BA9C6 /* ErrorTracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0B065FEFA13F7635FD778 /* ErrorTracing.swift */; };
 		0A74860A3BDA8CAFF1E2A1AC /* PlugInFullDiskAccessCheckPointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF7092CB11747606EBA0AAE /* PlugInFullDiskAccessCheckPointProvider.swift */; };
 		0AA3ABC2452EA7F4E93A66B1 /* DisplayNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8559AEA7078BAAF278B09AA6 /* DisplayNames.swift */; };
 		0AEAEDE91B518DBAD762FBCE /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
@@ -32,15 +33,18 @@
 		1F91E508CA80C952116AB901 /* FinderSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65DD302B02506F84B735E5 /* FinderSyncResponse.swift */; };
 		22D5BF89219855E6526AA728 /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
 		248083F9D772A5E18221FC65 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D14690115275A479C5F50 /* Debug.swift */; };
+		24B10E65C865721816D8161D /* OnLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062622F3D97665108A85132 /* OnLaunch.swift */; };
 		259697323557DD6D00D6D0EC /* SavingSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5303B562293DD78A04D02653 /* SavingSandboxedBookmarks.swift */; };
 		259CED4FAA424F7E454F8A8A /* ExtendedAttributesBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374BDE2929CE87139B63F60F /* ExtendedAttributesBackupController.swift */; };
 		283242D6DEA155DF28CDA80A /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551C04BE645AD741F429489 /* UserDefaultsObserver.swift */; };
 		2A88BD9272B21CA61796169E /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
 		2B52E3B6F227C1CBD09B11EA /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
 		30028D62A6FF59404C00395E /* PlugInURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFD7A4AF382A0D6D64DDA2 /* PlugInURL.swift */; };
+		30C7E8E1BF9AFB43F898CD0B /* ErrorReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D716AA38225B42B0C6DEF /* ErrorReporting.swift */; };
 		332A6C99FB9E059389857F4A /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
 		33330CC152E0724F959BB1AD /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3CC5F2630243D69DDD741 /* Sugar.swift */; };
 		33EBF5B1AC2299E1A7CBCF05 /* ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688A73E924E17AB042449119 /* ExtendedAttributes.swift */; };
+		341B4A8D3EF3C47A4FEC2626 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CD08EC483D6A0C304F293A4A /* FirebaseCrashlytics */; };
 		343BE11559DF3A559C0BFA8D /* FinderSyncInfoRequestIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */; };
 		35B2E1CBD4920625EC631AF3 /* FinderSyncInfoRequestPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58C441A6E62025C1886AEC5 /* FinderSyncInfoRequestPayload.swift */; };
 		36F06AA9DDE6DD4D3EED0502 /* CheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2268116C403E8A3AEEC2A0 /* CheckpointView.swift */; };
@@ -61,15 +65,18 @@
 		4568B114A4004D204D1FB9CD /* TimeMachinePathFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173068889EBA8B058F00D1A /* TimeMachinePathFilterTests.swift */; };
 		45C0B826ED1A9A1DE96C0BCE /* SandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CBB5A64727943DC1BBF0 /* SandboxedBookmarks.swift */; };
 		4913B3866EA16632B62373DE /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315A85237754BE0C28A00F1C /* BuildInfo.swift */; };
+		49585EDDF75BA3EB0AF2220E /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */; };
 		4AFFB8FBD2E18552AA843D0F /* TMUtilBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFAC1C26EF29F64B4162E1F /* TMUtilBasedStatusProvider.swift */; };
 		4BB8B37220063D10433352ED /* Bundle+PlugInURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1E2E4916A4606CA09A53B /* Bundle+PlugInURLs.swift */; };
 		4BF45FC248895952280FDC80 /* TMUtilBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859E3E168BE4A66524302FC /* TMUtilBasedStatusProviderTests.swift */; };
 		4E44D16FFCE7C7C4628AD822 /* FinderSyncRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C11063E2341BD1B9EB527 /* FinderSyncRequest.swift */; };
 		4F1814D3E349E361BC74A194 /* TMUtilBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFAC1C26EF29F64B4162E1F /* TMUtilBasedStatusProvider.swift */; };
 		52FF8670913AEBEAD346138C /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
+		533B5C990D99D26CEF9E2B53 /* OnLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062622F3D97665108A85132 /* OnLaunch.swift */; };
 		53FBC6DDD1F8B2EDC8683129 /* MetadataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849DE197ED6058E3288BBC7 /* MetadataWriter.swift */; };
 		5451E42C4A8C7D25AF907427 /* TmUtilIsExcludedOutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = 72BE772E3F1177828A03CD71 /* TmUtilIsExcludedOutput.txt */; };
 		554C99F30F3800085EBBA56F /* PathUtilities+Sandboxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */; };
+		57338E0FEB81DD604DC4DED0 /* ErrorTracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0B065FEFA13F7635FD778 /* ErrorTracing.swift */; };
 		584164EB890A8D0B7461B354 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7656536CBDE702A03F6ED /* TMStatusProvider.swift */; };
 		5BE9412169B98AADB31F5B34 /* BackupMetadataFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955246551027F988AF53ACF6 /* BackupMetadataFilter.swift */; };
 		5C8075C37D316D0895B118E6 /* MetadataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849DE197ED6058E3288BBC7 /* MetadataWriter.swift */; };
@@ -81,13 +88,18 @@
 		64F088506DCD6DF05394A52B /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
 		69FDA8FDB17ED4B087A96088 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D14690115275A479C5F50 /* Debug.swift */; };
 		6C51FC87F29D35D5B57FC5AB /* MDItemBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC9C1D3AFD0F1EC459F85 /* MDItemBackupController.swift */; };
+		6CF0D0FC53874BD275B4CE0A /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */; };
 		6DC0A8620026651157B7096E /* VolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A02D2184D24D82A81CE2C9 /* VolumeFilter.swift */; };
 		6DFAD803F20BFBAEC7B77C35 /* HostAppConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8398849E6D927549E6D7FE /* HostAppConnectionController.swift */; };
 		71F6DE4F0F0799AF99766D1F /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */; };
 		7473CFA1C305738B6ECF334A /* FinderSyncInfoRequestIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */; };
 		769B34CA5F81C7D622656C19 /* PathFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15F256F5EA839B4720B3186 /* PathFilter.swift */; };
+		7C880433D1F3FAD30D3A9DE6 /* ErrorReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D716AA38225B42B0C6DEF /* ErrorReporting.swift */; };
+		7DAEE82C61247C60CDF32E22 /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */; };
+		81010878D57BA816E407E378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1243084DC4CD5F92244B6681 /* GoogleService-Info.plist */; };
 		810B8AF85EBCF581E5F273BC /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6EAC65503209B9B9CA1C4B /* Launching.swift */; };
 		85CB15808B9F574B85FF98A8 /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD95A8B7FBEEE09C0FDF90 /* SandboxedBookmarksResolver.swift */; };
+		87A69B3EDB3C8B0630793F09 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6ED3C1487A9B6E27471A5AB2 /* GoogleService-Info.plist */; };
 		87CD74414A532ABB5396BFF5 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3CC5F2630243D69DDD741 /* Sugar.swift */; };
 		889481CC90CC946ED4B8FB3A /* FinderSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65DD302B02506F84B735E5 /* FinderSyncResponse.swift */; };
 		88C6AC18DBAA1C45C6A5206D /* DisplayNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8559AEA7078BAAF278B09AA6 /* DisplayNames.swift */; };
@@ -98,8 +110,10 @@
 		9277F917FC87414BF6966887 /* TimeMachineVolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF2EFC06F759414D2D9CC /* TimeMachineVolumeFilter.swift */; };
 		93015E968CFED0A0D7C8A4F9 /* PlugInFullDiskAccessCheckPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41C8C8FC6F0EB52DFE86D9 /* PlugInFullDiskAccessCheckPointView.swift */; };
 		93B38095BF8735FF86B66204 /* ScopedSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC5A5C026805C9922B665F /* ScopedSandboxedBookmarks.swift */; };
+		957A9BA827F7693AB44A7E44 /* OnLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062622F3D97665108A85132 /* OnLaunch.swift */; };
 		9685BEE06C6546D1195A1332 /* FinderSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65DD302B02506F84B735E5 /* FinderSyncResponse.swift */; };
 		96E26462BE3F7DB5225E33C2 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE55D079B06C52D59943F175 /* DefaultsKey.swift */; };
+		9879C64B1C7D940720B6585E /* ErrorTracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0B065FEFA13F7635FD778 /* ErrorTracing.swift */; };
 		988BC38355245FD673E76452 /* FinderSyncInfoResponsePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54AA8F116B8AAB9BA377CF0 /* FinderSyncInfoResponsePayload.swift */; };
 		995B3509B36066C9EE8CDF83 /* PlugInHostConnectionVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3590B1155F6B2F58433CA3 /* PlugInHostConnectionVersion.swift */; };
 		9BF8CF3B1FE9FD4B8CD6BB9D /* SandboxAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62AF1768F105ECFC5822BFB /* SandboxAccessView.swift */; };
@@ -113,16 +127,18 @@
 		A51BBD40FA120950CA4B3932 /* TMStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7656536CBDE702A03F6ED /* TMStatusProvider.swift */; };
 		A6EAACD116D56DD32AD55BF7 /* FileManager+Sandboxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F58547D7798D62E4E697EF /* FileManager+Sandboxing.swift */; };
 		AB6E1B54B715586360195D0A /* FinderSyncInfoResponseIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742427BAF6F6E55524E94BDC /* FinderSyncInfoResponseIndex.swift */; };
+		AD88FFC3D7013D8C987E1318 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F5536DE18CA89E9D5B77B295 /* FirebaseCrashlytics */; };
 		AE439C31FC726408DD975EF7 /* Array+URLPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */; };
 		AF2456622AFB86B9B8F19AC3 /* CheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2268116C403E8A3AEEC2A0 /* CheckpointView.swift */; };
 		AF471D23A16C8C161ECF97C7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1780AFA9840706BEF22666C3 /* SharedDefaults.swift */; };
 		AF583338B4EBE4704DA245C5 /* TimeMachineVolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF2EFC06F759414D2D9CC /* TimeMachineVolumeFilter.swift */; };
-		B1756E521E49E065D0B86446 /* OnLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219AEE30460BF4C262DE0E31 /* OnLaunch.swift */; };
 		B3253557431DBBDB2135E120 /* DirectLookupBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFE8F5A9FEECA7B01D88BD /* DirectLookupBasedStatusProvider.swift */; };
+		B348BE950E2D914AF13681A3 /* CallStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0992FA5A6AE66AFFE51A01 /* CallStack.swift */; };
 		B3EA96A7E5F485417B9A8AE1 /* PlugInHostConnectionVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3590B1155F6B2F58433CA3 /* PlugInHostConnectionVersion.swift */; };
 		B4F25A7EA1BBC9822B43C32F /* FullDiskAccessImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2F12AB3EA6F894C720426 /* FullDiskAccessImp.swift */; };
 		B4F62BFF15B83AE231E0A475 /* TMBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A96EFD04DED5DE47E39CA /* TMBuddyTests.swift */; };
 		B78E7A1691693BFD7BF600C8 /* Array+URLPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */; };
+		BACCC1FCE4DDE9D06510F96D /* CallStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0992FA5A6AE66AFFE51A01 /* CallStack.swift */; };
 		BD6838D67A54A7AD72D8E998 /* Array+URLPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */; };
 		BE7859AC7803DF930D654D6B /* FinderSyncInfoRequestIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */; };
 		BF5290A7407D73C784DF15A2 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CDFE6410BDEBA2C330A47A /* FinderSync.swift */; };
@@ -154,6 +170,7 @@
 		DE0E41BF4B4066BD2FBD2603 /* SandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CBB5A64727943DC1BBF0 /* SandboxedBookmarks.swift */; };
 		DE0E931933A8473C39111DEB /* MDItemBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC9C1D3AFD0F1EC459F85 /* MDItemBackupController.swift */; };
 		DEA1BEC65FCC3DF8A0FBAE6D /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
+		E246287F0FDE57FD55D7E4ED /* ErrorReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D716AA38225B42B0C6DEF /* ErrorReporting.swift */; };
 		E4D77EA690B2BB4E1898B84C /* SanityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C8D1F63F14009D9FDBCDE6 /* SanityChecking.swift */; };
 		E538FE500EC25AB948191E8B /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315A85237754BE0C28A00F1C /* BuildInfo.swift */; };
 		E644016F784656DD6CC498D2 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1780AFA9840706BEF22666C3 /* SharedDefaults.swift */; };
@@ -171,6 +188,7 @@
 		F12A1AA9F20EFA184137C3D1 /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551C04BE645AD741F429489 /* UserDefaultsObserver.swift */; };
 		F384F257E02E7060461714F1 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C66D62EB87BCFAF0337B626 /* TMUtilLauncher.swift */; };
 		F3FFFCC058C3D291967C6228 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE55D079B06C52D59943F175 /* DefaultsKey.swift */; };
+		F540B112DFFB22BD7541329C /* CallStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0992FA5A6AE66AFFE51A01 /* CallStack.swift */; };
 		F6E4126D79086072D590FB33 /* MainWindowTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03FB3FD74C040B0C32C04A /* MainWindowTitle.swift */; };
 		F77BDD7E28866275CEBA7A9F /* SandboxedBookmarksResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD95A8B7FBEEE09C0FDF90 /* SandboxedBookmarksResolver.swift */; };
 		F817DC3388C25BA31275B6E8 /* FinderSyncExtensionStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CC5E12ACA96F8D131323D3 /* FinderSyncExtensionStatusProvider.swift */; };
@@ -182,6 +200,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		6184001C2C5ECFA7C928BF55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2DC5F21E7612DB102197DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B17EF830032880250B139E3;
+			remoteInfo = TMBuddyFinder;
+		};
+		FE47C5065CC0BFA812DA94F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7B2DC5F21E7612DB102197DF /* Project object */;
 			proxyType = 1;
@@ -207,13 +232,13 @@
 /* Begin PBXFileReference section */
 		09C7656536CBDE702A03F6ED /* TMStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMStatusProvider.swift; sourceTree = "<group>"; };
 		0DEFDDEECB748E89AEE3E43B /* FoldersSelectionImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersSelectionImp.swift; sourceTree = "<group>"; };
+		1243084DC4CD5F92244B6681 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1780AFA9840706BEF22666C3 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
 		1A138D08E00F3F72C49D4A07 /* FullDiskAccessCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDiskAccessCheckpointView.swift; sourceTree = "<group>"; };
 		1ADFE8F5A9FEECA7B01D88BD /* DirectLookupBasedStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectLookupBasedStatusProvider.swift; sourceTree = "<group>"; };
 		1C035E28595D2AAC245A6FAF /* TMBuddyFinder.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TMBuddyFinder.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D41C8C8FC6F0EB52DFE86D9 /* PlugInFullDiskAccessCheckPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugInFullDiskAccessCheckPointView.swift; sourceTree = "<group>"; };
 		1E8D14690115275A479C5F50 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
-		219AEE30460BF4C262DE0E31 /* OnLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnLaunch.swift; sourceTree = "<group>"; };
 		23DC765C05C90830E857DC28 /* TMBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TMBuddy.entitlements; sourceTree = "<group>"; };
 		245A96EFD04DED5DE47E39CA /* TMBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBuddyTests.swift; sourceTree = "<group>"; };
 		2849DE197ED6058E3288BBC7 /* MetadataWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataWriter.swift; sourceTree = "<group>"; };
@@ -225,6 +250,7 @@
 		374BDE2929CE87139B63F60F /* ExtendedAttributesBackupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedAttributesBackupController.swift; sourceTree = "<group>"; };
 		37F58547D7798D62E4E697EF /* FileManager+Sandboxing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Sandboxing.swift"; sourceTree = "<group>"; };
 		38B056A6D06EBCAEFEA7935A /* TMStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMStatus.swift; sourceTree = "<group>"; };
+		39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseIntegration.swift; sourceTree = "<group>"; };
 		3EE6AB800A72279CB08C542F /* TMBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBuddyApp.swift; sourceTree = "<group>"; };
 		40A02D2184D24D82A81CE2C9 /* VolumeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeFilter.swift; sourceTree = "<group>"; };
 		4C6EAC65503209B9B9CA1C4B /* Launching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launching.swift; sourceTree = "<group>"; };
@@ -236,9 +262,11 @@
 		5AF7092CB11747606EBA0AAE /* PlugInFullDiskAccessCheckPointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugInFullDiskAccessCheckPointProvider.swift; sourceTree = "<group>"; };
 		5C66D62EB87BCFAF0337B626 /* TMUtilLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMUtilLauncher.swift; sourceTree = "<group>"; };
 		5E1B1EAE38A301E37947D0C1 /* TMBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6062622F3D97665108A85132 /* OnLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnLaunch.swift; sourceTree = "<group>"; };
 		60A2CBB5A64727943DC1BBF0 /* SandboxedBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxedBookmarks.swift; sourceTree = "<group>"; };
 		64DFD7A4AF382A0D6D64DDA2 /* PlugInURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugInURL.swift; sourceTree = "<group>"; };
 		688A73E924E17AB042449119 /* ExtendedAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedAttributes.swift; sourceTree = "<group>"; };
+		6ED3C1487A9B6E27471A5AB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F8398849E6D927549E6D7FE /* HostAppConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppConnectionController.swift; sourceTree = "<group>"; };
 		72BE772E3F1177828A03CD71 /* TmUtilIsExcludedOutput.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TmUtilIsExcludedOutput.txt; sourceTree = "<group>"; };
 		742427BAF6F6E55524E94BDC /* FinderSyncInfoResponseIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncInfoResponseIndex.swift; sourceTree = "<group>"; };
@@ -274,13 +302,16 @@
 		CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+URLPaths.swift"; sourceTree = "<group>"; };
 		D4CDF2EFC06F759414D2D9CC /* TimeMachineVolumeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachineVolumeFilter.swift; sourceTree = "<group>"; };
 		D9BDC3DAAA1887D34A5E0F7B /* FoldersSelectionCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersSelectionCheckpointView.swift; sourceTree = "<group>"; };
+		DA2D716AA38225B42B0C6DEF /* ErrorReporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorReporting.swift; sourceTree = "<group>"; };
 		DC2268116C403E8A3AEEC2A0 /* CheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointView.swift; sourceTree = "<group>"; };
 		DC65DD302B02506F84B735E5 /* FinderSyncResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncResponse.swift; sourceTree = "<group>"; };
 		DEEC50D66E25871967A01F94 /* DirectLookupBasedStatusProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectLookupBasedStatusProviderTests.swift; sourceTree = "<group>"; };
+		DF0992FA5A6AE66AFFE51A01 /* CallStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStack.swift; sourceTree = "<group>"; };
 		E0C8D1F63F14009D9FDBCDE6 /* SanityChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityChecking.swift; sourceTree = "<group>"; };
 		E130E31AA996BC776042650C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E173068889EBA8B058F00D1A /* TimeMachinePathFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachinePathFilterTests.swift; sourceTree = "<group>"; };
 		E58C441A6E62025C1886AEC5 /* FinderSyncInfoRequestPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncInfoRequestPayload.swift; sourceTree = "<group>"; };
+		E7D0B065FEFA13F7635FD778 /* ErrorTracing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracing.swift; sourceTree = "<group>"; };
 		E8CC5E12ACA96F8D131323D3 /* FinderSyncExtensionStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncExtensionStatusProvider.swift; sourceTree = "<group>"; };
 		F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreDistribution.swift; sourceTree = "<group>"; };
 		F54AA8F116B8AAB9BA377CF0 /* FinderSyncInfoResponsePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncInfoResponsePayload.swift; sourceTree = "<group>"; };
@@ -289,6 +320,25 @@
 		FAF73314A78C08D33B757291 /* TMBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB1E2E4916A4606CA09A53B /* Bundle+PlugInURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+PlugInURLs.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D6DB5FCCDC89EF8218EE9F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				341B4A8D3EF3C47A4FEC2626 /* FirebaseCrashlytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B447EF299FBD1C9215EEDABC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD88FFC3D7013D8C987E1318 /* FirebaseCrashlytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		013AF3B943CB05B1AEE559F4 /* Products */ = {
@@ -333,7 +383,11 @@
 				F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */,
 				CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */,
 				FCB1E2E4916A4606CA09A53B /* Bundle+PlugInURLs.swift */,
+				DF0992FA5A6AE66AFFE51A01 /* CallStack.swift */,
 				1E8D14690115275A479C5F50 /* Debug.swift */,
+				DA2D716AA38225B42B0C6DEF /* ErrorReporting.swift */,
+				E7D0B065FEFA13F7635FD778 /* ErrorTracing.swift */,
+				39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */,
 				4C6EAC65503209B9B9CA1C4B /* Launching.swift */,
 				CDD3CC5F2630243D69DDD741 /* Sugar.swift */,
 				BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */,
@@ -359,6 +413,14 @@
 				40A02D2184D24D82A81CE2C9 /* VolumeFilter.swift */,
 			);
 			path = DirectLookup;
+			sourceTree = "<group>";
+		};
+		2C1AB00A6A0D3EB912E752D9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1243084DC4CD5F92244B6681 /* GoogleService-Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2D4891422000F47744F74FF8 /* TMBuddyShared */ = {
@@ -453,6 +515,7 @@
 			children = (
 				688A73E924E17AB042449119 /* ExtendedAttributes.swift */,
 				37F58547D7798D62E4E697EF /* FileManager+Sandboxing.swift */,
+				6062622F3D97665108A85132 /* OnLaunch.swift */,
 				295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */,
 				BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */,
 				BACD95A8B7FBEEE09C0FDF90 /* SandboxedBookmarksResolver.swift */,
@@ -464,7 +527,6 @@
 		724D5800CB7B0BDD9D6AB55B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				219AEE30460BF4C262DE0E31 /* OnLaunch.swift */,
 				3EE6AB800A72279CB08C542F /* TMBuddyApp.swift */,
 			);
 			path = Main;
@@ -483,6 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				35F04FBC7CE6453A8CE0958B /* Bundle */,
+				2C1AB00A6A0D3EB912E752D9 /* Resources */,
 				A7DDCCE028F9FC2A73BDB9C4 /* Sources */,
 			);
 			name = TMBuddyFinder;
@@ -583,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				2B4FFE2A3FA843D85516307A /* Assets.xcassets */,
+				6ED3C1487A9B6E27471A5AB2 /* GoogleService-Info.plist */,
 				55C2A999CAF70A0C4CEC90CB /* Icons.xcassets */,
 				B460C2419D35A87B8B8B7F1F /* Main.storyboard */,
 			);
@@ -633,12 +697,18 @@
 			buildConfigurationList = 5548679F0C17E2826B60138F /* Build configuration list for PBXNativeTarget "TMBuddyFinder" */;
 			buildPhases = (
 				425AB2D2B8D09C76A3CFC984 /* Sources */,
+				4DB85699DFBF48C9300EC358 /* Resources */,
+				B447EF299FBD1C9215EEDABC /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E6EDF85ED83683AD8723B7C8 /* PBXTargetDependency */,
 			);
 			name = TMBuddyFinder;
+			packageProductDependencies = (
+				F5536DE18CA89E9D5B77B295 /* FirebaseCrashlytics */,
+			);
 			productName = TMBuddyFinder;
 			productReference = 1C035E28595D2AAC245A6FAF /* TMBuddyFinder.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -649,6 +719,7 @@
 			buildPhases = (
 				1A8C40FFCA9B0AA28BD2B1A6 /* Sources */,
 				014FFDDFB5FFE6AFEEF16660 /* Resources */,
+				6D6DB5FCCDC89EF8218EE9F3 /* Frameworks */,
 				4C6EB4CBA9F1EDDBFD9E95EF /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -657,6 +728,9 @@
 				B88285C807EBA5F7712FFA45 /* PBXTargetDependency */,
 			);
 			name = TMBuddy;
+			packageProductDependencies = (
+				CD08EC483D6A0C304F293A4A /* FirebaseCrashlytics */,
+			);
 			productName = TMBuddy;
 			productReference = 5E1B1EAE38A301E37947D0C1 /* TMBuddy.app */;
 			productType = "com.apple.product-type.application";
@@ -708,6 +782,9 @@
 				en,
 			);
 			mainGroup = A42AAB7CEAE72727CCA383A7;
+			packageReferences = (
+				FB3979ABEC2021A5BE0E69EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -724,8 +801,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C84882B67D3DD33CD6DAC776 /* Assets.xcassets in Resources */,
+				87A69B3EDB3C8B0630793F09 /* GoogleService-Info.plist in Resources */,
 				435BF08846543A906F51132B /* Icons.xcassets in Resources */,
 				1B56E5490E0DCFF037D6BA21 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DB85699DFBF48C9300EC358 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81010878D57BA816E407E378 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,11 +834,14 @@
 				AE439C31FC726408DD975EF7 /* Array+URLPaths.swift in Sources */,
 				E538FE500EC25AB948191E8B /* BuildInfo.swift in Sources */,
 				370786C1F5209D504C7F3C97 /* Bundle+PlugInURLs.swift in Sources */,
+				F540B112DFFB22BD7541329C /* CallStack.swift in Sources */,
 				AF2456622AFB86B9B8F19AC3 /* CheckpointView.swift in Sources */,
 				DD992DEEBC9236FA72C24828 /* ContentView.swift in Sources */,
 				69FDA8FDB17ED4B087A96088 /* Debug.swift in Sources */,
 				A4B83300B870FA37105EDA9E /* DefaultsKey.swift in Sources */,
 				0AA3ABC2452EA7F4E93A66B1 /* DisplayNames.swift in Sources */,
+				E246287F0FDE57FD55D7E4ED /* ErrorReporting.swift in Sources */,
+				57338E0FEB81DD604DC4DED0 /* ErrorTracing.swift in Sources */,
 				8B4C9582CCE4E2CF2B963BEB /* ExtendedAttributes.swift in Sources */,
 				D870F4288A0E9AA1AAB2162D /* FileManager+Sandboxing.swift in Sources */,
 				D1916CB50F7C88D79018015B /* FinderExtensionCheckpointView.swift in Sources */,
@@ -763,6 +852,7 @@
 				988BC38355245FD673E76452 /* FinderSyncInfoResponsePayload.swift in Sources */,
 				5D532B24C46D8B36F689C778 /* FinderSyncRequest.swift in Sources */,
 				889481CC90CC946ED4B8FB3A /* FinderSyncResponse.swift in Sources */,
+				6CF0D0FC53874BD275B4CE0A /* FirebaseIntegration.swift in Sources */,
 				18EAB63C469045608536573F /* FoldersSelectionCheckpointView.swift in Sources */,
 				1556DFC4C02768A89330CE47 /* FoldersSelectionImp.swift in Sources */,
 				40962E413F5F5EBFCF4C4F4E /* FullDiskAccessCheckpointView.swift in Sources */,
@@ -770,7 +860,7 @@
 				DD17A527BB136EBA8CEDCC1D /* HostAppConnectionController.swift in Sources */,
 				FB77745A8E8C74C6924C63A8 /* Launching.swift in Sources */,
 				F6E4126D79086072D590FB33 /* MainWindowTitle.swift in Sources */,
-				B1756E521E49E065D0B86446 /* OnLaunch.swift in Sources */,
+				957A9BA827F7693AB44A7E44 /* OnLaunch.swift in Sources */,
 				F856AA48429F377F6F6D84E3 /* PathUtilities+Sandboxing.swift in Sources */,
 				0DF40ABFA66D34F50F5866BD /* PlistManipulation.swift in Sources */,
 				D695BA356C8C9D6F981C561B /* PlugInConnectionController.swift in Sources */,
@@ -805,9 +895,12 @@
 				BD6838D67A54A7AD72D8E998 /* Array+URLPaths.swift in Sources */,
 				5BE9412169B98AADB31F5B34 /* BackupMetadataFilter.swift in Sources */,
 				3FA2171693F7C4C528EC33C3 /* Bundle+PlugInURLs.swift in Sources */,
+				BACCC1FCE4DDE9D06510F96D /* CallStack.swift in Sources */,
 				1F5567D07A1479C7ED16D07B /* Debug.swift in Sources */,
 				96E26462BE3F7DB5225E33C2 /* DefaultsKey.swift in Sources */,
 				B3253557431DBBDB2135E120 /* DirectLookupBasedStatusProvider.swift in Sources */,
+				7C880433D1F3FAD30D3A9DE6 /* ErrorReporting.swift in Sources */,
+				9879C64B1C7D940720B6585E /* ErrorTracing.swift in Sources */,
 				33EBF5B1AC2299E1A7CBCF05 /* ExtendedAttributes.swift in Sources */,
 				259CED4FAA424F7E454F8A8A /* ExtendedAttributesBackupController.swift in Sources */,
 				A1CAAF0F962278938E4A8349 /* FileManager+Sandboxing.swift in Sources */,
@@ -818,11 +911,13 @@
 				EB9EB0C2B7BF2632814164C1 /* FinderSyncInfoResponsePayload.swift in Sources */,
 				C3627B8F6143E05677A2803C /* FinderSyncRequest.swift in Sources */,
 				1F91E508CA80C952116AB901 /* FinderSyncResponse.swift in Sources */,
+				49585EDDF75BA3EB0AF2220E /* FirebaseIntegration.swift in Sources */,
 				6DFAD803F20BFBAEC7B77C35 /* HostAppConnectionController.swift in Sources */,
 				810B8AF85EBCF581E5F273BC /* Launching.swift in Sources */,
 				DE0E931933A8473C39111DEB /* MDItemBackupController.swift in Sources */,
 				CB416ED99F06761840AF407C /* MetadataReader.swift in Sources */,
 				5C8075C37D316D0895B118E6 /* MetadataWriter.swift in Sources */,
+				24B10E65C865721816D8161D /* OnLaunch.swift in Sources */,
 				769B34CA5F81C7D622656C19 /* PathFilter.swift in Sources */,
 				D64549F2D3124D1D956C80CC /* PathUtilities+Sandboxing.swift in Sources */,
 				71F6DE4F0F0799AF99766D1F /* PlistManipulation.swift in Sources */,
@@ -861,6 +956,7 @@
 				3C8B31BF53AE2992880BE957 /* BackupMetadataFilter.swift in Sources */,
 				4913B3866EA16632B62373DE /* BuildInfo.swift in Sources */,
 				4BB8B37220063D10433352ED /* Bundle+PlugInURLs.swift in Sources */,
+				B348BE950E2D914AF13681A3 /* CallStack.swift in Sources */,
 				36F06AA9DDE6DD4D3EED0502 /* CheckpointView.swift in Sources */,
 				CD90BADFBD82319F2AE543ED /* ContentView.swift in Sources */,
 				248083F9D772A5E18221FC65 /* Debug.swift in Sources */,
@@ -868,6 +964,8 @@
 				19776D65E3D781F3D100BDDF /* DirectLookupBasedStatusProvider.swift in Sources */,
 				1F4F2126017A2E3FBF5FAE86 /* DirectLookupBasedStatusProviderTests.swift in Sources */,
 				88C6AC18DBAA1C45C6A5206D /* DisplayNames.swift in Sources */,
+				30C7E8E1BF9AFB43F898CD0B /* ErrorReporting.swift in Sources */,
+				0A4A0C966D0191F9298BA9C6 /* ErrorTracing.swift in Sources */,
 				1B67785E9EA89411DB3C8A25 /* ExtendedAttributes.swift in Sources */,
 				C42A871C9E096C081F97B232 /* ExtendedAttributesBackupController.swift in Sources */,
 				A6EAACD116D56DD32AD55BF7 /* FileManager+Sandboxing.swift in Sources */,
@@ -879,6 +977,7 @@
 				E906E46BD4982F4F8BB25E4E /* FinderSyncInfoResponsePayload.swift in Sources */,
 				4E44D16FFCE7C7C4628AD822 /* FinderSyncRequest.swift in Sources */,
 				9685BEE06C6546D1195A1332 /* FinderSyncResponse.swift in Sources */,
+				7DAEE82C61247C60CDF32E22 /* FirebaseIntegration.swift in Sources */,
 				ED34610D0D0EDF8DD0636445 /* FoldersSelectionCheckpointView.swift in Sources */,
 				38CBB7451E0720A707605E25 /* FoldersSelectionImp.swift in Sources */,
 				6092E7774E708712B771B561 /* FullDiskAccessCheckpointView.swift in Sources */,
@@ -890,6 +989,7 @@
 				0377414F06A846DA26C4F30D /* MainWindowTitle.swift in Sources */,
 				3AAA48EED6BE2C877ED8FBEB /* MetadataReader.swift in Sources */,
 				53FBC6DDD1F8B2EDC8683129 /* MetadataWriter.swift in Sources */,
+				533B5C990D99D26CEF9E2B53 /* OnLaunch.swift in Sources */,
 				3E7EE7FEE5CD2C679ADC4C73 /* PathFilter.swift in Sources */,
 				554C99F30F3800085EBBA56F /* PathUtilities+Sandboxing.swift in Sources */,
 				A00944584E39752C9F96A364 /* PlistManipulation.swift in Sources */,
@@ -934,6 +1034,11 @@
 			isa = PBXTargetDependency;
 			target = 3B17EF830032880250B139E3 /* TMBuddyFinder */;
 			targetProxy = 6184001C2C5ECFA7C928BF55 /* PBXContainerItemProxy */;
+		};
+		E6EDF85ED83683AD8723B7C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B17EF830032880250B139E3 /* TMBuddyFinder */;
+			targetProxy = FE47C5065CC0BFA812DA94F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1221,6 +1326,30 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FB3979ABEC2021A5BE0E69EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD08EC483D6A0C304F293A4A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB3979ABEC2021A5BE0E69EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		F5536DE18CA89E9D5B77B295 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB3979ABEC2021A5BE0E69EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7B2DC5F21E7612DB102197DF /* Project object */;
 }

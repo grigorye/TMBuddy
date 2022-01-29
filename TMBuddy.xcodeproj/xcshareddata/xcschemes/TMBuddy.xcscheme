@@ -42,6 +42,10 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
+            argument = "-FIRDebugEnabled YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-debug YES"
             isEnabled = "NO">
          </CommandLineArgument>
@@ -81,6 +85,10 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
+            argument = "-FIRDebugEnabled YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-debug YES"
             isEnabled = "NO">
          </CommandLineArgument>
@@ -115,6 +123,10 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-FIRDebugEnabled YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
          <CommandLineArgument
             argument = "-debug YES"
             isEnabled = "NO">
