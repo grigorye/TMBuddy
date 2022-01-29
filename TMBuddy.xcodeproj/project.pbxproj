@@ -142,6 +142,7 @@
 		B4F62BFF15B83AE231E0A475 /* TMBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A96EFD04DED5DE47E39CA /* TMBuddyTests.swift */; };
 		B78E7A1691693BFD7BF600C8 /* Array+URLPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */; };
 		BACCC1FCE4DDE9D06510F96D /* CallStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0992FA5A6AE66AFFE51A01 /* CallStack.swift */; };
+		BD4E121B5E7FD624F1AE5B35 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85DE808A3B8E4CB5A9E22126 /* FirebaseAnalytics */; };
 		BD6838D67A54A7AD72D8E998 /* Array+URLPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */; };
 		BE7859AC7803DF930D654D6B /* FinderSyncInfoRequestIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */; };
 		BF5290A7407D73C784DF15A2 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CDFE6410BDEBA2C330A47A /* FinderSync.swift */; };
@@ -149,6 +150,7 @@
 		C42A871C9E096C081F97B232 /* ExtendedAttributesBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374BDE2929CE87139B63F60F /* ExtendedAttributesBackupController.swift */; };
 		C80F671AF27EFE947E8AE9EE /* TimeMachineUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D347A0B35FF7B51109D4D7 /* TimeMachineUserDefaults.swift */; };
 		C84882B67D3DD33CD6DAC776 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B4FFE2A3FA843D85516307A /* Assets.xcassets */; };
+		C9AC650334B2687EA13D9907 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD6471ABA7B9F437D73DE6A7 /* FirebaseAnalytics */; };
 		CB416ED99F06761840AF407C /* MetadataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1E25C136AB3BAE6BD3AC1 /* MetadataReader.swift */; };
 		CBD2F147EF0B6B2BDB19110F /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
 		CD90BADFBD82319F2AE543ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D2CAE78C19E5BB9E46EDD9 /* ContentView.swift */; };
@@ -333,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				341B4A8D3EF3C47A4FEC2626 /* FirebaseCrashlytics in Frameworks */,
+				C9AC650334B2687EA13D9907 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD88FFC3D7013D8C987E1318 /* FirebaseCrashlytics in Frameworks */,
+				BD4E121B5E7FD624F1AE5B35 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,6 +728,7 @@
 			name = TMBuddyFinder;
 			packageProductDependencies = (
 				F5536DE18CA89E9D5B77B295 /* FirebaseCrashlytics */,
+				85DE808A3B8E4CB5A9E22126 /* FirebaseAnalytics */,
 			);
 			productName = TMBuddyFinder;
 			productReference = 1C035E28595D2AAC245A6FAF /* TMBuddyFinder.appex */;
@@ -746,6 +751,7 @@
 			name = TMBuddy;
 			packageProductDependencies = (
 				CD08EC483D6A0C304F293A4A /* FirebaseCrashlytics */,
+				BD6471ABA7B9F437D73DE6A7 /* FirebaseAnalytics */,
 			);
 			productName = TMBuddy;
 			productReference = 5E1B1EAE38A301E37947D0C1 /* TMBuddy.app */;
@@ -1095,6 +1101,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy;
 				SDKROOT = macosx;
 			};
@@ -1115,6 +1122,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy.Finder;
 				SDKROOT = macosx;
 			};
@@ -1280,6 +1288,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy.Finder;
 				SDKROOT = macosx;
 			};
@@ -1301,6 +1310,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy;
 				SDKROOT = macosx;
 			};
@@ -1359,6 +1369,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		85DE808A3B8E4CB5A9E22126 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB3979ABEC2021A5BE0E69EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		BD6471ABA7B9F437D73DE6A7 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB3979ABEC2021A5BE0E69EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
 		CD08EC483D6A0C304F293A4A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FB3979ABEC2021A5BE0E69EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
