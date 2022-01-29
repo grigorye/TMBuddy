@@ -66,7 +66,7 @@ class FinderSync: FIFinderSync {
     override init() {
         super.init()
         
-        checkSanity()
+        onLaunch()
         
         for status in TMStatus.allCases {
             if let image = imageForStatus(status) {
