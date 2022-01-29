@@ -28,6 +28,7 @@
 		19D2F56E406BD3132FF8D46D /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1780AFA9840706BEF22666C3 /* SharedDefaults.swift */; };
 		1B56E5490E0DCFF037D6BA21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B460C2419D35A87B8B8B7F1F /* Main.storyboard */; };
 		1B67785E9EA89411DB3C8A25 /* ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688A73E924E17AB042449119 /* ExtendedAttributes.swift */; };
+		1C220F499B6E9D8E337B088F /* DebugCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4B134015CDCEA2D553C0B /* DebugCheckpointView.swift */; };
 		1F4F2126017A2E3FBF5FAE86 /* DirectLookupBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEC50D66E25871967A01F94 /* DirectLookupBasedStatusProviderTests.swift */; };
 		1F5567D07A1479C7ED16D07B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D14690115275A479C5F50 /* Debug.swift */; };
 		1F91E508CA80C952116AB901 /* FinderSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65DD302B02506F84B735E5 /* FinderSyncResponse.swift */; };
@@ -71,6 +72,7 @@
 		4BF45FC248895952280FDC80 /* TMUtilBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859E3E168BE4A66524302FC /* TMUtilBasedStatusProviderTests.swift */; };
 		4E44D16FFCE7C7C4628AD822 /* FinderSyncRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C11063E2341BD1B9EB527 /* FinderSyncRequest.swift */; };
 		4F1814D3E349E361BC74A194 /* TMUtilBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFAC1C26EF29F64B4162E1F /* TMUtilBasedStatusProvider.swift */; };
+		5026EAA79FB4963611B8A44D /* DebugFlagProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BAD3958C4D94FC1F3E44E /* DebugFlagProvider.swift */; };
 		52FF8670913AEBEAD346138C /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
 		533B5C990D99D26CEF9E2B53 /* OnLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062622F3D97665108A85132 /* OnLaunch.swift */; };
 		53FBC6DDD1F8B2EDC8683129 /* MetadataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849DE197ED6058E3288BBC7 /* MetadataWriter.swift */; };
@@ -108,6 +110,7 @@
 		8B4C9582CCE4E2CF2B963BEB /* ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688A73E924E17AB042449119 /* ExtendedAttributes.swift */; };
 		8D58C62158E87601D808878C /* FullDiskAccessImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2F12AB3EA6F894C720426 /* FullDiskAccessImp.swift */; };
 		9277F917FC87414BF6966887 /* TimeMachineVolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF2EFC06F759414D2D9CC /* TimeMachineVolumeFilter.swift */; };
+		92F49FBD68BF84B1898D8970 /* DebugCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4B134015CDCEA2D553C0B /* DebugCheckpointView.swift */; };
 		93015E968CFED0A0D7C8A4F9 /* PlugInFullDiskAccessCheckPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41C8C8FC6F0EB52DFE86D9 /* PlugInFullDiskAccessCheckPointView.swift */; };
 		93B38095BF8735FF86B66204 /* ScopedSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC5A5C026805C9922B665F /* ScopedSandboxedBookmarks.swift */; };
 		957A9BA827F7693AB44A7E44 /* OnLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062622F3D97665108A85132 /* OnLaunch.swift */; };
@@ -155,6 +158,7 @@
 		D1916CB50F7C88D79018015B /* FinderExtensionCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302EB0E7AAD313057B7F78E8 /* FinderExtensionCheckpointView.swift */; };
 		D30509843811A20D6F687982 /* FinderSyncInfoRequestPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58C441A6E62025C1886AEC5 /* FinderSyncInfoRequestPayload.swift */; };
 		D37B6303B297540357D69EA6 /* String+Ranges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E9D098D06436BA18B2896 /* String+Ranges.swift */; };
+		D3F537E6A05618833F610181 /* DebugFlagProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BAD3958C4D94FC1F3E44E /* DebugFlagProvider.swift */; };
 		D476ACF5C3559CC38C9972E3 /* UserDefaults+DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD39E10FE5C0F9852587029 /* UserDefaults+DefaultsKey.swift */; };
 		D64549F2D3124D1D956C80CC /* PathUtilities+Sandboxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */; };
 		D66E01B2421F74D5B269906B /* FinderSyncInfoResponseIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742427BAF6F6E55524E94BDC /* FinderSyncInfoResponseIndex.swift */; };
@@ -265,6 +269,7 @@
 		6062622F3D97665108A85132 /* OnLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnLaunch.swift; sourceTree = "<group>"; };
 		60A2CBB5A64727943DC1BBF0 /* SandboxedBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxedBookmarks.swift; sourceTree = "<group>"; };
 		64DFD7A4AF382A0D6D64DDA2 /* PlugInURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugInURL.swift; sourceTree = "<group>"; };
+		664BAD3958C4D94FC1F3E44E /* DebugFlagProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugFlagProvider.swift; sourceTree = "<group>"; };
 		688A73E924E17AB042449119 /* ExtendedAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedAttributes.swift; sourceTree = "<group>"; };
 		6ED3C1487A9B6E27471A5AB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F8398849E6D927549E6D7FE /* HostAppConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppConnectionController.swift; sourceTree = "<group>"; };
@@ -299,6 +304,7 @@
 		C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncInfoRequestIndex.swift; sourceTree = "<group>"; };
 		CD6C11063E2341BD1B9EB527 /* FinderSyncRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncRequest.swift; sourceTree = "<group>"; };
 		CDD3CC5F2630243D69DDD741 /* Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sugar.swift; sourceTree = "<group>"; };
+		CDE4B134015CDCEA2D553C0B /* DebugCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugCheckpointView.swift; sourceTree = "<group>"; };
 		CF9B3A272F7CCAE00C2581C1 /* Array+URLPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+URLPaths.swift"; sourceTree = "<group>"; };
 		D4CDF2EFC06F759414D2D9CC /* TimeMachineVolumeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachineVolumeFilter.swift; sourceTree = "<group>"; };
 		D9BDC3DAAA1887D34A5E0F7B /* FoldersSelectionCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersSelectionCheckpointView.swift; sourceTree = "<group>"; };
@@ -608,6 +614,7 @@
 		B7807FE1BFEA6B67CA971AFB /* Checkpoints */ = {
 			isa = PBXGroup;
 			children = (
+				F674252487B84008B0E57D1E /* Debug */,
 				07247BD71FEAC0ACD33FA8D8 /* FinderSyncExtension */,
 				F4F4A7FCC063491B2C32A1DC /* FolderSelection */,
 				C28E5D1175F0981D002318CB /* FullDiskAccess */,
@@ -687,6 +694,15 @@
 				0DEFDDEECB748E89AEE3E43B /* FoldersSelectionImp.swift */,
 			);
 			path = FolderSelection;
+			sourceTree = "<group>";
+		};
+		F674252487B84008B0E57D1E /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				CDE4B134015CDCEA2D553C0B /* DebugCheckpointView.swift */,
+				664BAD3958C4D94FC1F3E44E /* DebugFlagProvider.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -838,6 +854,8 @@
 				AF2456622AFB86B9B8F19AC3 /* CheckpointView.swift in Sources */,
 				DD992DEEBC9236FA72C24828 /* ContentView.swift in Sources */,
 				69FDA8FDB17ED4B087A96088 /* Debug.swift in Sources */,
+				92F49FBD68BF84B1898D8970 /* DebugCheckpointView.swift in Sources */,
+				5026EAA79FB4963611B8A44D /* DebugFlagProvider.swift in Sources */,
 				A4B83300B870FA37105EDA9E /* DefaultsKey.swift in Sources */,
 				0AA3ABC2452EA7F4E93A66B1 /* DisplayNames.swift in Sources */,
 				E246287F0FDE57FD55D7E4ED /* ErrorReporting.swift in Sources */,
@@ -960,6 +978,8 @@
 				36F06AA9DDE6DD4D3EED0502 /* CheckpointView.swift in Sources */,
 				CD90BADFBD82319F2AE543ED /* ContentView.swift in Sources */,
 				248083F9D772A5E18221FC65 /* Debug.swift in Sources */,
+				1C220F499B6E9D8E337B088F /* DebugCheckpointView.swift in Sources */,
+				D3F537E6A05618833F610181 /* DebugFlagProvider.swift in Sources */,
 				F3FFFCC058C3D291967C6228 /* DefaultsKey.swift in Sources */,
 				19776D65E3D781F3D100BDDF /* DirectLookupBasedStatusProvider.swift in Sources */,
 				1F4F2126017A2E3FBF5FAE86 /* DirectLookupBasedStatusProviderTests.swift in Sources */,
