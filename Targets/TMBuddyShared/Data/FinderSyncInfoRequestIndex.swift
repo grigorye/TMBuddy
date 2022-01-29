@@ -12,7 +12,7 @@ extension UserDefaults {
             let requestHeader = try PropertyListDecoder().decode(FinderSyncInfoRequestHeader.self, from: dataFromPlist(payload))
             return requestHeader
         } catch {
-            dump((error: error, payload: payload), name: "payloadDecodingFailure")
+            dump((error: error, payload: payload), name: "payloadDecodingFailed")
             return nil
         }
     }

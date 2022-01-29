@@ -15,7 +15,7 @@ class TMUtilBasedStatusProvider {
             dump((status, item: url.path), name: "status")
             return status
         } catch {
-            dump((error, url: url), name: "queryStatusFailure")
+            dump((error, url: url), name: "queryStatusFailed")
             return .unknown
         }
     }
