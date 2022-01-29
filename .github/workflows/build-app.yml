@@ -42,6 +42,7 @@ jobs:
     - name: Setup Environment
       run: |
         echo 'PRODUCT_NAME=${{ matrix.run-config.scheme }}' >> $GITHUB_ENV
+        echo 'DERIVED_DATA_PATH=${{ runner.temp }}/build.derivedData' >> $GITHUB_ENV
         echo 'EXPORT_PATH_APPSTORE=${{ runner.temp }}/build.export/appstore' >> $GITHUB_ENV
         echo 'EXPORT_PATH_DEVELOPER_ID=${{ runner.temp }}/build.export/developer-id' >> $GITHUB_ENV
         echo 'AUTHENTICATION_KEY_PATH=${{ runner.temp }}/authentication.p8' >> $GITHUB_ENV
@@ -108,10 +109,18 @@ jobs:
       run: |
         rm -rf ~/Library/MobileDevice/Provisioning\ Profiles
 
+    - uses: actions/cache@v2
+      with:
+        path: ${{ env.DERIVED_DATA_PATH }}/SourcePackages
+        key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/**/Package.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-spm-
+
     - name: Build .xcarchive
       run: |
         # build
         xcodebuild archive \
+          -derivedDataPath "$DERIVED_DATA_PATH" \
           -archivePath "$ARCHIVE_PATH" \
           -scheme '${{ matrix.run-config.scheme }}' \
           -destination '${{ matrix.run-config.destination }}' \
