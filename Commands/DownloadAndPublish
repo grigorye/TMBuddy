@@ -15,6 +15,9 @@ bucket="tmbuddy"
 formulaName="time-machine-buddy"
 appName="TMBuddy"
 
+./Publishing/DownloadXCArchive "$tmpdir"/xcarchive
+./Publishing/UploadDSymsToCrashlytics "$tmpdir"/xcarchive
+
 ./Publishing/DownloadDmg "$tmpdir"/dmg
 
 dmgs=("$tmpdir"/dmg/*.dmg)
