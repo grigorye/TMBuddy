@@ -1,3 +1,4 @@
 func onLaunch() {
+    activateErrorReporting()
     checkSanity()
 }
