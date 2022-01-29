@@ -21,8 +21,11 @@ targets:
         "-suppressNSLog YES": true
         "-forceAppStoreLikeWindowTitle YES": false
         "-debug YES": false
+        "-FIRDebugEnabled YES": false
     dependencies:
       - target: TMBuddyFinder
+      - package: Firebase
+        product: FirebaseCrashlytics
   
   TMBuddyFinder:
     type: app-extension
@@ -40,7 +43,11 @@ targets:
       INFOPLIST_KEY_CFBundleDisplayName: TMBuddy
       CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyFinder/Bundle/TMBuddyFinder.entitlements
       PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.Finder
-  
+    dependencies:
+      - target: TMBuddyFinder
+      - package: Firebase
+        product: FirebaseCrashlytics
+
   TMBuddyTests:
     type: bundle.unit-test
     platform: macOS
@@ -58,6 +65,11 @@ targets:
       - path: Targets/TMBuddyFinder/Sources
         excludes:
           - Main
+
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk.git
+    from: '8.0'
 
 settings:
   MARKETING_VERSION: "1.0"
