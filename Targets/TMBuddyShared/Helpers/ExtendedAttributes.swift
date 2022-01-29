@@ -5,12 +5,15 @@ import Foundation
 extension URL {
     
     /// Get extended attribute.
-    func extendedAttribute(forName name: String) throws -> Data  {
+    func extendedAttribute(forName name: String) throws -> Data? {
         
-        let data = try self.withUnsafeFileSystemRepresentation { fileSystemPath -> Data in
+        let data = try self.withUnsafeFileSystemRepresentation { fileSystemPath -> Data? in
             
             // Determine attribute size:
             let length = getxattr(fileSystemPath, name, nil, 0, 0, 0)
+            if length == -1, errno == ENOATTR {
+                return nil
+            }
             guard length >= 0 else {
                 let error = POSIXError(errno: errno)
                 debug { dump((error, path: self.path, name: name), name: "getxattrFailed") }
@@ -24,7 +27,11 @@ extension URL {
             let result = data.withUnsafeMutableBytes { [count = data.count] in
                 getxattr(fileSystemPath, name, $0.baseAddress, count, 0, 0)
             }
-            guard result >= 0 else { throw POSIXError(errno: errno) }
+            guard result >= 0 else {
+                let error = POSIXError(errno: errno)
+                debug { dump((error, path: self.path, name: name), name: "getxattrFailed") }
+                throw error
+            }
             return data
         }
         return data
