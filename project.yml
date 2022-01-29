@@ -15,6 +15,7 @@ targets:
       INFOPLIST_KEY_NSMainStoryboardFile: Main
       INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
       CODE_SIGN_ENTITLEMENTS: Targets/TMBuddy/Bundle/TMBuddy.entitlements
+      OTHER_LDFLAGS: -ObjC
     scheme:
       commandLineArguments:
         "-enableDump YES": true
@@ -26,6 +27,8 @@ targets:
       - target: TMBuddyFinder
       - package: Firebase
         product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseAnalytics
   
   TMBuddyFinder:
     type: app-extension
@@ -43,10 +46,13 @@ targets:
       INFOPLIST_KEY_CFBundleDisplayName: TMBuddy
       CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyFinder/Bundle/TMBuddyFinder.entitlements
       PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.Finder
+      OTHER_LDFLAGS: -ObjC
     dependencies:
       - target: TMBuddyFinder
       - package: Firebase
         product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseAnalytics
 
   TMBuddyTests:
     type: bundle.unit-test
