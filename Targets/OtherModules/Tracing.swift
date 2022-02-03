@@ -15,7 +15,7 @@ extension Imp {
             let message = "\(function): \(prefix)\(value)"
             NSLog(message)
         }
-        postprocessDumpedValue(value, name: name, file: file, function: function, line: line, callStack: callStack)
+        postDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
         return value
     }
 }
