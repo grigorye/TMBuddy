@@ -76,3 +76,4 @@ class FinderSyncExtensionStatusProvider: ObservableObject {
     }
 }
 
+extension FinderSyncExtensionStatusProvider: Traceable {}
