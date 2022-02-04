@@ -1,0 +1,3 @@
+[submodule "ThirdParties/SwiftXPC"]
+	path = ThirdParties/SwiftXPC
+	url = https://github.com/shpakovski/SwiftXPC.git
