@@ -1330,6 +1330,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy.TMUtilHelper;
 				PRODUCT_NAME = com.grigorye.TMBuddy.TMUtilHelper;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1579,6 +1580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.TMBuddy.TMUtilHelper;
 				PRODUCT_NAME = com.grigorye.TMBuddy.TMUtilHelper;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
