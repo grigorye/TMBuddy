@@ -14,11 +14,11 @@ struct TMUtilLauncher {
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
     }
     
-    func setExcludedWithPath(_ excluded: Bool, urls: [URL]) async throws {
-        let command = [excluded ? "removeexclusion" : "addexclusion"]
-        let tmUtilArguments = ["-e", "do shell script \"tmutil \(command) -p ~/tmp\" with administrator privileges"]
-        
-        let data = try await runAndCaptureOutput(executableURL: osascriptURL, arguments: tmUtilArguments).result.get()
+    func setExcludedByPath(_ excluded: Bool, urls: [URL]) async throws {
+        let command = excluded ? "removeexclusion" : "addexclusion"
+        let tmUtilArguments = [command, "-p"] + urls.map { $0.standardized.path }
+
+        let data = try await runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments).result.get()
         
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
     }
