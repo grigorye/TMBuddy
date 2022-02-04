@@ -7,6 +7,9 @@ func checkSanity() {
 }
 
 func reportPaths() {
+    Task {
+        try await TMUtilXPCMetadataWriter().setExcluded(true, urls: [URL(fileURLWithPath: NSTemporaryDirectory())])
+    }
     dump(Bundle.main.bundlePath, name: "mainBundlePath")
 
     dump(FileManager.default.homeDirectoryForCurrentUser(ignoringSandbox: true).path, name: "homeDirectoryForCurrentUser")
