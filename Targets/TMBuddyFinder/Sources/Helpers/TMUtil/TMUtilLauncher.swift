@@ -7,7 +7,8 @@ struct TMUtilLauncher {
 
     func setExcluded(_ excluded: Bool, urls: [URL]) async throws {
         dump((excluded, path: urls.paths), name: "args")
-        let tmUtilArguments = [excluded ? "removeexclusion" : "addexclusion"] + urls.map { $0.standardized.path }
+        let command = excluded ? "removeexclusion" : "addexclusion"
+        let tmUtilArguments = [command] + urls.map { $0.standardized.path }
         
         let data = try await runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments).result.get()
         
@@ -40,7 +41,8 @@ struct TMUtilLauncher {
                 case 1:
                     return true
                 default:
-                    throw dump(TMUtilIsExcludedOutputParseError.unrecognizableIsExcluded(response), name: "error")
+                    dump((response), name: "unrecognizableIsExcludedInResponse")
+                    throw TMUtilIsExcludedOutputParseError.unrecognizableIsExcluded(response)
                 }
             }()
             return (url, isExcluded)
