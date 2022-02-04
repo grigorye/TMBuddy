@@ -48,7 +48,7 @@ struct PlugInFullDiskAccessCheckPointView: View {
         }()
         
         CheckpointView(
-            title: "Time Machine settings access",
+            title: "Time Machine settings read rights",
             subtitle: "\(appName) reads the list of paths excluded from backup from Time Machine settings.",
             value: value,
             readiness: readiness
