@@ -8,6 +8,7 @@ struct SandboxAccessView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Group {
+                SMJobBlessCheckpointView()
                 FinderExtensionCheckpointView()
                 PlugInFullDiskAccessCheckPointView()
                 FoldersSelectionCheckpointView()
