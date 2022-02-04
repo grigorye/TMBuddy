@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Blessed",
+        "repositoryURL": "https://github.com/trilemma-dev/Blessed",
+        "state": {
+          "branch": null,
+          "revision": "ef63245fc790152ec92a99b1f792f570c01a6769",
+          "version": "0.2.0"
+        }
+      },
+      {
         "package": "BoringSSL-GRPC",
         "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {

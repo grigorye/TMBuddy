@@ -46,6 +46,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-debug NO"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-debug YES"
             isEnabled = "NO">
          </CommandLineArgument>
@@ -89,6 +93,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-debug NO"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-debug YES"
             isEnabled = "NO">
          </CommandLineArgument>
@@ -126,6 +134,10 @@
          <CommandLineArgument
             argument = "-FIRDebugEnabled YES"
             isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-debug NO"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-debug YES"
