@@ -8,7 +8,7 @@ func checkSanity() {
 
 func reportPaths() {
     Task {
-        try await TMUtilXPCMetadataWriter().setExcluded(true, urls: [URL(fileURLWithPath: NSTemporaryDirectory())])
+        try await TMUtilPrivileged().setExcludedByPath(true, urls: [URL(fileURLWithPath: NSTemporaryDirectory())])
     }
     dump(Bundle.main.bundlePath, name: "mainBundlePath")
 
