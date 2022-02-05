@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		009991B677FA52653B42F63B /* TMUtilHelperXPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BD552FC45432BC3EE111E /* TMUtilHelperXPC.swift */; };
 		023E29386D16C1F4CD45D5A3 /* CrashlyticsErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AF40972DA296525C74608 /* CrashlyticsErrorReporter.swift */; };
 		02551E268116BDD236866B47 /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
 		0377414F06A846DA26C4F30D /* MainWindowTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE03FB3FD74C040B0C32C04A /* MainWindowTitle.swift */; };
@@ -19,6 +20,7 @@
 		0B47B596343384031C320712 /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
 		0DF40ABFA66D34F50F5866BD /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */; };
 		0E48817EE8B983C57401F716 /* UserDefaults+DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD39E10FE5C0F9852587029 /* UserDefaults+DefaultsKey.swift */; };
+		102D4CDD8480BBFDB30669F4 /* TMUtilPrivileged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D6E83FBE948307F14723B4 /* TMUtilPrivileged.swift */; };
 		1178811928E45ED50FEB4A62 /* TMBuddyTMUtilHelper in Embed Dependencies */ = {isa = PBXBuildFile; fileRef = 6FB1D703C17365FA388945BD /* TMBuddyTMUtilHelper */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		119ADDDF5C0467B90FA127FC /* PlugInFullDiskAccessCheckPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41C8C8FC6F0EB52DFE86D9 /* PlugInFullDiskAccessCheckPointView.swift */; };
 		1276B4AFD1D8D2B8835BD732 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A86C03CEBDAE4A3A2130D /* TMUtilLauncher.swift */; };
@@ -36,7 +38,6 @@
 		1C220F499B6E9D8E337B088F /* DebugCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4B134015CDCEA2D553C0B /* DebugCheckpointView.swift */; };
 		1F4F2126017A2E3FBF5FAE86 /* DirectLookupBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEC50D66E25871967A01F94 /* DirectLookupBasedStatusProviderTests.swift */; };
 		1F5567D07A1479C7ED16D07B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D14690115275A479C5F50 /* Debug.swift */; };
-		1F60719DC6F16924682D0E63 /* MetadataWriterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805A197D4C7C0E7B50ACCBE /* MetadataWriterInterface.swift */; };
 		1F91E508CA80C952116AB901 /* FinderSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65DD302B02506F84B735E5 /* FinderSyncResponse.swift */; };
 		22D5BF89219855E6526AA728 /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
 		248083F9D772A5E18221FC65 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D14690115275A479C5F50 /* Debug.swift */; };
@@ -48,9 +49,9 @@
 		2B52E3B6F227C1CBD09B11EA /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
 		2BE54B411F8B4406CF4026AF /* TimeMachinePathFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75752CCDFCF26C0769DB38 /* TimeMachinePathFilter.swift */; };
 		2D38AF56655285DBC763CA37 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA411051E98211125E79E23 /* ErrorReporter.swift */; };
-		2F8AB6623F3A5ECE76247A05 /* TMUtilXPCProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81377415592310D13F4D3ABF /* TMUtilXPCProxy.swift */; };
 		30027134FE7D82FEE963AD1C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD6471ABA7B9F437D73DE6A7 /* FirebaseAnalytics */; };
 		30028D62A6FF59404C00395E /* PlugInURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFD7A4AF382A0D6D64DDA2 /* PlugInURL.swift */; };
+		32A2439435DCCBFCCF0C8FE3 /* TMUtilHelperXPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BD552FC45432BC3EE111E /* TMUtilHelperXPC.swift */; };
 		332A6C99FB9E059389857F4A /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
 		33330CC152E0724F959BB1AD /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3CC5F2630243D69DDD741 /* Sugar.swift */; };
 		335E1CF426AFF17C325BB0F6 /* MetadataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7019D5FA22753621AA89B78 /* MetadataWriter.swift */; };
@@ -77,6 +78,7 @@
 		3FA2171693F7C4C528EC33C3 /* Bundle+PlugInURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1E2E4916A4606CA09A53B /* Bundle+PlugInURLs.swift */; };
 		40962E413F5F5EBFCF4C4F4E /* FullDiskAccessCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A138D08E00F3F72C49D4A07 /* FullDiskAccessCheckpointView.swift */; };
 		426C71EB1C8F99F975400706 /* UserDefaults+DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD39E10FE5C0F9852587029 /* UserDefaults+DefaultsKey.swift */; };
+		4334CD7A966D33FBB388B9DA /* TMUtilPrivileged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D6E83FBE948307F14723B4 /* TMUtilPrivileged.swift */; };
 		435BF08846543A906F51132B /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C2A999CAF70A0C4CEC90CB /* Icons.xcassets */; };
 		4568B114A4004D204D1FB9CD /* TimeMachinePathFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173068889EBA8B058F00D1A /* TimeMachinePathFilterTests.swift */; };
 		45C0B826ED1A9A1DE96C0BCE /* SandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2CBB5A64727943DC1BBF0 /* SandboxedBookmarks.swift */; };
@@ -84,6 +86,7 @@
 		49585EDDF75BA3EB0AF2220E /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */; };
 		4BB8B37220063D10433352ED /* Bundle+PlugInURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1E2E4916A4606CA09A53B /* Bundle+PlugInURLs.swift */; };
 		4BF45FC248895952280FDC80 /* TMUtilBasedStatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859E3E168BE4A66524302FC /* TMUtilBasedStatusProviderTests.swift */; };
+		4C9762A45EAC89A1E37D2560 /* TMUtilPrivileged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D6E83FBE948307F14723B4 /* TMUtilPrivileged.swift */; };
 		4E44D16FFCE7C7C4628AD822 /* FinderSyncRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C11063E2341BD1B9EB527 /* FinderSyncRequest.swift */; };
 		5026EAA79FB4963611B8A44D /* DebugFlagProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BAD3958C4D94FC1F3E44E /* DebugFlagProvider.swift */; };
 		52FF8670913AEBEAD346138C /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */; };
@@ -95,11 +98,11 @@
 		57338E0FEB81DD604DC4DED0 /* ErrorTracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0B065FEFA13F7635FD778 /* ErrorTracing.swift */; };
 		57C61AA9ABEDB13B0CAF7337 /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
 		5C42AD6E118593130A4970EC /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = BC55B3108067574AD631D7E9 /* SharedKit */; };
+		5D1DCE49C27BC24A2E24F458 /* TMUtilHelperXPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BD552FC45432BC3EE111E /* TMUtilHelperXPC.swift */; };
 		5D532B24C46D8B36F689C778 /* FinderSyncRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C11063E2341BD1B9EB527 /* FinderSyncRequest.swift */; };
 		6092E7774E708712B771B561 /* FullDiskAccessCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A138D08E00F3F72C49D4A07 /* FullDiskAccessCheckpointView.swift */; };
 		61B7A1F9CD832E605EADEEC0 /* TimeMachineUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D347A0B35FF7B51109D4D7 /* TimeMachineUserDefaults.swift */; };
 		6297E54B1BE8F27AA41248C8 /* TimeMachineVolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF471FD5C293A1281E47D7D3 /* TimeMachineVolumeFilter.swift */; };
-		63C31847463B106068B1D314 /* TMUtilXPCProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81377415592310D13F4D3ABF /* TMUtilXPCProxy.swift */; };
 		63D8A0C020499760AFEFA279 /* SourceLevel-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7626CFCE6CA0D896D65D2722 /* SourceLevel-3.swift */; };
 		6448BD9A26CA4F4E6F986EB4 /* FinderSyncInfoRequestPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58C441A6E62025C1886AEC5 /* FinderSyncInfoRequestPayload.swift */; };
 		64F088506DCD6DF05394A52B /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
@@ -112,6 +115,7 @@
 		71FE1A84F64761DC2DBA41B9 /* VolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89674A42645EC54F5A00FDE8 /* VolumeFilter.swift */; };
 		7454AA1118CCA05050E2889B /* SMJobBlessCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7471C7DC16931360C2C0C7 /* SMJobBlessCheckpointView.swift */; };
 		7473CFA1C305738B6ECF334A /* FinderSyncInfoRequestIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93286D446D0AF248A23D877 /* FinderSyncInfoRequestIndex.swift */; };
+		7AD452FDDD38244675BC4345 /* TMUtilHelperXPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BD552FC45432BC3EE111E /* TMUtilHelperXPC.swift */; };
 		7DAEE82C61247C60CDF32E22 /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */; };
 		81010878D57BA816E407E378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1243084DC4CD5F92244B6681 /* GoogleService-Info.plist */; };
 		810B8AF85EBCF581E5F273BC /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6EAC65503209B9B9CA1C4B /* Launching.swift */; };
@@ -127,7 +131,6 @@
 		8B4C9582CCE4E2CF2B963BEB /* ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688A73E924E17AB042449119 /* ExtendedAttributes.swift */; };
 		8D58C62158E87601D808878C /* FullDiskAccessImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2F12AB3EA6F894C720426 /* FullDiskAccessImp.swift */; };
 		8E46CF3ED447C4E9273695D0 /* MetadataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051874D66301D33734B8DC6A /* MetadataReader.swift */; };
-		8E4C026C94D576D9066B307F /* MetadataWriterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805A197D4C7C0E7B50ACCBE /* MetadataWriterInterface.swift */; };
 		92F49FBD68BF84B1898D8970 /* DebugCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4B134015CDCEA2D553C0B /* DebugCheckpointView.swift */; };
 		93015E968CFED0A0D7C8A4F9 /* PlugInFullDiskAccessCheckPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41C8C8FC6F0EB52DFE86D9 /* PlugInFullDiskAccessCheckPointView.swift */; };
 		93B38095BF8735FF86B66204 /* ScopedSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC5A5C026805C9922B665F /* ScopedSandboxedBookmarks.swift */; };
@@ -148,7 +151,7 @@
 		A00944584E39752C9F96A364 /* PlistManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B61EA2ECD640189452EEC /* PlistManipulation.swift */; };
 		A1CAAF0F962278938E4A8349 /* FileManager+Sandboxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F58547D7798D62E4E697EF /* FileManager+Sandboxing.swift */; };
 		A1E025BDBBEBC983413F0AD7 /* DirectLookupBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40DA075E3C83B20B5CB68B /* DirectLookupBasedStatusProvider.swift */; };
-		A2555163924AA734F3CFDA93 /* MetadataWriterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805A197D4C7C0E7B50ACCBE /* MetadataWriterInterface.swift */; };
+		A22B1369E0C4F3982EFEC994 /* TMUtilPrivileged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D6E83FBE948307F14723B4 /* TMUtilPrivileged.swift */; };
 		A27419AE82BB186EC333983C /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3CC5F2630243D69DDD741 /* Sugar.swift */; };
 		A282C1A85F1C6C87D71A8F0F /* SMJobBlessCheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7471C7DC16931360C2C0C7 /* SMJobBlessCheckpointView.swift */; };
 		A2FAA4E50F7FC71A9B2897CB /* OSLogErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5427F51D8F9CD166A96CFC33 /* OSLogErrorReporter.swift */; };
@@ -184,7 +187,6 @@
 		C9AC650334B2687EA13D9907 /* Blessed in Frameworks */ = {isa = PBXBuildFile; productRef = 9213A8C8A756F5FBA8F35690 /* Blessed */; };
 		CB67CE80F7683B270C94A51A /* OSLogErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5427F51D8F9CD166A96CFC33 /* OSLogErrorReporter.swift */; };
 		CBD2F147EF0B6B2BDB19110F /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559DB1B0BD5E0E8803B42 /* Tracing.swift */; };
-		CC9F8C16B612DF85D68BEC38 /* MetadataWriterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805A197D4C7C0E7B50ACCBE /* MetadataWriterInterface.swift */; };
 		CD3831ED2BFEFCD81B3CB267 /* MDItemBackupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB40B83EC2935F2E891B31A6 /* MDItemBackupController.swift */; };
 		CD90BADFBD82319F2AE543ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D2CAE78C19E5BB9E46EDD9 /* ContentView.swift */; };
 		CDF3317113C7FCEE64C8C99F /* ScopedSandboxedBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC5A5C026805C9922B665F /* ScopedSandboxedBookmarks.swift */; };
@@ -246,7 +248,6 @@
 		F856AA48429F377F6F6D84E3 /* PathUtilities+Sandboxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */; };
 		F8F8C3DCA53B3D8858C1CA48 /* PathFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB4905B3809CBB3B4C99FDA /* PathFilter.swift */; };
 		FB77745A8E8C74C6924C63A8 /* Launching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6EAC65503209B9B9CA1C4B /* Launching.swift */; };
-		FD2E810ED9A221882B34E804 /* TMUtilXPCProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81377415592310D13F4D3ABF /* TMUtilXPCProxy.swift */; };
 		FE6A9A515A30C0AC18873C06 /* TMUtilBasedStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B1FA42268074B118B2BFE /* TMUtilBasedStatusProvider.swift */; };
 		FE72F8580C82ECD62770F8BC /* String+Ranges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E9D098D06436BA18B2896 /* String+Ranges.swift */; };
 		FF0095B0E1EF38A44828AB4C /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C551C04BE645AD741F429489 /* UserDefaultsObserver.swift */; };
@@ -306,7 +307,6 @@
 		1E8D14690115275A479C5F50 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		23DC765C05C90830E857DC28 /* TMBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TMBuddy.entitlements; sourceTree = "<group>"; };
 		245A96EFD04DED5DE47E39CA /* TMBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBuddyTests.swift; sourceTree = "<group>"; };
-		2805A197D4C7C0E7B50ACCBE /* MetadataWriterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataWriterInterface.swift; sourceTree = "<group>"; };
 		295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PathUtilities+Sandboxing.swift"; sourceTree = "<group>"; };
 		2B4FFE2A3FA843D85516307A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BA411051E98211125E79E23 /* ErrorReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
@@ -316,6 +316,7 @@
 		39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseIntegration.swift; sourceTree = "<group>"; };
 		3EE6AB800A72279CB08C542F /* TMBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBuddyApp.swift; sourceTree = "<group>"; };
 		43CD0EF520A5D61FBBC4E50D /* SMJobBlessCheckpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMJobBlessCheckpointProvider.swift; sourceTree = "<group>"; };
+		462BD552FC45432BC3EE111E /* TMUtilHelperXPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMUtilHelperXPC.swift; sourceTree = "<group>"; };
 		469AF40972DA296525C74608 /* CrashlyticsErrorReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsErrorReporter.swift; sourceTree = "<group>"; };
 		4C6EAC65503209B9B9CA1C4B /* Launching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launching.swift; sourceTree = "<group>"; };
 		4CD39E10FE5C0F9852587029 /* UserDefaults+DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+DefaultsKey.swift"; sourceTree = "<group>"; };
@@ -346,10 +347,10 @@
 		7A12A5FFD2A673AB334FB2A7 /* TMBuddyFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TMBuddyFinder.entitlements; sourceTree = "<group>"; };
 		7B75752CCDFCF26C0769DB38 /* TimeMachinePathFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachinePathFilter.swift; sourceTree = "<group>"; };
 		7F7471C7DC16931360C2C0C7 /* SMJobBlessCheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMJobBlessCheckpointView.swift; sourceTree = "<group>"; };
-		81377415592310D13F4D3ABF /* TMUtilXPCProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMUtilXPCProxy.swift; sourceTree = "<group>"; };
 		8559AEA7078BAAF278B09AA6 /* DisplayNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNames.swift; sourceTree = "<group>"; };
 		860E9D098D06436BA18B2896 /* String+Ranges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ranges.swift"; sourceTree = "<group>"; };
 		89674A42645EC54F5A00FDE8 /* VolumeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeFilter.swift; sourceTree = "<group>"; };
+		89D6E83FBE948307F14723B4 /* TMUtilPrivileged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMUtilPrivileged.swift; sourceTree = "<group>"; };
 		8F7B1FA42268074B118B2BFE /* TMUtilBasedStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMUtilBasedStatusProvider.swift; sourceTree = "<group>"; };
 		8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachinePermissionsReporting.swift; sourceTree = "<group>"; };
 		93129EF4DF440EDF5D8033F5 /* Default.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Default.xcconfig; sourceTree = "<group>"; };
@@ -660,7 +661,6 @@
 			isa = PBXGroup;
 			children = (
 				FEEA6A13DDBFCBDDD717C8DA /* TMStatusProvider.swift */,
-				81377415592310D13F4D3ABF /* TMUtilXPCProxy.swift */,
 				DED05952072C9048EC161FB1 /* DirectLookup */,
 				49B21DFB6B4E4C8A793712A6 /* TMUtil */,
 			);
@@ -670,7 +670,8 @@
 		8A10071C9E0065D7F54E8C88 /* XPC */ = {
 			isa = PBXGroup;
 			children = (
-				2805A197D4C7C0E7B50ACCBE /* MetadataWriterInterface.swift */,
+				462BD552FC45432BC3EE111E /* TMUtilHelperXPC.swift */,
+				89D6E83FBE948307F14723B4 /* TMUtilPrivileged.swift */,
 			);
 			path = XPC;
 			sourceTree = "<group>";
@@ -1073,7 +1074,6 @@
 				F6E4126D79086072D590FB33 /* MainWindowTitle.swift in Sources */,
 				B7B3C38294944E1B1841E16E /* MetadataReader.swift in Sources */,
 				F251746255AC7A121566C698 /* MetadataWriter.swift in Sources */,
-				1F60719DC6F16924682D0E63 /* MetadataWriterInterface.swift in Sources */,
 				9CFE3A45CBDEF03BD140C96D /* OSLogErrorReporter.swift in Sources */,
 				957A9BA827F7693AB44A7E44 /* OnLaunch.swift in Sources */,
 				DF529D3EA744C9D3AD3C4E68 /* PathFilter.swift in Sources */,
@@ -1100,8 +1100,9 @@
 				3BB87C8BBE7C217941146791 /* TMStatus.swift in Sources */,
 				E68090BBFEEDE1A78D20811B /* TMStatusProvider.swift in Sources */,
 				151555C99FBB0D8C6DB1EFE0 /* TMUtilBasedStatusProvider.swift in Sources */,
+				7AD452FDDD38244675BC4345 /* TMUtilHelperXPC.swift in Sources */,
 				33BBFC3924E45F09344A0F8B /* TMUtilLauncher.swift in Sources */,
-				FD2E810ED9A221882B34E804 /* TMUtilXPCProxy.swift in Sources */,
+				4334CD7A966D33FBB388B9DA /* TMUtilPrivileged.swift in Sources */,
 				F26ED931E5477F65A6ADD96D /* TimeMachinePathFilter.swift in Sources */,
 				DEA1BEC65FCC3DF8A0FBAE6D /* TimeMachinePermissionsReporting.swift in Sources */,
 				C80F671AF27EFE947E8AE9EE /* TimeMachineUserDefaults.swift in Sources */,
@@ -1122,10 +1123,11 @@
 				9457116CC9966E57EC6CB5E6 /* ErrorReporter.swift in Sources */,
 				BA6EF918DC7F6019845F8722 /* ErrorTracing.swift in Sources */,
 				6E4964978D0814AF335C384F /* Launching.swift in Sources */,
-				8E4C026C94D576D9066B307F /* MetadataWriterInterface.swift in Sources */,
 				CB67CE80F7683B270C94A51A /* OSLogErrorReporter.swift in Sources */,
 				DB596AD7DC5E5A5341FE1F19 /* Sugar.swift in Sources */,
+				009991B677FA52653B42F63B /* TMUtilHelperXPC.swift in Sources */,
 				A8E24206156276F50EC9D0D3 /* TMUtilLauncher.swift in Sources */,
+				A22B1369E0C4F3982EFEC994 /* TMUtilPrivileged.swift in Sources */,
 				57C61AA9ABEDB13B0CAF7337 /* Tracing.swift in Sources */,
 				EB356A30BCBE82D22D9963C9 /* main.swift in Sources */,
 			);
@@ -1162,7 +1164,6 @@
 				CD3831ED2BFEFCD81B3CB267 /* MDItemBackupController.swift in Sources */,
 				AB1DD02971FB0BF85B8A261B /* MetadataReader.swift in Sources */,
 				335E1CF426AFF17C325BB0F6 /* MetadataWriter.swift in Sources */,
-				CC9F8C16B612DF85D68BEC38 /* MetadataWriterInterface.swift in Sources */,
 				F4418EEC52E383142FE60ACA /* OSLogErrorReporter.swift in Sources */,
 				24B10E65C865721816D8161D /* OnLaunch.swift in Sources */,
 				F8F8C3DCA53B3D8858C1CA48 /* PathFilter.swift in Sources */,
@@ -1182,8 +1183,9 @@
 				AFBCC760F8AA4263037B607D /* TMStatus.swift in Sources */,
 				B797870C8499FB5CD42B43E7 /* TMStatusProvider.swift in Sources */,
 				1424F220B7521E480440E3B3 /* TMUtilBasedStatusProvider.swift in Sources */,
+				5D1DCE49C27BC24A2E24F458 /* TMUtilHelperXPC.swift in Sources */,
 				1276B4AFD1D8D2B8835BD732 /* TMUtilLauncher.swift in Sources */,
-				63C31847463B106068B1D314 /* TMUtilXPCProxy.swift in Sources */,
+				102D4CDD8480BBFDB30669F4 /* TMUtilPrivileged.swift in Sources */,
 				DA35202C1FFFB85B835EB865 /* TimeMachinePathFilter.swift in Sources */,
 				64F088506DCD6DF05394A52B /* TimeMachinePermissionsReporting.swift in Sources */,
 				398F87448047F1EE6E602F51 /* TimeMachineUserDefaults.swift in Sources */,
@@ -1240,7 +1242,6 @@
 				0377414F06A846DA26C4F30D /* MainWindowTitle.swift in Sources */,
 				8E46CF3ED447C4E9273695D0 /* MetadataReader.swift in Sources */,
 				26A03A7C9C7CA6BE72745594 /* MetadataWriter.swift in Sources */,
-				A2555163924AA734F3CFDA93 /* MetadataWriterInterface.swift in Sources */,
 				A2FAA4E50F7FC71A9B2897CB /* OSLogErrorReporter.swift in Sources */,
 				533B5C990D99D26CEF9E2B53 /* OnLaunch.swift in Sources */,
 				08D2D70A65D31D57D61BFA36 /* PathFilter.swift in Sources */,
@@ -1268,8 +1269,9 @@
 				DB553DCFE0B8BAC99955E8D1 /* TMStatusProvider.swift in Sources */,
 				FE6A9A515A30C0AC18873C06 /* TMUtilBasedStatusProvider.swift in Sources */,
 				4BF45FC248895952280FDC80 /* TMUtilBasedStatusProviderTests.swift in Sources */,
+				32A2439435DCCBFCCF0C8FE3 /* TMUtilHelperXPC.swift in Sources */,
 				958EEAFB6C2D544D4C731AE6 /* TMUtilLauncher.swift in Sources */,
-				2F8AB6623F3A5ECE76247A05 /* TMUtilXPCProxy.swift in Sources */,
+				4C9762A45EAC89A1E37D2560 /* TMUtilPrivileged.swift in Sources */,
 				2BE54B411F8B4406CF4026AF /* TimeMachinePathFilter.swift in Sources */,
 				4568B114A4004D204D1FB9CD /* TimeMachinePathFilterTests.swift in Sources */,
 				02551E268116BDD236866B47 /* TimeMachinePermissionsReporting.swift in Sources */,
