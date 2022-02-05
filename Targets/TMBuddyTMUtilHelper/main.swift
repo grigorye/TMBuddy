@@ -2,16 +2,15 @@ import Foundation
 import SharedKit
 import os.log
 
-final class MetadataWritingService: NSObject, ServiceInterface, MetadataWriterInterface {
+final class TMUtilHelperXPCImp: NSObject, ServiceInterface, TMUtilHelperXPC {
     
-    /// XPC interface for collecting logs.
-    static let interface: Protocol = MetadataWriterInterface.self
+    static let interface: Protocol = TMUtilHelperXPC.self
     
     func ping() {
         dump((), name: "ping")
     }
     
-    func setExcluded(_ value: Bool, paths: [String]) {
+    func setExcludedByPath(_ value: Bool, paths: [String]) {
         dump(paths, name: "paths")
         let urls = paths.map { URL.init(fileURLWithPath: $0) }
         Task {
@@ -24,7 +23,7 @@ private let log: OSLog = .default
 
 os_log(.info, log: log, "launched")
 
-let delegate = ServiceDelegate(serviceInterfaceType: MetadataWritingService.self)
+let delegate = ServiceDelegate(serviceInterfaceType: TMUtilHelperXPCImp.self)
 let listener = NSXPCListener(machServiceName: "com.grigorye.TMBuddy.TMUtilHelper")
 listener.delegate = delegate
 listener.resume()

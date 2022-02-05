@@ -23,17 +23,16 @@ class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
     }
     
     func invalidateInfoTick() {
-        let tmUtilXPC = XPC<MetadataWriterInterface>(
+        let tmUtilHelperXPC = XPC<TMUtilHelperXPC>(
             configuration: .machServiceName("com.grigorye.TMBuddy.TMUtilHelper", options: .privileged),
             errorHandler: { [weak self] error in
                 self?.state = .toolNotInstalled
             }
         )
         
-        tmUtilXPC.callProxy { [weak self] proxy in
+        tmUtilHelperXPC.callProxy { [weak self] proxy in
             proxy.ping()
             self?.state = .toolInstalled
         }
     }
 }
-
