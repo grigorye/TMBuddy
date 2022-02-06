@@ -38,7 +38,9 @@ class HostAppConnectionController {
             let untrustedRequestVersion = requestHeader.version
             otherPartyIsAlien = untrustedRequestVersion != plugInHostConnectionVersion
             if otherPartyIsAlien {
-                dump((requestVersion: untrustedRequestVersion, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
+                if defaults.bool(forKey: DefaultsKey.debugAlien) {
+                    dump((requestVersion: untrustedRequestVersion, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
+                }
             }
         } catch {
             dump((error, payload: payload), name: "requestHeaderDecodingFailed")
