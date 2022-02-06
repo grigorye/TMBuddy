@@ -114,6 +114,8 @@ targets:
       - path: Targets/TMBuddyFinder/Sources
         excludes:
           - Main
+    dependencies:
+      - package: Blessed
 
 packages:
   Firebase:
