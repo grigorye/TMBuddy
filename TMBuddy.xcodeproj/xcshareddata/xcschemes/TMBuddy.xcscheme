@@ -62,6 +62,14 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-forceFakeFailureOnExcludeByPath YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-suppressErrorReporting YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-suppressNSLog YES"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -109,6 +117,14 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-forceFakeFailureOnExcludeByPath YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-suppressErrorReporting YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-suppressNSLog YES"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -150,6 +166,14 @@
          <CommandLineArgument
             argument = "-forceAppStoreLikeWindowTitle YES"
             isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-forceFakeFailureOnExcludeByPath YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-suppressErrorReporting YES"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-suppressNSLog YES"
