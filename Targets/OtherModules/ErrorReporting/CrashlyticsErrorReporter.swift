@@ -1,3 +1,5 @@
+#if canImport(FirebaseCrashlytics)
+
 import FirebaseCrashlytics
 
 struct CrashlyticsErrorReporter: ErrorReporter {
@@ -19,3 +21,5 @@ struct CrashlyticsErrorReporter: ErrorReporter {
 #endif
     }
 }
+
+#endif
