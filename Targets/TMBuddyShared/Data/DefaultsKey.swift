@@ -16,4 +16,6 @@ enum DefaultsKey: String, CaseIterable {
     case forceTMUtilBasedStatusProvider
     case forceMDItemMetadataReader
     case forceTMUtilMetadataWriter
+    
+    case forceFakeFailureOnExcludeByPath
 }

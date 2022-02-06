@@ -24,6 +24,7 @@ targets:
         "-suppressNSLog YES": true
         "-suppressErrorReporting YES": true
         "-forceAppStoreLikeWindowTitle YES": false
+        "-forceFakeFailureOnExcludeByPath YES": false
         "-debug YES": false
         "-debug NO": true
         "-FIRDebugEnabled YES": false
