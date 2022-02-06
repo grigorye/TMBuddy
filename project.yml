@@ -22,6 +22,7 @@ targets:
       commandLineArguments:
         "-enableDump YES": true
         "-suppressNSLog YES": true
+        "-suppressErrorReporting YES": true
         "-forceAppStoreLikeWindowTitle YES": false
         "-debug YES": false
         "-debug NO": true
