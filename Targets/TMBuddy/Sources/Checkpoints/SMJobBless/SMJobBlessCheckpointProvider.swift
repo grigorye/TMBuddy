@@ -1,4 +1,3 @@
-import SharedKit
 import Foundation
 
 class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
@@ -23,16 +22,21 @@ class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
     }
     
     func invalidateInfoTick() {
-        let tmUtilHelperXPC = XPC<TMUtilHelperXPC>(
-            configuration: .machServiceName("com.grigorye.TMBuddy.TMUtilHelper", options: .privileged),
-            errorHandler: { [weak self] error in
-                self?.state = .toolNotInstalled
-            }
-        )
         
-        tmUtilHelperXPC.callProxy { [weak self] proxy in
-            proxy.ping()
-            self?.state = .toolInstalled
+        let task = Task {
+            try await helperVersion()
+        }
+        Task {
+            let result = await task.result
+            dump(result, name: "helperVersionResult")
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .failure:
+                    self?.state = .toolNotInstalled
+                case .success:
+                    self?.state = .toolInstalled
+                }
+            }
         }
     }
 }
