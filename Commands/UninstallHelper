@@ -1,0 +1,10 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+service="com.grigorye.TMBuddy.TMUtilHelper"
+
+sudo launchctl remove "$service" || true
+sudo rm -v /Library/LaunchDaemons/"$service".plist
+sudo rm -v /Library/PrivilegedHelperTools/"$service"
