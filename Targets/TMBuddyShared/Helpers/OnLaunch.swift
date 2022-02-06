@@ -4,7 +4,9 @@ func onLaunch() {
 }
 
 func activateErrorReporting() {
+    #if canImport(FirebaseCrashlytics)
     let crashlyticsErrorReporter = CrashlyticsErrorReporter()
     crashlyticsErrorReporter.activate()
     errorReporters += [crashlyticsErrorReporter]
+    #endif
 }
