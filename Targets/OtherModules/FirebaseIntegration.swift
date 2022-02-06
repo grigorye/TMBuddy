@@ -1,3 +1,5 @@
+#if canImport(Firebase)
+
 import Firebase
 
 func activateFirebase() {
@@ -5,3 +7,5 @@ func activateFirebase() {
     FirebaseApp.configure()
     #endif
 }
+
+#endif
