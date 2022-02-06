@@ -38,7 +38,9 @@ class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
         debug { dump(response, name: "response") }
         let newAccessGranted: AccessState
         guard case let .success(successResult) = response.result else {
-            dump((result: response.result, response: response), name: "failureInResponse")
+            debug {
+                dump((result: response.result, response: response), name: "failureInResponse")
+            }
             return
         }
         guard case let .checkStatus(.timeMachinePreferencesAccess(timeMachinePreferencesAccess)) = successResult else {
