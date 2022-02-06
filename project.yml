@@ -35,7 +35,6 @@ targets:
         copy:
           destination: wrapper
           subpath: Contents/Library/LaunchServices
-      - package: SharedKit
       - package: Blessed
       - package: Firebase
         product: FirebaseCrashlytics
@@ -60,7 +59,6 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.Finder
       OTHER_LDFLAGS: -ObjC
     dependencies:
-      - package: SharedKit
       - package: Firebase
         product: FirebaseCrashlytics
       - package: Firebase
@@ -76,6 +74,8 @@ targets:
       - Targets/TMBuddyFinder/Sources/Helpers/TMUtil/TMUtilLauncher.swift
       - Targets/OtherModules/Tracing.swift
       - Targets/OtherModules/ErrorTracing.swift
+      - Targets/OtherModules/XPC
+      - Targets/OtherModules/SourceLevel
       - path: Targets/OtherModules/ErrorReporting
         excludes:
           - CrashlyticsErrorReporter.swift
@@ -83,7 +83,12 @@ targets:
       - Targets/OtherModules/Array+URLPaths.swift
       - Targets/OtherModules/Launching.swift
       - Targets/OtherModules/Sugar.swift
-      - Targets/TMBuddyShared/XPC
+      - Targets/OtherModules/UserDefaults+DefaultsKey.swift
+      - Targets/TMBuddyShared/XPC/TMUtilHelperXPC.swift
+      - Targets/TMBuddyShared/XPC/CommonHelperXPC.swift
+      - Targets/TMBuddyShared/Globals
+      - Targets/TMBuddyShared/Data/DefaultsKey.swift
+      - Targets/TMBuddyShared/Data/PlugInHostConnectionVersion.swift
     settings:
       SKIP_INSTALL: YES
       PRODUCT_NAME: com.grigorye.TMBuddy.TMUtilHelper
@@ -91,8 +96,6 @@ targets:
       INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info.plist
       PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.TMUtilHelper
       OTHER_LDFLAGS: -sectcreate __TEXT __info_plist Targets/TMBuddyTMUtilHelper/Bundle/Info.plist -sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist
-    dependencies:
-      - package: SharedKit
 
   TMBuddyTests:
     type: bundle.unit-test
@@ -116,8 +119,6 @@ packages:
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk.git
     from: '8.0'
-  SharedKit:
-    path: ./ThirdParties/SwiftXPC/SharedKit
   Blessed:
     url: https://github.com/trilemma-dev/Blessed
     from: '0.0.1'
