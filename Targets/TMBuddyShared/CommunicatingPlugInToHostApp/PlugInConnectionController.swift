@@ -45,7 +45,9 @@ class PlugInConnectionController {
             }
             // If the plugin is alien, neither we can trust the data it provides, nor the plugin should return anything but error.
             if responseHeader.version != plugInHostConnectionVersion {
-                dump((responseHeader: responseHeader, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
+                if defaults.bool(forKey: DefaultsKey.debugAlien) {
+                    dump((responseHeader: responseHeader, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
+                }
                 let responseHeaderWithFailure: FinderSyncInfoResponseHeaderWithFailure
                 do {
                     responseHeaderWithFailure = try PropertyListDecoder().decode(FinderSyncInfoResponseHeaderWithFailure.self, from: dataFromPlist(payload))
