@@ -2,6 +2,7 @@ enum DefaultsKey: String, CaseIterable {
     case sandboxedBookmarks
     case scopedSandboxedBookmarks
     
+    case suppressErrorReporting
     case debug
     case suppressNSLog
     case enableDump

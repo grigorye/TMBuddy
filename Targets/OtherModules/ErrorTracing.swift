@@ -1,3 +1,5 @@
+import Foundation
+
 func postDump<T>(_ value: T, name: String?, file: String, function: String, line: Int, callStack: CallStack) {
     hookErrorReportersForDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
 }
@@ -11,8 +13,10 @@ private func hookErrorReportersForDump<T>(_ value: T, name: String?, file: Strin
         return
     }
     
-    errorReporters.forEach {
-        $0.reportError(value, name: name, file: file, function: function, line: line, callStack: callStack)
+    if !UserDefaults.standard.bool(forKey: DefaultsKey.suppressErrorReporting) {
+        errorReporters.forEach {
+            $0.reportError(value, name: name, file: file, function: function, line: line, callStack: callStack)
+        }
     }
 }
 
