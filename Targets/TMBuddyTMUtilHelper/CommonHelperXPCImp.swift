@@ -1,5 +1,4 @@
 import Foundation
-import SharedKit
 
 class CommonHelperXPCImp: NSObject, CommonHelperXPC {
     
@@ -16,9 +15,8 @@ class CommonHelperXPCImp: NSObject, CommonHelperXPC {
             reply(await version())
         }
     }
-}
 
-extension CommonHelperXPC {
+    // MARK: -
     
     func crash() async throws -> Bool {
         enum Error: Swift.Error {
