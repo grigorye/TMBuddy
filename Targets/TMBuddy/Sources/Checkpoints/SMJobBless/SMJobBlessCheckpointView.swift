@@ -37,6 +37,19 @@ struct SMJobBlessCheckpointView: View {
                     NSApp.presentError(error)
                 }
             }
+            Button("Install Frameworks") {
+                let task = Task {
+                    try await performCommonHelperXPC { (proxy: CommonHelperXPC, continuation) in
+                        proxy.postInstall(sourceBundlePath: Bundle.main.bundlePath) { error in
+                            continuation.resume(with: error.flatMap { .failure($0) } ?? .success(()))
+                        }
+                    }
+                }
+                Task {
+                    let result = await task.result
+                    dump(result, name: "postInstallResult")
+                }
+            }
         }
     }
 }
