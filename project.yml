@@ -6,6 +6,7 @@ targets:
     deploymentTarget: "10.15"
     sources:
       - Targets/TMBuddy/Sources
+      - Targets/TMBuddy/Resources
       - Targets/TMBuddyShared
       - Targets/OtherModules
       - path: Targets/TMBuddyFinder/Sources
