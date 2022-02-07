@@ -96,7 +96,10 @@ targets:
       ENABLE_HARDENED_RUNTIME: YES
       INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info-$(GE_INFOPLIST_KIND).plist
       PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.TMUtilHelper
-      OTHER_LDFLAGS: -sectcreate __TEXT __info_plist $(INFOPLIST_FILE) -sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist
+      INFOPLIST_PREPROCESS: YES
+      INFOPLIST_PREPROCESSOR_DEFINITIONS: BUNDLE_VERSION=$(BUNDLE_VERSION)
+      CREATE_INFOPLIST_SECTION_IN_BINARY: YES
+      OTHER_LDFLAGS: -sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist
 
   TMBuddyTests:
     type: bundle.unit-test
