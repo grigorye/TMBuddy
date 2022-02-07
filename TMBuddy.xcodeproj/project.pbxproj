@@ -11,6 +11,7 @@
 		009991B677FA52653B42F63B /* TMUtilHelperXPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462BD552FC45432BC3EE111E /* TMUtilHelperXPC.swift */; };
 		023E29386D16C1F4CD45D5A3 /* CrashlyticsErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AF40972DA296525C74608 /* CrashlyticsErrorReporter.swift */; };
 		02551E268116BDD236866B47 /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
+		0553E4D11DDF44A4F6C0D458 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85125836607F2FC01C2C6D19 /* GoogleService-Info.plist */; };
 		08D2D70A65D31D57D61BFA36 /* PathFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB4905B3809CBB3B4C99FDA /* PathFilter.swift */; };
 		094C546038BBF1A9E6798A0A /* RunListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60D8FE8D10D8BD62D0398CE /* RunListener.swift */; };
 		0A042894860D95DE3868734C /* JsonBackwardCompatibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC34A69ABFCA5DC796AA7F12 /* JsonBackwardCompatibilityTests.swift */; };
@@ -109,6 +110,7 @@
 		6297E54B1BE8F27AA41248C8 /* TimeMachineVolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF471FD5C293A1281E47D7D3 /* TimeMachineVolumeFilter.swift */; };
 		6448BD9A26CA4F4E6F986EB4 /* FinderSyncInfoRequestPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58C441A6E62025C1886AEC5 /* FinderSyncInfoRequestPayload.swift */; };
 		64F088506DCD6DF05394A52B /* TimeMachinePermissionsReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF97F4C39B49DFEF00AA5E1 /* TimeMachinePermissionsReporting.swift */; };
+		675F493CFEC7DB4660731624 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310EE0A736FC23CC83DCD19C /* Main.storyboard */; };
 		69FDA8FDB17ED4B087A96088 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D14690115275A479C5F50 /* Debug.swift */; };
 		6CF0D0FC53874BD275B4CE0A /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BAD9EDCF7C5A2DE457F56B /* FirebaseIntegration.swift */; };
 		6DFAD803F20BFBAEC7B77C35 /* HostAppConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8398849E6D927549E6D7FE /* HostAppConnectionController.swift */; };
@@ -133,6 +135,7 @@
 		899A47042E80E5D912B8580F /* PlugInConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80477CF83E4D4959FD6F4BB /* PlugInConnectionController.swift */; };
 		8A7666B15D936E06C66EC6ED /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611BC468B2C25BC175CAEFF /* BuildInfo.swift */; };
 		8B4C9582CCE4E2CF2B963BEB /* ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688A73E924E17AB042449119 /* ExtendedAttributes.swift */; };
+		8D33B663C8A1CAF9CA34AB68 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06ADC2CD81C60BCBD647981A /* Icons.xcassets */; };
 		8DFED9C948E4205C819ED36A /* ObjCProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608AAB4CAA39A7CD11728850 /* ObjCProtocols.swift */; };
 		8E46CF3ED447C4E9273695D0 /* MetadataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051874D66301D33734B8DC6A /* MetadataReader.swift */; };
 		8E9CBD938DACF933160E3BFA /* HelperVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA246DAE91B0755446676C /* HelperVersion.swift */; };
@@ -168,6 +171,7 @@
 		A6FC3332C7406507D1E7C762 /* CommonHelperXPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88901D8FAD713E62E916F409 /* CommonHelperXPC.swift */; };
 		A8E24206156276F50EC9D0D3 /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A86C03CEBDAE4A3A2130D /* TMUtilLauncher.swift */; };
 		AA61AEE1B44073D75682912F /* TMBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F57453E6549C32A8BB3D46 /* TMBuddyApp.swift */; };
+		AB09A1372184E4D469E19E98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E616F440E6E41C4C1D0CE7AF /* Assets.xcassets */; };
 		AB1DD02971FB0BF85B8A261B /* MetadataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051874D66301D33734B8DC6A /* MetadataReader.swift */; };
 		AB6E1B54B715586360195D0A /* FinderSyncInfoResponseIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742427BAF6F6E55524E94BDC /* FinderSyncInfoResponseIndex.swift */; };
 		AC4B0759FE38ACE3DA37E7A5 /* CheckpointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B361DBCEF0253957DC55ABF /* CheckpointView.swift */; };
@@ -326,6 +330,7 @@
 		00CC5B8A26B95A38809BC458 /* PlugInFullDiskAccessCheckPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugInFullDiskAccessCheckPointView.swift; sourceTree = "<group>"; };
 		026C59837B1BFA77B346A213 /* XPCListenerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCListenerDelegate.swift; sourceTree = "<group>"; };
 		051874D66301D33734B8DC6A /* MetadataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataReader.swift; sourceTree = "<group>"; };
+		06ADC2CD81C60BCBD647981A /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		0B361DBCEF0253957DC55ABF /* CheckpointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointView.swift; sourceTree = "<group>"; };
 		1243084DC4CD5F92244B6681 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		17343307ADE73876ABA08827 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
@@ -338,6 +343,7 @@
 		28B0FDFFDA7AA540302E23C2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		295047231D2B4292ABD0B545 /* PathUtilities+Sandboxing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PathUtilities+Sandboxing.swift"; sourceTree = "<group>"; };
 		2BA411051E98211125E79E23 /* ErrorReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
+		310EE0A736FC23CC83DCD19C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		33FA246DAE91B0755446676C /* HelperVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperVersion.swift; sourceTree = "<group>"; };
 		37F58547D7798D62E4E697EF /* FileManager+Sandboxing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Sandboxing.swift"; sourceTree = "<group>"; };
 		386546C83F3031D5DFDBCCA7 /* FinderSyncExtensionStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncExtensionStatusProvider.swift; sourceTree = "<group>"; };
@@ -373,6 +379,7 @@
 		7583ED7FFC6CB6D79172E50C /* CommonHelperXPCImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHelperXPCImp.swift; sourceTree = "<group>"; };
 		7A12A5FFD2A673AB334FB2A7 /* TMBuddyFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TMBuddyFinder.entitlements; sourceTree = "<group>"; };
 		7B75752CCDFCF26C0769DB38 /* TimeMachinePathFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachinePathFilter.swift; sourceTree = "<group>"; };
+		85125836607F2FC01C2C6D19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		860E9D098D06436BA18B2896 /* String+Ranges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ranges.swift"; sourceTree = "<group>"; };
 		88901D8FAD713E62E916F409 /* CommonHelperXPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHelperXPC.swift; sourceTree = "<group>"; };
 		89674A42645EC54F5A00FDE8 /* VolumeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeFilter.swift; sourceTree = "<group>"; };
@@ -420,6 +427,7 @@
 		E130E31AA996BC776042650C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E173068889EBA8B058F00D1A /* TimeMachinePathFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachinePathFilterTests.swift; sourceTree = "<group>"; };
 		E58C441A6E62025C1886AEC5 /* FinderSyncInfoRequestPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncInfoRequestPayload.swift; sourceTree = "<group>"; };
+		E616F440E6E41C4C1D0CE7AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7D0B065FEFA13F7635FD778 /* ErrorTracing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracing.swift; sourceTree = "<group>"; };
 		F0D2C613F6373F22545185BC /* AppStoreDistribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreDistribution.swift; sourceTree = "<group>"; };
 		F54AA8F116B8AAB9BA377CF0 /* FinderSyncInfoResponsePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSyncInfoResponsePayload.swift; sourceTree = "<group>"; };
@@ -752,10 +760,23 @@
 			path = Targets/TMBuddyFinder;
 			sourceTree = "<group>";
 		};
+		9D7B64B43EC2BA5C23AC9C6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E616F440E6E41C4C1D0CE7AF /* Assets.xcassets */,
+				85125836607F2FC01C2C6D19 /* GoogleService-Info.plist */,
+				06ADC2CD81C60BCBD647981A /* Icons.xcassets */,
+				310EE0A736FC23CC83DCD19C /* Main.storyboard */,
+			);
+			name = Resources;
+			path = Targets/TMBuddy/Resources;
+			sourceTree = "<group>";
+		};
 		A42AAB7CEAE72727CCA383A7 = {
 			isa = PBXGroup;
 			children = (
 				1D2DE2B583BEA1082B7D9CCD /* OtherModules */,
+				9D7B64B43EC2BA5C23AC9C6C /* Resources */,
 				0E0051796FBB50BC115D434F /* Sources */,
 				BBD694585E8541C50D6F59CA /* Sources */,
 				975324E9DA72DC28EE8532AD /* TMBuddyFinder */,
@@ -915,6 +936,7 @@
 			buildConfigurationList = CA17B23806E844B318726A94 /* Build configuration list for PBXNativeTarget "TMBuddy" */;
 			buildPhases = (
 				1A8C40FFCA9B0AA28BD2B1A6 /* Sources */,
+				014FFDDFB5FFE6AFEEF16660 /* Resources */,
 				6D6DB5FCCDC89EF8218EE9F3 /* Frameworks */,
 				4C6EB4CBA9F1EDDBFD9E95EF /* Embed App Extensions */,
 				0AD6DE1CE0A561445E0C69A7 /* Embed Dependencies */,
@@ -1006,6 +1028,17 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		014FFDDFB5FFE6AFEEF16660 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB09A1372184E4D469E19E98 /* Assets.xcassets in Resources */,
+				0553E4D11DDF44A4F6C0D458 /* GoogleService-Info.plist in Resources */,
+				8D33B663C8A1CAF9CA34AB68 /* Icons.xcassets in Resources */,
+				675F493CFEC7DB4660731624 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E208314EA192DC90006C937 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
