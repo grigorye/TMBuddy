@@ -1,0 +1,9 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+SMJobBlessUtil.py setreq \
+    ~/Applications/TMBuddy.app \
+    ./Targets/TMBuddy/Bundle/Info-Distribution.plist \
+    ./Targets/TMBuddyTMUtilHelper/Bundle/Info-Distribution.plist

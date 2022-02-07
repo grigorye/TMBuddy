@@ -1,0 +1,9 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+SMJobBlessUtil.py setreq \
+    DerivedData/Build/Products/Debug/TMBuddy.app \
+    ./Targets/TMBuddy/Bundle/Info-Development.plist \
+    ./Targets/TMBuddyTMUtilHelper/Bundle/Info-Development.plist
