@@ -1,0 +1,6 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+SMJobBlessUtil.py check DerivedData/Build/Products/Debug/TMBuddy.app
