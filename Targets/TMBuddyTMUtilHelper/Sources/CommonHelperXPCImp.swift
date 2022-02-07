@@ -11,9 +11,7 @@ class CommonHelperXPCImp: NSObject, CommonHelperXPC {
     }
     
     func versionAsync(_ reply: @escaping (String) -> Void) {
-        Task {
-            reply(await version())
-        }
+        reply(version())
     }
 
     // MARK: -
@@ -35,7 +33,7 @@ class CommonHelperXPCImp: NSObject, CommonHelperXPC {
         return true
     }
 
-    func version() async -> String {
+    func version() -> String {
         return plugInHostConnectionVersion
     }
 }
