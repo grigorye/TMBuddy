@@ -1397,7 +1397,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "BUNDLE_VERSION=$(BUNDLE_VERSION)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/../Frameworks",
+					"/Library/Developer/CommandLineTools/usr/lib/swift-5.5/macosx",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_LDFLAGS = "-sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist";
@@ -1650,7 +1650,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "BUNDLE_VERSION=$(BUNDLE_VERSION)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/../Frameworks",
+					"/Library/Developer/CommandLineTools/usr/lib/swift-5.5/macosx",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_LDFLAGS = "-sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist";
