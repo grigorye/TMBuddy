@@ -1,1 +1,2 @@
 BUNDLE_VERSION = Local // Fallback for local builds, overridden on CI
+GE_INFOPLIST_KIND = Development // Fallback for local builds, overridden on CI to Distribution

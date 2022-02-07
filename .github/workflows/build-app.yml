@@ -131,7 +131,8 @@ jobs:
           -authenticationKeyPath "$AUTHENTICATION_KEY_PATH" \
           -authenticationKeyID "$APP_STORE_AUTHENTICATION_KEY_ID" \
           -authenticationKeyIssuerID "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID" \
-          BUNDLE_VERSION="$BUNDLE_VERSION"
+          BUNDLE_VERSION="$BUNDLE_VERSION" \
+          GE_INFOPLIST_KIND=Distribution
 
     - name: Save .xcarchive
       uses: actions/upload-artifact@v2
