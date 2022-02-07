@@ -4,4 +4,5 @@ import Foundation
     func pingAsync(_: @escaping (Bool) -> Void)
     func versionAsync(_: @escaping (String) -> Void)
     func crashAsync(_: @escaping (Bool) -> Void)
+    func postInstall(sourceBundlePath: String, _: @escaping (Error?) -> Void)
 }
