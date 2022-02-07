@@ -5,14 +5,14 @@ targets:
     platform: macOS
     deploymentTarget: "10.15"
     sources:
-      - Targets/TMBuddy
+      - Targets/TMBuddy/Sources
       - Targets/TMBuddyShared
       - Targets/OtherModules
       - path: Targets/TMBuddyFinder/Sources
         excludes: Main
     settings:
       ENABLE_HARDENED_RUNTIME: YES
-      INFOPLIST_FILE: Targets/TMBuddy/Bundle/Info.plist
+      INFOPLIST_FILE: Targets/TMBuddy/Bundle/Info-$(GE_INFOPLIST_KIND).plist
       INFOPLIST_KEY_NSPrincipalClass: NSApplication
       INFOPLIST_KEY_NSMainStoryboardFile: Main
       INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
@@ -93,9 +93,9 @@ targets:
       SKIP_INSTALL: YES
       PRODUCT_NAME: com.grigorye.TMBuddy.TMUtilHelper
       ENABLE_HARDENED_RUNTIME: YES
-      INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info.plist
+      INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info-$(GE_INFOPLIST_KIND).plist
       PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.TMUtilHelper
-      OTHER_LDFLAGS: -sectcreate __TEXT __info_plist Targets/TMBuddyTMUtilHelper/Bundle/Info.plist -sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist
+      OTHER_LDFLAGS: -sectcreate __TEXT __info_plist $(INFOPLIST_FILE) -sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist
 
   TMBuddyTests:
     type: bundle.unit-test
