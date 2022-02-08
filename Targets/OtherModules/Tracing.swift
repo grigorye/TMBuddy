@@ -1,4 +1,5 @@
 import Foundation
+import os.log
 
 private enum Imp {}
 
@@ -12,8 +13,16 @@ extension Imp {
         }
         if nsLogIsEnabled {
             let prefix = name.flatMap { $0 + ": " } ?? ""
-            let message = "\(function): \(prefix)\(value)"
-            NSLog(message)
+            if #available(macOSApplicationExtension 11.0, macOS 11.0, *) {
+                let valueRep = "\(value)"
+                let subsystem = URL(fileURLWithPath: "\(file)").deletingPathExtension().lastPathComponent
+                let category = function
+                Logger(subsystem: subsystem, category: category)
+                    .log("\(prefix, privacy: .public)\(valueRep, privacy: .public)")
+            } else {
+                let message = "\(function): \(prefix)\(value)"
+                NSLog(message)
+            }
         }
         postDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
         return value
