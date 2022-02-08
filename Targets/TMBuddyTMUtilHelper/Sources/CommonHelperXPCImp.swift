@@ -31,7 +31,15 @@ class CommonHelperXPCImp: NSObject, CommonHelperXPC {
     func versionAsync(_ reply: @escaping (String) -> Void) {
         reply(version())
     }
-
+    
+    func checkSanityAsync(writablePath: String, readOnlyPath: String, reply: @escaping (Error?) -> Void) {
+        let result = Result {
+            try checkSandboxSanity(writablePath: writablePath, readOnlyPath: readOnlyPath)
+        }
+        dump(result, name: "result")
+        result.send(to: reply)
+    }
+    
     // MARK: -
     
     func crash() async throws -> Bool {
