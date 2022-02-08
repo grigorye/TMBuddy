@@ -1,0 +1,17 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+provisioningDir="$1"; shift
+casksDir="$1"; shift
+
+lastRun=$(env NO_COLOR=1 gh run list --json url -L 1|jq -r ".[0].url"|sed 's/^.*\/\(.*\)$/\1/')
+
+gh run watch "$lastRun" --exit-status
+
+Commands/DownloadAndPublish "$provisioningDir" "$casksDir"
+
+(cd "$casksDir" && git commit -m "Updated TMBuddy." time-machine-buddy.rb && git push)
+
+/opt/homebrew/bin/brew upgrade
