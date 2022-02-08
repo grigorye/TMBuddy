@@ -2,11 +2,11 @@ import Foundation
 
 class TMUtilBasedStatusProvider {
 
-    func statusForItem(_ url: URL) async throws -> TMStatus {
+    func statusForItem(_ url: URL) throws -> TMStatus {
         let url = url.resolvingSymlinksInPath()
         let tmUtilController = TMUtilLauncher()
         do {
-            let tmUtilStatuses = try await tmUtilController.isExcluded(urls: [url])
+            let tmUtilStatuses = try tmUtilController.isExcluded(urls: [url])
             guard let tmUtilStatus = tmUtilStatuses[url] else {
                 dump((url: url.path, statuses: tmUtilStatuses), name: "matchFailure")
                 return .unknown
