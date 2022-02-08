@@ -28,7 +28,9 @@ class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
         }
         Task {
             let result = await task.result
-            dump(result, name: "helperVersionResult")
+            if defaults.bool(forKey: DefaultsKey.debugAlienPrivilegedHelper) {
+                dump(result, name: "helperVersionResult")
+            }
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .failure:
@@ -39,4 +41,6 @@ class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
             }
         }
     }
+    
+    private let defaults = sharedDefaults
 }
