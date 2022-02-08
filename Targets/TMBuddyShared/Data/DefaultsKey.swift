@@ -5,6 +5,7 @@ enum DefaultsKey: String, CaseIterable {
     case suppressErrorReporting
     case debug
     case debugAlienPlugin
+    case debugAlienPrivilegedHelper
     case suppressNSLog
     case enableDump
     case forceAppStoreLikeWindowTitle
