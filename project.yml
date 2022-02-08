@@ -28,6 +28,8 @@ targets:
         "-forceFakeFailureOnExcludeByPath YES": false
         "-debug YES": false
         "-debug NO": true
+        "-debugAlienPlugin YES": false
+        "-debugAlienPrivilegedHelper YES": false
         "-FIRDebugEnabled YES": false
     dependencies:
       - target: TMBuddyFinder
