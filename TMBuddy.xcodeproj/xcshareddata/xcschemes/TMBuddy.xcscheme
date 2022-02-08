@@ -54,6 +54,14 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-debugAlienPlugin YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-debugAlienPrivilegedHelper YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-enableDump YES"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -109,6 +117,14 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-debugAlienPlugin YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-debugAlienPrivilegedHelper YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-enableDump YES"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -157,6 +173,14 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-debug YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-debugAlienPlugin YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-debugAlienPrivilegedHelper YES"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
