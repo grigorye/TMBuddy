@@ -76,6 +76,7 @@ targets:
       - Targets/TMBuddyTMUtilHelper
       - Targets/TMBuddyFinder/Sources/Helpers/TMUtil/TMUtilLauncher.swift
       - Targets/OtherModules/Tracing.swift
+      - Targets/OtherModules/Logging.swift
       - Targets/OtherModules/ErrorTracing.swift
       - Targets/OtherModules/XPC
       - Targets/OtherModules/SourceLevel
