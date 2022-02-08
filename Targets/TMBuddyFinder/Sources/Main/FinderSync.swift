@@ -210,7 +210,17 @@ class FinderSync: FIFinderSync {
             try await TMUtilPrivileged().setExcludedByPath(exclude, urls: itemURLs)
         }
         Task {
-            dump((await task.result, exclude: exclude, items: itemURLs.map { $0.path }), name: "taskResult")
+            let result = await task.result
+            dump((result, exclude: exclude, items: itemURLs.map { $0.path }), name: "result")
+            DispatchQueue.main.async {
+                self.processResultForSetSelectedItemsPathExcludedFromTimeMachine(exclude, result: result)
+            }
+        }
+    }
+    
+    private func processResultForSetSelectedItemsPathExcludedFromTimeMachine(_ exclude: Bool, result: Result<(), Error>) {
+        if case let .failure(error) = result {
+            NSApp.presentError(error)
         }
     }
     
