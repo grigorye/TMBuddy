@@ -26,6 +26,7 @@ targets:
         "-suppressErrorReporting YES": true
         "-forceAppStoreLikeWindowTitle YES": false
         "-forceFakeFailureOnExcludeByPath YES": false
+        "-forcePostInstallCheckpoint YES": false
         "-debug YES": false
         "-debug NO": true
         "-debugAlienPlugin YES": false
