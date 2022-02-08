@@ -38,7 +38,7 @@ class HostAppConnectionController {
             let untrustedRequestVersion = requestHeader.version
             otherPartyIsAlien = untrustedRequestVersion != plugInHostConnectionVersion
             if otherPartyIsAlien {
-                if defaults.bool(forKey: DefaultsKey.debugAlien) {
+                if defaults.bool(forKey: DefaultsKey.debugAlienPlugin) {
                     dump((requestVersion: untrustedRequestVersion, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
                 }
             }
