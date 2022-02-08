@@ -9,6 +9,11 @@ struct SandboxAccessView: View {
         VStack(alignment: .leading) {
             Group {
                 SMJobBlessCheckpointView()
+                if #available(macOS 11.0, *), defaults.bool(forKey: DefaultsKey.forcePostInstallCheckpoint) == false {
+                    EmptyView()
+                } else {
+                    PostInstallHelperCheckpointView()
+                }
                 FinderExtensionCheckpointView()
                 PlugInFullDiskAccessCheckPointView()
                 FoldersSelectionCheckpointView()
@@ -28,3 +33,5 @@ struct SandboxAccessView_Previews : PreviewProvider {
             .padding()
     }
 }
+
+private let defaults = UserDefaults.standard
