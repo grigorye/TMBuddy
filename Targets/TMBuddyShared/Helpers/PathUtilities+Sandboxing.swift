@@ -20,7 +20,7 @@ extension NSString {
             return self as String
         }
         
-        return "~" + (self as String)[currentUserHomeDirectoryPath.count...]
+        return "~" + ProcessInfo().userName + (self as String)[currentUserHomeDirectoryPath.count...]
     }
 
     
