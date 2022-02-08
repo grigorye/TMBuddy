@@ -17,8 +17,7 @@ final class TMUtilHelperXPCImp: CommonHelperXPCImp, TMUtilHelperXPC {
     
     func setExcludedByPath(_ value: Bool, paths: [String]) async throws {
         dump(paths, name: "paths")
-        let urls = paths.map { URL.init(fileURLWithPath: $0) }
-        try await TMUtilLauncher().setExcludedByPath(value, urls: urls)
+        try TMUtilLauncher().setExcludedByPath(value, paths: paths)
         if UserDefaults.standard.bool(forKey: DefaultsKey.forceFakeFailureOnExcludeByPath) {
             enum Error: Swift.Error {
                 case fakeFailure
