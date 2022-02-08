@@ -32,16 +32,8 @@ func runAndCaptureOutput(executableURL: URL, arguments: [String] = []) throws ->
             }
             return standardError
         }()
-        enum Error: Swift.Error {
-            case processFailed(
-                executable: String,
-                arguments: [String],
-                terminationStatus: Int32,
-                standardError: String
-            )
-        }
         throw dump(
-            Error.processFailed(
+            RunAndCaptureOutputError.processFailed(
                 executable: executableURL.path,
                 arguments: arguments,
                 terminationStatus: process.terminationStatus,
@@ -53,4 +45,13 @@ func runAndCaptureOutput(executableURL: URL, arguments: [String] = []) throws ->
     
     let data = standardOutput.fileHandleForReading.readDataToEndOfFile()
     return data
+}
+
+enum RunAndCaptureOutputError: Swift.Error {
+    case processFailed(
+        executable: String,
+        arguments: [String],
+        terminationStatus: Int32,
+        standardError: String
+    )
 }
