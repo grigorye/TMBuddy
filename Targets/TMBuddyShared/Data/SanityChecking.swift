@@ -33,6 +33,7 @@ func reportTMUtilHelperStatus() {
         let version = try await TMUtilPrivileged().version()
         dump(version, name: "version")
         try await TMUtilPrivileged().setExcludedByPath(true, urls: [testURL])
+        try await TMUtilPrivileged().checkSanity()
     }
     Task {
         let result = await tmUtilCheck.result
