@@ -15,9 +15,9 @@ struct TMUtilLauncher {
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
     }
     
-    func setExcludedByPath(_ excluded: Bool, urls: [URL]) throws {
+    func setExcludedByPath(_ excluded: Bool, paths: [String]) throws {
         let command = excluded ? "addexclusion" : "removeexclusion"
-        let tmUtilArguments = [command, "-p"] + urls.map { $0.standardized.path }
+        let tmUtilArguments = [command, "-p"] + paths
 
         let data = try runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments)
         
