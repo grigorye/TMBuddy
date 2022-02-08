@@ -9,7 +9,7 @@ struct TMUtilLauncher {
     
     let tmUtilURL = URL(fileURLWithPath: "/usr/bin/tmutil")
     let osascriptURL = URL(fileURLWithPath: "/usr/bin/osascript")
-
+    
     func setExcluded(_ excluded: Bool, urls: [URL]) throws {
         dump((excluded, path: urls.paths), name: "args")
         let command = excluded ? "addexclusion" : "removeexclusion"
@@ -40,14 +40,14 @@ struct TMUtilLauncher {
             throw TMUtilError.fullDiskAccessMissing
         }
     }
-
+    
     func isExcluded(urls: [URL]) throws -> [URL: Bool] {
         let tmUtilArguments = ["isexcluded", "-X"] + urls.map { $0.standardized.path }
         
         let data = try runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments)
         
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
-
+        
         let responses = try PropertyListDecoder().decode([PlutilIsExcludedResponse].self, from: data)
         let urlsWithFlag: [(URL, Bool)] = try responses.map { response in
             let url = URL(fileURLWithPath: response.path).resolvingSymlinksInPath()
