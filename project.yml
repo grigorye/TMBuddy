@@ -99,6 +99,7 @@ targets:
       PRODUCT_NAME: com.grigorye.TMBuddy.TMUtilHelper
       ENABLE_HARDENED_RUNTIME: YES
       INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info-$(GE_INFOPLIST_KIND).plist
+      CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyTMUtilHelper/Bundle/TMBuddyTMUtilHelper.entitlements
       PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.TMUtilHelper
       INFOPLIST_PREPROCESS: YES
       INFOPLIST_PREPROCESSOR_DEFINITIONS: BUNDLE_VERSION=$(BUNDLE_VERSION)
