@@ -5,29 +5,29 @@ struct TMUtilLauncher {
     let tmUtilURL = URL(fileURLWithPath: "/usr/bin/tmutil")
     let osascriptURL = URL(fileURLWithPath: "/usr/bin/osascript")
 
-    func setExcluded(_ excluded: Bool, urls: [URL]) async throws {
+    func setExcluded(_ excluded: Bool, urls: [URL]) throws {
         dump((excluded, path: urls.paths), name: "args")
         let command = excluded ? "addexclusion" : "removeexclusion"
         let tmUtilArguments = [command] + urls.map { $0.standardized.path }
         
-        let data = try await runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments).result.get()
+        let data = try runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments)
         
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
     }
     
-    func setExcludedByPath(_ excluded: Bool, urls: [URL]) async throws {
+    func setExcludedByPath(_ excluded: Bool, urls: [URL]) throws {
         let command = excluded ? "addexclusion" : "removeexclusion"
         let tmUtilArguments = [command, "-p"] + urls.map { $0.standardized.path }
 
-        let data = try await runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments).result.get()
+        let data = try runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments)
         
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
     }
 
-    func isExcluded(urls: [URL]) async throws -> [URL: Bool] {
+    func isExcluded(urls: [URL]) throws -> [URL: Bool] {
         let tmUtilArguments = ["isexcluded", "-X"] + urls.map { $0.standardized.path }
         
-        let data = try await runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments).result.get()
+        let data = try runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments)
         
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
 
