@@ -134,7 +134,12 @@ class FinderSync: FIFinderSync {
     
     override func menu(for menuKind: FIMenuKind) -> NSMenu {
         let menu = NSMenu(title: "")
-        
+        addMetadataExclusionMenuItems(menu)
+        addPathExclusionMenuItems(menu)
+        return menu
+    }
+    
+    private func addMetadataExclusionMenuItems(_ menu: NSMenu) {
         let itemURLs = syncController.selectedItemURLs() ?? []
         let exclusions = itemURLs.map { metadataReader.excludedBasedOnMetadata($0) }
         let mask = Set(exclusions)
@@ -153,28 +158,42 @@ class FinderSync: FIFinderSync {
                 keyEquivalent: ""
             )
         }
-        return menu
     }
     
-    @IBAction func removeExclusionFromTimeMachine(_ sender: AnyObject?) {
-        guard let itemURLs = syncController.selectedItemURLs() else {
-            dump(0, name: "itemCount")
-            return
+    private func addPathExclusionMenuItems(_ menu: NSMenu) {
+        let itemURLs = syncController.selectedItemURLs() ?? []
+        let exclusions = itemURLs.map { url -> Bool in
+            let status = try? DirectLookupBasedStatusProvider().statusForItem(url)
+            dump((status, item: url.path), name: "statusForItem")
+            return status == .pathExcluded
         }
-        dump(itemURLs.map { $0.path }, name: "items")
-        Task {
-            defer {
-                dump(itemURLs.map { $0.path }, name: "itemsToRefresh")
-                for itemURL in itemURLs {
-                    refreshItem(at: itemURL)
-                }
-            }
-            
-            try await metadataWriter.setExcluded(false, urls: itemURLs)
+        let mask = Set(exclusions)
+        
+        if mask.contains(true) {
+            menu.addItem(
+                withTitle: "Remove Path Exclusion from Time Machine",
+                action: #selector(removePathExclusionFromTimeMachine(_:)),
+                keyEquivalent: ""
+            )
+        }
+        if mask.contains(false) {
+            menu.addItem(
+                withTitle: "Exclude Path from Time Machine",
+                action: #selector(excludePathFromTimeMachine(_:)),
+                keyEquivalent: ""
+            )
         }
     }
     
-    @IBAction func excludeFromTimeMachine(_ sender: AnyObject?) {
+    @IBAction func removePathExclusionFromTimeMachine(_ sender: AnyObject?) {
+        setSelectedItemsPathExcludedFromTimeMachine(false)
+    }
+    
+    @IBAction func excludePathFromTimeMachine(_ sender: AnyObject?) {
+        setSelectedItemsPathExcludedFromTimeMachine(true)
+    }
+
+    private func setSelectedItemsPathExcludedFromTimeMachine(_ exclude: Bool) {
         guard let itemURLs = syncController.selectedItemURLs() else {
             dump(0, name: "itemCount")
             return
@@ -188,11 +207,40 @@ class FinderSync: FIFinderSync {
                 }
             }
             
-            try await metadataWriter.setExcluded(true, urls: itemURLs)
+            try await TMUtilPrivileged().setExcludedByPath(exclude, urls: itemURLs)
+        }
+        Task {
+            dump((await task.result, exclude: exclude, items: itemURLs.map { $0.path }), name: "taskResult")
+        }
+    }
+    
+    @IBAction func removeExclusionFromTimeMachine(_ sender: AnyObject?) {
+        setSelectedItemsStickyExcludedFromTimeMachine(false)
+    }
+    
+    @IBAction func excludeFromTimeMachine(_ sender: AnyObject?) {
+        setSelectedItemsStickyExcludedFromTimeMachine(true)
+    }
+    
+    private func setSelectedItemsStickyExcludedFromTimeMachine(_ exclude: Bool) {
+        guard let itemURLs = syncController.selectedItemURLs() else {
+            dump(0, name: "itemCount")
+            return
+        }
+        dump((itemURLs.map { $0.path }, exclude: exclude), name: "items")
+        let task = Task {
+            defer {
+                dump((itemURLs.map { $0.path }, exclude: exclude), name: "itemsToRefresh")
+                for itemURL in itemURLs {
+                    refreshItem(at: itemURL)
+                }
+            }
+            
+            try await metadataWriter.setExcluded(exclude, urls: itemURLs)
         }
         Task {
             let result = await task.result
-            dump((result, items: itemURLs.map { $0.path }), name: "result")
+            dump((result, exclude: exclude, items: itemURLs.map { $0.path }), name: "result")
         }
     }
 }
