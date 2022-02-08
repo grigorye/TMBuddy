@@ -74,6 +74,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-forcePostInstallCheckpoint YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-suppressErrorReporting YES"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -137,6 +141,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-forcePostInstallCheckpoint YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-suppressErrorReporting YES"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -193,6 +201,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-forceFakeFailureOnExcludeByPath YES"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-forcePostInstallCheckpoint YES"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
