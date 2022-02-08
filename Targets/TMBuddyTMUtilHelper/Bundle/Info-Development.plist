@@ -11,6 +11,7 @@
 	<key>SMAuthorizedClients</key>
 	<array>
 		<string>identifier "com.grigorye.TMBuddy" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Grigory Entin (7J7PPLPM93)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<string>identifier "com.grigorye.TMBuddy.Finder" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Grigory Entin (7J7PPLPM93)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</array>
 </dict>
 </plist>
