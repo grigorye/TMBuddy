@@ -45,7 +45,7 @@ class PlugInConnectionController {
             }
             // If the plugin is alien, neither we can trust the data it provides, nor the plugin should return anything but error.
             if responseHeader.version != plugInHostConnectionVersion {
-                if defaults.bool(forKey: DefaultsKey.debugAlien) {
+                if defaults.bool(forKey: DefaultsKey.debugAlienPlugin) {
                     dump((responseHeader: responseHeader, hostVersion: plugInHostConnectionVersion), name: "otherPartyIsAlien")
                 }
                 let responseHeaderWithFailure: FinderSyncInfoResponseHeaderWithFailure
