@@ -8,6 +8,10 @@ struct SandboxAccessView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Group {
+                FoldersSelectionCheckpointView()
+
+                Divider()
+                
                 SMJobBlessCheckpointView()
                 if #available(macOS 11.0, *), defaults.bool(forKey: DefaultsKey.forcePostInstallCheckpoint) == false {
                     EmptyView()
@@ -16,7 +20,6 @@ struct SandboxAccessView: View {
                 }
                 FinderExtensionCheckpointView()
                 PlugInFullDiskAccessCheckPointView()
-                FoldersSelectionCheckpointView()
                 
                 if debugFlagProvider.debugIsEnabled {
                     DebugCheckpointView()
