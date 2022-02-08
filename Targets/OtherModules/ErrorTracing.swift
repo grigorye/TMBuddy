@@ -1,10 +1,10 @@
 import Foundation
 
-func postDump<T>(_ value: T, name: String?, file: String, function: String, line: Int, callStack: CallStack) {
+func postDump<T>(_ value: T, name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) {
     hookErrorReportersForDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
 }
 
-private func hookErrorReportersForDump<T>(_ value: T, name: String?, file: String, function: String, line: Int, callStack: CallStack) {
+private func hookErrorReportersForDump<T>(_ value: T, name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) {
     
     guard let name = name else {
         return
