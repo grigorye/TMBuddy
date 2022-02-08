@@ -37,13 +37,15 @@ When selecting folders for the application, typically you want to navigate to Co
   
   
   
-- Toggle *sticky* exclusion via contextual menu (or toolbar item):
-  
-  
+- Toggle *sticky* or *fixed-path* [^*] exclusion via contextual menu (or toolbar item):
   
   |                  Exclude from Time Machine                   |              Remove Exclusion from Time Machine              |
   | :----------------------------------------------------------: | :----------------------------------------------------------: |
   | <img src=".Images/Finder-Contextual-Exclude.png" style="zoom:50%;" > | <img title="" src=".Images/Finder-Contextual-Remove-Exclusion.png" style="zoom:50%;" > |
+  
+  [^*]: Fixed-path exclusions are not availabile in AppStore/TestFlight version, but in Homebrew due to the need to install the privileged helper.
+  
+  
 
 ## Troubleshooting
 
@@ -51,7 +53,6 @@ When selecting folders for the application, typically you want to navigate to Co
 
 ## TODO
 
-- Add support for toggling fixed-path exclusions
 - Menu bar item
 
 ## System Requirements
