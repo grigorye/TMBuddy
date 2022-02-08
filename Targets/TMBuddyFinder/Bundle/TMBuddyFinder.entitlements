@@ -18,5 +18,9 @@
 	<array>
 		<string>/Library/Preferences/com.apple.TimeMachine.plist</string>
 	</array>
+	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
+	<array>
+		<string>com.grigorye.TMBuddy.TMUtilHelper</string>
+	</array>
 </dict>
 </plist>
