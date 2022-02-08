@@ -1,38 +1,23 @@
 import Foundation
 
-private enum Error: Swift.Error {
-    case invalidBundle(path: String)
-    case noFrameworksInBundle(path: String)
-}
-
 class CommonHelperXPCImp: NSObject, CommonHelperXPC {
     
-    func postInstall(sourceBundlePath bundlePath: String, _ reply: @escaping (Swift.Error?) -> Void) {
-        let fixedRootURL = URL(fileURLWithPath: "/usr/local/lib/TMBuddy")
-        let fileManager = FileManager.default
-        do {
-            try fileManager.createDirectory(
-                at: fixedRootURL,
-                withIntermediateDirectories: true,
-                attributes: nil
-            )
-            let bundleURL = URL(fileURLWithPath: bundlePath)
-            guard let bundle = Bundle(url: bundleURL) else {
-                throw Error.invalidBundle(path: bundlePath)
-            }
-            
-            guard let frameworksURL = bundle.privateFrameworksURL else {
-                throw Error.noFrameworksInBundle(path: bundlePath)
-            }
-            assert(frameworksURL.lastPathComponent == "Frameworks")
-            try fileManager.copyItem(at: frameworksURL, to: fixedRootURL.appendingPathComponent("Frameworks"))
-            
-            dump(frameworksURL.path, name: "frameworksInstallSucceeded")
-            reply(nil)
-        } catch {
-            dump(error, name: "frameworksInstallationFailed")
-            reply(error)
+    func postInstallNeededAsync(sourceBundlePath: String, reply: @escaping (Error?, Bool) -> Void) {
+        let result = Result {
+            try PostInstallController(sourceBundlePath: sourceBundlePath)
+                .postInstallNeeded()
         }
+        dump(result, name: "result")
+        result.send(to: reply)
+    }
+    
+    func postInstallAsync(sourceBundlePath: String, reply: @escaping (Swift.Error?) -> Void) {
+        let result = Result {
+            let postInstallController = PostInstallController(sourceBundlePath: sourceBundlePath)
+            try postInstallController.postInstall()
+        }
+        dump(result, name: "result")
+        result.send(to: reply)
     }
     
     func crashAsync(_ reply: @escaping (Bool) -> Void) {
