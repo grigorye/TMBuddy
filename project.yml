@@ -3,7 +3,6 @@ targets:
   TMBuddy:
     type: application
     platform: macOS
-    deploymentTarget: "10.15"
     sources:
       - Targets/TMBuddy/Sources
       - Targets/TMBuddy/Resources
@@ -95,6 +94,7 @@ targets:
     settings:
       SKIP_INSTALL: YES
       PRODUCT_NAME: com.grigorye.TMBuddy.TMUtilHelper
+      PRODUCT_MODULE_NAME: TMUtilHelper
       ENABLE_HARDENED_RUNTIME: YES
       INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info-$(GE_INFOPLIST_KIND).plist
       CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyTMUtilHelper/Bundle/TMBuddyTMUtilHelper.entitlements
