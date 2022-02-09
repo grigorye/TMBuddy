@@ -13,12 +13,12 @@ class TMUtilPrivileged {
     }
     
     func checkSanity() async throws {
-        return try await withProxy { proxy, continuation in
+        try await withProxy { (proxy, continuation: CheckedContinuation<Void, Error>) in
             let writablePath = "/Library/Preferences/com.apple.TimeMachine.plist"
             let readOnlyPath = "/Library"
             assert(FileManager.default.isWritableFile(atPath: writablePath) == false)
             assert(FileManager.default.isWritableFile(atPath: readOnlyPath) == false)
-            return proxy.checkSanityAsync(writablePath: writablePath, readOnlyPath: readOnlyPath) { error in
+            proxy.checkSanityAsync(writablePath: writablePath, readOnlyPath: readOnlyPath) { error in
                 continuation.resume(with: Result(error: error))
             }
         }
@@ -29,11 +29,7 @@ class TMUtilPrivileged {
             let abbreviatedPaths: [String] = urls.paths.map { $0.abbreviatingWithTildeInPath(ignoringSandbox: true) }
             dump(abbreviatedPaths, name: "abbreviatedPaths")
             proxy.setExcludedByPath(value, paths: abbreviatedPaths) { error in
-                if let error = error {
-                    continuation.resume(throwing: error)
-                } else {
-                    continuation.resume(returning: ())
-                }
+                continuation.resume(with: Result(error: error))
             }
         }
     }
