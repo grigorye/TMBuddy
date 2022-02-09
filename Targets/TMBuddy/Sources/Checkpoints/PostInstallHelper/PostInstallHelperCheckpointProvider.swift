@@ -32,13 +32,17 @@ class PostInstallHelperCheckpointProvider: ObservableObject, Traceable {
             let result = await task.result
             dump(result, name: "postInstallNeededResult")
             DispatchQueue.main.async { [weak self] in
-                switch result {
-                case let .success(postInstallNeeded):
-                    self?.state = postInstallNeeded ? .pending : .completed
-                case let .failure(error):
-                    self?.state = .failing(error)
-                }
+                self?.handlePostInstallNeededResult(result)
             }
+        }
+    }
+    
+    private func handlePostInstallNeededResult(_ result: Result<Bool, Error>) {
+        switch result {
+        case let .success(postInstallNeeded):
+            state = postInstallNeeded ? .pending : .completed
+        case let .failure(error):
+            state = .failing(error)
         }
     }
     
