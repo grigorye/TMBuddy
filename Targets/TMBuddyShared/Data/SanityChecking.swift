@@ -4,7 +4,8 @@ func checkSanity() {
     reportPaths()
     reportTimeMachinePermissions()
     reportDefaults()
-    reportTMUtilHelperStatus()
+    checkTMUtilHelperSanity()
+    checkTMUtilHelperTildeHandling()
 }
 
 func reportPaths() {
@@ -26,17 +27,40 @@ func filteredDictionaryFor(defaults: UserDefaults) -> [String: Any] {
     return filtered
 }
 
-func reportTMUtilHelperStatus() {
-    let testPath = "/tmp/TMBuddy-Excluded-ByPath.txt"
-    let testURL = URL(fileURLWithPath: testPath)
-    let tmUtilCheck = Task {
+func checkTMUtilHelperSanity() {
+    let task = Task {
         let version = try await TMUtilPrivileged().version()
         dump(version, name: "version")
-        try await TMUtilPrivileged().setExcludedByPath(true, urls: [testURL])
         try await TMUtilPrivileged().checkSanity()
     }
     Task {
-        let result = await tmUtilCheck.result
-        dump((result, testPath: testPath), name: "tmUtilCheckResult")
+        let result = await task.result
+        dump(result, name: "result")
+    }
+}
+
+func checkTMUtilHelperTildeHandling() {
+    let moduleName = Bundle.main.executableURL!.lastPathComponent
+    let testPath = ("~/\(moduleName)-Test/Excluded-ByPath.txt" as NSString).expandingTildeInPath(ignoringSandbox: true)
+    let testURL = URL(fileURLWithPath: testPath)
+    let task = Task {
+        try await TMUtilPrivileged().setExcludedByPath(true, urls: [testURL])
+        let tildeHandlingIsSane = TimeMachinePathFilter().isExcluded(testURL)
+        dump(tildeHandlingIsSane, name: "tildeHandlingIsSane")
+        if tildeHandlingIsSane == false {
+            enum Error: Swift.Error {
+                case tildeHandlingIsNotSane
+            }
+            throw Error.tildeHandlingIsNotSane
+        }
+    }
+    Task {
+        let result = await task.result
+        switch result {
+        case let .failure(error):
+            dump(error, name: "tildeHandlingCheckFailed")
+        case .success:
+            dump((), name: "tildeHandlingCheckSucceeded")
+        }
     }
 }
