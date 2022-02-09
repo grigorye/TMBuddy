@@ -48,7 +48,6 @@ targets:
   TMBuddyFinder:
     type: app-extension
     platform: macOS
-    deploymentTarget: "10.15"
     scheme: {}
     sources:
       - Targets/TMBuddyFinder
@@ -71,7 +70,6 @@ targets:
   TMBuddyTMUtilHelper:
     type: tool
     platform: macOS
-    deploymentTarget: "10.15"
     scheme: {}
     sources:
       - Targets/TMBuddyTMUtilHelper
@@ -112,7 +110,6 @@ targets:
   TMBuddyTests:
     type: bundle.unit-test
     platform: macOS
-    deploymentTarget: "10.15"
     scheme:
       testTargets:
         - TMBuddyTests
@@ -152,3 +149,6 @@ name: TMBuddy
 options:
   bundleIdPrefix: com.grigorye
   xcodeVersion: 13.2.1
+  deploymentTarget: 
+    macOS: 10.15
+  createIntermediateGroups: true
