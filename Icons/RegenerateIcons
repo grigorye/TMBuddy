@@ -46,8 +46,6 @@ for suffix in ""; do
 	done
 
 	cp "$wd"/AppIcon-Contents.json "$AppIconSet"/Contents.json
-
-	svg2png -w 1024 "$svg" > "$AppIcon"-1024x1024.png
 done
 
 for i in "$wd"/MenuIcons/*.svg; do
