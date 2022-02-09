@@ -22,7 +22,6 @@ extension NSString {
         
         return "~" + ProcessInfo().userName + (self as String)[currentUserHomeDirectoryPath.count...]
     }
-
     
     private func expandingTildeInPathImp(ignoringSandbox: Bool) -> String {
         guard ignoringSandbox else {
