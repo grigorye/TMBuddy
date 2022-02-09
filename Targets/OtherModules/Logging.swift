@@ -10,14 +10,22 @@ enum LoggingImp {
         }
         if nsLogIsEnabled {
             let prefix = name.flatMap { $0 + ": " } ?? ""
+            let valueRep: String = {
+                guard dumpInLogIsEnabled else {
+                    return "\(value)"
+                }
+                return "" ≈ {
+                    Swift.dump(value, to: &$0, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
+                }
+            }()
+            
             if #available(macOSApplicationExtension 11.0, macOS 11.0, *) {
-                let valueRep = "\(value)"
                 let subsystem = URL(fileURLWithPath: "\(file)").deletingPathExtension().lastPathComponent
                 let category = function
                 Logger(subsystem: subsystem, category: category)
                     .log("\(prefix, privacy: .public)\(valueRep, privacy: .public)")
             } else {
-                let message = "\(function): \(prefix)\(value)"
+                let message = "\(function): \(prefix)\(valueRep)"
                 NSLog(message)
             }
         }
@@ -29,3 +37,4 @@ private let defaults = UserDefaults.standard
 
 private let nsLogIsEnabled = defaults.bool(forKey: "suppressNSLog") == false
 private let dumpIsEnabled = defaults.bool(forKey: "enableDump")
+private let dumpInLogIsEnabled = defaults.bool(forKey: "enableDumpInLog")
