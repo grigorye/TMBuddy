@@ -22,7 +22,10 @@ struct TMUtilLauncher {
     
     func setExcludedByPath(_ exclude: Bool, paths: [String]) throws {
         let command = exclude ? "addexclusion" : "removeexclusion"
-        let tmUtilArguments = [command, "-p"] + paths
+        let tmUtilArguments = [command, "-p"] + paths.map {
+            // For some reason "~username/xxx" gets converted into "~root/xxx" when tmutil is invoked from the helper. As a workaround, we just expand it beforehand into the absolute path.
+            ($0 as NSString).expandingTildeInPath(ignoringSandbox: true)
+        }
         
         do {
             let data = try runAndCaptureOutput(executableURL: tmUtilURL, arguments: tmUtilArguments)
@@ -37,7 +40,7 @@ struct TMUtilLauncher {
                 : TMUtilStandardError.removeExclusionFullDiskAccessMissing
             )
         ) {
-            throw TMUtilError.fullDiskAccessMissing
+            throw TMUtilError.fullDiskAccessMissingForSkipPaths(paths, addition: exclude)
         }
     }
     
@@ -85,5 +88,5 @@ enum TMUtilIsExcludedOutputParseError: Swift.Error {
 extension TMUtilLauncher: Traceable {}
 
 enum TMUtilError: Swift.Error {
-    case fullDiskAccessMissing
+    case fullDiskAccessMissingForSkipPaths(_ skipPaths: [String], addition: Bool)
 }
