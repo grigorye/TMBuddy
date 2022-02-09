@@ -73,19 +73,12 @@ targets:
     sources:
       - Targets/TMBuddyTMUtilHelper
       - Targets/TMBuddyFinder/Sources/Helpers/TMUtil/TMUtilLauncher.swift
-      - Targets/OtherModules/Tracing.swift
-      - Targets/OtherModules/Logging.swift
-      - Targets/OtherModules/ErrorTracing.swift
-      - Targets/OtherModules/XPC
+      - Targets/OtherModules/Basics
+      - Targets/OtherModules/UserDefaults
+      - Targets/OtherModules/Processes
+      - Targets/OtherModules/Sandboxing
       - Targets/OtherModules/SourceLevel
-      - path: Targets/OtherModules/ErrorReporting
-        excludes:
-          - CrashlyticsErrorReporter.swift
-      - Targets/OtherModules/CallStack.swift
-      - Targets/OtherModules/Array+URLPaths.swift
-      - Targets/OtherModules/Launching.swift
-      - Targets/OtherModules/Sugar.swift
-      - Targets/OtherModules/UserDefaults+DefaultsKey.swift
+      - Targets/OtherModules/XPC
       - Targets/TMBuddyShared/XPC/TMUtilHelperXPC.swift
       - Targets/TMBuddyShared/XPC/CommonHelperXPC.swift
       - Targets/TMBuddyShared/Globals
