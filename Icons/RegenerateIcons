@@ -1,14 +1,15 @@
 #! /bin/bash
 
+set -x
 set -euo pipefail
 shopt -s nullglob
 
 wd=$(dirname "$0")
 
-xcassets="$1"; shift
+xcassets="$1"
+shift
 
-for suffix in ""
-do
+for suffix in ""; do
 	AppIcon="AppIcon${suffix}"
 	AppStoreIcon="AppStoreIcon${suffix}"
 	svg="$wd/$AppIcon.svg"
@@ -16,66 +17,55 @@ do
 	AppIconSet="$xcassets"/"$AppIcon".appiconset
 	mkdir -p "$AppIconSet"
 
-	for i in 16 32 128 256 512 1024 # macOS
-	do
+	for i in 16 32 128 256 512 1024; do # macOS
 		svg2png -w $i "$svg" > "$AppIconSet"/"$AppIcon"-${i}x${i}.png
 	done
-	for i in 16 32 128 256 # macOS
-	do
+	for i in 16 32 128 256; do # macOS
 		svg2png -w $((i * 2)) "$svg" > "$AppIconSet"/"$AppIcon"-${i}x${i}@2x.png
 	done
 
-	for i in 20 29 40 60 # iPhone 2x, 3x
-	do
+	for i in 20 29 40 60; do # iPhone 2x, 3x
 		svg2png -w $((i * 2)) "$svg" > "$AppIconSet"/"$AppIcon"-${i}x${i}@2x.png
 		svg2png -w $((i * 3)) "$svg" > "$AppIconSet"/"$AppIcon"-${i}x${i}@3x.png
 	done
 
-	for i in 20 29 40 76 # iPad 1x, 2x
-	do
+	for i in 20 29 40 76; do # iPad 1x, 2x
 		svg2png -w $i "$svg" > "$AppIconSet"/"$AppIcon"-${i}x${i}.png
 		svg2png -w $((i * 2)) "$svg" > "$AppIconSet"/"$AppIcon"-${i}x${i}@2x.png
 	done
-	for i in 167
-	do
+	for i in 167; do
 		svg2png -w $i "$svg" > "$AppIconSet"/"$AppIcon"-${i}x${i}.png
 	done
-	
+
 	# AppStore
-	for i in 512
-	do
+	for i in 512; do
 		svg2png -w $((i * 2)) "$AppStoreIconSvg" > "$AppIconSet"/"$AppStoreIcon"-${i}x${i}@2x.png
 	done
-	for i in 1024
-	do
+	for i in 1024; do
 		svg2png -w $i "$AppStoreIconSvg" > "$AppIconSet"/"$AppStoreIcon"-${i}x${i}.png
 	done
 
 	cp "$wd"/AppIcon-Contents.json "$AppIconSet"/Contents.json
-	
+
 	svg2png -w 1024 "$svg" > "$AppIcon"-1024x1024.png
 done
 
-for i in "$wd"/MenuIcons/*.svg
-do
-    imageName=$(basename "$i" | sed 's/.svg$//')
+for i in "$wd"/MenuIcons/*.svg; do
+	imageName=$(basename "$i" | sed 's/.svg$//')
 	imageset="$xcassets/$imageName.imageset"
-    for w in 22
-    do
+	for w in 22; do
 		pdfName="$imageName-$w.pdf"
-        outputI="${imageset:?}/${pdfName:?}"
-        svg2pdf -w 22 "$i" "${outputI:?}"
-    done
+		outputI="${imageset:?}/${pdfName:?}"
+		svg2pdf -w 22 "$i" "${outputI:?}"
+	done
 done
 
-for i in "$wd"/AppIcon?*.svg
-do
-    imageName=$(basename "$i" | sed 's/.svg$//')
+for i in "$wd"/AppIcon?*.svg; do
+	imageName=$(basename "$i" | sed 's/.svg$//')
 	imageset="$xcassets/$imageName.imageset"
-    for w in 256
-    do
+	for w in 256; do
 		pdfName="$imageName-$w.pdf"
-        outputI="${imageset:?}/${pdfName:?}"
-        svg2pdf -w $w "$i" "${outputI:?}"
-    done
+		outputI="${imageset:?}/${pdfName:?}"
+		svg2pdf -w $w "$i" "${outputI:?}"
+	done
 done
