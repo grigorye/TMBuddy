@@ -73,10 +73,5 @@ struct SMJobBlessCheckpointView_Previews: PreviewProvider {
         )
             .border(.red)
             .padding()
-            .environmentObject(
-                StateHolder<SMJobBlessCheckpointState>() ≈ {
-                    $0.state = .blessed
-                }
-            )
     }
 }
