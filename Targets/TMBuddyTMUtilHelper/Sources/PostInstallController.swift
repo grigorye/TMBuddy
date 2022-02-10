@@ -66,7 +66,9 @@ struct PostInstallController {
     }
 }
 
-private enum Error: Swift.Error {
+private typealias Error = PostInstallError
+
+enum PostInstallError: Swift.Error {
     case invalidBundle(path: String)
     case noFrameworksInBundle(path: String)
 }
