@@ -118,6 +118,40 @@ targets:
     dependencies:
       - package: Blessed
 
+  TMBuddySnapshots:
+    type: bundle.unit-test
+    platform: macOS
+    dependencies:
+      - package: SnapshotTesting
+    sources:
+      - path: Targets/TMBuddySnapshots
+        excludes:
+          - __Snapshots__
+      - Targets/TMBuddyShared
+      - Targets/OtherModules
+      - path: Targets/TMBuddy/Sources
+        excludes:
+          - Main
+          - "**/Integration"
+      - path: Targets/OtherTesting
+      - path: Targets/TMBuddyFinder/Sources
+        excludes:
+          - Main
+
+schemes:
+  TMBuddySnapshots:
+    build:
+      targets:
+        TMBuddySnapshots: [test]
+    test:
+      environmentVariables:
+        - variable: SNAPSHOT_SHADOWS
+          value: YES
+          isEnabled: false
+      targets:
+        - name: TMBuddySnapshots
+          parallelizable: true
+
 packages:
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk.git
@@ -125,6 +159,9 @@ packages:
   Blessed:
     url: https://github.com/trilemma-dev/Blessed
     from: "0.0.1"
+  SnapshotTesting:
+    url: https://github.com/pointfreeco/swift-snapshot-testing.git
+    from: "1.9.0"
 
 settings:
   MARKETING_VERSION: "1.0"
