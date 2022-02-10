@@ -97,7 +97,7 @@ targets:
       OTHER_LDFLAGS: -sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist
       LD_RUNPATH_SEARCH_PATHS:
         - $(inherited)
-        - /usr/local/lib/TMBuddy/Frameworks
+        - /Library/Application Support/TMBuddy/Frameworks
 
   TMBuddyTests:
     type: bundle.unit-test

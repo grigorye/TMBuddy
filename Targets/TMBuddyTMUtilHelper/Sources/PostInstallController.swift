@@ -3,7 +3,7 @@ import Foundation
 struct PostInstallController {
     
     let sourceBundlePath: String
-    let fixedRootURL = URL(fileURLWithPath: "/usr/local/lib/TMBuddy")
+    let fixedRootURL = URL(fileURLWithPath: "/Library/Application Support/TMBuddy")
     var fixedFrameworksURL: URL { fixedRootURL.appendingPathComponent("Frameworks") }
 
     func postInstallNeeded() throws -> Bool {
