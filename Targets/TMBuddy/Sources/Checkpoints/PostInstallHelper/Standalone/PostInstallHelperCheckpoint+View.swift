@@ -2,8 +2,19 @@ import SwiftUI
 
 struct PostInstallHelperCheckpointView: View {
     
-    @ObservedObject var blessCheckpointProvider = SMJobBlessCheckpointProvider()
-    @ObservedObject var checkpointProvider = PostInstallHelperCheckpointProvider()
+    init(
+        checkpointProvider: StateHolder<PostInstallHelperCheckpointState>,
+        blessCheckpointProvider: StateHolder<SMJobBlessCheckpointState>,
+        actions: PostInstallHelperCheckpointActions?
+    ) {
+        self.actions = actions
+        self.blessCheckpointProvider = blessCheckpointProvider
+        self.checkpointProvider = checkpointProvider
+    }
+    
+    @ObservedObject var blessCheckpointProvider: StateHolder<SMJobBlessCheckpointState>
+    @ObservedObject var checkpointProvider: StateHolder<PostInstallHelperCheckpointState>
+    let actions: PostInstallHelperCheckpointActions!
     
     var body: some View {
         let state = checkpointProvider.state
@@ -14,12 +25,14 @@ struct PostInstallHelperCheckpointView: View {
             switch state {
             case .completed:
                 return .ready
-            case .none:
+            case .none?:
                 return .notActual
             case .pending:
                 return .blocked
             case .failing:
                 return .blocked
+            case nil:
+                return .checking
             }
         }()
         let value: String = {
@@ -29,33 +42,24 @@ struct PostInstallHelperCheckpointView: View {
             switch state {
             case .completed:
                 return "installed"
-            case .none:
+            case .none?:
                 return ""
             case .pending:
                 return "not installed"
             case .failing:
                 return "failing"
+            case nil:
+                return "checking"
             }
         }()
+        
         CheckpointView(
             title: "Support for macOS \(ProcessInfo().operatingSystemVersion.majorVersion)",
             subtitle: nil,
             value: value,
             readiness: readiness
         ) {
-            Button("Install Support") {
-                let task = Task {
-                    try await performCommonHelperXPC { (proxy: CommonHelperXPC, continuation) in
-                        proxy.postInstallAsync(sourceBundlePath: Bundle.main.bundlePath) { error in
-                            continuation.resume(with: Result(error: error))
-                        }
-                    }
-                }
-                Task {
-                    let result = await task.result
-                    dump(result, name: "postInstallResult")
-                }
-            }
+            Button("Install Support", action: actions.installMacOSSupport)
         }
     }
 }
