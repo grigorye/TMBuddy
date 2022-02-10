@@ -1,19 +1,12 @@
 import Foundation
 
-class PostInstallHelperCheckpointProvider: ObservableObject, Traceable {
-    
-    enum State {
-        case none
-        case completed
-        case pending
-        case failing(Error)
-    }
-    
-    @Published var state: State = .none
+class PostInstallHelperCheckpointProvider: StateHolder<PostInstallHelperCheckpointState>, Traceable {
     
     private var timer: Timer?
     
-    init() {
+    override init() {
+        super.init()
+        
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.invalidateInfoTick()
         }
