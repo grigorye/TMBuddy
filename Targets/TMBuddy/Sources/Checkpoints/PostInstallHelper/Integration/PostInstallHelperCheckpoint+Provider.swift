@@ -44,7 +44,7 @@ class PostInstallHelperCheckpointProvider: StateHolder<PostInstallHelperCheckpoi
 
 private func postInstallNeeded() async throws -> Bool {
     try await performCommonHelperXPC { (proxy: CommonHelperXPC, continuation) in
-        proxy.postInstallNeededAsync(sourceBundlePath: Bundle.main.bundlePath) { (error, postInstallNeeded) in
+        proxy.postInstallNeededAsync(sourceBundlePath: postInstallHelperSourceBundlePath) { (error, postInstallNeeded) in
             continuation.resume(with: Result(error: error, value: postInstallNeeded))
         }
     }
