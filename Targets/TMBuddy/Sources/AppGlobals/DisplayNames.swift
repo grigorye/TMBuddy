@@ -1,8 +1,14 @@
 import Foundation
 
-let fileManager = FileManager.default
+private let fileManager = FileManager.default
 
-let appName = fileManager.displayName(atPath: Bundle.main.bundlePath)
+var enforcedAppName: String?
+var appName: String {
+    enforcedAppName ?? {
+        fileManager.displayName(atPath: Bundle.main.bundlePath)
+    }()
+}
+
 let finderName = fileManager.displayName(atPath: "/System/Library/CoreServices/Finder.app")
 
 var plugInName: String {
