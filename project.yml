@@ -178,6 +178,6 @@ name: TMBuddy
 options:
   bundleIdPrefix: com.grigorye
   xcodeVersion: 13.2.1
-  deploymentTarget: 
+  deploymentTarget:
     macOS: 10.15
   createIntermediateGroups: true
