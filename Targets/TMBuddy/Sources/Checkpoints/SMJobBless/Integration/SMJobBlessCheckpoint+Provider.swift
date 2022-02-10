@@ -1,18 +1,11 @@
 import Foundation
 
-class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
-    
-    enum State {
-        case blessed
-        case alien(String)
-        case missingBless
-    }
-    
-    @Published var state: State?
+class SMJobBlessCheckpointProvider: StateHolder<SMJobBlessCheckpointState>, Traceable {
     
     private var timer: Timer?
     
-    init() {
+    override init() {
+        super.init()
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.invalidateInfoTick()
         }
