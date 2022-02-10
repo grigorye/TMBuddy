@@ -11,6 +11,8 @@ extension XPCCompatibleError where Self: LocalizedError {
         [String : Any]() ≈ {
             if let value = errorDescription {
                 $0[NSLocalizedDescriptionKey] = value
+            } else {
+                $0[NSLocalizedDescriptionKey] = "\(self)"
             }
             if let value = failureReason {
                 $0[NSLocalizedFailureReasonErrorKey] = value
