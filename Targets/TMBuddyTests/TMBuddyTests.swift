@@ -11,6 +11,6 @@ class TMBuddyTests: XCTestCase {
     
     func testExclusion() async throws {
         dump(Bundle.main, name: "bundle")
-        try await TMUtilLauncher().setExcluded(true, urls: [URL(fileURLWithPath: "/tmp")])
+        try TMUtilLauncher().setExcluded(true, urls: [URL(fileURLWithPath: "/tmp")])
     }
 }
