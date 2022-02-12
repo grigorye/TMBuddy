@@ -18,9 +18,9 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
      ```
 
 2. Launch the app and follow the checklist, making sure all the red lights:
-   <img src=".Images/Checklist-Red.png" alt="Checklist-Red.png" style="zoom:50%;" />
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/test.allRed.png" alt="Checklist-Red.png" style="zoom:50%;" />
    turned green:
-   <img src=".Images/Checklist-Green.png" alt="Checklist-Green.png" style="zoom:50%;" />
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/test.allGreen.png" alt="Checklist-Green.png" style="zoom:50%;" />
 
 When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
 <img src=".Images/Disk-Selection.png" style="zoom:50%;" />
