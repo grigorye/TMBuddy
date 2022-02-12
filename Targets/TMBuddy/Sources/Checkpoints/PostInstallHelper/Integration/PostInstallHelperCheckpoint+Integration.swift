@@ -1,23 +1,15 @@
+import SwiftUI
+
 extension PostInstallHelperCheckpointView {
     
-    init() {
-        self.init(
-            checkpointProvider: PostInstallHelperCheckpointProvider(),
-            blessCheckpointProvider: SMJobBlessCheckpointProvider(),
-            actions: PostInstallHelperCheckpointActionHandler()
-        )
+    static func new() -> some View {
+        ObservableWrapperView(
+            SMJobBlessCheckpointProvider(),
+            PostInstallHelperCheckpointProvider()
+        ) { bless, postInstall in
+            Self(state: .init(bless: bless.state, postInstall: postInstall.state)) ≈ {
+                $0.actions = PostInstallHelperCheckpointActionHandler()
+            }
+        }
     }
 }
-
-import Foundation
-
-let postInstallHelperSourceBundlePath: String = {
-    let copyURL = URL(fileURLWithPath: "/Users/Shared/TMBuddy/TMBuddy.app")
-    try? FileManager.default.createDirectory(
-        at: copyURL.deletingLastPathComponent(),
-        withIntermediateDirectories: true
-    )
-    try? FileManager.default.removeItem(at: copyURL)
-    try! FileManager.default.copyItem(at: Bundle.main.bundleURL, to: copyURL)
-    return copyURL.path
-}()

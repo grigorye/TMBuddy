@@ -9,7 +9,7 @@ struct ContentView: View {
                 .font(.headline)
                 .fixedSize()
             
-            SandboxAccessView()
+            SandboxAccessView.new()
         }
         .padding()
     }

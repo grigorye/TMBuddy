@@ -1,17 +1,22 @@
 import SwiftUI
 
-struct PlugInFullDiskAccessCheckPointView: View {
+struct PlugInFullDiskAccessCheckpointView: View {
     
-    @ObservedObject var checkpointProvider = PlugInFullDiskAccessCheckPointProvider()
-    @ObservedObject var extensionStatusProvider = FinderSyncExtensionStatusProvider()
+    struct State {
+        let fullDiskAccess: PlugInFullDiskAccessCheckpointState
+        let finderSync: FinderSyncExtensionCheckpointState
+    }
+    
+    let state: State
+    var actions: PlugInFullDiskAccessCheckpointActions!
 
     var body: some View {
-        let accessGranted = checkpointProvider.accessGranted
+        let accessGranted = state.fullDiskAccess
         
         let (readiness, value): (Readiness, String) = {
             switch accessGranted {
             case .none:
-                let extensionStatus = extensionStatusProvider.extensionStatus
+                let extensionStatus = state.finderSync
                 switch (extensionStatus.enabled, extensionStatus.alienInfo) {
                 case (.some(true), .same):
                     return (.checking, "checking...")
@@ -25,7 +30,7 @@ struct PlugInFullDiskAccessCheckPointView: View {
                     return (.checking, "checking...")
                 }
             case .unresponsive:
-                let extensionStatus = extensionStatusProvider.extensionStatus
+                let extensionStatus = state.finderSync
                 switch (extensionStatus.enabled, extensionStatus.alienInfo) {
                 case (.some(true), .same):
                     return (.checking, "not yet connected")
@@ -56,10 +61,10 @@ struct PlugInFullDiskAccessCheckPointView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button("Reveal Extension in \(finderName)") {
-                        NSWorkspace.shared.activateFileViewerSelecting([plugInURL!])
+                        actions.revealExtensionInFinder()
                     }
                     Button("Full Disk Access Preferences") {
-                        NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles")!)
+                        actions.openFullDiskAccessPreferences()
                     }
                 }
                 let nl="\n"

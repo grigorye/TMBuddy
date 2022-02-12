@@ -1,4 +1,5 @@
 enum SMJobBlessCheckpointState {
+    case none
     case blessed
     case alien(String)
     case missingBless

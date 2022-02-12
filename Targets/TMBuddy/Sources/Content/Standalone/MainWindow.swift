@@ -2,6 +2,10 @@ import AppKit
 import SwiftUI
 
 func mainWindow() -> NSWindow {
+    mainWindow(contentView: ContentView())
+}
+
+func mainWindow<ContentView: View>(contentView: ContentView) -> NSWindow {
     NSWindow(
         contentRect: .init(origin: .zero, size: .init(width: 320, height: 480)),
         styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
@@ -11,6 +15,6 @@ func mainWindow() -> NSWindow {
         $0.title = mainWindowTitle()
         $0.isReleasedWhenClosed = false
         $0.center()
-        $0.contentView = NSHostingView(rootView: ContentView())
+        $0.contentView = NSHostingView(rootView: contentView)
     }
 }
