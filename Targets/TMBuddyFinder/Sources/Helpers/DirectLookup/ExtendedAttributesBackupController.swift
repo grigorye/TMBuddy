@@ -28,8 +28,13 @@ func excludedBasedOnExtendedAttributes(_ url: URL) -> Bool {
         guard let attribute = try url.extendedAttribute(forName: ExtendedAttributeForExcludingFromBackup.name) else {
             return false
         }
-        let valueMatches = String(data: attribute, encoding: .utf8) == ExtendedAttributeForExcludingFromBackup.value
-        return valueMatches
+        if String(data: attribute, encoding: .utf8) == ExtendedAttributeForExcludingFromBackup.value {
+            return true
+        }
+        if try PropertyListSerialization.propertyList(from: attribute, options: [], format: nil) as? String == ExtendedAttributeForExcludingFromBackup.value {
+            return true
+        }
+        return false
     } catch {
         dump((error, path: url.path), name: "error")
         return false
