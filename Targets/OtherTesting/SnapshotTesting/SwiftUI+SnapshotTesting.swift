@@ -3,6 +3,7 @@ import SwiftUI
 
 func assertSnapshot<View: SwiftUI.View>(
     matching view: View,
+    named name: String? = nil,
     record recording: Bool,
     file: StaticString = #file,
     testName: String = #function,
@@ -14,6 +15,7 @@ func assertSnapshot<View: SwiftUI.View>(
     assertSnapshot(
         matching: hostingView,
         as: .image(size: fittingSize),
+        named: name,
         record: recording,
         file: file,
         testName: testName,
