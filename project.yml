@@ -1,9 +1,22 @@
+aggregateTargets:
+  TMBuddyAll:
+    targets:
+      - TMBuddy
+      - TMBuddyTests
+      - TMBuddySnapshots
+
 targets:
+
   TMBuddy:
     type: application
     platform: macOS
     sources:
-      - Targets/TMBuddy/Sources
+      - path: Targets/TMBuddy/Sources
+        excludes:
+          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots.swift"
+          # - "**/*+SampleView.swift"
+          # - "**/*+Samples.swift"
       - Targets/TMBuddy/Resources
       - Targets/TMBuddyShared
       - Targets/OtherModules
@@ -110,8 +123,16 @@ targets:
       - Targets/TMBuddyShared
       - Targets/OtherModules
       - path: Targets/TMBuddy/Sources
+        includes:
+          - "**/Standalone/*+Model.swift"
         excludes:
           - Main
+          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots.swift"
+          - "**/*+SampleView.swift"
+          - "**/*+Samples.swift"
+          - "**/Standalone"
+          - "**/*+Integration.swift"
       - path: Targets/TMBuddyFinder/Sources
         excludes:
           - Main
@@ -121,31 +142,57 @@ targets:
   TMBuddySnapshots:
     type: bundle.unit-test
     platform: macOS
+    templates:
+      - TMBuddyStandaloneViewsTarget
     dependencies:
       - package: SnapshotTesting
+      - target: TMBuddySnapshotViews
     sources:
-      - path: Targets/TMBuddySnapshots
-        excludes:
-          - __Snapshots__
-      - Targets/TMBuddyShared
-      - Targets/OtherModules
       - path: Targets/TMBuddy/Sources
+        includes:
+          - "**/*Snapshots.swift"
+      - Targets/OtherTesting
+
+  TMBuddySnapshotViews:
+    type: framework
+    platform: macOS
+    templates:
+      - TMBuddyStandaloneViewsTarget
+
+targetTemplates:
+
+  TMBuddyStandaloneViewsTarget:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Targets/TMBuddy/Sources
+        includes:
+          - "**/*View.swift"
+          - "**/Standalone/*.swift"
+          - AppGlobals/DisplayNames.swift
+          - AppGlobals/PlugInURL.swift
+          - AppGlobals/BuildInfo.swift
         excludes:
           - Main
+          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots.swift"
           - "**/Integration"
-      - path: Targets/OtherTesting
-      - path: Targets/TMBuddyFinder/Sources
-        excludes:
-          - Main
+      - path: Targets/TMBuddyShared
+        includes:
+          - Data/DefaultsKey.swift
+          - Data/PlugInHostConnectionVersion.swift
+          - Globals/SharedDefaults.swift
+      - Targets/OtherModules
 
 schemes:
   TMBuddySnapshots:
     build:
       targets:
-        TMBuddySnapshots: [test]
+        TMBuddySnapshots: all
+    run:
     test:
       environmentVariables:
-        - variable: SNAPSHOT_SHADOWS
+        - variable: FORCE_RUN_FLAKY_SNAPSHOTS
           value: YES
           isEnabled: false
       targets:
