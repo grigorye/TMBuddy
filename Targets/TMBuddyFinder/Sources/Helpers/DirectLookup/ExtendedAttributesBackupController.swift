@@ -24,21 +24,28 @@ enum ExtendedAttributeForExcludingFromBackup {
 }
 
 func excludedBasedOnExtendedAttributes(_ url: URL) -> Bool {
+    let attribute: Data
     do {
-        guard let attribute = try url.extendedAttribute(forName: ExtendedAttributeForExcludingFromBackup.name) else {
+        guard let nonFailingAttribute = try url.extendedAttribute(forName: ExtendedAttributeForExcludingFromBackup.name) else {
             return false
         }
-        if String(data: attribute, encoding: .utf8) == ExtendedAttributeForExcludingFromBackup.value {
-            return true
-        }
+        attribute = nonFailingAttribute
+    } catch {
+        dump((error, path: url.path), name: "readExtendedAttributeForExcludingFromBackupFailed")
+        return false
+    }
+    if String(data: attribute, encoding: .utf8) == ExtendedAttributeForExcludingFromBackup.value {
+        return true
+    }
+    do {
         if try PropertyListSerialization.propertyList(from: attribute, options: [], format: nil) as? String == ExtendedAttributeForExcludingFromBackup.value {
             return true
         }
-        return false
     } catch {
-        dump((error, path: url.path), name: "error")
+        dump((error, data: attribute, path: url.path), name: "propertyListDeserializationFailed")
         return false
     }
+    return false
 }
 
 func addExcludedBasedOnExtendedAttributes(_ url: URL) {
@@ -50,7 +57,7 @@ func addExcludedBasedOnExtendedAttributes(_ url: URL) {
             to: url
         )
     } catch {
-        dump((error, path: url.path), name: "error")
+        dump((error, path: url.path), name: "addStringExtendedAttributeForExcludingFromBackupFailed")
     }
 }
 
@@ -59,14 +66,15 @@ func removeExcludedBasedOnExtendedAttributes(_ url: URL) {
     do {
         try url.removeExtendedAttribute(forName: ExtendedAttributeForExcludingFromBackup.name)
     } catch {
-        dump((error, path: url.path), name: "error")
+        dump((error, path: url.path), name: "removeExtendedAttributeForExcludingFromBackupFailed")
     }
 }
 
 func addStringExtendedAttribute(_ name: String, value: String, to url: URL) throws {
     debug { dump((name: name, value: value, path: url.path), name: "args") }
     guard let data = value.data(using: .utf8) else {
-        throw dump(Error.invalidStringValue(value: value, url: url, name: name), name: "error")
+        dump((value, url: url, name: name), name: "utf8DataFromValueFailed")
+        throw Error.invalidStringValue(value: value, url: url, name: name)
     }
     try url.setExtendedAttribute(data: data, forName: name)
 }
