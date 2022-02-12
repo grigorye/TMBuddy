@@ -9,10 +9,10 @@
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "282849DF2C5F210C0396BF37"
@@ -55,7 +55,7 @@
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "SNAPSHOT_SHADOWS"
+            key = "FORCE_RUN_FLAKY_SNAPSHOTS"
             value = "YES"
             isEnabled = "NO">
          </EnvironmentVariable>
