@@ -2,19 +2,12 @@ import SwiftUI
 
 struct SMJobBlessCheckpointView: View {
     
-    internal init(
-        checkpointProvider: StateHolder<SMJobBlessCheckpointState>,
-        actions: SMJobBlessCheckpointActions?
-    ) {
-        self.checkpointProvider = checkpointProvider
-        self.actions = actions
-    }
+    typealias State = SMJobBlessCheckpointState
     
-    @ObservedObject var checkpointProvider: StateHolder<SMJobBlessCheckpointState>
+    var state: State
     var actions: SMJobBlessCheckpointActions!
     
     var body: some View {
-        let state = checkpointProvider.state
         let value: String = {
             switch state {
             case .none:
@@ -49,11 +42,20 @@ struct SMJobBlessCheckpointView: View {
             HStack {
                 switch state {
                 case .blessed where bundleVersion == "Local":
-                    Button("Reinstall Helper", action: actions.reinstallHelper)
+                    Button(
+                        "Reinstall Helper",
+                        action: { actions.reinstallHelper() }
+                    )
                 case .missingBless:
-                    Button("Install Helper", action: actions.installHelper)
+                    Button(
+                        "Install Helper",
+                        action: { actions.installHelper() }
+                    )
                 case .alien:
-                    Button("Update Helper", action: actions.updateHandler)
+                    Button(
+                        "Update Helper",
+                        action: { actions.updateHandler() }
+                    )
                 default:
                     EmptyView()
                 }
@@ -64,14 +66,42 @@ struct SMJobBlessCheckpointView: View {
 
 struct SMJobBlessCheckpointView_Previews: PreviewProvider {
     
-    typealias PreviewedView = SMJobBlessCheckpointView
-    
     static var previews: some View {
-        SMJobBlessCheckpointView(
-            checkpointProvider: .init(),
-            actions: nil
-        )
-            .border(.red)
-            .padding()
+        Preview()
+    }
+}
+
+private let samples = SMJobBlessCheckpointState.Sample.allCases
+
+private struct Preview: View {
+    
+    @State var sampleIndex = 0
+    
+    var sample: SMJobBlessCheckpointState.Sample {
+        samples[sampleIndex]
+    }
+    
+    var state: SMJobBlessCheckpointState {
+        sample.state
+    }
+
+    var nextSampleIndex: Int {
+        let wouldBeNextSampleIndex = sampleIndex + 1
+        guard wouldBeNextSampleIndex < samples.endIndex else {
+            return 0
+        }
+        return wouldBeNextSampleIndex
+    }
+    
+    var body: some View {
+        VStack {
+            Text("\(String(describing: sample))")
+            Button("Next") {
+                sampleIndex = nextSampleIndex
+            }
+            SMJobBlessCheckpointView(state: state)
+                .border(.red)
+        }
+        .padding()
     }
 }

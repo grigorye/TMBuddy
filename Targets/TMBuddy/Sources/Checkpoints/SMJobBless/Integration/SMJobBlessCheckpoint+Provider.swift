@@ -1,11 +1,12 @@
 import Foundation
 
-class SMJobBlessCheckpointProvider: StateHolder<SMJobBlessCheckpointState>, Traceable {
+class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
+    
+    @Published var state: SMJobBlessCheckpointState = .none
     
     private var timer: Timer?
     
-    override init() {
-        super.init()
+    init() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.invalidateInfoTick()
         }

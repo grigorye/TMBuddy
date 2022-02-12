@@ -2,10 +2,11 @@ import SwiftUI
 
 extension SMJobBlessCheckpointView {
     
-    init() {
-        self.init(
-            checkpointProvider: SMJobBlessCheckpointProvider(),
-            actions: SMJobBlessCheckpointActionHandler()
-        )
+    static func new() -> some View {
+        ObservableWrapperView(SMJobBlessCheckpointProvider()) { bless in
+            Self(state: bless.state) ≈ {
+                $0.actions = SMJobBlessCheckpointActionHandler()
+            }
+        }
     }
 }

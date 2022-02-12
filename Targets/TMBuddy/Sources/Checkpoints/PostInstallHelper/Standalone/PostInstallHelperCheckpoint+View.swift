@@ -2,53 +2,46 @@ import SwiftUI
 
 struct PostInstallHelperCheckpointView: View {
     
-    init(
-        checkpointProvider: StateHolder<PostInstallHelperCheckpointState>,
-        blessCheckpointProvider: StateHolder<SMJobBlessCheckpointState>,
-        actions: PostInstallHelperCheckpointActions?
-    ) {
-        self.actions = actions
-        self.blessCheckpointProvider = blessCheckpointProvider
-        self.checkpointProvider = checkpointProvider
+    struct State {
+        let bless: SMJobBlessCheckpointState
+        let postInstall: PostInstallHelperCheckpointState
     }
     
-    @ObservedObject var blessCheckpointProvider: StateHolder<SMJobBlessCheckpointState>
-    @ObservedObject var checkpointProvider: StateHolder<PostInstallHelperCheckpointState>
-    let actions: PostInstallHelperCheckpointActions!
+    let state: State
+    var actions: PostInstallHelperCheckpointActions!
     
     var body: some View {
-        let state = checkpointProvider.state
         let readiness: Readiness = {
-            guard case .blessed = blessCheckpointProvider.state else {
+            guard case .blessed = state.bless else {
                 return .notActual
             }
-            switch state {
+            switch state.postInstall {
             case .completed:
                 return .ready
-            case .none?:
+            case .skipped:
                 return .notActual
             case .pending:
                 return .blocked
             case .failing:
                 return .blocked
-            case nil:
+            case .none:
                 return .checking
             }
         }()
         let value: String = {
-            guard case .blessed = blessCheckpointProvider.state else {
+            guard case .blessed = state.bless else {
                 return "unknown (helper tool is not installed)"
             }
-            switch state {
+            switch state.postInstall {
             case .completed:
                 return "installed"
-            case .none?:
+            case .skipped:
                 return ""
             case .pending:
                 return "not installed"
             case .failing:
                 return "failing"
-            case nil:
+            case .none:
                 return "checking"
             }
         }()
@@ -59,7 +52,7 @@ struct PostInstallHelperCheckpointView: View {
             value: value,
             readiness: readiness
         ) {
-            Button("Install Support", action: actions.installMacOSSupport)
+            Button("Install Support", action: { actions.installMacOSSupport() })
         }
     }
 }

@@ -1,49 +1,36 @@
-import Combine
 import FinderSync
 
-class FinderSyncExtensionStatusProvider: ObservableObject {
+class FinderSyncExtensionCheckpointProvider: ObservableObject {
     
-    @Published var extensionStatus: ExtensionStatus = .init(enabled: nil, alienInfo: nil)
-    
-    struct ExtensionStatus {
-        let enabled: Bool?
-        let alienInfo: AlienInfo?
-    }
+    @Published var state: FinderSyncExtensionCheckpointState = .none
     
     private var oneTickAlienInfo: AlienInfo?
     private var timer: Timer?
     
-    enum AlienInfo {
-        case alien(path: String)
-        case same
-        case failing
-    }
-    
-    private func currentExtensionStatus() -> ExtensionStatus {
+    private func currentState() -> FinderSyncExtensionCheckpointState {
         .init(
             enabled: FIFinderSyncController.isExtensionEnabled,
             alienInfo: oneTickAlienInfo
         )
     }
 
-    private func updateExtensionStatus() {
-        let extensionStatus = currentExtensionStatus()
-        debug { dump(extensionStatus, name: "extensionStatus") }
-        self.extensionStatus = extensionStatus
+    private func updateState() {
+        let state = currentState()
+        debug { dump(state, name: "state") }
+        self.state = state
         self.oneTickAlienInfo = nil
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
-            self?.updateExtensionStatus()
+            self?.updateState()
         }
     }
     
     init() {
-        
         //
         // In any case, try to establish connection with plugin.
         // If connection to plugin is established, reflect the status of plugin in the status.
         // If connection to plugin times out, reflect it as the extension status.
         //
-        updateExtensionStatus()
+        updateState()
         _ = self.plugInConnectionController
     }
     
@@ -76,4 +63,4 @@ class FinderSyncExtensionStatusProvider: ObservableObject {
     }
 }
 
-extension FinderSyncExtensionStatusProvider: Traceable {}
+extension FinderSyncExtensionCheckpointProvider: Traceable {}

@@ -1,15 +1,10 @@
 import Foundation
 
-class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
+class PlugInFullDiskAccessCheckpointProvider: ObservableObject {
     
-    enum AccessState {
-        case granted
-        case denied
-        case unresponsive
-        case none
-    }
+    typealias State = PlugInFullDiskAccessCheckpointState
     
-    @Published var accessGranted: AccessState = .none
+    @Published var state: State = .none
     
     private var timer: Timer?
     
@@ -25,18 +20,18 @@ class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
     
     func invalidatePlugInInfoTick() {
         if plugInConnectionController.invalidatePluginInfo() == false {
-            accessGranted = .unresponsive
+            state = .unresponsive
         }
     }
     
     func handleResponse(_ response: FinderSyncInfoResponse?) {
         debug { dump(response == nil, name: "emptyResponse") }
         guard let response = response else {
-            accessGranted = .none
+            state = .none
             return
         }
         debug { dump(response, name: "response") }
-        let newAccessGranted: AccessState
+        let newState: State
         guard case let .success(successResult) = response.result else {
             debug {
                 dump((result: response.result, response: response), name: "failureInResponse")
@@ -50,12 +45,12 @@ class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
         switch timeMachinePreferencesAccess {
         case let .denied(error):
             debug { dump(error, name: "receivedError") }
-            newAccessGranted = .denied
+            newState = .denied
         case .granted:
-            newAccessGranted = .granted
+            newState = .granted
         }
-        debug { dump(newAccessGranted, name: "newAccessGranted") }
-        self.accessGranted = newAccessGranted
+        debug { dump(newState, name: "newState") }
+        self.state = newState
     }
     
     private lazy var plugInConnectionController = PlugInConnectionController() { [weak self] (response) in
@@ -63,4 +58,4 @@ class PlugInFullDiskAccessCheckPointProvider: ObservableObject {
     }
 }
 
-extension PlugInFullDiskAccessCheckPointProvider: Traceable {}
+extension PlugInFullDiskAccessCheckpointProvider: Traceable {}

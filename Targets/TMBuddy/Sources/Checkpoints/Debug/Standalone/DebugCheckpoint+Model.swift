@@ -1,0 +1,3 @@
+protocol DebugCheckpointActions {
+    func crash()
+}
