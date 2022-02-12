@@ -46,6 +46,7 @@ jobs:
         echo 'EXPORT_PATH_APPSTORE=${{ runner.temp }}/build.export/appstore' >> $GITHUB_ENV
         echo 'EXPORT_PATH_DEVELOPER_ID=${{ runner.temp }}/build.export/developer-id' >> $GITHUB_ENV
         echo 'AUTHENTICATION_KEY_PATH=${{ runner.temp }}/authentication.p8' >> $GITHUB_ENV
+        echo 'ARCHIVE_ARTIFACT_PATH=${{ runner.temp }}/xcarchive' >> $GITHUB_ENV
 
     - uses: maxim-lobanov/setup-xcode@v1.4.1
       with:
@@ -62,7 +63,7 @@ jobs:
 
         echo "BUNDLE_VERSION=$BUNDLE_VERSION" >> $GITHUB_ENV
         echo "PRODUCT_NAME=$PRODUCT_NAME" >> $GITHUB_ENV
-        echo "ARCHIVE_PATH=$RUNNER_TEMP/$PRODUCT_NAME-$BUNDLE_VERSION.xcarchive" >> $GITHUB_ENV
+        echo "ARCHIVE_PATH=$ARCHIVE_ARTIFACT_PATH/$PRODUCT_NAME-$BUNDLE_VERSION.xcarchive" >> $GITHUB_ENV
         echo "DMG_PATH=$RUNNER_TEMP/$PRODUCT_NAME-$BUNDLE_VERSION.dmg" >> $GITHUB_ENV
     
     - name: Create Keychain
@@ -136,7 +137,7 @@ jobs:
       with:
         name: xcarchive
         path: |
-          ${{ env.ARCHIVE_PATH }}
+          ${{ env.ARCHIVE_ARTIFACT_PATH }}
 
     - name: Export archive for AppStore
       if: github.ref == 'refs/heads/main'
