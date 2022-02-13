@@ -15,7 +15,7 @@ targets:
       INFOPLIST_KEY_NSPrincipalClass: NSApplication
       INFOPLIST_KEY_NSMainStoryboardFile: Main
       INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
-      CODE_SIGN_ENTITLEMENTS: Targets/TMBuddy/Bundle/TMBuddy.entitlements
+      CODE_SIGN_ENTITLEMENTS: Targets/TMBuddy/Bundle/TMBuddy$(GE_APP_ENTITLEMENTS_SUFFIX).entitlements
       OTHER_LDFLAGS: -ObjC
     scheme:
       commandLineArguments:
