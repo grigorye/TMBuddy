@@ -125,6 +125,7 @@ jobs:
         # build
         xcodebuild archive \
           -derivedDataPath "$DERIVED_DATA_PATH" \
+          -disableAutomaticPackageResolution \
           -archivePath "$ARCHIVE_PATH" \
           -scheme '${{ matrix.run-config.scheme }}' \
           -destination '${{ matrix.run-config.destination }}' \
