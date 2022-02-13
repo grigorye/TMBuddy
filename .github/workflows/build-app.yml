@@ -134,6 +134,22 @@ jobs:
           -authenticationKeyID "$APP_STORE_AUTHENTICATION_KEY_ID" \
           -authenticationKeyIssuerID "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID" \
           BUNDLE_VERSION="$BUNDLE_VERSION" \
+          GE_INFOPLIST_KIND=Distribution
+    
+    - name: Build .xcarchive for AppStore
+      run: |
+        # build
+        xcodebuild archive \
+          -derivedDataPath "$DERIVED_DATA_PATH" \
+          -archivePath "$ARCHIVE_PATH_APPSTORE" \
+          -scheme '${{ matrix.run-config.scheme }}' \
+          -destination '${{ matrix.run-config.destination }}' \
+          -showBuildTimingSummary \
+          -allowProvisioningUpdates \
+          -authenticationKeyPath "$AUTHENTICATION_KEY_PATH" \
+          -authenticationKeyID "$APP_STORE_AUTHENTICATION_KEY_ID" \
+          -authenticationKeyIssuerID "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID" \
+          BUNDLE_VERSION="$BUNDLE_VERSION" \
           GE_INFOPLIST_KIND=Distribution \
           GE_APP_ENTITLEMENTS_SUFFIX=-appstore
 
@@ -143,6 +159,13 @@ jobs:
         name: xcarchive
         path: |
           ${{ env.ARCHIVE_ARTIFACT_PATH }}
+    
+    - name: Save .xcarchive for AppStore
+      uses: actions/upload-artifact@v2
+      with:
+        name: xcarchive-appstore
+        path: |
+          ${{ env.ARCHIVE_ARTIFACT_PATH_APPSTORE }}
 
     - name: Export archive for AppStore
       if: github.ref == 'refs/heads/main'
