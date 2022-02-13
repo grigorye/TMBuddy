@@ -134,7 +134,8 @@ jobs:
           -authenticationKeyID "$APP_STORE_AUTHENTICATION_KEY_ID" \
           -authenticationKeyIssuerID "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID" \
           BUNDLE_VERSION="$BUNDLE_VERSION" \
-          GE_INFOPLIST_KIND=Distribution
+          GE_INFOPLIST_KIND=Distribution \
+          GE_APP_ENTITLEMENTS_SUFFIX=-appstore
 
     - name: Save .xcarchive
       uses: actions/upload-artifact@v2
@@ -142,27 +143,6 @@ jobs:
         name: xcarchive
         path: |
           ${{ env.ARCHIVE_ARTIFACT_PATH }}
-
-    - name: Prepare archive for AppStore
-      run: |
-        # enforce app sandbox for AppStore distribution.
-        ENTITLEMENTS_APPSTORE="$(find . -name '*-appstore.entitlements')"
-        mkdir "$ARCHIVE_ARTIFACT_PATH_APPSTORE"
-        cp -pR "$ARCHIVE_PATH" "$ARCHIVE_PATH_APPSTORE"
-        codesign \
-          --force \
-          --sign "Apple Distribution" \
-          -o runtime \
-          --entitlements "$ENTITLEMENTS_APPSTORE" \
-          --generate-entitlement-der \
-          "$ARCHIVE_PATH_APPSTORE"/Products/Applications/$PRODUCT_NAME.app
-
-    - name: Save .xcarchive for AppStore
-      uses: actions/upload-artifact@v2
-      with:
-        name: xcarchive-appstore
-        path: |
-          ${{ env.ARCHIVE_ARTIFACT_PATH_APPSTORE }}
 
     - name: Export archive for AppStore
       if: github.ref == 'refs/heads/main'
