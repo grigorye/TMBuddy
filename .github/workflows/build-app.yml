@@ -48,6 +48,7 @@ jobs:
         echo 'EXPORT_PATH_DEVELOPER_ID=${{ runner.temp }}/build.export/developer-id' >> $GITHUB_ENV
         echo 'AUTHENTICATION_KEY_PATH=${{ runner.temp }}/authentication.p8' >> $GITHUB_ENV
         echo 'ARCHIVE_ARTIFACT_PATH=${{ runner.temp }}/xcarchive' >> $GITHUB_ENV
+        echo 'ARCHIVE_ARTIFACT_PATH_APPSTORE=${{ runner.temp }}/xcarchive-appstore' >> $GITHUB_ENV
 
     - uses: maxim-lobanov/setup-xcode@v1.4.1
       with:
@@ -65,6 +66,7 @@ jobs:
         echo "BUNDLE_VERSION=$BUNDLE_VERSION" >> $GITHUB_ENV
         echo "PRODUCT_NAME=$PRODUCT_NAME" >> $GITHUB_ENV
         echo "ARCHIVE_PATH=$ARCHIVE_ARTIFACT_PATH/$PRODUCT_NAME-$BUNDLE_VERSION.xcarchive" >> $GITHUB_ENV
+        echo "ARCHIVE_PATH_APPSTORE=$ARCHIVE_ARTIFACT_PATH_APPSTORE/$PRODUCT_NAME-appstore-$BUNDLE_VERSION.xcarchive" >> $GITHUB_ENV
         echo "DMG_PATH=$RUNNER_TEMP/$PRODUCT_NAME-$BUNDLE_VERSION.dmg" >> $GITHUB_ENV
     
     - name: Create Keychain
@@ -141,16 +143,37 @@ jobs:
         path: |
           ${{ env.ARCHIVE_ARTIFACT_PATH }}
 
+    - name: Prepare archive for AppStore
+      run: |
+        # enforce app sandbox for AppStore distribution.
+        ENTITLEMENTS_APPSTORE="$(find . -name '*-appstore.entitlements')"
+        mkdir "$ARCHIVE_ARTIFACT_PATH_APPSTORE"
+        cp -pR "$ARCHIVE_PATH" "$ARCHIVE_PATH_APPSTORE"
+        codesign \
+          --force \
+          --sign "Apple Distribution" \
+          -o runtime \
+          --entitlements "$ENTITLEMENTS_APPSTORE" \
+          --generate-entitlement-der \
+          "$ARCHIVE_PATH_APPSTORE"/Products/Applications/$PRODUCT_NAME.app
+
+    - name: Save .xcarchive for AppStore
+      uses: actions/upload-artifact@v2
+      with:
+        name: xcarchive-appstore
+        path: |
+          ${{ env.ARCHIVE_ARTIFACT_PATH_APPSTORE }}
+
     - name: Export archive for AppStore
       if: github.ref == 'refs/heads/main'
       run: |
         # create variables
         EXPORT_OPTIONS_PLIST='dist/appstore-exportOptions.plist'
-
+        
         # export archive
         xcodebuild \
           -exportArchive \
-          -archivePath "$ARCHIVE_PATH" \
+          -archivePath "$ARCHIVE_PATH_APPSTORE" \
           -exportOptionsPlist "$EXPORT_OPTIONS_PLIST" \
           -exportPath "$EXPORT_PATH_APPSTORE" \
           -allowProvisioningUpdates \
