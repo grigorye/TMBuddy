@@ -1,27 +1,6 @@
 import Cocoa
 import FinderSync
 
-let includedImage: NSImage? = nil
-let excludedImage = NSImage(named: NSImage.statusNoneName)
-let pathExcludedImage = NSImage(named: NSImage.statusPartiallyAvailableName)
-let stickyExcludedImage = NSImage(named: NSImage.statusUnavailableName)
-let unknownImage = NSImage(named: NSImage.statusNoneName)
-
-func imageForStatus(_ status: TMStatus) -> NSImage? {
-    switch status {
-    case .included:
-        return includedImage
-    case .excluded:
-        return excludedImage
-    case .stickyExcluded:
-        return stickyExcludedImage
-    case .pathExcluded:
-        return pathExcludedImage
-    case .unknown:
-        return unknownImage
-    }
-}
-
 func badgeIdentifierForStatus(_ status: TMStatus) -> String {
     status.rawValue
 }
