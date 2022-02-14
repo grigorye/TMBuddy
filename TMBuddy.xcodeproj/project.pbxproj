@@ -112,7 +112,7 @@
 		30DFD4815A3EEC518869366B /* FirebaseIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93F1D517D56B1A64B362BB /* FirebaseIntegration.swift */; };
 		31F9B180AA952D9004E868AB /* AppStoreDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8B0C9226B80DCCB7812D8 /* AppStoreDistribution.swift */; };
 		33EE8D206C65E5B46D8AA115 /* VolumeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78EAA490AF4D1B96BD2333 /* VolumeFilter.swift */; };
-		341B4A8D3EF3C47A4FEC2626 /* Blessed in Frameworks */ = {isa = PBXBuildFile; productRef = 9213A8C8A756F5FBA8F35690 /* Blessed */; };
+		341B4A8D3EF3C47A4FEC2626 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CD08EC483D6A0C304F293A4A /* FirebaseCrashlytics */; };
 		34531461D43EDC16E2549052 /* CommonHelperXPC+Integration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDFE11B20EB8F25100ED984 /* CommonHelperXPC+Integration.swift */; };
 		346824322612BB5439827CD5 /* PlugInHostConnectionVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C642FF28DF76F418F92E59 /* PlugInHostConnectionVersion.swift */; };
 		349BACF4D66CC9C4BD8C6EF0 /* Result+XPCAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD47112C599697DA85BEB /* Result+XPCAdditions.swift */; };
@@ -131,7 +131,7 @@
 		39ECC113AA44FD1D98CB7C36 /* Bundle+PlugInURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E727C55DA24B568B575F00A4 /* Bundle+PlugInURLs.swift */; };
 		3A8E30BE383DD250C08B0043 /* NSXPCConnection+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922721D663B21B49A9E9A57 /* NSXPCConnection+Additions.swift */; };
 		3AAAEE57B2D94AB671AB26BE /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D49731D0F18DC9C7F95270B /* UserDefaultsObserver.swift */; };
-		3AD3FBF820916A911EB8DE49 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD6471ABA7B9F437D73DE6A7 /* FirebaseAnalytics */; };
+		3AD3FBF820916A911EB8DE49 /* Blessed in Frameworks */ = {isa = PBXBuildFile; productRef = 9213A8C8A756F5FBA8F35690 /* Blessed */; };
 		3B52F363DEFE92A1A6BC0DB5 /* SMJobBlessCheckpoint+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267F0D479D71EF0F46E98DD9 /* SMJobBlessCheckpoint+View.swift */; };
 		3BAC64BE5F9DC0CE314BEB7D /* XPCCompatibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8622C72F35D7835285F3A49C /* XPCCompatibleError.swift */; };
 		3C15586208B0D1B0BA9B68CE /* Tracing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE783D6848CF05126C7D58C3 /* Tracing.swift */; };
@@ -410,7 +410,7 @@
 		C8BF2E1D6409AF7785160EBA /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ACDB7979EFA228D20B8747 /* ErrorReporter.swift */; };
 		C8D6CDB3D68FDE9530EA44EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AC5286A3A23AE623FBCFF46 /* Assets.xcassets */; };
 		C8E2260F17E18FEB3694439F /* PlugInFullDiskAccessCheckpoint+ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587DC5B8C85678704BE46085 /* PlugInFullDiskAccessCheckpoint+ActionHandler.swift */; };
-		C9AC650334B2687EA13D9907 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CD08EC483D6A0C304F293A4A /* FirebaseCrashlytics */; };
+		C9AC650334B2687EA13D9907 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BD6471ABA7B9F437D73DE6A7 /* FirebaseAnalytics */; };
 		C9E65C143A5B7764FDBE4D1E /* TMUtilLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053C7334C49411596BEF182 /* TMUtilLauncher.swift */; };
 		CB795B8F57D86A83EDFE85C2 /* UserDefaults+DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D53B8BFD776FC52616C3A /* UserDefaults+DefaultsKey.swift */; };
 		CC420E1984E00F95FFEAC9B3 /* SMJobBlessCheckpoint+SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC39F982F8CC328229ADFF /* SMJobBlessCheckpoint+SampleView.swift */; };
@@ -765,9 +765,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				341B4A8D3EF3C47A4FEC2626 /* Blessed in Frameworks */,
-				C9AC650334B2687EA13D9907 /* FirebaseCrashlytics in Frameworks */,
-				3AD3FBF820916A911EB8DE49 /* FirebaseAnalytics in Frameworks */,
+				341B4A8D3EF3C47A4FEC2626 /* FirebaseCrashlytics in Frameworks */,
+				C9AC650334B2687EA13D9907 /* FirebaseAnalytics in Frameworks */,
+				3AD3FBF820916A911EB8DE49 /* Blessed in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1585,9 +1585,9 @@
 			);
 			name = TMBuddy;
 			packageProductDependencies = (
-				9213A8C8A756F5FBA8F35690 /* Blessed */,
 				CD08EC483D6A0C304F293A4A /* FirebaseCrashlytics */,
 				BD6471ABA7B9F437D73DE6A7 /* FirebaseAnalytics */,
+				9213A8C8A756F5FBA8F35690 /* Blessed */,
 			);
 			productName = TMBuddy;
 			productReference = 5E1B1EAE38A301E37947D0C1 /* TMBuddy.app */;
