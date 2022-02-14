@@ -1,0 +1,21 @@
+targets:
+  TMBuddy:
+    templates:
+      - FirerbaseTarget
+
+  TMBuddyFinder:
+    templates:
+      - FirerbaseTarget
+
+targetTemplates:
+  FirerbaseTarget:
+    dependencies:
+      - package: Firebase
+        product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseAnalytics
+
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk.git
+    from: "8.0"
