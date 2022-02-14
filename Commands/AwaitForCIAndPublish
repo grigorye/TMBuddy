@@ -10,7 +10,7 @@ lastRun=$(Publishing/LastRun)
 
 gh run watch "$lastRun" --exit-status
 
-Commands/DownloadAndPublish "$provisioningDir" "$casksDir"
+Publishing/DownloadAndPublish "$lastRun" "$provisioningDir" "$casksDir"
 
 (cd "$casksDir" && git commit -m "Updated TMBuddy." time-machine-buddy.rb && git push)
 
