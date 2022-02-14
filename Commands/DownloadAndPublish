@@ -17,9 +17,10 @@ appName="TMBuddy"
 
 lastRun=$(Publishing/LastRun)
 
-for xcarchiveKind in xcarchive xcarchive-appstore; do
-    gh run download --name "$xcarchiveKind" --dir  "$tmpdir"/"$xcarchiveKind"
-    ./Publishing/UploadDSymsToCrashlytics "$tmpdir"/"$xcarchiveKind"/*.xcarchive
+for buildKind in DeveloperID AppStore; do
+    if gh run download "$lastRun" --name "xcarchive-$buildKind" --dir  "$tmpdir"/"$buildKind"; then
+        ./Publishing/UploadDSymsToCrashlytics "$tmpdir"/"$buildKind"/*.xcarchive
+    fi
 done
 
 ./Publishing/DownloadDmg "$lastRun" "$tmpdir"/dmg
