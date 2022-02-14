@@ -16,7 +16,7 @@ formulaName="time-machine-buddy"
 appName="TMBuddy"
 
 for xcarchiveKind in xcarchive xcarchive-appstore; do
-    ./Publishing/DownloadXCArchive "$tmpdir"/"$xcarchiveKind"
+    gh run download --name "$xcarchiveKind" --dir  "$tmpdir"/"$xcarchiveKind"
     ./Publishing/UploadDSymsToCrashlytics "$tmpdir"/"$xcarchiveKind"/*.xcarchive
 done
 
