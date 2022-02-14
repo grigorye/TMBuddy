@@ -16,7 +16,6 @@ enum DefaultsKey: String, CaseIterable {
     case finderSyncInfoResponsePayloadEncoding
 
     case forceTMUtilBasedStatusProvider
-    case forceMDItemMetadataReader
     case forceTMUtilMetadataWriter
     case forcePostInstallCheckpoint
     
