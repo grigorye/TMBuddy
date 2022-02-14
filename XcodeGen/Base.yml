@@ -1,0 +1,216 @@
+aggregateTargets:
+  TMBuddyAll:
+    targets:
+      - TMBuddy
+      - TMBuddyTests
+      - TMBuddySnapshots
+
+targets:
+  TMBuddy:
+    type: application
+    platform: macOS
+    sources:
+      - path: Targets/TMBuddy/Sources
+        excludes:
+          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots.swift"
+          # - "**/*+SampleView.swift"
+          # - "**/*+Samples.swift"
+      - Targets/TMBuddy/Resources
+      - Targets/TMBuddyShared
+      - Targets/OtherModules
+      - path: Targets/TMBuddyFinder/Sources
+        excludes: Main
+    settings:
+      ENABLE_HARDENED_RUNTIME: YES
+      INFOPLIST_FILE: Targets/TMBuddy/Bundle/Info-$(GE_INFOPLIST_KIND).plist
+      INFOPLIST_KEY_NSPrincipalClass: NSApplication
+      INFOPLIST_KEY_NSMainStoryboardFile: Main
+      INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+      CODE_SIGN_ENTITLEMENTS: Targets/TMBuddy/Bundle/TMBuddy$(GE_APP_ENTITLEMENTS_SUFFIX).entitlements
+      OTHER_LDFLAGS: -ObjC
+    scheme:
+      commandLineArguments:
+        "-enableDump YES": true
+        "-suppressNSLog YES": true
+        "-suppressErrorReporting YES": true
+        "-forceAppStoreLikeWindowTitle YES": false
+        "-forceFakeFailureOnExcludeByPath YES": false
+        "-forcePostInstallCheckpoint YES": false
+        "-debug YES": false
+        "-debug NO": true
+        "-debugAlienPlugin YES": false
+        "-debugAlienPrivilegedHelper YES": false
+        "-FIRDebugEnabled YES": false
+    dependencies:
+      - target: TMBuddyFinder
+      - target: TMBuddyTMUtilHelper
+        embed: true
+        copy:
+          destination: wrapper
+          subpath: Contents/Library/LaunchServices
+      - package: Blessed
+
+  TMBuddyFinder:
+    type: app-extension
+    platform: macOS
+    scheme: {}
+    sources:
+      - Targets/TMBuddyFinder
+      - Targets/TMBuddyShared
+      - Targets/OtherModules
+    settings:
+      ENABLE_HARDENED_RUNTIME: YES
+      INFOPLIST_FILE: Targets/TMBuddyFinder/Bundle/Info.plist
+      INFOPLIST_KEY_NSPrincipalClass: NSApplication
+      INFOPLIST_KEY_CFBundleDisplayName: TMBuddy
+      CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyFinder/Bundle/TMBuddyFinder.entitlements
+      PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.Finder
+      OTHER_LDFLAGS: -ObjC
+
+  TMBuddyTMUtilHelper:
+    type: tool
+    platform: macOS
+    scheme: {}
+    sources:
+      - Targets/TMBuddyTMUtilHelper
+      - Targets/TMBuddyFinder/Sources/Helpers/TMUtil/TMUtilLauncher.swift
+      - Targets/OtherModules/Basics
+      - Targets/OtherModules/UserDefaults
+      - Targets/OtherModules/Processes
+      - Targets/OtherModules/Sandboxing
+      - Targets/OtherModules/SourceLevel
+      - Targets/OtherModules/XPC
+      - Targets/TMBuddyShared/XPC/TMUtilHelperXPC.swift
+      - Targets/TMBuddyShared/XPC/CommonHelperXPC.swift
+      - Targets/TMBuddyShared/Globals
+      - Targets/TMBuddyShared/Data/DefaultsKey.swift
+      - Targets/TMBuddyShared/Data/PlugInHostConnectionVersion.swift
+    settings:
+      SKIP_INSTALL: YES
+      PRODUCT_NAME: com.grigorye.TMBuddy.TMUtilHelper
+      PRODUCT_MODULE_NAME: TMUtilHelper
+      ENABLE_HARDENED_RUNTIME: YES
+      INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info-$(GE_INFOPLIST_KIND).plist
+      CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyTMUtilHelper/Bundle/TMBuddyTMUtilHelper.entitlements
+      PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.TMUtilHelper
+      INFOPLIST_PREPROCESS: YES
+      INFOPLIST_PREPROCESSOR_DEFINITIONS: BUNDLE_VERSION=$(BUNDLE_VERSION)
+      CREATE_INFOPLIST_SECTION_IN_BINARY: YES
+      OTHER_LDFLAGS: -sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist
+      LD_RUNPATH_SEARCH_PATHS:
+        - $(inherited)
+        - /Library/Application Support/TMBuddy/Frameworks
+
+  TMBuddyTests:
+    type: bundle.unit-test
+    platform: macOS
+    scheme:
+      testTargets:
+        - TMBuddyTests
+    sources:
+      - Targets/TMBuddyTests
+      - Targets/TMBuddyShared
+      - Targets/OtherModules
+      - path: Targets/TMBuddy/Sources
+        includes:
+          - "**/Standalone/*+Model.swift"
+        excludes:
+          - Main
+          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots.swift"
+          - "**/*+SampleView.swift"
+          - "**/*+Samples.swift"
+          - "**/Standalone"
+          - "**/*+Integration.swift"
+      - path: Targets/TMBuddyFinder/Sources
+        excludes:
+          - Main
+    dependencies:
+      - package: Blessed
+
+  TMBuddySnapshots:
+    type: bundle.unit-test
+    platform: macOS
+    templates:
+      - TMBuddyStandaloneViewsTarget
+    dependencies:
+      - package: SnapshotTesting
+      - target: TMBuddySnapshotViews
+    sources:
+      - path: Targets/TMBuddy/Sources
+        includes:
+          - "**/*Snapshots.swift"
+      - Targets/OtherTesting
+
+  TMBuddySnapshotViews:
+    type: framework
+    platform: macOS
+    templates:
+      - TMBuddyStandaloneViewsTarget
+
+targetTemplates:
+  TMBuddyStandaloneViewsTarget:
+    type: framework
+    platform: macOS
+    sources:
+      - path: Targets/TMBuddy/Sources
+        includes:
+          - "**/*View.swift"
+          - "**/Standalone/*.swift"
+          - AppGlobals/DisplayNames.swift
+          - AppGlobals/PlugInURL.swift
+          - AppGlobals/BuildInfo.swift
+        excludes:
+          - Main
+          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots.swift"
+          - "**/Integration"
+      - path: Targets/TMBuddyShared
+        includes:
+          - Data/DefaultsKey.swift
+          - Data/PlugInHostConnectionVersion.swift
+          - Globals/SharedDefaults.swift
+      - Targets/OtherModules
+
+schemes:
+  TMBuddySnapshots:
+    build:
+      targets:
+        TMBuddySnapshots: all
+    run:
+    test:
+      environmentVariables:
+        - variable: FORCE_RUN_FLAKY_SNAPSHOTS
+          value: YES
+          isEnabled: false
+      targets:
+        - name: TMBuddySnapshots
+          parallelizable: true
+
+packages:
+  Blessed:
+    url: https://github.com/trilemma-dev/Blessed
+    from: "0.0.1"
+  SnapshotTesting:
+    url: https://github.com/pointfreeco/swift-snapshot-testing.git
+    from: "1.9.0"
+
+settings:
+  MARKETING_VERSION: "1.0"
+  CURRENT_PROJECT_VERSION: "$(BUNDLE_VERSION)"
+  GENERATE_INFOPLIST_FILE: YES
+  CODE_SIGN_STYLE: Automatic
+  DEVELOPMENT_TEAM: 5BV57B67TB
+
+configFiles:
+  Debug: XCConfigs/Default.xcconfig
+  Release: XCConfigs/Default.xcconfig
+
+name: TMBuddy
+options:
+  bundleIdPrefix: com.grigorye
+  xcodeVersion: 13.2.1
+  deploymentTarget:
+    macOS: 10.15
+  createIntermediateGroups: true
