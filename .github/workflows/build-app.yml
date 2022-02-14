@@ -13,7 +13,7 @@ defaults:
 
 jobs:
   build:
-    name: ${{ matrix.run-config.scheme }}
+    name: ${{ matrix.run-config.scheme }}-${{ matrix.build-config.name }}
     runs-on: macos-11
     strategy:
       matrix:
