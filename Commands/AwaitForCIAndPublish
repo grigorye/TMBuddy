@@ -6,7 +6,7 @@ set -euo pipefail
 provisioningDir="$1"; shift
 casksDir="$1"; shift
 
-lastRun=$(env NO_COLOR=1 gh run list --json url -L 1|jq -r ".[0].url"|sed 's/^.*\/\(.*\)$/\1/')
+lastRun=$(gh run list -b "$(gh pr view --json headRefName --jq ".headRefName")" -L 1 --json databaseId --jq '.[].databaseId')
 
 gh run watch "$lastRun" --exit-status
 
