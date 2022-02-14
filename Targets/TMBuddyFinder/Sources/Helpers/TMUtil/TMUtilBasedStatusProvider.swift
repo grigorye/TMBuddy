@@ -11,7 +11,7 @@ class TMUtilBasedStatusProvider {
                 dump((url: url.path, statuses: tmUtilStatuses), name: "matchFailure")
                 return .unknown
             }
-            let status: TMStatus = tmUtilStatus ? .excluded : .included
+            let status: TMStatus = tmUtilStatus ? .parentExcluded : .included
             dump((status, item: url.path), name: "status")
             return status
         } catch {

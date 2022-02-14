@@ -10,13 +10,13 @@ class DirectLookupBasedStatusProvider {
             return .pathExcluded
         }
         guard (try? volumeFilter.isExcluded(url)) == false else {
-            return .excluded
+            return .parentExcluded
         }
         guard pathFilter.isExcluded(url) == false else {
-            return .excluded
+            return .parentExcluded
         }
         guard metadataFilter.isExcluded(url) == false else {
-            return .excluded
+            return .parentExcluded
         }
         return .included
     }

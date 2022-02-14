@@ -4,7 +4,7 @@ func imageForStatus(_ status: TMStatus) -> NSImage? {
     switch status {
     case .included:
         return nil
-    case .excludedByParent:
+    case .parentExcluded:
         return NSImage(named: NSImage.statusNoneName)
     case .stickyExcluded:
         return NSImage(named: NSImage.statusUnavailableName)

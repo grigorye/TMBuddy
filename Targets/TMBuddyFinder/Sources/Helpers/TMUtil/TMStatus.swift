@@ -1,5 +1,5 @@
 enum TMStatus: String /* badge identifier */, CaseIterable {
-    case excluded
+    case parentExcluded
     case stickyExcluded
     case pathExcluded
     case included
