@@ -4,7 +4,10 @@ set -x
 set -euo pipefail
 shopt -s expand_aliases
 
+lastRun="$1"
+shift
+
 dmgDir="$1"
 shift
 
-gh run download --name dmg --dir "$dmgDir"
+gh run download "$lastRun" --name dmg --dir "$dmgDir"
