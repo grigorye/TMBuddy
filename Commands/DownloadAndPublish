@@ -15,8 +15,10 @@ bucket="tmbuddy"
 formulaName="time-machine-buddy"
 appName="TMBuddy"
 
-./Publishing/DownloadXCArchive "$tmpdir"/xcarchive
-./Publishing/UploadDSymsToCrashlytics "$tmpdir"/xcarchive
+for xcarchiveKind in xcarchive xcarchive-appstore; do
+    ./Publishing/DownloadXCArchive "$tmpdir"/"$xcarchiveKind"
+    ./Publishing/UploadDSymsToCrashlytics "$tmpdir"/"$xcarchiveKind"/*.xcarchive
+done
 
 ./Publishing/DownloadDmg "$tmpdir"/dmg
 
