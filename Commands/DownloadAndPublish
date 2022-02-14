@@ -15,12 +15,14 @@ bucket="tmbuddy"
 formulaName="time-machine-buddy"
 appName="TMBuddy"
 
+lastRun=$(Publishing/LastRun)
+
 for xcarchiveKind in xcarchive xcarchive-appstore; do
     gh run download --name "$xcarchiveKind" --dir  "$tmpdir"/"$xcarchiveKind"
     ./Publishing/UploadDSymsToCrashlytics "$tmpdir"/"$xcarchiveKind"/*.xcarchive
 done
 
-./Publishing/DownloadDmg "$tmpdir"/dmg
+./Publishing/DownloadDmg "$lastRun" "$tmpdir"/dmg
 
 dmgs=("$tmpdir"/dmg/*.dmg)
 dmg="${dmgs[0]}"
