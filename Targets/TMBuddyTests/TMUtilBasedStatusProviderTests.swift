@@ -6,11 +6,11 @@ class TMUtilBasedStatusProviderTests: XCTestCase {
     
     func testNonMainDiskIsExcluded() async throws {
         let status = try provider.statusForItem(URL(fileURLWithPath: "/Volumes/Ginger"))
-        XCTAssertEqual(status, .excluded)
+        XCTAssertEqual(status, .parentExcluded)
     }
     
     func testTmpIsExcluded() async throws {
         let status = try provider.statusForItem(URL(fileURLWithPath: "/tmp"))
-        XCTAssertEqual(status, .excluded)
+        XCTAssertEqual(status, .parentExcluded)
     }
 }
