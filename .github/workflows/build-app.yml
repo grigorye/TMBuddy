@@ -24,9 +24,11 @@ jobs:
             packageExtension: '.pkg'
         build-config:
           - name: 'AppStore'
+            if: ${{ github.ref == 'refs/heads/main' }}
             exportOptionsPlist: 'dist/appstore-exportOptions.plist'
             entitlementsSuffix: '-appstore'
           - name: 'DeveloperID'
+            if: true
             exportOptionsPlist: 'dist/developer-id-exportOptions.plist'
             entitlementsSuffix: ''
 
@@ -37,16 +39,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        if: ${{ matrix.build-config.if }}
         with:
           fetch-depth: 0
           submodules: true
 
       - name: Dump Environment
+        if: ${{ matrix.build-config.if }}
         run: |
           env | sort
           git log
 
       - name: Setup Environment
+        if: ${{ matrix.build-config.if }}
         run: |
           echo 'PRODUCT_NAME=${{ matrix.run-config.scheme }}' >> $GITHUB_ENV
           echo 'DERIVED_DATA_PATH=${{ runner.temp }}/build.derivedData' >> $GITHUB_ENV
@@ -55,14 +60,17 @@ jobs:
           echo 'ARCHIVE_ARTIFACT_PATH=${{ runner.temp }}/xcarchive' >> $GITHUB_ENV
 
       - uses: maxim-lobanov/setup-xcode@v1.4.1
+        if: ${{ matrix.build-config.if }}
         with:
           xcode-version: '13.2.1'
 
       - name: Install App Store Connect API Key
+        if: ${{ matrix.build-config.if }}
         run: |
           echo -n "$APP_STORE_AUTHENTICATION_KEY_BASE64" | base64 --decode --output "$AUTHENTICATION_KEY_PATH"
 
       - name: Setup Version Dependent Environment
+        if: ${{ matrix.build-config.if }}
         run: |
           # Create variables
           BUNDLE_VERSION=$(GHAScripts/BundleVersion)
@@ -73,6 +81,7 @@ jobs:
           echo "DMG_PATH=$RUNNER_TEMP/$PRODUCT_NAME-$BUNDLE_VERSION.dmg" >> $GITHUB_ENV
 
       - name: Create Keychain
+        if: ${{ matrix.build-config.if }}
         env:
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
@@ -86,6 +95,7 @@ jobs:
           security list-keychain -d user -s "$KEYCHAIN_PATH"
 
       - name: Install certificates
+        if: ${{ matrix.build-config.if }}
         env:
           P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
           APPLE_WWDR_CERTIFICATION_AUTHORITY_CER_BASE64: ${{ secrets.APPLE_WWDR_CERTIFICATION_AUTHORITY_CER_BASE64 }}
@@ -113,10 +123,12 @@ jobs:
           security import "$EXPORT_CERTIFICATE_DEVELOPER_ID_PATH" -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
 
       - name: Erase profiles remaining from previous builds
+        if: ${{ matrix.build-config.if }}
         run: |
           rm -rf ~/Library/MobileDevice/Provisioning\ Profiles
 
       - uses: actions/cache@v2
+        if: ${{ matrix.build-config.if }}
         with:
           path: ${{ env.DERIVED_DATA_PATH }}/SourcePackages
           key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/**/Package.resolved') }}
@@ -124,6 +136,7 @@ jobs:
             ${{ runner.os }}-spm-
 
       - name: Build .xcarchive
+        if: ${{ matrix.build-config.if }}
         run: |
           # build
           xcodebuild archive \
@@ -142,6 +155,7 @@ jobs:
             GE_APP_ENTITLEMENTS_SUFFIX='${{ matrix.build-config.entitlementsSuffix }}'
 
       - name: Save .xcarchive
+        if: ${{ matrix.build-config.if }}
         uses: actions/upload-artifact@v2
         with:
           name: xcarchive-${{ matrix.build-config.name }}
@@ -149,9 +163,10 @@ jobs:
             ${{ env.ARCHIVE_ARTIFACT_PATH }}
 
       - name: Export archive
+        if: ${{ matrix.build-config.if }}
         run: |
           # create variables
-          EXPORT_OPTIONS_PLIST='${{ matrix.build-config.entitlementsSuffix }}'
+          EXPORT_OPTIONS_PLIST='${{ matrix.build-config.exportOptionsPlist }}'
 
           # export archive
           xcodebuild \
@@ -165,7 +180,7 @@ jobs:
             -authenticationKeyIssuerID "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID"
 
       - name: Create .dmg
-        if: ${{ matrix.build-config.name }} == 'DeveloperID'
+        if: ${{ matrix.build-config.if && matrix.build-config.name == 'DeveloperID' }}
         run: |
           # Create .dmg
           hdiutil create \
@@ -176,7 +191,7 @@ jobs:
               "$DMG_PATH"
 
       - name: Save .dmg
-        if: ${{ matrix.build-config.name }} == 'DeveloperID'
+        if: ${{ matrix.build-config.if && matrix.build-config.name == 'DeveloperID' }}
         uses: actions/upload-artifact@v2
         with:
           name: dmg
@@ -184,7 +199,7 @@ jobs:
             ${{ env.DMG_PATH }}
 
       - name: Upload to TestFlight
-        if: github.ref == 'refs/heads/main' && ${{ matrix.build-config.name }} == 'AppStore'
+        if: ${{ matrix.build-config.if && matrix.build-config.name == 'AppStore' }}
         run: |
           # create variables
           API_KEY_NAME="$APP_STORE_AUTHENTICATION_KEY_ID"
