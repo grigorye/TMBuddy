@@ -1,9 +1,7 @@
-import os.log
+import Foundation
 
-private let log: OSLog = .default
-
-os_log(.info, log: log, "launched")
+dump(Bundle.main.bundlePath, name: "launched")
 
 runListener()
 
-os_log(.info, log: log, "runLoopEnded")
+dump(Bundle.main.bundlePath, name: "exiting")
