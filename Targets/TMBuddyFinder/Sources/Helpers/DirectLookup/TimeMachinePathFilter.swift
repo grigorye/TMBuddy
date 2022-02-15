@@ -22,7 +22,7 @@ class TimeMachinePathFilter {
         case let paths as [String]:
             newSkipPaths = paths.map { ($0 as NSString).expandingTildeInPath(ignoringSandbox: true) }
         default:
-            dump(change, name: "unrecognizedChange")
+            dump(change, name: "changeFailed")
             newSkipPaths = []
         }
         dump(newSkipPaths, name: "newSkipPaths")
