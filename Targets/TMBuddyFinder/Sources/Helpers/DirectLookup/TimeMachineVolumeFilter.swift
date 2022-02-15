@@ -23,7 +23,7 @@ class TimeMachineVolumeFilter {
         case let volumeUUIDs as [String]:
             newExcludedVolumeUUIDs = volumeUUIDs
         default:
-            dump(change, name: "unrecognizedChange")
+            dump(change, name: "changeFailed")
             newExcludedVolumeUUIDs = []
         }
         dump(newExcludedVolumeUUIDs, name: "newExcludedVolumeUUIDs")
