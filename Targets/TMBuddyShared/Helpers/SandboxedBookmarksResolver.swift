@@ -15,16 +15,18 @@ class SandboxedBookmarksResolver {
     }
     
     func observeSandboxedBookmarks(_ change: [NSKeyValueChangeKey : Any]?) {
-        guard let changeBookmarks = change![.newKey] as? [Data]? else {
-            dump(change, name: "invalidChange")
-            fatalError("Invalid change, expecting Data?")
+        let newBookmarks: [Data]
+        switch change?[.newKey] {
+        case _ as NSNull:
+            newBookmarks = []
+        case let bookmarks as [Data]:
+            newBookmarks = bookmarks
+        default:
+            dump(change, name: "changeFailed")
+            newBookmarks = []
         }
         
-        guard let bookmarks = changeBookmarks else {
-            return
-        }
-        
-        let resolvedBookmarkURLs = resolveBookmarks(bookmarks)
+        let resolvedBookmarkURLs = resolveBookmarks(newBookmarks)
         handleResolvedBookmarkURLs(resolvedBookmarkURLs)
     }
     
