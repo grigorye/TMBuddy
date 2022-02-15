@@ -135,6 +135,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-spm-
 
+      - name: XcodeGen
+        if: ${{ matrix.build-config.if }}
+        uses: xavierLowmiller/xcodegen-action@1.1.2
+        with:
+          quiet: true
+          version: '2.26.0'
+
       - name: Build .xcarchive
         if: ${{ matrix.build-config.if }}
         run: |
