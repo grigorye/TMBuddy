@@ -266,10 +266,13 @@ settings:
   GENERATE_INFOPLIST_FILE: YES
   CODE_SIGN_STYLE: Automatic
   DEVELOPMENT_TEAM: 5BV57B67TB
-
-configFiles:
-  Debug: XCConfigs/Default.xcconfig
-  Release: XCConfigs/Default.xcconfig
+  GE_BUNDLE_ID_PREFIX: com.grigorye$(GE_BUNDLE_ID_EXTRA)
+  
+  # Overriden for CI runs:
+  BUNDLE_VERSION: Local
+  GE_INFOPLIST_KIND: Development
+  GE_BUNDLE_ID_EXTRA: .dev
+  GE_PRODUCT_NAME_EXTRA: .dev
 
 name: TMBuddy
 options:
