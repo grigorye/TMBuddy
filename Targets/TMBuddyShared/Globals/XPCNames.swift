@@ -1,1 +1,1 @@
-let helperMachServiceName = "com.grigorye.TMBuddy.TMUtilHelper"
+let helperMachServiceName = "\(bundleIDPrefix).TMBuddy.TMUtilHelper"

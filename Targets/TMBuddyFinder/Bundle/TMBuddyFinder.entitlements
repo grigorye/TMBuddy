@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>$(TeamIdentifierPrefix)group.TMBuddy</string>
+		<string>$(TeamIdentifierPrefix)group.TMBuddy$(GE_BUNDLE_ID_EXTRA)</string>
 	</array>
 	<key>com.apple.security.files.bookmarks.app-scope</key>
 	<true/>
@@ -20,7 +20,7 @@
 	</array>
 	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
 	<array>
-		<string>com.grigorye.TMBuddy.TMUtilHelper</string>
+		<string>$(GE_BUNDLE_ID_PREFIX).TMBuddy.TMUtilHelper</string>
 	</array>
 </dict>
 </plist>
