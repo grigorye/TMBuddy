@@ -3,7 +3,9 @@
 set -x
 set -euo pipefail
 
-service="com.grigorye.TMBuddy.TMUtilHelper"
+devExtra="$1"; shift
+
+service="com.grigorye${devExtra:-}.TMBuddy.TMUtilHelper"
 
 sudo launchctl remove "$service" || true
 sudo rm -v /Library/LaunchDaemons/"$service".plist

@@ -9,7 +9,11 @@ targets:
   TMBuddy:
     type: application
     platform: macOS
+    templates:
+      - TMBuddyIntrinsicsTarget
     sources:
+      - path: Targets/TMBuddy/Bundle
+        buildPhase: none
       - path: Targets/TMBuddy/Sources
         excludes:
           - "**/*+Snapshots/*.png"
@@ -23,10 +27,22 @@ targets:
         excludes: Main
     settings:
       ENABLE_HARDENED_RUNTIME: YES
+      PRODUCT_MODULE_NAME: $(TARGET_NAME)
+      PRODUCT_NAME: $(TARGET_NAME)$(GE_PRODUCT_NAME_EXTRA)
       INFOPLIST_FILE: Targets/TMBuddy/Bundle/Info-$(GE_INFOPLIST_KIND).plist
       INFOPLIST_KEY_NSPrincipalClass: NSApplication
       INFOPLIST_KEY_NSMainStoryboardFile: Main
       INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+      GE_HELPER_BUNDLE_ID: $(GE_BUNDLE_ID_PREFIX).TMBuddy.TMUtilHelper
+      GE_HELPER_PATH: $(GE_HELPER_BUNDLE_ID)
+      GE_LAUNCH_SERVICES_PATH: $(WRAPPER_NAME)/Contents/Library/LaunchServices
+      GE_EMBEDDED_HELPER_PATH: $(GE_LAUNCH_SERVICES_PATH)/$(GE_HELPER_BUNDLE_ID)
+      INFOPLIST_PREPROCESSOR_DEFINITIONS: >
+        BUNDLE_VERSION=$(BUNDLE_VERSION)
+        GE_BUNDLE_ID_PREFIX=$(GE_BUNDLE_ID_PREFIX)
+        GE_HELPER_BUNDLE_ID=$(GE_HELPER_BUNDLE_ID)
+        GE_HELPER_BUNDLE_ID_QUOTED='"$(GE_HELPER_BUNDLE_ID)"'
+      INFOPLIST_PREPROCESS: YES
       CODE_SIGN_ENTITLEMENTS: Targets/TMBuddy/Bundle/TMBuddy$(GE_APP_ENTITLEMENTS_SUFFIX).entitlements
       OTHER_LDFLAGS: -ObjC
     scheme:
@@ -42,19 +58,30 @@ targets:
         "-debugAlienPlugin YES": false
         "-debugAlienPrivilegedHelper YES": false
         "-FIRDebugEnabled YES": false
+    postBuildScripts:
+      - name: 'Embed Helper'
+        shell: /bin/bash
+        script: |
+          set -x
+          set -euo pipefail
+          mkdir -p "$BUILT_PRODUCTS_DIR/$GE_LAUNCH_SERVICES_PATH"
+          cp "$BUILT_PRODUCTS_DIR/$GE_HELPER_PATH" "$BUILT_PRODUCTS_DIR/$GE_EMBEDDED_HELPER_PATH"
+        inputFiles:
+          - $(BUILT_PRODUCTS_DIR)/$(GE_HELPER_PATH)
+        outputFiles:
+          - $(BUILT_PRODUCTS_DIR)/$(GE_EMBEDDED_HELPER_PATH)
     dependencies:
       - target: TMBuddyFinder
       - target: TMBuddyTMUtilHelper
-        embed: true
-        copy:
-          destination: wrapper
-          subpath: Contents/Library/LaunchServices
+        embed: false # Embedding does not work correctly with PRODUCT_NAME overriden e.g. from the command line.
       - package: Blessed
 
   TMBuddyFinder:
     type: app-extension
     platform: macOS
     scheme: {}
+    templates:
+      - TMBuddyIntrinsicsTarget
     sources:
       - Targets/TMBuddyFinder
       - Targets/TMBuddyShared
@@ -63,9 +90,11 @@ targets:
       ENABLE_HARDENED_RUNTIME: YES
       INFOPLIST_FILE: Targets/TMBuddyFinder/Bundle/Info.plist
       INFOPLIST_KEY_NSPrincipalClass: NSApplication
-      INFOPLIST_KEY_CFBundleDisplayName: TMBuddy
+      INFOPLIST_KEY_CFBundleDisplayName: TMBuddy$(GE_PRODUCT_NAME_EXTRA)
       CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyFinder/Bundle/TMBuddyFinder.entitlements
-      PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.Finder
+      PRODUCT_BUNDLE_IDENTIFIER: $(GE_BUNDLE_ID_PREFIX).TMBuddy.Finder
+      PRODUCT_MODULE_NAME: $(TARGET_NAME)
+      PRODUCT_NAME: $(TARGET_NAME)$(GE_PRODUCT_NAME_EXTRA)
       OTHER_LDFLAGS: -ObjC
 
   TMBuddyTMUtilHelper:
@@ -83,21 +112,37 @@ targets:
       - Targets/OtherModules/XPC
       - Targets/TMBuddyShared/XPC/TMUtilHelperXPC.swift
       - Targets/TMBuddyShared/XPC/CommonHelperXPC.swift
-      - Targets/TMBuddyShared/Globals
       - Targets/TMBuddyShared/Data/DefaultsKey.swift
       - Targets/TMBuddyShared/Data/PlugInHostConnectionVersion.swift
+    preBuildScripts:
+      - name: 'Generate launchd.plist'
+        shell: /bin/bash
+        script: |
+          set -x
+          set -euo pipefail
+          defaults write "$GE_LAUNCHD_PLIST" Label -string "$PRODUCT_BUNDLE_IDENTIFIER"
+          defaults write "$GE_LAUNCHD_PLIST" MachServices -dict "$PRODUCT_BUNDLE_IDENTIFIER" -bool YES
+        outputFiles:
+          - $(GE_LAUNCHD_PLIST)
     settings:
+      GE_LAUNCHD_PLIST: $(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/launchd.plist
       SKIP_INSTALL: YES
-      PRODUCT_NAME: com.grigorye.TMBuddy.TMUtilHelper
       PRODUCT_MODULE_NAME: TMUtilHelper
+      PRODUCT_NAME: $(GE_BUNDLE_ID_PREFIX).TMBuddy.TMUtilHelper
       ENABLE_HARDENED_RUNTIME: YES
       INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info-$(GE_INFOPLIST_KIND).plist
       CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyTMUtilHelper/Bundle/TMBuddyTMUtilHelper.entitlements
-      PRODUCT_BUNDLE_IDENTIFIER: com.grigorye.TMBuddy.TMUtilHelper
+      PRODUCT_BUNDLE_IDENTIFIER: $(GE_BUNDLE_ID_PREFIX).TMBuddy.TMUtilHelper
+      GE_APP_BUNDLE_ID: $(GE_BUNDLE_ID_PREFIX).TMBuddy
+      GE_APPEX_BUNDLE_ID: $(GE_BUNDLE_ID_PREFIX).TMBuddy.Finder
       INFOPLIST_PREPROCESS: YES
-      INFOPLIST_PREPROCESSOR_DEFINITIONS: BUNDLE_VERSION=$(BUNDLE_VERSION)
+      INFOPLIST_PREPROCESSOR_DEFINITIONS: >
+        BUNDLE_VERSION=$(BUNDLE_VERSION) 
+        GE_BUNDLE_ID_PREFIX=$(GE_BUNDLE_ID_PREFIX)
+        GE_APP_BUNDLE_ID_QUOTED='"$(GE_APP_BUNDLE_ID)"'
+        GE_APPEX_BUNDLE_ID_QUOTED='"$(GE_APPEX_BUNDLE_ID)"'
       CREATE_INFOPLIST_SECTION_IN_BINARY: YES
-      OTHER_LDFLAGS: -sectcreate __TEXT __launchd_plist Targets/TMBuddyTMUtilHelper/Bundle/launchd.plist
+      OTHER_LDFLAGS: -sectcreate __TEXT __launchd_plist $(GE_LAUNCHD_PLIST)
       LD_RUNPATH_SEARCH_PATHS:
         - $(inherited)
         - /Library/Application Support/TMBuddy/Frameworks
@@ -105,6 +150,8 @@ targets:
   TMBuddyTests:
     type: bundle.unit-test
     platform: macOS
+    templates:
+      - TMBuddyIntrinsicsTarget
     scheme:
       testTargets:
         - TMBuddyTests
@@ -133,6 +180,7 @@ targets:
     type: bundle.unit-test
     platform: macOS
     templates:
+      - TMBuddyIntrinsicsTarget
       - TMBuddyStandaloneViewsTarget
     dependencies:
       - package: SnapshotTesting
@@ -150,6 +198,22 @@ targets:
       - TMBuddyStandaloneViewsTarget
 
 targetTemplates:
+  TMBuddyIntrinsicsTarget:
+    sources:
+      - Targets/TMBuddyIntrinsics
+    settings:
+      GE_BUNDLE_EXTRAS_PLIST: $(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/BundleExtras.plist
+    preBuildScripts:
+      - name: 'Generate bundle extras'
+        shell: /bin/bash
+        script: |
+          set -x
+          set -euo pipefail
+          defaults write "$GE_BUNDLE_EXTRAS_PLIST" bundleIDPrefix -string "$GE_BUNDLE_ID_PREFIX"
+          defaults write "$GE_BUNDLE_EXTRAS_PLIST" bundleIDExtra -string "${GE_BUNDLE_ID_EXTRA:-}"
+        outputFiles:
+          - $(GE_BUNDLE_EXTRAS_PLIST)
+
   TMBuddyStandaloneViewsTarget:
     type: framework
     platform: macOS
@@ -209,7 +273,7 @@ configFiles:
 
 name: TMBuddy
 options:
-  bundleIdPrefix: com.grigorye
+  bundleIdPrefix: $(GE_BUNDLE_ID_PREFIX)
   xcodeVersion: 13.2.1
   deploymentTarget:
     macOS: 10.15

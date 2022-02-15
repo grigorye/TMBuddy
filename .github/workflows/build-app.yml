@@ -159,6 +159,9 @@ jobs:
             -authenticationKeyIssuerID "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID" \
             BUNDLE_VERSION="$BUNDLE_VERSION" \
             GE_INFOPLIST_KIND=Distribution \
+            GE_DISPLAY_NAME_SUFFIX="" \
+            GE_BUNDLE_ID_EXTRA="" \
+            GE_BUNDLE_ID_PREFIX="com.grigorye" \
             GE_APP_ENTITLEMENTS_SUFFIX='${{ matrix.build-config.entitlementsSuffix }}'
 
       - name: Save .xcarchive

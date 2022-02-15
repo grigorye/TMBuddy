@@ -1,2 +1,6 @@
 BUNDLE_VERSION = Local // Fallback for local builds, overridden on CI
 GE_INFOPLIST_KIND = Development // Fallback for local builds, overridden on CI to Distribution
+GE_BUNDLE_ID_EXTRA = .dev
+GE_PRODUCT_NAME_EXTRA = .dev
+
+GE_BUNDLE_ID_PREFIX = com.grigorye$(GE_BUNDLE_ID_EXTRA)

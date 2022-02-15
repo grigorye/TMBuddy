@@ -7,7 +7,7 @@ func runListener() {
         }
     )
     
-    let listener = NSXPCListener(machServiceName: helperMachServiceName) ≈ {
+    let listener = NSXPCListener(machServiceName: Bundle.main.bundleIdentifier!) ≈ {
         $0.delegate = listenerDelegate
     }
     
