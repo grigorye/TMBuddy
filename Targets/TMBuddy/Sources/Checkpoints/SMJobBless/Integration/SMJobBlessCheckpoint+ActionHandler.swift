@@ -21,6 +21,7 @@ class SMJobBlessCheckpointActionHandler: SMJobBlessCheckpointActions {
         do {
             try LaunchdManager.authorizeAndBless(message: message, icon: icon)
         } catch {
+            dump(error, name: "blessFailed")
             NSApp.presentError(error)
         }
     }
