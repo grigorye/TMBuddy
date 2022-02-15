@@ -40,11 +40,15 @@ class FinderSync: FIFinderSync {
     deinit {
         dump(self.directoryURLs.map { $0.path }, name: "directoryURLs")
         self.setDirectoryURLs(accessedScoped: false)
+        
+        dump(Bundle.main.bundlePath, name: "bundlePath")
     }
     
     override init() {
         super.init()
         
+        dump(Bundle.main.bundlePath, name: "bundlePath")
+
         onLaunch()
         
         for status in TMStatus.allCases {

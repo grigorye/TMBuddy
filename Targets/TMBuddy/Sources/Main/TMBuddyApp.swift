@@ -13,10 +13,12 @@ struct TMBuddyApp: App {
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        dump(Bundle.main.bundlePath, name: "bundlePath")
         onLaunch()
         mainWindow().makeKeyAndOrderFront(nil)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
+        dump(Bundle.main.bundlePath, name: "bundlePath")
     }
 }
