@@ -128,7 +128,7 @@ jobs:
           rm -rf ~/Library/MobileDevice/Provisioning\ Profiles
 
       - uses: actions/cache@v2
-        if: ${{ matrix.build-config.if }}
+        if: ${{ false && matrix.build-config.if }}
         with:
           path: ${{ env.DERIVED_DATA_PATH }}/SourcePackages
           key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/**/Package.resolved') }}
