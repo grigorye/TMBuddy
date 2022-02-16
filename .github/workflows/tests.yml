@@ -1,0 +1,105 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -x -euo pipefail {0}
+
+jobs:
+  build:
+    name: 'Tests'
+    runs-on: macos-11
+
+    env:
+      PROJECT_KIND: 'Compact'
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Dump Environment
+        run: |
+          env | sort
+          git log
+
+      - name: Setup Environment
+        run: |
+          echo 'DERIVED_DATA_PATH=${{ runner.temp }}/build.derivedData' >> $GITHUB_ENV
+
+      - uses: maxim-lobanov/setup-xcode@v1.4.1
+        with:
+          xcode-version: '13.2.1'
+
+      - name: Create Keychain
+        env:
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          # create variables
+          KEYCHAIN_PATH="$RUNNER_TEMP"/app-signing.keychain-db
+
+          # create temporary keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security list-keychain -d user -s "$KEYCHAIN_PATH"
+
+      - name: Install certificates
+        env:
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          APPLE_WWDR_CERTIFICATION_AUTHORITY_CER_BASE64: ${{ secrets.APPLE_WWDR_CERTIFICATION_AUTHORITY_CER_BASE64 }}
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          EXPORT_CERTIFICATE_BASE64: ${{ secrets.EXPORT_CERTIFICATE_BASE64 }}
+          EXPORT_CERTIFICATE_DEVELOPER_ID_BASE64: ${{ secrets.EXPORT_CERTIFICATE_DEVELOPER_ID_BASE64 }}
+        run: |
+          # create variables
+          KEYCHAIN_PATH="$RUNNER_TEMP"/app-signing.keychain-db
+          APPLE_WWDR_CERTIFICATION_AUTHORITY_CER_PATH="$RUNNER_TEMP"/apple_wwdr_ca.cer
+          BUILD_CERTIFICATE_PATH="$RUNNER_TEMP"/build_certificate.p12
+          EXPORT_CERTIFICATE_PATH="$RUNNER_TEMP"/export_certificate.p12
+          EXPORT_CERTIFICATE_DEVELOPER_ID_PATH="$RUNNER_TEMP"/export_certificate_developer_id.p12
+
+          # import certificate from secrets
+          echo -n "$APPLE_WWDR_CERTIFICATION_AUTHORITY_CER_BASE64" | base64 --decode --output "$APPLE_WWDR_CERTIFICATION_AUTHORITY_CER_PATH"
+          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode --output "$BUILD_CERTIFICATE_PATH"
+          echo -n "$EXPORT_CERTIFICATE_BASE64" | base64 --decode --output "$EXPORT_CERTIFICATE_PATH"
+          echo -n "$EXPORT_CERTIFICATE_DEVELOPER_ID_BASE64" | base64 --decode --output "$EXPORT_CERTIFICATE_DEVELOPER_ID_PATH"
+
+          # import certificate to keychain
+          security import "$APPLE_WWDR_CERTIFICATION_AUTHORITY_CER_PATH" -k "$KEYCHAIN_PATH"
+          security import "$BUILD_CERTIFICATE_PATH" -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+          security import "$EXPORT_CERTIFICATE_PATH" -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+          security import "$EXPORT_CERTIFICATE_DEVELOPER_ID_PATH" -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+
+      - name: Erase profiles remaining from previous builds
+        run: |
+          rm -rf ~/Library/MobileDevice/Provisioning\ Profiles
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ env.DERIVED_DATA_PATH }}/SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: XcodeGen
+        uses: xavierLowmiller/xcodegen-action@1.1.2
+        with:
+          spec: project-${{ env.PROJECT_KIND }}.yml
+          quiet: true
+          version: '2.26.0'
+
+      - name: Build and Run Tests
+        run: |
+          xcodebuild test \
+            -project *-"$PROJECT_KIND".xcodeproj \
+            -derivedDataPath "$DERIVED_DATA_PATH" \
+            -disableAutomaticPackageResolution \
+            -scheme 'TMBuddyTests'
