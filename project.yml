@@ -1,5 +1,3 @@
 include:
-  - path: XcodeGen/Base.yml
-    relativePaths: false
-  - path: XcodeGen/Firebase.yml
+  - path: project-Compact.yml
     relativePaths: false
