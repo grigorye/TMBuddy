@@ -34,9 +34,6 @@ targets:
       INFOPLIST_KEY_NSMainStoryboardFile: Main
       INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
       GE_HELPER_BUNDLE_ID: $(GE_BUNDLE_ID_PREFIX).TMBuddy.TMUtilHelper
-      GE_HELPER_PATH: $(GE_HELPER_BUNDLE_ID)
-      GE_LAUNCH_SERVICES_PATH: $(WRAPPER_NAME)/Contents/Library/LaunchServices
-      GE_EMBEDDED_HELPER_PATH: $(GE_LAUNCH_SERVICES_PATH)/$(GE_HELPER_BUNDLE_ID)
       INFOPLIST_PREPROCESSOR_DEFINITIONS: >
         BUNDLE_VERSION=$(BUNDLE_VERSION)
         GE_BUNDLE_ID_PREFIX=$(GE_BUNDLE_ID_PREFIX)
@@ -58,22 +55,12 @@ targets:
         "-debugAlienPlugin YES": false
         "-debugAlienPrivilegedHelper YES": false
         "-FIRDebugEnabled YES": false
-    postBuildScripts:
-      - name: 'Embed Helper'
-        shell: /bin/bash
-        script: |
-          set -x
-          set -euo pipefail
-          mkdir -p "$BUILT_PRODUCTS_DIR/$GE_LAUNCH_SERVICES_PATH"
-          cp "$BUILT_PRODUCTS_DIR/$GE_HELPER_PATH" "$BUILT_PRODUCTS_DIR/$GE_EMBEDDED_HELPER_PATH"
-        inputFiles:
-          - $(BUILT_PRODUCTS_DIR)/$(GE_HELPER_PATH)
-        outputFiles:
-          - $(BUILT_PRODUCTS_DIR)/$(GE_EMBEDDED_HELPER_PATH)
     dependencies:
       - target: TMBuddyFinder
       - target: TMBuddyTMUtilHelper
-        embed: false # Embedding does not work correctly with PRODUCT_NAME overriden e.g. from the command line.
+        copy:
+          destination: wrapper
+          subpath: Contents/Library/LaunchServices
       - package: Blessed
 
   TMBuddyFinder:
