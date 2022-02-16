@@ -229,7 +229,7 @@ class FinderSync: FIFinderSync {
                 }
             }
             
-            try await metadataWriter.setExcluded(exclude, urls: itemURLs)
+            try metadataWriter.setExcluded(exclude, urls: itemURLs)
         }
         Task {
             let result = await task.result
