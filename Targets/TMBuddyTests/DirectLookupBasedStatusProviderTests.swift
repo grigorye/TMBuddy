@@ -5,12 +5,12 @@ class DirectLookupBasedStatusProviderTests: XCTestCase {
     var provider: DirectLookupBasedStatusProvider { .init() }
     
     func testExcludedBasedOnMetadata() async throws {
-        let status = try provider.statusForItem(URL(fileURLWithPath: "/Library/CoreAnalytics"))
-        XCTAssertEqual(status, .parentExcluded)
+        let status = try provider.statusForItem(URL(fileURLWithPath: NSHomeDirectory() + "/TMBuddyTest/stickyExcluded"))
+        XCTAssertEqual(status, .stickyExcluded)
     }
     
     func testExcludedBasedOnParentMetadata() async throws {
-        let status = try provider.statusForItem(URL(fileURLWithPath: NSHomeDirectory() + "/Library/Suggestions/training.db"))
+        let status = try provider.statusForItem(URL(fileURLWithPath: NSHomeDirectory() + "/TMBuddyTest/stickyExcluded/parentExcluded"))
         XCTAssertEqual(status, .parentExcluded)
     }
     
@@ -19,13 +19,17 @@ class DirectLookupBasedStatusProviderTests: XCTestCase {
         XCTAssertEqual(status, .pathExcluded)
     }
     
-    func testExcludedBasedOnVolume() async throws {
-        let status = try provider.statusForItem(URL(fileURLWithPath: "/Volumes/Ginger"))
+    func testExcludedVolume() async throws {
+        let url = excludedVolumeURL
+        try XCTSkipUnless(url.checkResourceIsReachable())
+        let status = try provider.statusForItem(url)
         XCTAssertEqual(status, .parentExcluded)
     }
     
-    func testExcludedBasedOnParentVolume() async throws {
-        let status = try provider.statusForItem(URL(fileURLWithPath: "/Volumes/Ginger/Library"))
+    func testExcludedOnParentVolume() async throws {
+        try XCTSkipUnless(excludedVolumeURL.checkResourceIsReachable())
+        let url = excludedVolumeURL.appendingPathComponent("TMBuddyTest")
+        let status = try provider.statusForItem(url)
         XCTAssertEqual(status, .parentExcluded)
     }
 
