@@ -9,7 +9,7 @@ class DirectLookupBasedStatusProvider {
         guard pathFilter.skipPaths.contains(url.path) == false else {
             return .pathExcluded
         }
-        guard (try? volumeFilter.isExcluded(url)) == false else {
+        guard volumeFilter.isExcluded(url) == false else {
             return .parentExcluded
         }
         guard pathFilter.isExcluded(url) == false else {

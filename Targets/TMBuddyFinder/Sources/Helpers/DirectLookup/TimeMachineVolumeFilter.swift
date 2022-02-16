@@ -31,8 +31,8 @@ class TimeMachineVolumeFilter {
         self.excludedVolumeUUIDs = newExcludedVolumeUUIDs
     }
     
-    func isExcluded(_ url: URL) throws -> Bool {
-        try filter.isExcluded(url)
+    func isExcluded(_ url: URL) -> Bool {
+        filter.isExcluded(url)
     }
     
     var excludedVolumeUUIDs: [String] = []
