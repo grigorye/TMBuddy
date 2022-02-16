@@ -5,7 +5,9 @@ class TMUtilBasedStatusProviderTests: XCTestCase {
     var provider: TMUtilBasedStatusProvider { .init() }
     
     func testNonMainDiskIsExcluded() async throws {
-        let status = try provider.statusForItem(URL(fileURLWithPath: "/Volumes/Ginger"))
+        let url = excludedVolumeURL
+        try XCTSkipUnless(url.checkResourceIsReachable())
+        let status = try provider.statusForItem(url)
         XCTAssertEqual(status, .parentExcluded)
     }
     
