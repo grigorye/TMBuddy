@@ -5,12 +5,24 @@ class TimeMachinePathFilterTests: XCTestCase {
     var filter: TimeMachinePathFilter { .init() }
     
     func testIsExcluded() async throws {
-        let isExcluded = filter.isExcluded(URL(fileURLWithPath: "/Applications"))
+        try XCTSkipUnless(excludedByPathURL.checkResourceIsReachable())
+        let isExcluded = filter.isExcluded(excludedByPathURL)
         XCTAssertTrue(isExcluded)
     }
     
     func testIsIncluded() async throws {
-        let isExcluded = filter.isExcluded(URL(fileURLWithPath: NSHomeDirectory()))
+        let isExcluded = filter.isExcluded(nonExcludedURL)
         XCTAssertFalse(isExcluded)
+    }
+}
+
+extension XCTestCase {
+    
+    var nonExcludedURL: URL {
+        FileManager.default.homeDirectoryForCurrentUser
+    }
+    
+    var excludedByPathURL: URL {
+        URL(fileURLWithPath: "/Volumes/TMBuddy-Test-Disk/TMBuddy-Test/Excluded-By-Path")
     }
 }

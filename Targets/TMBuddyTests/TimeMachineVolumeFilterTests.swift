@@ -12,5 +12,8 @@ class TimeMachineVolumeFilterTests: XCTestCase {
 }
 
 extension XCTestCase {
-    var excludedVolumeURL: URL { .init(fileURLWithPath: "/Volumes/TMBuddy-Test-Excluded-Disk") }
+    
+    var excludedVolumeURL: URL {
+        URL(fileURLWithPath: "/Volumes/TMBuddy-Test-Excluded-Disk")
+    }
 }
