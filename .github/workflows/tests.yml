@@ -106,7 +106,7 @@ jobs:
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddyAll'
       
-      - name: Build and Run Tests
+      - name: Tests
         run: |
           xcodebuild \
             test \
@@ -114,3 +114,11 @@ jobs:
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddyTests'
+      
+      - name: Snapshots
+        run: |
+          xcodebuild test \
+            -project *-"$PROJECT_KIND".xcodeproj \
+            -derivedDataPath "$DERIVED_DATA_PATH" \
+            -disableAutomaticPackageResolution \
+            -scheme 'TMBuddySnapshots'
