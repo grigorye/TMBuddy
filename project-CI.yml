@@ -1,5 +1,5 @@
 include:
-  - path: project.yml
+  - path: project-Full.yml
     relativePaths: false
 
 settings:

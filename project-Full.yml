@@ -1,0 +1,7 @@
+name: TMBuddy-Full
+
+include:
+  - path: XcodeGen/Base.yml
+    relativePaths: false
+  - path: XcodeGen/Firebase.yml
+    relativePaths: false

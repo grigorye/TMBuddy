@@ -1,0 +1,9 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+for projectKind in Full Compact; do
+    xcodegen -s project-"$projectKind".yml
+    xcodebuild -resolvePackageDependencies -project "TMBuddy-$projectKind.xcodeproj"
+done

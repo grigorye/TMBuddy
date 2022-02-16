@@ -148,6 +148,7 @@ jobs:
         run: |
           # build
           xcodebuild archive \
+            -project *-Full.xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -archivePath "$ARCHIVE_PATH" \
