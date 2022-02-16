@@ -6,7 +6,7 @@ struct ExtendedAttributesBackupController {
         excludedBasedOnExtendedAttributes(url)
     }
     
-    func setExcluded(_ excluded: Bool, urls: [URL]) async throws {
+    func setExcluded(_ excluded: Bool, urls: [URL]) throws {
         dump((excluded, paths: urls.map { $0.path }), name: "excluded")
         for url in urls {
             if excluded {

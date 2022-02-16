@@ -1,7 +1,7 @@
 import Foundation
 
 protocol MetadataWriter {
-    func setExcluded(_ value: Bool, urls: [URL]) async throws
+    func setExcluded(_ value: Bool, urls: [URL]) throws
 }
 
 extension TMUtilLauncher: MetadataWriter {}
