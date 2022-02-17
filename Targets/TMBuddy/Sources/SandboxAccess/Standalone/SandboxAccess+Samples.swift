@@ -2,10 +2,9 @@ extension SandboxAccessView.State {
     
     typealias State = Self
     
-    static let none = Self(showPostInstall: false, showDebug: false)
+    static let none = Self(showPostSMJobBless: false, showPostInstall: false, showDebug: false)
     
     enum Sample: CaseIterable, SampleNaming {
-        
         typealias Namespace = State
         
         case none
@@ -17,9 +16,9 @@ extension SandboxAccessView.State {
             case .none:
                 return .none
             case .compact:
-                return .init(showPostInstall: false, showDebug: false)
+                return .init(showPostSMJobBless: false, showPostInstall: false, showDebug: false)
             case .full:
-                return .init(showPostInstall: true, showDebug: true)
+                return .init(showPostSMJobBless: true, showPostInstall: true, showDebug: true)
             }
         }
     }
