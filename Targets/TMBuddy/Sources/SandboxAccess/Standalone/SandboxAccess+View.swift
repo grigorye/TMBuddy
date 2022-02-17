@@ -3,25 +3,26 @@ import SwiftUI
 struct SandboxAccessView: View {
     
     struct State {
+        var showPostSMJobBless: Bool
         var showPostInstall: Bool
         var showDebug: Bool
     }
     
     let state: State
     var actions: ()?
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             Group {
                 FolderSelectionCheckpointView.new()
-
+                
                 Divider()
                 
-                SMJobBlessCheckpointView.new()
-                if state.showPostInstall {
-                    PostInstallHelperCheckpointView.new()
-                } else {
-                    EmptyView()
+                if state.showPostSMJobBless {
+                    SMJobBlessCheckpointView.new()
+                    if state.showPostInstall {
+                        PostInstallHelperCheckpointView.new()
+                    }
                 }
                 FinderSyncExtensionCheckpointView.new()
                 PlugInFullDiskAccessCheckpointView.new()
@@ -36,8 +37,15 @@ struct SandboxAccessView: View {
 }
 
 struct SandboxAccessView_Previews : PreviewProvider {
+    
     static var previews: some View {
-        SandboxAccessView(state: .init(showPostInstall: true, showDebug: true))
+        SandboxAccessView(
+            state: .init(
+                showPostSMJobBless: true,
+                showPostInstall: true,
+                showDebug: true
+            )
+        )
             .padding()
     }
 }
