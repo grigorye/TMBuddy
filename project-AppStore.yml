@@ -1,0 +1,10 @@
+include:
+  - path: project-Compact.yml
+    relativePaths: false
+
+settings:
+  # Overriden from XcodeGen/Base.yml:
+  BUNDLE_VERSION: 
+  GE_INFOPLIST_KIND: Distribution
+  GE_BUNDLE_ID_EXTRA:
+  GE_PRODUCT_NAME_EXTRA:
