@@ -96,9 +96,19 @@ jobs:
           quiet: true
           version: '2.26.0'
 
+      - name: Build All
+        run: |
+          xcodebuild \
+            build \
+            -project *-"$PROJECT_KIND".xcodeproj \
+            -derivedDataPath "$DERIVED_DATA_PATH" \
+            -disableAutomaticPackageResolution \
+            -scheme 'TMBuddyAll'
+      
       - name: Build and Run Tests
         run: |
-          xcodebuild test \
+          xcodebuild \
+            test \
             -project *-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
