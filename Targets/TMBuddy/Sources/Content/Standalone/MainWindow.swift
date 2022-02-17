@@ -7,7 +7,7 @@ func mainWindow() -> NSWindow {
 
 func mainWindow<ContentView: View>(contentView: ContentView) -> NSWindow {
     NSWindow(
-        contentRect: .init(origin: .zero, size: .init(width: 320, height: 480)),
+        contentRect: .init(origin: .zero, size: .init(width: 320, height: 100)),
         styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
         backing: .buffered,
         defer: false
