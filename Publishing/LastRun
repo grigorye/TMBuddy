@@ -3,4 +3,4 @@
 set -x
 set -euo pipefail
 
-gh run list -b "$(gh pr view --json headRefName --jq ".headRefName")" -L 1 --json databaseId --jq '.[].databaseId'
+gh run list -w build-app -b "$(git rev-parse --abbrev-ref HEAD)" -L 1 --json databaseId --jq '.[].databaseId'
