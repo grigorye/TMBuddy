@@ -235,6 +235,9 @@ schemes:
         - variable: FORCE_RUN_FLAKY_SNAPSHOTS
           value: YES
           isEnabled: false
+        - variable: SNAPSHOT_RECORDING
+          value: YES
+          isEnabled: false
       targets:
         - name: TMBuddySnapshots
           parallelizable: true
