@@ -27,12 +27,10 @@ jobs:
             if: ${{ github.ref == 'refs/heads/main' }}
             projectKind: 'AppStore'
             exportOptionsPlist: 'dist/appstore-exportOptions.plist'
-            entitlementsSuffix: '-appstore'
           - name: 'DeveloperID'
             if: true
             projectKind: 'DeveloperID'
             exportOptionsPlist: 'dist/developer-id-exportOptions.plist'
-            entitlementsSuffix: ''
 
     env:
       APP_STORE_AUTHENTICATION_KEY_BASE64: ${{ secrets.APP_STORE_AUTHENTICATION_KEY_BASE64 }}
@@ -161,8 +159,7 @@ jobs:
             -authenticationKeyPath "$AUTHENTICATION_KEY_PATH" \
             -authenticationKeyID "$APP_STORE_AUTHENTICATION_KEY_ID" \
             -authenticationKeyIssuerID "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID" \
-            BUNDLE_VERSION="$BUNDLE_VERSION" \
-            GE_APP_ENTITLEMENTS_SUFFIX='${{ matrix.build-config.entitlementsSuffix }}'
+            BUNDLE_VERSION="$BUNDLE_VERSION"
 
       - name: Save .xcarchive
         if: ${{ matrix.build-config.if }}

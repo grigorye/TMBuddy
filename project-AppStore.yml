@@ -4,4 +4,7 @@ include:
   - path: XcodeGen/Distribution-Settings.yml
     relativePaths: false
 
+settings:
+  GE_APP_ENTITLEMENTS_SUFFIX: -appstore
+
 name: TMBuddy-AppStore
