@@ -25,10 +25,12 @@ jobs:
         build-config:
           - name: 'AppStore'
             if: ${{ github.ref == 'refs/heads/main' }}
+            projectKind: 'AppStore'
             exportOptionsPlist: 'dist/appstore-exportOptions.plist'
             entitlementsSuffix: '-appstore'
           - name: 'DeveloperID'
             if: true
+            projectKind: 'DeveloperID'
             exportOptionsPlist: 'dist/developer-id-exportOptions.plist'
             entitlementsSuffix: ''
 
@@ -139,7 +141,7 @@ jobs:
         if: ${{ matrix.build-config.if }}
         uses: xavierLowmiller/xcodegen-action@1.1.2
         with:
-          spec: project-CI.yml
+          spec: project-${{ matrix.build-config.projectKind }}.yml
           quiet: true
           version: '2.26.0'
 
