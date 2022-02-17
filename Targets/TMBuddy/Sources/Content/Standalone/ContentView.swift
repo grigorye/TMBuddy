@@ -4,12 +4,17 @@ import Foundation
 struct ContentView: View {
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Please check the list below to let \(appName) do its job.")
-                .font(.headline)
-                .fixedSize()
-            
+        TabView {
             SandboxAccessView.new()
+                .tabItem {
+                    Text("Setup")
+                }
+                .padding()
+            
+            LegendView()
+                .tabItem {
+                    Text("Legend")
+                }
         }
         .padding()
     }
