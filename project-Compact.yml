@@ -1,5 +1,5 @@
-name: TMBuddy-Compact
-
 include:
   - path: XcodeGen/Base.yml
     relativePaths: false
+
+name: TMBuddy-Compact

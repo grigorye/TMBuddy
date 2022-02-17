@@ -150,7 +150,7 @@ jobs:
         run: |
           # build
           xcodebuild archive \
-            -project *-Full.xcodeproj \
+            -project *-${{ matrix.build-config.projectKind }}.xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -archivePath "$ARCHIVE_PATH" \

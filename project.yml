@@ -1,3 +1,5 @@
 include:
   - path: project-Compact.yml
     relativePaths: false
+
+name: TMBuddy

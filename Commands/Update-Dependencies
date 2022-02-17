@@ -3,7 +3,7 @@
 set -x
 set -euo pipefail
 
-for projectKind in Full Compact; do
-    xcodegen -s project-"$projectKind".yml
-    xcodebuild -resolvePackageDependencies -project "TMBuddy-$projectKind.xcodeproj"
+for projectKindSuffix in "" -Full -Compact -AppStore -DeveloperID; do
+    xcodegen -s project"$projectKindSuffix".yml
+    xcodebuild -resolvePackageDependencies -project "TMBuddy$projectKindSuffix.xcodeproj"
 done
