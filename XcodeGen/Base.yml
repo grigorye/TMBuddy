@@ -219,9 +219,9 @@ targetTemplates:
           - "**/Integration"
       - path: Targets/TMBuddyShared
         includes:
+          - Data/TMStatus*.swift
           - Data/DefaultsKey.swift
           - Data/PlugInHostConnectionVersion.swift
-          - Globals/SharedDefaults.swift
       - Targets/OtherModules
 
 schemes:
