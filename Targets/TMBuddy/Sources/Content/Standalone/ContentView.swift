@@ -12,6 +12,7 @@ struct ContentView: View {
                 .padding()
             
             LegendView()
+                .frame(minHeight: 240)
                 .tabItem {
                     Text("Legend")
                 }
