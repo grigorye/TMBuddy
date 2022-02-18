@@ -24,9 +24,11 @@ class MainWindowSnapshots: XCTestCase {
     
     func test() {
         for state in AppStateSample.allCases {
-            let window = mainWindow(
-                contentView: ContentView().appStateSample(state)
-            )
+            let contentView = mainWindowContentView()
+                .appStateSample(state)
+                .fixedSize()
+            
+            let window = mainWindow(contentView: contentView)
             
             window.makeKeyAndOrderFront(nil)
             

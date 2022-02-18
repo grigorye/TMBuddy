@@ -19,7 +19,8 @@ class SandboxAccessSnapshots: XCTestCase {
     }
     
     func testBuddyGreen() {
-        let view = ContentView().appStateSample(.allGreen)
+        let view = mainWindowContentView()
+            .appStateSample(.allGreen)
         assertSnapshot(matching: view, record: record)
     }
 }
