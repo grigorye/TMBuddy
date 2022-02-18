@@ -4,7 +4,7 @@ extension FolderSelectionCheckpointView.State {
     
     typealias State = Self
     
-    enum Sample: CaseIterable, SampleNaming {
+    enum Sample: CaseIterable, StateSample {
         
         typealias Namespace = State
         

@@ -3,7 +3,7 @@ extension DebugCheckpointView.State {
     typealias State = Self
     static let none = Self()
     
-    enum Sample: CaseIterable, SampleNaming {
+    enum Sample: CaseIterable, StateSample {
         
         typealias Namespace = State
         

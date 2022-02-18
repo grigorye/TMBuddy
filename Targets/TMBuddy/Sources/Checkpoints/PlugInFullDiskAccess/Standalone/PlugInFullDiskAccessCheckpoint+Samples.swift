@@ -2,7 +2,7 @@ extension PlugInFullDiskAccessCheckpointState {
     
     typealias State = Self
     
-    enum Sample: CaseIterable, SampleNaming {
+    enum Sample: StateSample {
         
         typealias Namespace = State
         
@@ -30,7 +30,7 @@ extension PlugInFullDiskAccessCheckpointView.State {
     
     typealias State = Self
     
-    struct Sample: CaseIterable, SampleNaming {
+    struct Sample: StateSample {
         
         typealias Namespace = State
         
