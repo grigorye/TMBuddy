@@ -65,6 +65,7 @@ struct CheckpointView_Previews : PreviewProvider {
         ) {
             Text("Content")
         }
+        .frame(width: sampleCheckpointWidth, alignment: .leading)
     }
 }
 
