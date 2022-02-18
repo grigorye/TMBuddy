@@ -23,6 +23,6 @@ extension XCTestCase {
     }
     
     var excludedByPathURL: URL {
-        URL(fileURLWithPath: "/Volumes/TMBuddy-Test-Disk/TMBuddy-Test/Excluded-By-Path")
+        URL(fileURLWithPath: "/Volumes/.TMBuddy-Included/Excluded-By-Path")
     }
 }
