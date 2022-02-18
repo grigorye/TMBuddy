@@ -256,7 +256,7 @@ settings:
   DEVELOPMENT_TEAM: 5BV57B67TB
   GE_BUNDLE_ID_PREFIX: com.grigorye$(GE_BUNDLE_ID_EXTRA)
   
-  # Overriden for CI runs:
+  # Overridden for CI runs:
   BUNDLE_VERSION: Local
   GE_INFOPLIST_KIND: Development
   GE_BUNDLE_ID_EXTRA: .dev
