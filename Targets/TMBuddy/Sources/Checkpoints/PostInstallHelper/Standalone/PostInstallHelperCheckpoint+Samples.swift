@@ -2,7 +2,7 @@ extension PostInstallHelperCheckpointView.State {
     
     typealias State = Self
     
-    struct Sample: CaseIterable, SampleNaming {
+    struct Sample: StateSample {
         
         typealias Namespace = State
         

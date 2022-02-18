@@ -1,9 +1,11 @@
 import SwiftUI
 
+protocol StateSample: CaseIterable, StateProducing, SampleNaming, Hashable {}
+
 protocol StateWithSample {
-    associatedtype Sample: CaseIterable, StateProducing
+    associatedtype Sample: StateSample
     where
-    Sample.State == Self, Sample: SampleNaming
+    Sample.State == Self, Sample.AllCases: RandomAccessCollection
     
     static var none: Self { get }
 }

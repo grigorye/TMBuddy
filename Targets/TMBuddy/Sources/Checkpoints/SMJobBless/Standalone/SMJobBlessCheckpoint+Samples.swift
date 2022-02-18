@@ -2,7 +2,7 @@ extension SMJobBlessCheckpointState {
     
     typealias State = Self
     
-    enum Sample: CaseIterable, SampleNaming {
+    enum Sample: StateSample {
         
         typealias Namespace = State
         
