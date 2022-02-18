@@ -14,4 +14,4 @@ Publishing/DownloadAndPublish "$lastRun" "$provisioningDir" "$casksDir"
 
 (cd "$casksDir" && git commit -m "Updated TMBuddy." time-machine-buddy.rb && git push)
 
-/opt/homebrew/bin/brew upgrade
+/opt/homebrew/bin/brew update && /opt/homebrew/bin/brew reinstall grigorye/tools/time-machine-buddy 
