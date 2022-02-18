@@ -107,8 +107,9 @@ targets:
         script: |
           set -x
           set -euo pipefail
-          defaults write "$GE_LAUNCHD_PLIST" Label -string "$PRODUCT_BUNDLE_IDENTIFIER"
-          defaults write "$GE_LAUNCHD_PLIST" MachServices -dict "$PRODUCT_BUNDLE_IDENTIFIER" -bool YES
+          /usr/libexec/PlistBuddy -c "Clear dict" "$GE_LAUNCHD_PLIST"
+          /usr/libexec/PlistBuddy -c "Add :Label string $PRODUCT_BUNDLE_IDENTIFIER" "$GE_LAUNCHD_PLIST"
+          /usr/libexec/PlistBuddy -c "Add :MachServices:$PRODUCT_BUNDLE_IDENTIFIER bool true" "$GE_LAUNCHD_PLIST"
         outputFiles:
           - $(GE_LAUNCHD_PLIST)
     settings:
@@ -196,8 +197,9 @@ targetTemplates:
         script: |
           set -x
           set -euo pipefail
-          defaults write "$GE_BUNDLE_EXTRAS_PLIST" bundleIDPrefix -string "$GE_BUNDLE_ID_PREFIX"
-          defaults write "$GE_BUNDLE_EXTRAS_PLIST" bundleIDExtra -string "${GE_BUNDLE_ID_EXTRA:-}"
+          /usr/libexec/PlistBuddy -c "Clear dict" "$GE_BUNDLE_EXTRAS_PLIST"
+          /usr/libexec/PlistBuddy -c "Add :bundleIDPrefix string $GE_BUNDLE_ID_PREFIX" "$GE_BUNDLE_EXTRAS_PLIST"
+          /usr/libexec/PlistBuddy -c "Add :bundleIDExtra string ${GE_BUNDLE_ID_EXTRA:-}" "$GE_BUNDLE_EXTRAS_PLIST"
         outputFiles:
           - $(GE_BUNDLE_EXTRAS_PLIST)
 
