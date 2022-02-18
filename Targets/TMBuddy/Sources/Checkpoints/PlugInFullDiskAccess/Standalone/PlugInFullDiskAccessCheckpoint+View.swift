@@ -67,8 +67,7 @@ struct PlugInFullDiskAccessCheckpointView: View {
                         actions.openFullDiskAccessPreferences()
                     }
                 }
-                let nl="\n"
-                Text("To grant \(appName) access to Time Machine settings, please unlock Full Disk Access preferences\(nl)and then drop \(plugInName) into the list of apps with allowed access.")
+                Text("To grant \(appName) access to Time Machine settings, please unlock Full Disk Access preferences and then drop \(plugInName) into the list of apps with allowed access.")
                     .font(.footnote)
                     .lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
