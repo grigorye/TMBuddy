@@ -2,4 +2,12 @@ include:
   - path: XcodeGen/Base.yml
     relativePaths: false
 
+targets:
+  TMBuddy:
+    dependencies:
+      - target: TMBuddyTMUtilHelper
+        copy:
+          destination: wrapper
+          subpath: Contents/Library/LaunchServices
+
 name: TMBuddy-Compact

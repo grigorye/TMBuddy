@@ -1,5 +1,5 @@
 include:
-  - path: project-Compact.yml
+  - path: project-Compact-Without-Helper.yml
     relativePaths: false
   - path: XcodeGen/Distribution-Settings.yml
     relativePaths: false
