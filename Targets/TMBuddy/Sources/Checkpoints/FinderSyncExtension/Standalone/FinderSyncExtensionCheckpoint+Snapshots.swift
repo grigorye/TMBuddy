@@ -5,6 +5,10 @@ class FinderSyncExtensionCheckpointSnapshots: XCTestCase {
     private let record: Bool = false
 
     func test() throws {
-        FinderSyncExtensionCheckpointView.snapshotSamples(record: record)
+        FinderSyncExtensionCheckpointView
+            .snapshotSamples(
+                frameWidth: sampleCheckpointWidth,
+                record: record
+            )
     }
 }

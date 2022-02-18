@@ -67,3 +67,5 @@ struct CheckpointView_Previews : PreviewProvider {
         }
     }
 }
+
+let sampleCheckpointWidth: CGFloat = 360
