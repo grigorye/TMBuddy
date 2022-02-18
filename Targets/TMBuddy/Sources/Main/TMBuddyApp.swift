@@ -4,7 +4,7 @@ import SwiftUI
 struct TMBuddyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            mainWindowContentView().fixedSize()
         }
     }
 }
