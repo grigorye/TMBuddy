@@ -57,10 +57,6 @@ targets:
         "-FIRDebugEnabled YES": false
     dependencies:
       - target: TMBuddyFinder
-      - target: TMBuddyTMUtilHelper
-        copy:
-          destination: wrapper
-          subpath: Contents/Library/LaunchServices
       - package: Blessed
 
   TMBuddyFinder:
