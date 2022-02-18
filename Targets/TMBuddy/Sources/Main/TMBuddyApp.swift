@@ -18,6 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainWindow().makeKeyAndOrderFront(nil)
     }
     
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        true
+    }
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         dump(Bundle.main.bundlePath, name: "bundlePath")
     }
