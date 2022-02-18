@@ -45,7 +45,8 @@ struct CheckpointView<Content: View>: View {
                 }
                 content()
             }
-        }.fixedSize()
+        }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 
