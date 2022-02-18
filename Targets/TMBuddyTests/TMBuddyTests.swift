@@ -9,7 +9,7 @@ class TMBuddyTests: XCTestCase {
         XCTAssertGreaterThan(responses.count, 0)
     }
     
-    func testExclusion() async throws {
+    func testExclusion() throws {
         dump(Bundle.main, name: "bundle")
         try TMUtilLauncher().setExcluded(true, urls: [URL(fileURLWithPath: "/tmp")])
     }
