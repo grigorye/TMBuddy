@@ -1,5 +1,6 @@
 #! /bin/bash
 
+set -x
 set -euo pipefail
 
 enabled="$1"; shift
