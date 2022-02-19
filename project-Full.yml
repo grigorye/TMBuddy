@@ -1,7 +1,0 @@
-include:
-  - path: project-Compact.yml
-    relativePaths: false
-  - path: XcodeGen/Firebase.yml
-    relativePaths: false
-
-name: TMBuddy-Full

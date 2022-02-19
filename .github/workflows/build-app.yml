@@ -139,7 +139,8 @@ jobs:
         if: ${{ matrix.build-config.if }}
         uses: xavierLowmiller/xcodegen-action@1.1.2
         with:
-          spec: project-${{ matrix.build-config.projectKind }}.yml
+          spec: XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml
+          project: .
           quiet: true
           version: '2.26.0'
 
