@@ -95,7 +95,6 @@ jobs:
           spec: XcodeGen/Variant/${{ env.PROJECT_KIND }}.yml
           project: .
           project-root: .
-          quiet: true
           version: '2.26.0'
 
       - name: Build All
