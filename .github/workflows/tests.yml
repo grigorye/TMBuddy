@@ -90,10 +90,11 @@ jobs:
             ${{ runner.os }}-spm-
 
       - name: XcodeGen
-        uses: xavierLowmiller/xcodegen-action@1.1.2
+        uses: grigorye/xcodegen-action@feature/projectRoot
         with:
           spec: XcodeGen/Variant/${{ env.PROJECT_KIND }}.yml
           project: .
+          project-root: .
           quiet: true
           version: '2.26.0'
 
