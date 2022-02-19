@@ -1,6 +1,6 @@
 import Foundation
 
-struct VolumeFilter {
+struct ExcludedVolumeFilter {
     
     let excludedVolumeUUIDs: [String]
     

@@ -37,7 +37,7 @@ class TimeMachineVolumeFilter {
     
     var excludedVolumeUUIDs: [String] = []
     
-    var filter: VolumeFilter {
+    var filter: ExcludedVolumeFilter {
         .init(excludedVolumeUUIDs: excludedVolumeUUIDs)
     }
 }

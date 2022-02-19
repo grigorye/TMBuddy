@@ -12,5 +12,9 @@ func imageForStatus(_ status: TMStatus) -> NSImage? {
         return NSImage(named: NSImage.statusPartiallyAvailableName)
     case .unknown:
         return NSImage(named: NSImage.statusNoneName)
+    case .unsupportedVolume:
+        return NSImage(named: NSImage.statusUnavailableName)
+    case .excludedVolume:
+        return NSImage(named: NSImage.statusUnavailableName)
     }
 }
