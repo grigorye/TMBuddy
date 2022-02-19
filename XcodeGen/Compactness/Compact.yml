@@ -1,5 +1,5 @@
 include:
-  - path: XcodeGen/Base.yml
+  - path: ../Base.yml
     relativePaths: false
 
 targets:
@@ -9,5 +9,3 @@ targets:
         copy:
           destination: wrapper
           subpath: Contents/Library/LaunchServices
-
-name: TMBuddy-Compact

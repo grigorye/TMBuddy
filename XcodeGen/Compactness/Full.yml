@@ -1,0 +1,5 @@
+include:
+  - path: Compact.yml
+    relativePaths: false
+  - path: ../Aspect/Firebase.yml
+    relativePaths: false

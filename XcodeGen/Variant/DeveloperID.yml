@@ -1,7 +1,7 @@
 include:
-  - path: project-Full.yml
+  - path: ../Compactness/Full.yml
     relativePaths: false
-  - path: XcodeGen/Distribution-Settings.yml
+  - path: ../Aspect/Distribution-Settings.yml
     relativePaths: false
 
 name: TMBuddy-DeveloperID

@@ -17,7 +17,7 @@ jobs:
     runs-on: macos-11
 
     env:
-      PROJECT_KIND: 'Compact'
+      PROJECT_KIND: 'DeveloperID'
 
     steps:
       - uses: actions/checkout@v2
@@ -92,7 +92,8 @@ jobs:
       - name: XcodeGen
         uses: xavierLowmiller/xcodegen-action@1.1.2
         with:
-          spec: project-${{ env.PROJECT_KIND }}.yml
+          spec: XcodeGen/Variant/${{ env.PROJECT_KIND }}.yml
+          project: .
           quiet: true
           version: '2.26.0'
 

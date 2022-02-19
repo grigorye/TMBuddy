@@ -1,7 +1,7 @@
 include:
-  - path: project-Compact-Without-Helper.yml
+  - path: ../Compactness/Compact-No-Helper.yml
     relativePaths: false
-  - path: XcodeGen/Distribution-Settings.yml
+  - path: ../Aspect/Distribution-Settings.yml
     relativePaths: false
 
 settings:

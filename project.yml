@@ -1,5 +1,3 @@
 include:
-  - path: project-Compact.yml
+  - path: XcodeGen/Variant/Default.yml
     relativePaths: false
-
-name: TMBuddy
