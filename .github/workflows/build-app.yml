@@ -137,10 +137,11 @@ jobs:
 
       - name: XcodeGen
         if: ${{ matrix.build-config.if }}
-        uses: xavierLowmiller/xcodegen-action@1.1.2
+        uses: grigorye/xcodegen-action@feature/projectRoot
         with:
           spec: XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml
           project: .
+          project-root: .
           quiet: true
           version: '2.26.0'
 
