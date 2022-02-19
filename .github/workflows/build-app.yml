@@ -142,7 +142,6 @@ jobs:
           spec: XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml
           project: .
           project-root: .
-          quiet: true
           version: '2.26.0'
 
       - name: Build .xcarchive
