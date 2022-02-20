@@ -4,20 +4,37 @@ import Foundation
 struct ContentView: View {
     
     var body: some View {
-        TabView {
-            SandboxAccessView.new()
-                .tabItem {
-                    Text("Setup")
+        if #available(macOS 11.0, *) {
+            TabView {
+                SandboxAccessView.new()
+                    .tabItem {
+                        Text("Setup")
+                    }
+                    .padding()
+                
+                LegendView()
+                    .frame(minHeight: 240)
+                    .tabItem {
+                        Text("Legend")
+                    }
+            }
+        } else {
+            VStack(alignment: .leading) {
+                Text("Setup")
+                GroupBox {
+                    SandboxAccessView.new()
+                        .padding()
                 }
-                .padding()
-            
-            LegendView()
-                .frame(minHeight: 240)
-                .tabItem {
-                    Text("Legend")
+                
+                Text("Legend")
+                GroupBox() {
+                    LegendView()
+                        .padding()
                 }
+                
+            }
+            .padding()
         }
-        .padding()
     }
 }
 

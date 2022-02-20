@@ -4,6 +4,7 @@ import SwiftUI
 func mainWindowContentView() -> some View {
     ContentView()
         .frame(width: 640)
+        .fixedSize(horizontal: false, vertical: true)
 }
 
 func mainWindow() -> NSWindow {
@@ -12,7 +13,7 @@ func mainWindow() -> NSWindow {
 
 func mainWindow<ContentView: View>(contentView: ContentView) -> NSWindow {
     NSWindow(
-        contentRect: .init(origin: .zero, size: .init(width: 100, height: 480)),
+        contentRect: .init(origin: .zero, size: .init(width: 100, height: 100)),
         styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
         backing: .buffered,
         defer: false
