@@ -3,7 +3,7 @@ import SwiftUI
 struct LegendView: View {
     
     var body: some View {
-        let cases = TMStatus.allCases.filter { $0 != .included }
+        let cases = TMStatus.allCases.filter { [.included, .unknown].contains($0) == false }
         VStack(alignment: .leading) {
             ForEach(cases, id: \.self) { status in
                 HStack {
