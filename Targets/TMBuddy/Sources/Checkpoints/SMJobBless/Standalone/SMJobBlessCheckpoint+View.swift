@@ -8,7 +8,7 @@ struct SMJobBlessCheckpointView: View {
     var actions: SMJobBlessCheckpointActions!
     
     var body: some View {
-        let value: String = {
+        let value: LocalizedStringKey = {
             switch state {
             case .none:
                 return "checking"
@@ -95,8 +95,8 @@ private struct Preview: View {
     
     var body: some View {
         VStack {
-            Text("\(String(describing: sample))")
-            Button("Next") {
+            Text(.verbatim("\(sample)"))
+            Button(.verbatim("Next")) {
                 sampleIndex = nextSampleIndex
             }
             SMJobBlessCheckpointView(state: state)

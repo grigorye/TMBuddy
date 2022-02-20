@@ -11,7 +11,7 @@ struct FinderSyncExtensionCheckpointView: View {
     var body: some View {
         let (readiness, value) = checkpointStatus
         
-        let subtitle: String? = {
+        let subtitle: LocalizedStringKey? = {
             switch (state.enabled, state.alienInfo) {
             case (_, .alien):
                 return "Please reveal the alien extension in Finder, move it to Trash, and force relaunch Finder."
@@ -45,7 +45,7 @@ struct FinderSyncExtensionCheckpointView: View {
         }
     }
     
-    var checkpointStatus: (Readiness, String) {
+    var checkpointStatus: (Readiness, LocalizedStringKey) {
         switch (state.enabled, state.alienInfo) {
         case (.none, nil):
             return (.checking, "checking...")
