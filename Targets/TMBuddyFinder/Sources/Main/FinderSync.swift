@@ -129,14 +129,14 @@ class FinderSync: FIFinderSync {
         
         if mask.contains(true) {
             menu.addItem(
-                withTitle: "Remove Exclusion from Time Machine",
+                withTitle: NSLocalizedString("Remove Exclusion from Time Machine", comment: ""),
                 action: #selector(removeExclusionFromTimeMachine(_:)),
                 keyEquivalent: ""
             )
         }
         if mask.contains(false) {
             menu.addItem(
-                withTitle: "Exclude from Time Machine",
+                withTitle: NSLocalizedString("Exclude from Time Machine", comment: ""),
                 action: #selector(excludeFromTimeMachine(_:)),
                 keyEquivalent: ""
             )
@@ -154,14 +154,14 @@ class FinderSync: FIFinderSync {
         
         if mask.contains(true) {
             menu.addItem(
-                withTitle: "Remove Path Exclusion from Time Machine",
+                withTitle: NSLocalizedString("Remove Path Exclusion from Time Machine", comment: ""),
                 action: #selector(removePathExclusionFromTimeMachine(_:)),
                 keyEquivalent: ""
             )
         }
         if mask.contains(false) {
             menu.addItem(
-                withTitle: "Exclude Path from Time Machine",
+                withTitle: NSLocalizedString("Exclude Path from Time Machine", comment: ""),
                 action: #selector(excludePathFromTimeMachine(_:)),
                 keyEquivalent: ""
             )
