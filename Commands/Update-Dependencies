@@ -3,7 +3,7 @@
 set -x
 set -euo pipefail
 
-for projectVariant in Default AppStore DeveloperID; do
+for projectVariant in Default AppStore DeveloperID ExportLocalizations; do
     xcodegen -s XcodeGen/Variant/"$projectVariant".yml -r . -p .
 done
 

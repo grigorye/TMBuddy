@@ -1,0 +1,7 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+xcodegen -s XcodeGen/Variant/ExportLocalizations.yml -r . -p .
+xcodebuild -exportLocalizations -project TMBuddy-ExportLocalizations.xcodeproj -localizationPath Localizations
