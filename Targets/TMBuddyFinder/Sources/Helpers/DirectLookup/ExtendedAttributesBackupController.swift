@@ -10,9 +10,9 @@ struct ExtendedAttributesBackupController {
         dump((excluded, paths: urls.map { $0.path }), name: "excluded")
         for url in urls {
             if excluded {
-                addExcludedBasedOnExtendedAttributes(url)
+                try addExcludedBasedOnExtendedAttributes(url)
             } else {
-                removeExcludedBasedOnExtendedAttributes(url)
+                try removeExcludedBasedOnExtendedAttributes(url)
             }
         }
     }
@@ -48,7 +48,7 @@ func excludedBasedOnExtendedAttributes(_ url: URL) -> Bool {
     return false
 }
 
-func addExcludedBasedOnExtendedAttributes(_ url: URL) {
+func addExcludedBasedOnExtendedAttributes(_ url: URL) throws {
     debug { dump(url.path, name: "path") }
     do {
         try addStringExtendedAttribute(
@@ -58,15 +58,17 @@ func addExcludedBasedOnExtendedAttributes(_ url: URL) {
         )
     } catch {
         dump((error, path: url.path), name: "addStringExtendedAttributeForExcludingFromBackupFailed")
+        throw error
     }
 }
 
-func removeExcludedBasedOnExtendedAttributes(_ url: URL) {
+func removeExcludedBasedOnExtendedAttributes(_ url: URL) throws {
     debug { dump(url.path, name: "path") }
     do {
         try url.removeExtendedAttribute(forName: ExtendedAttributeForExcludingFromBackup.name)
     } catch {
         dump((error, path: url.path), name: "removeExtendedAttributeForExcludingFromBackupFailed")
+        throw error
     }
 }
 

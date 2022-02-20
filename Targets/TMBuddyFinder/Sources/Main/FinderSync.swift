@@ -234,6 +234,15 @@ class FinderSync: FIFinderSync {
         Task {
             let result = await task.result
             dump((result, exclude: exclude, items: itemURLs.map { $0.path }), name: "result")
+            DispatchQueue.main.async {
+                self.processResultForSetSelectedItemsPathExcludedFromTimeMachine(exclude, result: result)
+            }
+        }
+    }
+    
+    private func processResultForSetSelectedItemsStickyExcludedFromTimeMachine(_ exclude: Bool, result: Result<(), Error>) {
+        if case let .failure(error) = result {
+            NSApp.presentError(error)
         }
     }
 }
