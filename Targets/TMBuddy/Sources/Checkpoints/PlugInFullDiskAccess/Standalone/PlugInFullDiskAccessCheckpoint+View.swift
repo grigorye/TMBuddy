@@ -13,7 +13,7 @@ struct PlugInFullDiskAccessCheckpointView: View {
     var body: some View {
         let accessGranted = state.fullDiskAccess
         
-        let (readiness, value): (Readiness, String) = {
+        let (readiness, value): (Readiness, LocalizedStringKey) = {
             switch accessGranted {
             case .none:
                 let extensionStatus = state.finderSync

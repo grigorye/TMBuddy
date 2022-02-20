@@ -9,9 +9,9 @@ enum Readiness {
 
 struct CheckpointView<Content: View>: View {
     
-    let title: String
-    let subtitle: String?
-    let value: String
+    let title: LocalizedStringKey
+    let subtitle: LocalizedStringKey?
+    let value: LocalizedStringKey
     let readiness: Readiness
     
     @ViewBuilder
@@ -35,11 +35,11 @@ struct CheckpointView<Content: View>: View {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 4) {
-                        Text(title + ":")
+                        Text(title) + Text(":")
                         Text(value)
                     }
                     if let subtitle = subtitle {
-                        Text(" * " + subtitle)
+                        (Text(" * ") + Text(subtitle))
                             .font(.footnote)
                     }
                 }
@@ -59,12 +59,12 @@ struct CheckpointView_Previews : PreviewProvider {
     
     static var previews: some View {
         CheckpointView(
-            title: "Title",
-            subtitle: "Subtitle",
-            value: "Value",
+            title: .verbatim("Title"),
+            subtitle: .verbatim("Subtitle"),
+            value: .verbatim("Value"),
             readiness: .ready
         ) {
-            Text("Content")
+            Text(.verbatim("Content"))
         }
         .frame(width: sampleCheckpointWidth, alignment: .leading)
     }

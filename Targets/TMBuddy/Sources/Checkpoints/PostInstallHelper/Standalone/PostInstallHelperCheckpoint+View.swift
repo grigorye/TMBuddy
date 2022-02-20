@@ -28,7 +28,7 @@ struct PostInstallHelperCheckpointView: View {
                 return .checking
             }
         }()
-        let value: String = {
+        let value: LocalizedStringKey = {
             guard case .blessed = state.bless else {
                 return "unknown (helper tool is not installed)"
             }
