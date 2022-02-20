@@ -1,0 +1,70 @@
+targets:
+  TMBuddy:
+    sources:
+      - path: Targets/TMBuddy/Sources/Checkpoints
+        includes:
+          - SMJobBless
+          - PostInstallHelper
+        excludes:
+          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots.swift"
+    settings:
+      GE_HELPER_ACTIVE_COMPILATION_CONDITIONS: GE_BLESS
+    dependencies:
+      - package: Blessed
+      
+  TMBuddyTMUtilHelper:
+    type: tool
+    platform: macOS
+    scheme: {}
+    sources:
+      - Targets/TMBuddyTMUtilHelper
+      - Targets/TMBuddyFinder/Sources/Helpers/TMUtil/TMUtilLauncher.swift
+      - Targets/OtherModules/Basics
+      - Targets/OtherModules/UserDefaults
+      - Targets/OtherModules/Processes
+      - Targets/OtherModules/Sandboxing
+      - Targets/OtherModules/SourceLevel
+      - Targets/OtherModules/XPC
+      - Targets/TMBuddyShared/XPC/TMUtilHelperXPC.swift
+      - Targets/TMBuddyShared/XPC/CommonHelperXPC.swift
+      - Targets/TMBuddyShared/Data/DefaultsKey.swift
+      - Targets/TMBuddyShared/Data/PlugInHostConnectionVersion.swift
+    preBuildScripts:
+      - name: 'Generate launchd.plist'
+        shell: /bin/bash
+        script: |
+          set -x
+          set -euo pipefail
+          /usr/libexec/PlistBuddy -c "Clear dict" "$GE_LAUNCHD_PLIST"
+          /usr/libexec/PlistBuddy -c "Add :Label string $PRODUCT_BUNDLE_IDENTIFIER" "$GE_LAUNCHD_PLIST"
+          /usr/libexec/PlistBuddy -c "Add :MachServices:$PRODUCT_BUNDLE_IDENTIFIER bool true" "$GE_LAUNCHD_PLIST"
+        outputFiles:
+          - $(GE_LAUNCHD_PLIST)
+    settings:
+      GE_LAUNCHD_PLIST: $(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/launchd.plist
+      SKIP_INSTALL: YES
+      PRODUCT_MODULE_NAME: TMUtilHelper
+      PRODUCT_NAME: $(GE_BUNDLE_ID_PREFIX).TMBuddy.TMUtilHelper
+      ENABLE_HARDENED_RUNTIME: YES
+      INFOPLIST_FILE: Targets/TMBuddyTMUtilHelper/Bundle/Info-$(GE_INFOPLIST_KIND).plist
+      CODE_SIGN_ENTITLEMENTS: Targets/TMBuddyTMUtilHelper/Bundle/TMBuddyTMUtilHelper.entitlements
+      PRODUCT_BUNDLE_IDENTIFIER: $(GE_BUNDLE_ID_PREFIX).TMBuddy.TMUtilHelper
+      GE_APP_BUNDLE_ID: $(GE_BUNDLE_ID_PREFIX).TMBuddy
+      GE_APPEX_BUNDLE_ID: $(GE_BUNDLE_ID_PREFIX).TMBuddy.Finder
+      INFOPLIST_PREPROCESS: YES
+      INFOPLIST_PREPROCESSOR_DEFINITIONS: >
+        BUNDLE_VERSION=$(BUNDLE_VERSION) 
+        GE_BUNDLE_ID_PREFIX=$(GE_BUNDLE_ID_PREFIX)
+        GE_APP_BUNDLE_ID_QUOTED='"$(GE_APP_BUNDLE_ID)"'
+        GE_APPEX_BUNDLE_ID_QUOTED='"$(GE_APPEX_BUNDLE_ID)"'
+      CREATE_INFOPLIST_SECTION_IN_BINARY: YES
+      OTHER_LDFLAGS: -sectcreate __TEXT __launchd_plist $(GE_LAUNCHD_PLIST)
+      LD_RUNPATH_SEARCH_PATHS:
+        - $(inherited)
+        - /Library/Application Support/TMBuddy/Frameworks
+
+packages:
+  Blessed:
+    url: https://github.com/trilemma-dev/Blessed
+    from: "0.0.1"
