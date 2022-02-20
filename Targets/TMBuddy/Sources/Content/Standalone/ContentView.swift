@@ -18,6 +18,7 @@ struct ContentView: View {
                         Text("Legend")
                     }
             }
+            .padding()
         } else {
             VStack(alignment: .leading) {
                 Text("Setup")
