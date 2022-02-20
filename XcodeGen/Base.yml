@@ -28,7 +28,8 @@ targets:
       - Targets/TMBuddyShared
       - Targets/OtherModules
       - path: Targets/TMBuddyFinder/Sources
-        excludes: Main
+        excludes:
+          - Main
     settings:
       ENABLE_HARDENED_RUNTIME: YES
       SWIFT_ACTIVE_COMPILATION_CONDITIONS: '$(inherited) $(GE_HELPER_ACTIVE_COMPILATION_CONDITIONS)'
