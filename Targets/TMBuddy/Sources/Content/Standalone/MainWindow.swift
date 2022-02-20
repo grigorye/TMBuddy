@@ -3,8 +3,7 @@ import SwiftUI
 
 func mainWindowContentView() -> some View {
     ContentView()
-        .frame(width: 640)
-        .fixedSize(horizontal: false, vertical: true)
+        .fixedSize()
 }
 
 func mainWindow() -> NSWindow {

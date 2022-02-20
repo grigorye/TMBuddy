@@ -19,20 +19,23 @@ struct ContentView: View {
                     }
             }
             .padding()
+            .frame(width: 640)
         } else {
             VStack(alignment: .leading) {
-                Text("Setup")
-                GroupBox {
-                    SandboxAccessView.new()
-                        .padding()
-                }
+                VStack {
+                    GroupBox {
+                        SandboxAccessView.new()
+                            .padding()
+                    }
+                }.frame(maxWidth: 640)
                 
-                Text("Legend")
-                GroupBox() {
-                    LegendView()
-                        .padding()
+                VStack(alignment: .leading) {
+                    Text("Legend")
+                    GroupBox() {
+                        LegendView()
+                            .padding()
+                    }
                 }
-                
             }
             .padding()
         }
