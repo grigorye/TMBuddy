@@ -56,7 +56,7 @@ class DirectLookupBasedStatusProviderTests: XCTestCase {
         let url = excludedVolumeURL
         try XCTSkipUnless(url.checkResourceIsReachable())
         let status = try provider.statusForItem(url)
-        XCTAssertEqual(status, .parentExcluded)
+        XCTAssertEqual(status, .excludedVolume)
     }
     
     func testExcludedOnParentVolume() async throws {
