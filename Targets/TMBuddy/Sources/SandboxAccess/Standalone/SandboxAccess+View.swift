@@ -18,12 +18,14 @@ struct SandboxAccessView: View {
                 
                 Divider()
                 
+                #if GE_BLESS
                 if state.showPostSMJobBless {
                     SMJobBlessCheckpointView.new()
                     if state.showPostInstall {
                         PostInstallHelperCheckpointView.new()
                     }
                 }
+                #endif
                 FinderSyncExtensionCheckpointView.new()
                 PlugInFullDiskAccessCheckpointView.new()
                 

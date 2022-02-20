@@ -18,10 +18,16 @@ extension View {
     
     private func allGreen() -> some SwiftUI.View {
         self
+#if GE_BLESS
             .state(
                 .blessed,
                 for: SMJobBlessCheckpointView.self
             )
+            .state(
+                .init(bless: .blessed, postInstall: .completed),
+                for: PostInstallHelperCheckpointView.self
+            )
+#endif
             .state(
                 .init(bookmarkCount: 3),
                 for: FolderSelectionCheckpointView.self
@@ -34,10 +40,6 @@ extension View {
                 for: PlugInFullDiskAccessCheckpointView.self
             )
             .state(
-                .init(bless: .blessed, postInstall: .completed),
-                for: PostInstallHelperCheckpointView.self
-            )
-            .state(
                 .init(enabled: true, alienInfo: .same),
                 for: FinderSyncExtensionCheckpointView.self
             )
@@ -45,10 +47,16 @@ extension View {
     
     private func allRed() -> some SwiftUI.View {
         self
+#if GE_BLESS
             .state(
                 .missingBless,
                 for: SMJobBlessCheckpointView.self
             )
+            .state(
+                .init(bless: .missingBless, postInstall: .pending),
+                for: PostInstallHelperCheckpointView.self
+            )
+#endif
             .state(
                 .none,
                 for: FolderSelectionCheckpointView.self
@@ -56,10 +64,6 @@ extension View {
             .state(
                 .init(fullDiskAccess: .denied, finderSync: .init(enabled: false, alienInfo: .none)),
                 for: PlugInFullDiskAccessCheckpointView.self
-            )
-            .state(
-                .init(bless: .missingBless, postInstall: .pending),
-                for: PostInstallHelperCheckpointView.self
             )
             .state(
                 .init(enabled: false, alienInfo: .none),
