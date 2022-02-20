@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="Targets/TMBuddy/Localizations/Base.lproj/Localizable.strings" datatype="plaintext" source-language="en" target-language="en">
+    <body>
+      <trans-unit id=" * " xml:space="preserve">
+        <source xml:lang="en"> * </source>
+        <target xml:lang="en"> * </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id=":" xml:space="preserve">
+        <source xml:lang="en">:</source>
+        <target xml:lang="en">:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@" xml:space="preserve">
+        <source xml:lang="en">%@</source>
+        <target xml:lang="en">%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@ is enabled only in the selected folders (and any folders inside)." xml:space="preserve">
+        <source xml:lang="en">%@ is enabled only in the selected folders (and any folders inside).</source>
+        <target xml:lang="en">%@ is enabled only in the selected folders (and any folders inside).</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@ reads the list of paths excluded from backup from Time Machine settings." xml:space="preserve">
+        <source xml:lang="en">%@ reads the list of paths excluded from backup from Time Machine settings.</source>
+        <target xml:lang="en">%@ reads the list of paths excluded from backup from Time Machine settings.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@ uses the helper tool for changing Time Machine exclusion paths on behalf of the administrator." xml:space="preserve">
+        <source xml:lang="en">%@ uses the helper tool for changing Time Machine exclusion paths on behalf of the administrator.</source>
+        <target xml:lang="en">%@ uses the helper tool for changing Time Machine exclusion paths on behalf of the administrator.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld" xml:space="preserve">
+        <source xml:lang="en">%lld</source>
+        <target xml:lang="en">%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add More Folders" xml:space="preserve">
+        <source xml:lang="en">Add More Folders</source>
+        <target xml:lang="en">Add More Folders</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="alien" xml:space="preserve">
+        <source xml:lang="en">alien</source>
+        <target xml:lang="en">alien</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="checking" xml:space="preserve">
+        <source xml:lang="en">checking</source>
+        <target xml:lang="en">checking</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="checking..." xml:space="preserve">
+        <source xml:lang="en">checking...</source>
+        <target xml:lang="en">checking...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Clear Selection" xml:space="preserve">
+        <source xml:lang="en">Clear Selection</source>
+        <target xml:lang="en">Clear Selection</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Crash" xml:space="preserve">
+        <source xml:lang="en">Crash</source>
+        <target xml:lang="en">Crash</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Debug" xml:space="preserve">
+        <source xml:lang="en">Debug</source>
+        <target xml:lang="en">Debug</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="denied" xml:space="preserve">
+        <source xml:lang="en">denied</source>
+        <target xml:lang="en">denied</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="disabled" xml:space="preserve">
+        <source xml:lang="en">disabled</source>
+        <target xml:lang="en">disabled</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="disabled (failing)" xml:space="preserve">
+        <source xml:lang="en">disabled (failing)</source>
+        <target xml:lang="en">disabled (failing)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="enabled" xml:space="preserve">
+        <source xml:lang="en">enabled</source>
+        <target xml:lang="en">enabled</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="enabled (failing)" xml:space="preserve">
+        <source xml:lang="en">enabled (failing)</source>
+        <target xml:lang="en">enabled (failing)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="enabled (no connection)..." xml:space="preserve">
+        <source xml:lang="en">enabled (no connection)...</source>
+        <target xml:lang="en">enabled (no connection)...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Excluded because of parent folder" xml:space="preserve">
+        <source xml:lang="en">Excluded because of parent folder</source>
+        <target xml:lang="en">Excluded because of parent folder</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Excluded by path" xml:space="preserve">
+        <source xml:lang="en">Excluded by path</source>
+        <target xml:lang="en">Excluded by path</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Excluded by sticky flag attached" xml:space="preserve">
+        <source xml:lang="en">Excluded by sticky flag attached</source>
+        <target xml:lang="en">Excluded by sticky flag attached</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Excluded disk" xml:space="preserve">
+        <source xml:lang="en">Excluded disk</source>
+        <target xml:lang="en">Excluded disk</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Extensions Preferences" xml:space="preserve">
+        <source xml:lang="en">Extensions Preferences</source>
+        <target xml:lang="en">Extensions Preferences</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="failing" xml:space="preserve">
+        <source xml:lang="en">failing</source>
+        <target xml:lang="en">failing</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Finder extension" xml:space="preserve">
+        <source xml:lang="en">Finder extension</source>
+        <target xml:lang="en">Finder extension</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Folders selected" xml:space="preserve">
+        <source xml:lang="en">Folders selected</source>
+        <target xml:lang="en">Folders selected</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Full Disk Access Preferences" xml:space="preserve">
+        <source xml:lang="en">Full Disk Access Preferences</source>
+        <target xml:lang="en">Full Disk Access Preferences</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="granted" xml:space="preserve">
+        <source xml:lang="en">granted</source>
+        <target xml:lang="en">granted</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Helper tool" xml:space="preserve">
+        <source xml:lang="en">Helper tool</source>
+        <target xml:lang="en">Helper tool</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Install Helper" xml:space="preserve">
+        <source xml:lang="en">Install Helper</source>
+        <target xml:lang="en">Install Helper</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Install Support" xml:space="preserve">
+        <source xml:lang="en">Install Support</source>
+        <target xml:lang="en">Install Support</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="installed" xml:space="preserve">
+        <source xml:lang="en">installed</source>
+        <target xml:lang="en">installed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Legend" xml:space="preserve">
+        <source xml:lang="en">Legend</source>
+        <target xml:lang="en">Legend</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="likely enabled (still connected), but superseded by another version" xml:space="preserve">
+        <source xml:lang="en">likely enabled (still connected), but superseded by another version</source>
+        <target xml:lang="en">likely enabled (still connected), but superseded by another version</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="none" xml:space="preserve">
+        <source xml:lang="en">none</source>
+        <target xml:lang="en">none</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Not excluded" xml:space="preserve">
+        <source xml:lang="en">Not excluded</source>
+        <target xml:lang="en">Not excluded</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="not installed" xml:space="preserve">
+        <source xml:lang="en">not installed</source>
+        <target xml:lang="en">not installed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="not yet connected" xml:space="preserve">
+        <source xml:lang="en">not yet connected</source>
+        <target xml:lang="en">not yet connected</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="outdated %@" xml:space="preserve">
+        <source xml:lang="en">outdated %@</source>
+        <target xml:lang="en">outdated %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please force relaunch Finder to activate the extension" xml:space="preserve">
+        <source xml:lang="en">Please force relaunch Finder to activate the extension</source>
+        <target xml:lang="en">Please force relaunch Finder to activate the extension</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please force relaunch Finder to activate the other version of extension." xml:space="preserve">
+        <source xml:lang="en">Please force relaunch Finder to activate the other version of extension.</source>
+        <target xml:lang="en">Please force relaunch Finder to activate the other version of extension.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please reveal the alien extension in Finder, move it to Trash, and force relaunch Finder." xml:space="preserve">
+        <source xml:lang="en">Please reveal the alien extension in Finder, move it to Trash, and force relaunch Finder.</source>
+        <target xml:lang="en">Please reveal the alien extension in Finder, move it to Trash, and force relaunch Finder.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Reinstall Helper" xml:space="preserve">
+        <source xml:lang="en">Reinstall Helper</source>
+        <target xml:lang="en">Reinstall Helper</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Reveal Alien Extension in Finder" xml:space="preserve">
+        <source xml:lang="en">Reveal Alien Extension in Finder</source>
+        <target xml:lang="en">Reveal Alien Extension in Finder</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Reveal Extension in %@" xml:space="preserve">
+        <source xml:lang="en">Reveal Extension in %@</source>
+        <target xml:lang="en">Reveal Extension in %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select Folders" xml:space="preserve">
+        <source xml:lang="en">Select Folders</source>
+        <target xml:lang="en">Select Folders</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Setup" xml:space="preserve">
+        <source xml:lang="en">Setup</source>
+        <target xml:lang="en">Setup</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Support for macOS %lld" xml:space="preserve">
+        <source xml:lang="en">Support for macOS %lld</source>
+        <target xml:lang="en">Support for macOS %lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Time Machine settings read rights" xml:space="preserve">
+        <source xml:lang="en">Time Machine settings read rights</source>
+        <target xml:lang="en">Time Machine settings read rights</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="To grant %@ access to Time Machine settings, please unlock Full Disk Access preferences and then drop %@ into the list of apps with allowed access." xml:space="preserve">
+        <source xml:lang="en">To grant %@ access to Time Machine settings, please unlock Full Disk Access preferences and then drop %@ into the list of apps with allowed access.</source>
+        <target xml:lang="en">To grant %@ access to Time Machine settings, please unlock Full Disk Access preferences and then drop %@ into the list of apps with allowed access.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unknown" xml:space="preserve">
+        <source xml:lang="en">Unknown</source>
+        <target xml:lang="en">Unknown</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="unknown" xml:space="preserve">
+        <source xml:lang="en">unknown</source>
+        <target xml:lang="en">unknown</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="unknown (alien extension)" xml:space="preserve">
+        <source xml:lang="en">unknown (alien extension)</source>
+        <target xml:lang="en">unknown (alien extension)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="unknown (enable the extension)" xml:space="preserve">
+        <source xml:lang="en">unknown (enable the extension)</source>
+        <target xml:lang="en">unknown (enable the extension)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="unknown (helper tool is not installed)" xml:space="preserve">
+        <source xml:lang="en">unknown (helper tool is not installed)</source>
+        <target xml:lang="en">unknown (helper tool is not installed)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="unknown (no connection to extension)" xml:space="preserve">
+        <source xml:lang="en">unknown (no connection to extension)</source>
+        <target xml:lang="en">unknown (no connection to extension)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="unknown (problem with extension)" xml:space="preserve">
+        <source xml:lang="en">unknown (problem with extension)</source>
+        <target xml:lang="en">unknown (problem with extension)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unsupported disk" xml:space="preserve">
+        <source xml:lang="en">Unsupported disk</source>
+        <target xml:lang="en">Unsupported disk</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Update Helper" xml:space="preserve">
+        <source xml:lang="en">Update Helper</source>
+        <target xml:lang="en">Update Helper</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Targets/TMBuddyFinder/Bundle/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="en">
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source xml:lang="en">TMBuddy</source>
+        <target xml:lang="en">TMBuddy</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Targets/TMBuddy/Bundle/en.lproj/Info-Distribution-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="en">
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source xml:lang="en">TMBuddy</source>
+        <target xml:lang="en">TMBuddy</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Targets/TMBuddyFinder/Localizations/Base.lproj/Localizable.strings" datatype="plaintext" source-language="en" target-language="en">
+    <body>
+      <trans-unit id="Exclude from Time Machine" xml:space="preserve">
+        <source xml:lang="en">Exclude from Time Machine</source>
+        <target xml:lang="en">Exclude from Time Machine</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Exclude Path from Time Machine" xml:space="preserve">
+        <source xml:lang="en">Exclude Path from Time Machine</source>
+        <target xml:lang="en">Exclude Path from Time Machine</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Remove Exclusion from Time Machine" xml:space="preserve">
+        <source xml:lang="en">Remove Exclusion from Time Machine</source>
+        <target xml:lang="en">Remove Exclusion from Time Machine</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Remove Path Exclusion from Time Machine" xml:space="preserve">
+        <source xml:lang="en">Remove Path Exclusion from Time Machine</source>
+        <target xml:lang="en">Remove Path Exclusion from Time Machine</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

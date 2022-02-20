@@ -1,0 +1,12 @@
+/* No comment provided by engineer. */
+"Exclude from Time Machine" = "Запретить резервное копирование";
+
+/* No comment provided by engineer. */
+"Exclude Path from Time Machine" = "Исключить путь из резервных копий в Time Machine";
+
+/* No comment provided by engineer. */
+"Remove Exclusion from Time Machine" = "Разрешить резервное копирование";
+
+/* No comment provided by engineer. */
+"Remove Path Exclusion from Time Machine" = "Отменить исключение пути из резервных копий в Time Machine";
+

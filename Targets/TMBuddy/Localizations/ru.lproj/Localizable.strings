@@ -1,0 +1,183 @@
+/* No comment provided by engineer. */
+" * " = "*";
+
+/* No comment provided by engineer. */
+":" = ":";
+
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@ is enabled only in the selected folders (and any folders inside)." = "%@ работает только в выбранных папках (и папках внутри)";
+
+/* No comment provided by engineer. */
+"%@ reads the list of paths excluded from backup from Time Machine settings." = "%@ получает пути, исключенные из резервного копирования, из настроек Time Machine.";
+
+/* No comment provided by engineer. */
+"%@ uses the helper tool for changing Time Machine exclusion paths on behalf of the administrator." = "%@ использует вспомогательную программу для изменения списков объектов, не подлежащих резервному копированию, в Time Machine, от имени администратора.";
+
+/* No comment provided by engineer. */
+"%lld" = "%lld";
+
+/* No comment provided by engineer. */
+"Add More Folders" = "Добавить еще папки";
+
+/* No comment provided by engineer. */
+"alien" = "чужое";
+
+/* No comment provided by engineer. */
+"checking" = "проверка";
+
+/* No comment provided by engineer. */
+"checking..." = "проверка...";
+
+/* No comment provided by engineer. */
+"Clear Selection" = "Очистить выбранное";
+
+/* No comment provided by engineer. */
+"Crash" = "Применить сбой";
+
+/* No comment provided by engineer. */
+"Debug" = "Отладка";
+
+/* No comment provided by engineer. */
+"denied" = "недоступно";
+
+/* No comment provided by engineer. */
+"disabled" = "выключено";
+
+/* No comment provided by engineer. */
+"disabled (failing)" = "выключено (сбой)";
+
+/* No comment provided by engineer. */
+"enabled" = "включено";
+
+/* No comment provided by engineer. */
+"enabled (failing)" = "включено (сбой)";
+
+/* No comment provided by engineer. */
+"enabled (no connection)..." = "включено (нет соединения)";
+
+/* No comment provided by engineer. */
+"Excluded because of parent folder" = "Исключен т.к. находится в исключенной папке";
+
+/* No comment provided by engineer. */
+"Excluded by path" = "Исключен как путь в настройках Time Machine";
+
+/* No comment provided by engineer. */
+"Excluded by sticky flag attached" = "Исключен с помощью специального свойства";
+
+/* No comment provided by engineer. */
+"Excluded disk" = "Исключенный диск";
+
+/* No comment provided by engineer. */
+"Extensions Preferences" = "Настройки расширений";
+
+/* No comment provided by engineer. */
+"failing" = "сбой";
+
+/* No comment provided by engineer. */
+"Finder extension" = "Расширение для Finder";
+
+/* No comment provided by engineer. */
+"Folders selected" = "Выбранные папки";
+
+/* No comment provided by engineer. */
+"Full Disk Access Preferences" = "Настройки доступа к диску";
+
+/* No comment provided by engineer. */
+"granted" = "доступно";
+
+/* No comment provided by engineer. */
+"Helper tool" = "Вспомогательная программа";
+
+/* No comment provided by engineer. */
+"Install Helper" = "Вспомогательная программа";
+
+/* No comment provided by engineer. */
+"Install Support" = "Установить поддержку";
+
+/* No comment provided by engineer. */
+"installed" = "установлено";
+
+/* No comment provided by engineer. */
+"Legend" = "Легенда";
+
+/* No comment provided by engineer. */
+"likely enabled (still connected), but superseded by another version" = "вероятно включено (соединение установлено), но конфликтует с другим расширением";
+
+/* No comment provided by engineer. */
+"none" = "неактуально";
+
+/* No comment provided by engineer. */
+"Not excluded" = "Без исключения";
+
+/* No comment provided by engineer. */
+"not installed" = "не установлено";
+
+/* No comment provided by engineer. */
+"not yet connected" = "еще не подключено";
+
+/* No comment provided by engineer. */
+"outdated %@" = "устарело %@";
+
+/* No comment provided by engineer. */
+"Please force relaunch Finder to activate the extension" = "Перезапустите Finder для активации расширения";
+
+/* No comment provided by engineer. */
+"Please force relaunch Finder to activate the other version of extension." = "Перезапустите Finder для активации другой версии расширения.";
+
+/* No comment provided by engineer. */
+"Please reveal the alien extension in Finder, move it to Trash, and force relaunch Finder." = "Выберите чужое расширение в Finder, переместите его в Корзину и перезапустите Finder.";
+
+/* No comment provided by engineer. */
+"Reinstall Helper" = "Переустановить вспомогательную программу";
+
+/* No comment provided by engineer. */
+"Reveal Alien Extension in Finder" = "Показать чужое расширение в Finder";
+
+/* No comment provided by engineer. */
+"Reveal Extension in %@" = "Показать расширение в %@";
+
+/* No comment provided by engineer. */
+"Select Folders" = "Выбрать папки";
+
+/* No comment provided by engineer. */
+"Setup" = "Установка";
+
+/* No comment provided by engineer. */
+"Support for macOS %lld" = "Поддержка macOS %lld";
+
+/* No comment provided by engineer. */
+"Time Machine settings read rights" = "Доступ на чтение настроек Time Machine";
+
+/* No comment provided by engineer. */
+"To grant %@ access to Time Machine settings, please unlock Full Disk Access preferences and then drop %@ into the list of apps with allowed access." = "Для того чтобы дать %1$@ доступ к настройкам Time Machine, разблокируйте Доступ к диску в Системных настройках и перетяните иконку %2$@ в список приложений с разрешенным доступом.";
+
+/* No comment provided by engineer. */
+"unknown" = "неизвестно";
+
+/* No comment provided by engineer. */
+"Unknown" = "Неизвестно";
+
+/* No comment provided by engineer. */
+"unknown (alien extension)" = "неизвестно (чужое расширение)";
+
+/* No comment provided by engineer. */
+"unknown (enable the extension)" = "неизвестно (включите расширение)";
+
+/* No comment provided by engineer. */
+"unknown (helper tool is not installed)" = "неизвестно (вспомогательная программа не установлена)";
+
+/* No comment provided by engineer. */
+"unknown (no connection to extension)" = "неизвестно (нет связи с расширением)";
+
+/* No comment provided by engineer. */
+"unknown (problem with extension)" = "неизвестно (проблемы с расширением)";
+
+/* No comment provided by engineer. */
+"Unsupported disk" = "Диск не поддерживается Time Machine";
+
+/* No comment provided by engineer. */
+"Update Helper" = "Обновить вспомогательную программу";
+
