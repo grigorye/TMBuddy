@@ -1,0 +1,8 @@
+targets:
+  TMBuddy:
+    settings:
+      SWIFT_EMIT_LOC_STRINGS: YES
+
+  TMBuddyTMUtilHelper:
+    settings:
+      CREATE_INFOPLIST_SECTION_IN_BINARY: NO # Patch it to make xcodebuild not fail due to missing Processed-Info.plist
