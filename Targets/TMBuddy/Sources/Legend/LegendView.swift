@@ -14,11 +14,30 @@ struct LegendView: View {
                         Image(nsImage: placeholderImage)
                             .hidden()
                     }
-                    let label = "\(status)"
+                    let label = localizedStatus(status)
                     Text(label)
                 }
             }
         }.fixedSize()
+    }
+}
+
+func localizedStatus(_ status: TMStatus) -> LocalizedStringKey {
+    switch status {
+    case .unsupportedVolume:
+        return "Unsupported disk"
+    case .excludedVolume:
+        return "Excluded disk"
+    case .parentExcluded:
+        return "Excluded because of parent folder"
+    case .stickyExcluded:
+        return "Excluded by sticky flag attached"
+    case .pathExcluded:
+        return "Excluded by path"
+    case .included:
+        return "Not excluded"
+    case .unknown:
+        return "Unknown"
     }
 }
 
