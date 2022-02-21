@@ -119,7 +119,7 @@
 "not yet connected" = "еще не подключено";
 
 /* No comment provided by engineer. */
-"outdated %@" = "устарело %@";
+"outdated %@" = "устарела %@";
 
 /* No comment provided by engineer. */
 "Please force relaunch Finder to activate the extension" = "Перезапустите Finder для активации расширения";

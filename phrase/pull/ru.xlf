@@ -204,7 +204,7 @@
       </trans-unit>
       <trans-unit id="outdated %@" xml:space="preserve">
         <source xml:lang="en">outdated %@</source>
-        <target xml:lang="ru">устарело %@</target>
+        <target xml:lang="ru">устарела %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please force relaunch Finder to activate the extension" xml:space="preserve">
