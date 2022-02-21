@@ -289,7 +289,7 @@
       </trans-unit>
       <trans-unit id="outdated %@" xml:space="preserve">
         <source>outdated %@</source>
-        <target>устарело %@</target>
+        <target>устарела %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="unknown" xml:space="preserve">
