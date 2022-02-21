@@ -309,15 +309,6 @@
       </trans-unit>
     </body>
   </file>
-  <file original="Targets/TMBuddyFinder/Bundle/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="ru">
-    <body>
-      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
-        <source xml:lang="en">TMBuddy</source>
-        <target xml:lang="ru">TMBuddy</target>
-        <note>Bundle display name</note>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Targets/TMBuddy/Bundle/en.lproj/Info-Distribution-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="ru">
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
