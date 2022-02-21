@@ -9,5 +9,5 @@ for lang in ru en; do
     xcodebuild \
         -importLocalizations \
         -project TMBuddy-ExportLocalizations.xcodeproj \
-        -localizationPath phrase/pull/"$lang".xlf
+        -localizationPath Localizations/Pulled/"$lang".xliff
 done

@@ -1,0 +1,4 @@
+projects:
+- format: xliff
+  id: '512571'
+  terms_path: 'Localizations/Exported/{language_code}.xcloc/Localized Contents/{language_code}.xliff'

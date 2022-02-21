@@ -1,0 +1,4 @@
+projects:
+- format: xliff
+  id: '512571'
+  terms_path: Localizations/Pulled/{language_code}.xliff
