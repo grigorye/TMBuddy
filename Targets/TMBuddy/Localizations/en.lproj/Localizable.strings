@@ -1,1 +1,183 @@
+/* No comment provided by engineer. */
+" * " = " * ";
+
+/* No comment provided by engineer. */
+":" = ":";
+
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@ is enabled only in the selected folders (and any folders inside)." = "%@ is enabled only in the selected folders (and any folders inside).";
+
+/* No comment provided by engineer. */
+"%@ reads the list of paths excluded from backup from Time Machine settings." = "%@ reads the list of paths excluded from backup from Time Machine settings.";
+
+/* No comment provided by engineer. */
+"%@ uses the helper tool for changing Time Machine exclusion paths on behalf of the administrator." = "%@ uses the helper tool for changing Time Machine exclusion paths on behalf of the administrator.";
+
+/* No comment provided by engineer. */
+"%lld" = "%lld";
+
+/* No comment provided by engineer. */
+"Add More Folders" = "Add More Folders";
+
+/* No comment provided by engineer. */
+"alien" = "alien";
+
+/* No comment provided by engineer. */
+"checking" = "checking";
+
+/* No comment provided by engineer. */
+"checking..." = "checking...";
+
+/* No comment provided by engineer. */
+"Clear Selection" = "Clear Selection";
+
+/* No comment provided by engineer. */
+"Crash" = "Crash";
+
+/* No comment provided by engineer. */
+"Debug" = "Debug";
+
+/* No comment provided by engineer. */
+"denied" = "denied";
+
+/* No comment provided by engineer. */
+"disabled" = "disabled";
+
+/* No comment provided by engineer. */
+"disabled (failing)" = "disabled (failing)";
+
+/* No comment provided by engineer. */
+"enabled" = "enabled";
+
+/* No comment provided by engineer. */
+"enabled (failing)" = "enabled (failing)";
+
+/* No comment provided by engineer. */
+"enabled (no connection)..." = "enabled (no connection)...";
+
+/* No comment provided by engineer. */
+"Excluded because of parent folder" = "Excluded because of parent folder";
+
+/* No comment provided by engineer. */
+"Excluded by path" = "Excluded by path";
+
+/* No comment provided by engineer. */
+"Excluded by sticky flag attached" = "Excluded by sticky flag attached";
+
+/* No comment provided by engineer. */
+"Excluded disk" = "Excluded disk";
+
+/* No comment provided by engineer. */
+"Extensions Preferences" = "Extensions Preferences";
+
+/* No comment provided by engineer. */
+"failing" = "failing";
+
+/* No comment provided by engineer. */
+"Finder extension" = "Finder extension";
+
+/* No comment provided by engineer. */
+"Folders selected" = "Folders selected";
+
+/* No comment provided by engineer. */
+"Full Disk Access Preferences" = "Full Disk Access Preferences";
+
+/* No comment provided by engineer. */
+"granted" = "granted";
+
+/* No comment provided by engineer. */
+"Helper tool" = "Helper tool";
+
+/* No comment provided by engineer. */
+"Install Helper" = "Install Helper";
+
+/* No comment provided by engineer. */
+"Install Support" = "Install Support";
+
+/* No comment provided by engineer. */
+"installed" = "installed";
+
+/* No comment provided by engineer. */
+"Legend" = "Legend";
+
+/* No comment provided by engineer. */
+"likely enabled (still connected), but superseded by another version" = "likely enabled (still connected), but superseded by another version";
+
+/* No comment provided by engineer. */
+"none" = "none";
+
+/* No comment provided by engineer. */
+"Not excluded" = "Not excluded";
+
+/* No comment provided by engineer. */
+"not installed" = "not installed";
+
+/* No comment provided by engineer. */
+"not yet connected" = "not yet connected";
+
+/* No comment provided by engineer. */
+"outdated %@" = "outdated %@";
+
+/* No comment provided by engineer. */
+"Please force relaunch Finder to activate the extension" = "Please force relaunch Finder to activate the extension";
+
+/* No comment provided by engineer. */
+"Please force relaunch Finder to activate the other version of extension." = "Please force relaunch Finder to activate the other version of extension.";
+
+/* No comment provided by engineer. */
+"Please reveal the alien extension in Finder, move it to Trash, and force relaunch Finder." = "Please reveal the alien extension in Finder, move it to Trash, and force relaunch Finder.";
+
+/* No comment provided by engineer. */
+"Reinstall Helper" = "Reinstall Helper";
+
+/* No comment provided by engineer. */
+"Reveal Alien Extension in Finder" = "Reveal Alien Extension in Finder";
+
+/* No comment provided by engineer. */
+"Reveal Extension in %@" = "Reveal Extension in %@";
+
+/* No comment provided by engineer. */
+"Select Folders" = "Select Folders";
+
+/* No comment provided by engineer. */
+"Setup" = "Setup";
+
+/* No comment provided by engineer. */
+"Support for macOS %lld" = "Support for macOS %lld";
+
+/* No comment provided by engineer. */
+"Time Machine settings read rights" = "Time Machine settings read rights";
+
+/* No comment provided by engineer. */
+"To grant %@ access to Time Machine settings, please unlock Full Disk Access preferences and then drop %@ into the list of apps with allowed access." = "To grant %@ access to Time Machine settings, please unlock Full Disk Access preferences and then drop %@ into the list of apps with allowed access.";
+
+/* No comment provided by engineer. */
+"unknown" = "unknown";
+
+/* No comment provided by engineer. */
+"Unknown" = "Unknown";
+
+/* No comment provided by engineer. */
+"unknown (alien extension)" = "unknown (alien extension)";
+
+/* No comment provided by engineer. */
+"unknown (enable the extension)" = "unknown (enable the extension)";
+
+/* No comment provided by engineer. */
+"unknown (helper tool is not installed)" = "unknown (helper tool is not installed)";
+
+/* No comment provided by engineer. */
+"unknown (no connection to extension)" = "unknown (no connection to extension)";
+
+/* No comment provided by engineer. */
+"unknown (problem with extension)" = "unknown (problem with extension)";
+
+/* No comment provided by engineer. */
+"Unsupported disk" = "Unsupported disk";
+
+/* No comment provided by engineer. */
+"Update Helper" = "Update Helper";
 
