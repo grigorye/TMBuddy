@@ -1,0 +1,12 @@
+/* No comment provided by engineer. */
+"Exclude from Time Machine" = "Exclude from Backups";
+
+/* No comment provided by engineer. */
+"Exclude Path from Time Machine" = "Add to \"Do not backup\" List";
+
+/* No comment provided by engineer. */
+"Remove Exclusion from Time Machine" = "Allow Backups";
+
+/* No comment provided by engineer. */
+"Remove Path Exclusion from Time Machine" = "Remove from \"Do not backup\" List";
+
