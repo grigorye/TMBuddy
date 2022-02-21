@@ -214,6 +214,7 @@ settings:
   GE_PRODUCT_NAME_EXTRA: .dev
 
 options:
+  developmentLanguage: ca
   bundleIdPrefix: $(GE_BUNDLE_ID_PREFIX)
   xcodeVersion: 13.2.1
   deploymentTarget:
