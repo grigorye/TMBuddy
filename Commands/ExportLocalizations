@@ -8,7 +8,7 @@ xcodegen -s XcodeGen/Variant/ExportLocalizations.yml -r . -p .
 xcodebuild \
     -exportLocalizations \
     -project TMBuddy-ExportLocalizations.xcodeproj \
-    -localizationPath ExportedLocalizations \
+    -localizationPath Localizations/Exported \
     -exportLanguage en \
     -exportLanguage ru \
     -exportLanguage ca
