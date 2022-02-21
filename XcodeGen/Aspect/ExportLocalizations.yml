@@ -6,3 +6,4 @@ targets:
   TMBuddyTMUtilHelper:
     settings:
       CREATE_INFOPLIST_SECTION_IN_BINARY: NO # Patch it to make xcodebuild not fail due to missing Processed-Info.plist
+      OTHER_LDFLAGS:

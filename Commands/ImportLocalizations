@@ -4,9 +4,8 @@ set -x
 set -euo pipefail
 
 xcodegen -s XcodeGen/Variant/ExportLocalizations.yml -r . -p .
+
 xcodebuild \
-    -exportLocalizations \
+    -importLocalizations \
     -project TMBuddy-ExportLocalizations.xcodeproj \
-    -localizationPath ExportedLocalizations \
-    -exportLanguage en \
-    -exportLanguage ru
+    -localizationPath phrase/pull/ru.xlf
