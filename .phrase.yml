@@ -1,0 +1,12 @@
+phrase:
+  project_id: 84a6beb87b7feeacc9ad075fa4705806
+  push:
+    sources:
+    - file: phrase/push/<locale_name>.xlf
+      params:
+        file_format: xlf
+  pull:
+    targets:
+    - file: phrase/pull/<locale_name>.xlf
+      params:
+        file_format: xlf

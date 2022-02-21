@@ -24,6 +24,7 @@ targets:
           - Checkpoints/SMJobBless
           - Checkpoints/PostInstallHelper
       - Targets/TMBuddy/Resources
+      - Targets/TMBuddy/Localizations
       - Targets/TMBuddyShared
       - Targets/OtherModules
       - path: Targets/TMBuddyFinder/Sources
@@ -130,6 +131,8 @@ targets:
     platform: macOS
     templates:
       - TMBuddyStandaloneViewsTarget
+    settings:
+      LOCALIZED_STRING_SWIFTUI_SUPPORT: NO
 
 targetTemplates:
   TMBuddyIntrinsicsTarget:
