@@ -146,9 +146,14 @@ class FinderSync: FIFinderSync {
     private func addPathExclusionMenuItems(_ menu: NSMenu) {
         let itemURLs = syncController.selectedItemURLs() ?? []
         let exclusions = itemURLs.map { url -> Bool in
-            let status = try? DirectLookupBasedStatusProvider().statusForItem(url)
-            dump((status, item: url.path), name: "statusForItem")
-            return status == .pathExcluded
+            do {
+                let isPathExcluded = try DirectLookupBasedStatusProvider().isPathExcluded(url)
+                dump((isPathExcluded, item: url.path), name: "isPathExcluded")
+                return isPathExcluded
+            } catch {
+                dump((error, item: url.path), name: "isPathExcludedFailed")
+                return false
+            }
         }
         let mask = Set(exclusions)
         

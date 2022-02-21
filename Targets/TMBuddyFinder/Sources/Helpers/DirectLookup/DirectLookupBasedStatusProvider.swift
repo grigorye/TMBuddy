@@ -2,6 +2,14 @@ import Foundation
 
 class DirectLookupBasedStatusProvider {
     
+    func isPathExcluded(_ url: URL) throws -> Bool {
+        pathFilter.skipPaths.contains(url.path)
+    }
+    
+    func isStickyExcluded(_ url: URL) throws -> Bool {
+        metadataReader.excludedBasedOnMetadata(url)
+    }
+    
     func statusForItem(_ url: URL) throws -> TMStatus {
         guard metadataReader.excludedBasedOnMetadata(url) == false else {
             return .stickyExcluded
