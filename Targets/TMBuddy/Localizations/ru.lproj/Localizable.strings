@@ -140,6 +140,12 @@
 "Reveal Extension in %@" = "Показать расширение в %@";
 
 /* No comment provided by engineer. */
+"Select" = "Выбрать";
+
+/* No comment provided by engineer. */
+"Select all the disks available, to grant the read-only access to %@" = "Выберите все доступные диски, для того чтобы дать %@ доступ на чтение";
+
+/* No comment provided by engineer. */
 "Select Folders" = "Выбрать папки";
 
 /* No comment provided by engineer. */

@@ -1,8 +1,11 @@
 /* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
 "Exclude from Time Machine" = "Запретить резервные копии";
 
 /* No comment provided by engineer. */
-"Exclude Path from Time Machine" = "Убрать из мест не подлежащих резервному копированию";
+"Exclude Path from Time Machine" = "Добавить в места не подлежащие резервному копированию";
 
 /* No comment provided by engineer. */
 "Remove Exclusion from Time Machine" = "Разрешить резервные копии";

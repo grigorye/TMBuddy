@@ -140,6 +140,12 @@
 "Reveal Extension in %@" = "Reveal Extension in %@";
 
 /* No comment provided by engineer. */
+"Select" = "Select";
+
+/* No comment provided by engineer. */
+"Select all the disks available, to grant the read-only access to %@" = "Select all the disks available, to grant the read-only access to %@";
+
+/* No comment provided by engineer. */
 "Select Folders" = "Select Folders";
 
 /* No comment provided by engineer. */

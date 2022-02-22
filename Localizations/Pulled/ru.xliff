@@ -322,6 +322,16 @@
         <target>неизвестно (проблемы с расширением)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Select" xml:space="preserve">
+        <source>Select</source>
+        <target>Выбрать</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select all the disks available, to grant the read-only access to %@" xml:space="preserve">
+        <source>Select all the disks available, to grant the read-only access to %@</source>
+        <target>Выберите все доступные диски, для того чтобы дать %@ доступ на чтение</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
     </body>
   </file>
   <file original="Targets/TMBuddyFinder/Bundle/ca.lproj/InfoPlist.strings" datatype="plaintext" xml:space="preserve" source-language="ca" target-language="ru">
@@ -346,7 +356,7 @@
     <body>
       <trans-unit id="Exclude Path from Time Machine" xml:space="preserve">
         <source>Exclude Path from Time Machine</source>
-        <target>Убрать из мест не подлежащих резервному копированию</target>
+        <target>Добавить в места не подлежащие резервному копированию</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Exclude from Time Machine" xml:space="preserve">
@@ -362,6 +372,11 @@
       <trans-unit id="Remove Path Exclusion from Time Machine" xml:space="preserve">
         <source>Remove Path Exclusion from Time Machine</source>
         <target>Убрать из мест не подлежащих резервному копированию</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>
