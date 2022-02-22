@@ -1,6 +1,0 @@
-#! /bin/bash
-
-set -x
-set -euo pipefail
-
-defaults read ~/Library/Group\ Containers/5BV57B67TB.group.TMBuddy/Library/Preferences/5BV57B67TB.group.TMBuddy.plist
