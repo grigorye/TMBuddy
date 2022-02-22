@@ -1,12 +1,5 @@
 include:
   - path: ../Compactness/Compact-TweaksForLocalization.yml
     relativePaths: false
-
-targets:
-  TMBuddy:
-    sources:
-      - Targets/Backports
-
-  TMBuddyFinder:
-    sources:
-      - Targets/Backports
+  - path: ../Aspect/Backports.yml
+    relativePaths: false
