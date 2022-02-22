@@ -1,20 +1,43 @@
 import AppKit
 
 func imageForStatus(_ status: TMStatus) -> NSImage? {
+    let statusImage = NSImage(named: "Status")!
+    let alpha: CGFloat = 0.4
     switch status {
     case .included:
         return nil
     case .parentExcluded:
-        return NSImage(named: NSImage.statusNoneName)
+        return statusImage.tint(color: .systemMint.withAlphaComponent(alpha))
     case .stickyExcluded:
-        return NSImage(named: NSImage.statusUnavailableName)
+        return statusImage.tint(color: .systemPurple.withAlphaComponent(alpha))
     case .pathExcluded:
-        return NSImage(named: NSImage.statusPartiallyAvailableName)
+        return statusImage.tint(color: .systemRed.withAlphaComponent(alpha))
     case .unknown:
-        return NSImage(named: NSImage.statusNoneName)
+        return statusImage.tint(color: .systemPink.withAlphaComponent(alpha))
     case .unsupportedVolume:
-        return NSImage(named: NSImage.statusUnavailableName)
+        return statusImage.tint(color: .systemBrown.withAlphaComponent(alpha))
     case .excludedVolume:
-        return NSImage(named: NSImage.statusUnavailableName)
+        return statusImage.tint(color: .systemBlue.withAlphaComponent(alpha))
+    }
+}
+
+extension NSImage {
+    
+    func tint(color: NSColor) -> NSImage {
+        //
+        // Borrowed from https://stackoverflow.com/a/50074538/1859783
+        //
+        
+        let image = self.copy() as! NSImage
+        image.lockFocus()
+        
+        color.set()
+        
+        let imageRect = NSRect(origin: NSZeroPoint, size: image.size)
+        imageRect.fill(using: .sourceAtop)
+        
+        image.unlockFocus()
+        
+        return image
     }
 }
