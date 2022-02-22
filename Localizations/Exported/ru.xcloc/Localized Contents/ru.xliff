@@ -167,9 +167,19 @@
         <target>Показать расширение в %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Select" xml:space="preserve">
+        <source>Select</source>
+        <target>Выбрать</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select Folders" xml:space="preserve">
         <source>Select Folders</source>
         <target>Выбрать папки</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select all the disks available, to grant the read-only access to %@" xml:space="preserve">
+        <source>Select all the disks available, to grant the read-only access to %@</source>
+        <target>Выберите все доступные диски, для того чтобы дать %@ доступ на чтение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Setup" xml:space="preserve">
@@ -344,9 +354,14 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Exclude Path from Time Machine" xml:space="preserve">
         <source>Exclude Path from Time Machine</source>
-        <target>Убрать из мест не подлежащих резервному копированию</target>
+        <target>Добавить в места не подлежащие резервному копированию</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Exclude from Time Machine" xml:space="preserve">

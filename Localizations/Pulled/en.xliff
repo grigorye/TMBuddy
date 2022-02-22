@@ -321,6 +321,16 @@
         <target>unknown (problem with extension)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Select" xml:space="preserve">
+        <source>Select</source>
+        <target>Select</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select all the disks available, to grant the read-only access to %@" xml:space="preserve">
+        <source>Select all the disks available, to grant the read-only access to %@</source>
+        <target>Select all the disks available, to grant the read-only access to %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
     </body>
   </file>
   <file original="Targets/TMBuddyFinder/Bundle/ca.lproj/InfoPlist.strings" datatype="plaintext" xml:space="preserve" source-language="ca" target-language="en">
@@ -361,6 +371,11 @@
       <trans-unit id="Remove Path Exclusion from Time Machine" xml:space="preserve">
         <source>Remove Path Exclusion from Time Machine</source>
         <target>Remove from "Do not backup" List</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>
