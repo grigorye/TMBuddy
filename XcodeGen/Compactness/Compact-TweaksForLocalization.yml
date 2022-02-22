@@ -1,0 +1,13 @@
+include:
+  - path: ../Base.yml
+    relativePaths: false
+  - path: ../Aspect/Helper.yml
+    relativePaths: false
+
+targets:
+  TMBuddy:
+    dependencies:
+      - target: TMBuddyTMUtilHelper
+        copy:
+          destination: wrapper
+          subpath: Contents/Library/LaunchServices
