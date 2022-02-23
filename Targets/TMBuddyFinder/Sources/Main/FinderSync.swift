@@ -117,13 +117,24 @@ class FinderSync: FIFinderSync {
     
     override func menu(for menuKind: FIMenuKind) -> NSMenu {
         let menu = NSMenu(title: "")
-        addMetadataExclusionMenuItems(menu)
-        addPathExclusionMenuItems(menu)
+        let itemURLs = syncController.selectedItemURLs() ?? []
+        let itemsURLsByIsVolume = Dictionary(grouping: itemURLs) { $0.isVolume() }
+
+        if itemsURLsByIsVolume.count == 2 {
+            // Do nothing on mixed selection.
+        } else {
+            if let volumeURLs = itemsURLsByIsVolume[true] {
+                addVolumeExclusionMenuItems(menu, itemURLs: volumeURLs)
+            }
+            if let nonVolumeURLs = itemsURLsByIsVolume[false] {
+                addMetadataExclusionMenuItems(menu, itemURLs: nonVolumeURLs)
+                addPathExclusionMenuItems(menu, itemURLs: nonVolumeURLs)
+            }
+        }
         return menu
     }
     
-    private func addMetadataExclusionMenuItems(_ menu: NSMenu) {
-        let itemURLs = syncController.selectedItemURLs() ?? []
+    private func addMetadataExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { metadataReader.excludedBasedOnMetadata($0) }
         let mask = Set(exclusions)
         
@@ -143,45 +154,59 @@ class FinderSync: FIFinderSync {
         }
     }
     
-    private func addPathExclusionMenuItems(_ menu: NSMenu) {
-        let itemURLs = syncController.selectedItemURLs() ?? []
+    private func addPathExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { url -> Bool in
-            do {
-                let isPathExcluded = try DirectLookupBasedStatusProvider().isPathExcluded(url)
-                dump((isPathExcluded, item: url.path), name: "isPathExcluded")
-                return isPathExcluded
-            } catch {
-                dump((error, item: url.path), name: "isPathExcludedFailed")
-                return false
-            }
+            DirectLookupBasedStatusProvider().isPathExcluded(url)
         }
         let mask = Set(exclusions)
         
         if mask.contains(true) {
             menu.addItem(
                 withTitle: NSLocalizedString("Remove Path Exclusion from Time Machine", comment: ""),
-                action: #selector(removePathExclusionFromTimeMachine(_:)),
+                action: #selector(removePrivilegedExclusionFromTimeMachine(_:)),
                 keyEquivalent: ""
             )
         }
         if mask.contains(false) {
             menu.addItem(
                 withTitle: NSLocalizedString("Exclude Path from Time Machine", comment: ""),
-                action: #selector(excludePathFromTimeMachine(_:)),
+                action: #selector(addPrivilegedExclusionInTimeMachine(_:)),
                 keyEquivalent: ""
             )
         }
     }
     
-    @IBAction func removePathExclusionFromTimeMachine(_ sender: AnyObject?) {
-        setSelectedItemsPathExcludedFromTimeMachine(false)
+    private func addVolumeExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
+        let exclusions = itemURLs.map { url -> Bool in
+            DirectLookupBasedStatusProvider().isVolumeExcluded(url)
+        }
+        let mask = Set(exclusions)
+        
+        if mask.contains(true) {
+            menu.addItem(
+                withTitle: NSLocalizedString("Include Volume in Time Machine Backups", comment: ""),
+                action: #selector(removePrivilegedExclusionFromTimeMachine(_:)),
+                keyEquivalent: ""
+            )
+        }
+        if mask.contains(false) {
+            menu.addItem(
+                withTitle: NSLocalizedString("Exclude Volume from Time Machine Backups", comment: ""),
+                action: #selector(addPrivilegedExclusionInTimeMachine(_:)),
+                keyEquivalent: ""
+            )
+        }
     }
     
-    @IBAction func excludePathFromTimeMachine(_ sender: AnyObject?) {
-        setSelectedItemsPathExcludedFromTimeMachine(true)
+    @IBAction func removePrivilegedExclusionFromTimeMachine(_ sender: AnyObject?) {
+        setSelectedItemsPrivilegeExcludedFromTimeMachine(false)
+    }
+    
+    @IBAction func addPrivilegedExclusionInTimeMachine(_ sender: AnyObject?) {
+        setSelectedItemsPrivilegeExcludedFromTimeMachine(true)
     }
 
-    private func setSelectedItemsPathExcludedFromTimeMachine(_ exclude: Bool) {
+    private func setSelectedItemsPrivilegeExcludedFromTimeMachine(_ exclude: Bool) {
         guard let itemURLs = syncController.selectedItemURLs() else {
             dump(0, name: "itemCount")
             return
@@ -195,7 +220,13 @@ class FinderSync: FIFinderSync {
                 }
             }
             
-            try await TMUtilPrivileged().setExcludedByPath(exclude, urls: itemURLs)
+            let itemsURLsByIsVolume = Dictionary(grouping: itemURLs) { $0.isVolume() }
+            if let volumeURLs = itemsURLsByIsVolume[true] {
+                try await TMUtilPrivileged().setExcluded(exclude, privilege: .volume, urls: volumeURLs)
+            }
+            if let nonVolumeURLs = itemsURLsByIsVolume[false] {
+                try await TMUtilPrivileged().setExcluded(exclude, privilege: .fixedPath, urls: nonVolumeURLs)
+            }
         }
         Task {
             let result = await task.result
