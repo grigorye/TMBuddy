@@ -19,5 +19,5 @@ enum DefaultsKey: String, CaseIterable {
     case forceTMUtilMetadataWriter
     case forcePostInstallCheckpoint
     
-    case forceFakeFailureOnExcludeByPath
+    case fakeFailureOnSetExcludedPrivileged
 }

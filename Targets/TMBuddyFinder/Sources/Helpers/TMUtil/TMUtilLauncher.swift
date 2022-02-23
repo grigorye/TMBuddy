@@ -5,6 +5,12 @@ enum TMUtilStandardError {
     static let removeExclusionFullDiskAccessMissing = "tmutil: removeexclusion requires Full Disk Access privileges.\nTo allow this operation, select Full Disk Access in the Privacy\ntab of the Security & Privacy preference pane, and add Terminal\nto the list of applications which are allowed Full Disk Access.\n"
 }
 
+@objc
+enum TMPrivilegedExclusionKind: Int {
+    case fixedPath
+    case volume
+}
+
 struct TMUtilLauncher {
     
     let tmUtilURL = URL(fileURLWithPath: "/usr/bin/tmutil")
@@ -20,9 +26,17 @@ struct TMUtilLauncher {
         dump(String(data: data, encoding: .utf8)!, name: "tmUtilOutput")
     }
     
-    func setExcludedByPath(_ exclude: Bool, paths: [String]) throws {
+    func setExcluded(_ exclude: Bool, privilege: TMPrivilegedExclusionKind, paths: [String]) throws {
         let command = exclude ? "addexclusion" : "removeexclusion"
-        let tmUtilArguments = [command, "-p"] + paths.map {
+        let exclusionModifier: String = {
+            switch privilege {
+            case .fixedPath:
+                return "-p"
+            case .volume:
+                return "-v"
+            }
+        }()
+        let tmUtilArguments = [command, exclusionModifier] + paths.map {
             // For some reason "~username/xxx" gets converted into "~root/xxx" when tmutil is invoked from the helper. As a workaround, we just expand it beforehand into the absolute path.
             ($0 as NSString).expandingTildeInPath(ignoringSandbox: true)
         }

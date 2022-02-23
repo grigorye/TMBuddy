@@ -24,11 +24,11 @@ class TMUtilPrivileged {
         }
     }
 
-    func setExcludedByPath(_ value: Bool, urls: [URL]) async throws {
+    func setExcluded(_ value: Bool, privilege: TMPrivilegedExclusionKind, urls: [URL]) async throws {
         try await withProxy { (proxy, continuation: CheckedContinuation<Void, Error>) in
             let abbreviatedPaths: [String] = urls.paths.map { $0.abbreviatingWithTildeInPath(ignoringSandbox: true) }
             dump(abbreviatedPaths, name: "abbreviatedPaths")
-            proxy.setExcludedByPath(value, paths: abbreviatedPaths) { error in
+            proxy.setExcluded(value, privilege: privilege, paths: abbreviatedPaths) { error in
                 continuation.resume(with: Result(error: error))
             }
         }
