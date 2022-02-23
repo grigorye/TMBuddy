@@ -2,8 +2,17 @@ import Foundation
 
 class DirectLookupBasedStatusProvider {
     
-    func isPathExcluded(_ url: URL) throws -> Bool {
+    func isPathExcluded(_ url: URL) -> Bool {
         pathFilter.skipPaths.contains(url.path)
+    }
+    
+    func isVolumeExcluded(_ url: URL) -> Bool {
+        assert(url.isVolume())
+        guard let volumeUUID = url.volumeUUID() else {
+            dump(url.path, name: "volumeUUIDFailed")
+            return false
+        }
+        return volumeFilter.excludedVolumeUUIDs.contains(volumeUUID)
     }
     
     func isStickyExcluded(_ url: URL) throws -> Bool {
@@ -18,14 +27,14 @@ class DirectLookupBasedStatusProvider {
             return .pathExcluded
         }
         guard unsupportedVolumeFilter.isExcluded(url) == false else {
-            if try url.isVolume() {
+            if url.isVolume() {
                 return .unsupportedVolume
             } else {
                 return .parentExcluded
             }
         }
         guard volumeFilter.isExcluded(url) == false else {
-            if try url.isVolume() {
+            if url.isVolume() {
                 return .excludedVolume
             } else {
                 return .parentExcluded
