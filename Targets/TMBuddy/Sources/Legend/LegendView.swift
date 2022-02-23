@@ -18,7 +18,9 @@ struct LegendView: View {
                     Text(label)
                 }
             }
-        }.fixedSize()
+        }
+        .padding()
+        .fixedSize()
     }
 }
 
