@@ -7,7 +7,7 @@ func imageForStatus(_ status: TMStatus) -> NSImage? {
     case .included:
         return nil
     case .parentExcluded:
-        return statusImage.tint(color: .systemMint.withAlphaComponent(alpha))
+        return statusImage.tint(color: .systemGray.withAlphaComponent(alpha))
     case .stickyExcluded:
         return statusImage.tint(color: .systemPurple.withAlphaComponent(alpha))
     case .pathExcluded:
@@ -15,9 +15,9 @@ func imageForStatus(_ status: TMStatus) -> NSImage? {
     case .unknown:
         return statusImage.tint(color: .systemPink.withAlphaComponent(alpha))
     case .unsupportedVolume:
-        return statusImage.tint(color: .systemBrown.withAlphaComponent(alpha))
+        return statusImage.tint(color: .systemMint.withAlphaComponent(alpha))
     case .excludedVolume:
-        return statusImage.tint(color: .systemBlue.withAlphaComponent(alpha))
+        return statusImage.tint(color: .systemPurple.withAlphaComponent(alpha))
     }
 }
 
