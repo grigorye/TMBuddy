@@ -44,7 +44,7 @@ func checkTMUtilHelperTildeHandling() {
     let testPath = ("~/\(moduleName)-Test/Excluded-ByPath.txt" as NSString).expandingTildeInPath(ignoringSandbox: true)
     let testURL = URL(fileURLWithPath: testPath)
     let task = Task {
-        try await TMUtilPrivileged().setExcludedByPath(true, urls: [testURL])
+        try await TMUtilPrivileged().setExcluded(true, privilege: .fixedPath, urls: [testURL])
         let tildeHandlingIsSane = TimeMachinePathFilter().isExcluded(testURL)
         dump(tildeHandlingIsSane, name: "tildeHandlingIsSane")
         if tildeHandlingIsSane == false {
