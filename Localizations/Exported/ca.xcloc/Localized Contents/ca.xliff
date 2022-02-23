@@ -366,9 +366,19 @@
         <target>Exclude Path from Time Machine</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exclude Volume from Time Machine Backups" xml:space="preserve">
+        <source>Exclude Volume from Time Machine Backups</source>
+        <target>Exclude Volume from Time Machine Backups</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Exclude from Time Machine" xml:space="preserve">
         <source>Exclude from Time Machine</source>
         <target>Exclude from Time Machine</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Include Volume in Time Machine Backups" xml:space="preserve">
+        <source>Include Volume in Time Machine Backups</source>
+        <target>Include Volume in Time Machine Backups</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Remove Exclusion from Time Machine" xml:space="preserve">

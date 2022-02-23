@@ -8,6 +8,12 @@
 "Exclude Path from Time Machine" = "Add to \"Do not backup\" List";
 
 /* No comment provided by engineer. */
+"Exclude Volume from Time Machine Backups" = "Exclude from Backups";
+
+/* No comment provided by engineer. */
+"Include Volume in Time Machine Backups" = "Allow Backups";
+
+/* No comment provided by engineer. */
 "Remove Exclusion from Time Machine" = "Allow Backups";
 
 /* No comment provided by engineer. */
