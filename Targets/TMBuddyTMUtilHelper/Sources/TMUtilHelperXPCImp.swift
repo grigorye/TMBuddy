@@ -2,18 +2,18 @@ import Foundation
 
 final class TMUtilHelperXPCImp: CommonHelperXPCImp, TMUtilHelperXPC {
     
-    func setExcludedByPath(_ value: Bool, paths: [String], reply: @escaping (Error?) -> Void) {
+    func setExcluded(_ value: Bool, privilege: TMPrivilegedExclusionKind, paths: [String], reply: @escaping (Error?) -> Void) {
         let result = Result {
-            try setExcludedByPath(value, paths: paths)
+            try setExcluded(value, privilege: privilege, paths: paths)
         }
         dump(result, name: "result")
         result.send(to: reply)
     }
     
-    func setExcludedByPath(_ value: Bool, paths: [String]) throws {
+    func setExcluded(_ value: Bool, privilege: TMPrivilegedExclusionKind, paths: [String]) throws {
         dump(paths, name: "paths")
-        try TMUtilLauncher().setExcludedByPath(value, paths: paths)
-        if UserDefaults.standard.bool(forKey: DefaultsKey.forceFakeFailureOnExcludeByPath) {
+        try TMUtilLauncher().setExcluded(value, privilege: privilege, paths: paths)
+        if UserDefaults.standard.bool(forKey: DefaultsKey.fakeFailureOnSetExcludedPrivileged) {
             enum Error: Swift.Error {
                 case fakeFailure
             }

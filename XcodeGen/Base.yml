@@ -54,7 +54,7 @@ targets:
         "-suppressNSLog YES": true
         "-suppressErrorReporting YES": true
         "-forceAppStoreLikeWindowTitle YES": false
-        "-forceFakeFailureOnExcludeByPath YES": false
+        "-fakeFailureOnSetExcludedPrivileged YES": false
         "-forcePostInstallCheckpoint YES": false
         "-debug YES": false
         "-debug NO": true
