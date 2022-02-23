@@ -264,7 +264,7 @@
       </trans-unit>
       <trans-unit id="installed" xml:space="preserve">
         <source>installed</source>
-        <target>установлено</target>
+        <target>установлена</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="likely enabled (still connected), but superseded by another version" xml:space="preserve">
@@ -279,7 +279,7 @@
       </trans-unit>
       <trans-unit id="not installed" xml:space="preserve">
         <source>not installed</source>
-        <target>не установлено</target>
+        <target>не установлена</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="not yet connected" xml:space="preserve">
