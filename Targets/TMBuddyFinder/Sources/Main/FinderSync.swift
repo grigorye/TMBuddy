@@ -87,6 +87,10 @@ class FinderSync: FIFinderSync {
         updateBadgeIdentifier(for: url)
     }
     
+    // MARK: -
+    
+    var statusProvider: DirectLookupBasedStatusProvider { .init() }
+
     func updateBadgeIdentifier(for url: URL) {
         Task {
             let status = try! await statusProvider.statusForItem(url)
