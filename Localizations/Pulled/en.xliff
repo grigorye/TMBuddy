@@ -388,6 +388,11 @@
         <target>Allow Backups</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Backup Exclusion Levels" xml:space="preserve">
+        <source>Backup Exclusion Levels</source>
+        <target>Backups Excluded on Upper Levels</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>
