@@ -93,7 +93,7 @@ class FinderSync: FIFinderSync {
 
     func updateBadgeIdentifier(for url: URL) {
         Task {
-            let status = try! await statusProvider.statusForItem(url)
+            let status = statusProvider.statusForItem(url)
             dump((status, path: url.path), name: "status")
             let badgeIdentifier = badgeIdentifierForStatus(status)
             syncController.setBadgeIdentifier(badgeIdentifier, for: url)
@@ -133,11 +133,58 @@ class FinderSync: FIFinderSync {
             if let nonVolumeURLs = itemsURLsByIsVolume[false] {
                 addMetadataExclusionMenuItems(menu, itemURLs: nonVolumeURLs)
                 addPathExclusionMenuItems(menu, itemURLs: nonVolumeURLs)
+                addRevealParentExclusionsMenuItems(menu, url: nonVolumeURLs.first!)
             }
         }
         return menu
     }
     
+    private func addRevealParentExclusionsMenuItems(_ menu: NSMenu, url: URL) {
+        let menuItems = menuItemsForParentPaths(url: url)
+        guard menuItems.isEmpty == false else {
+            dump(url.path, name: "pathHasNoItemsToDisplayForParentExclusions")
+            return
+        }
+        let pathSubmenuItem = NSMenuItem() ≈ {
+            $0.title = NSLocalizedString("Backup Exclusion Levels", comment: "")
+            $0.submenu = NSMenu() ≈ {
+                $0.items = menuItems
+            }
+        }
+        menu.addItem(pathSubmenuItem)
+    }
+    
+    private func menuItemsForParentPaths(url: URL) -> [NSMenuItem] {
+        guard statusProvider.statusForItem(url) != .included else {
+            return []
+        }
+        let parentPaths = parentPaths(for: url).reversed().dropFirst()
+        let parentURLs = parentPaths.map { URL(fileURLWithPath: $0, isDirectory: true) }
+        return parentURLs.compactMap { parentURL in
+            let status = statusProvider.statusForItem(parentURL)
+            dump((status, path: parentURL.path), name: "status")
+            if status == .parentExcluded || status == .included {
+                return nil
+            }
+            let icon = NSWorkspace.shared.icon(forFile: parentURL.path)
+            let displayName = FileManager.default.displayName(atPath: parentURL.path)
+            return NSMenuItem() ≈ {
+                $0.title = displayName
+                $0.action = #selector(revealParentFrom(menuItem:))
+                $0.target = self
+                $0.image = icon
+                $0.tag = parentURLs.firstIndex(of: parentURL)!
+            }
+        }
+    }
+    
+    @objc private func revealParentFrom(menuItem: NSMenuItem) {
+        let selectedURL = syncController.selectedItemURLs()!.first!
+        let parentPaths = Array(parentPaths(for: selectedURL).reversed().dropFirst())
+        let url = URL(fileURLWithPath: parentPaths[menuItem.tag])
+        NSWorkspace.shared.activateFileViewerSelecting([url])
+    }
+
     private func addMetadataExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { metadataReader.excludedBasedOnMetadata($0) }
         let mask = Set(exclusions)
@@ -160,7 +207,7 @@ class FinderSync: FIFinderSync {
     
     private func addPathExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { url -> Bool in
-            DirectLookupBasedStatusProvider().isPathExcluded(url)
+            statusProvider.isPathExcluded(url)
         }
         let mask = Set(exclusions)
         
@@ -182,7 +229,7 @@ class FinderSync: FIFinderSync {
     
     private func addVolumeExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { url -> Bool in
-            DirectLookupBasedStatusProvider().isVolumeExcluded(url)
+            statusProvider.isVolumeExcluded(url)
         }
         let mask = Set(exclusions)
         
