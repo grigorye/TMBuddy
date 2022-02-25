@@ -361,6 +361,11 @@
         <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Backup Exclusion Levels" xml:space="preserve">
+        <source>Backup Exclusion Levels</source>
+        <target>Backup Exclusion Levels</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Exclude Path from Time Machine" xml:space="preserve">
         <source>Exclude Path from Time Machine</source>
         <target>Exclude Path from Time Machine</target>

@@ -274,7 +274,7 @@
       </trans-unit>
       <trans-unit id="installed" xml:space="preserve">
         <source>installed</source>
-        <target>установлено</target>
+        <target>установлена</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="likely enabled (still connected), but superseded by another version" xml:space="preserve">
@@ -289,7 +289,7 @@
       </trans-unit>
       <trans-unit id="not installed" xml:space="preserve">
         <source>not installed</source>
-        <target>не установлено</target>
+        <target>не установлена</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="not yet connected" xml:space="preserve">
@@ -359,6 +359,11 @@
         <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Backup Exclusion Levels" xml:space="preserve">
+        <source>Backup Exclusion Levels</source>
+        <target>Резервные копии запрещены на уровнях выше</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Exclude Path from Time Machine" xml:space="preserve">
         <source>Exclude Path from Time Machine</source>
         <target>Добавить в места не подлежащие резервному копированию</target>
@@ -366,6 +371,7 @@
       </trans-unit>
       <trans-unit id="Exclude Volume from Time Machine Backups" xml:space="preserve">
         <source>Exclude Volume from Time Machine Backups</source>
+        <target>Запретить резервные копии</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Exclude from Time Machine" xml:space="preserve">
@@ -375,6 +381,7 @@
       </trans-unit>
       <trans-unit id="Include Volume in Time Machine Backups" xml:space="preserve">
         <source>Include Volume in Time Machine Backups</source>
+        <target>Разрешить резервные копии</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Remove Exclusion from Time Machine" xml:space="preserve">

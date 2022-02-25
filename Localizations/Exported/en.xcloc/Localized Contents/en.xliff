@@ -358,6 +358,11 @@
         <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Backup Exclusion Levels" xml:space="preserve">
+        <source>Backup Exclusion Levels</source>
+        <target>Backups Excluded on Upper Levels</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Exclude Path from Time Machine" xml:space="preserve">
         <source>Exclude Path from Time Machine</source>
         <target>Add to "Do not backup" List</target>
@@ -365,6 +370,7 @@
       </trans-unit>
       <trans-unit id="Exclude Volume from Time Machine Backups" xml:space="preserve">
         <source>Exclude Volume from Time Machine Backups</source>
+        <target>Exclude from Backups</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Exclude from Time Machine" xml:space="preserve">
@@ -374,6 +380,7 @@
       </trans-unit>
       <trans-unit id="Include Volume in Time Machine Backups" xml:space="preserve">
         <source>Include Volume in Time Machine Backups</source>
+        <target>Allow Backups</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Remove Exclusion from Time Machine" xml:space="preserve">

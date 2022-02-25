@@ -389,6 +389,11 @@
         <target>Разрешить резервные копии</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Backup Exclusion Levels" xml:space="preserve">
+        <source>Backup Exclusion Levels</source>
+        <target>Резервные копии запрещены на уровнях выше</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>
