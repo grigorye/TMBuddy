@@ -19,7 +19,7 @@ class DirectLookupBasedStatusProvider {
         metadataReader.excludedBasedOnMetadata(url)
     }
     
-    func statusForItem(_ url: URL) throws -> TMStatus {
+    func statusForItem(_ url: URL) -> TMStatus {
         guard metadataReader.excludedBasedOnMetadata(url) == false else {
             return .stickyExcluded
         }
