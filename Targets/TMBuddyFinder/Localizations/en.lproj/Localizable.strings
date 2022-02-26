@@ -2,10 +2,16 @@
 "%@" = "%@";
 
 /* No comment provided by engineer. */
+"Backup" = "Backup";
+
+/* No comment provided by engineer. */
 "Backup Exclusion Levels" = "Backups Excluded on Upper Levels";
 
 /* No comment provided by engineer. */
 "Exclude from Time Machine" = "Exclude from Backups";
+
+/* No comment provided by engineer. */
+"Exclude or include items into backup" = "Exclude or include items into backup";
 
 /* No comment provided by engineer. */
 "Exclude Path from Time Machine" = "Add to \"Do not backup\" List";

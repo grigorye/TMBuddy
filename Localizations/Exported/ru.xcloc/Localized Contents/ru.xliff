@@ -359,6 +359,11 @@
         <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Backup" xml:space="preserve">
+        <source>Backup</source>
+        <target>Резервное копирование</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Backup Exclusion Levels" xml:space="preserve">
         <source>Backup Exclusion Levels</source>
         <target>Резервные копии запрещены на уровнях выше</target>
@@ -377,6 +382,11 @@
       <trans-unit id="Exclude from Time Machine" xml:space="preserve">
         <source>Exclude from Time Machine</source>
         <target>Запретить резервные копии</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Exclude or include items into backup" xml:space="preserve">
+        <source>Exclude or include items into backup</source>
+        <target>Включить или выключить резервное копирование для объектов</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Include Volume in Time Machine Backups" xml:space="preserve">

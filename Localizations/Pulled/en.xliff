@@ -393,6 +393,16 @@
         <target>Backups Excluded on Upper Levels</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Backup" xml:space="preserve">
+        <source>Backup</source>
+        <target>Backup</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Exclude or include items into backup" xml:space="preserve">
+        <source>Exclude or include items into backup</source>
+        <target>Exclude or include items into backup</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

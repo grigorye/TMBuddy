@@ -2,10 +2,16 @@
 "%@" = "%@";
 
 /* No comment provided by engineer. */
+"Backup" = "Резервное копирование";
+
+/* No comment provided by engineer. */
 "Backup Exclusion Levels" = "Резервные копии запрещены на уровнях выше";
 
 /* No comment provided by engineer. */
 "Exclude from Time Machine" = "Запретить резервные копии";
+
+/* No comment provided by engineer. */
+"Exclude or include items into backup" = "Включить или выключить резервное копирование для объектов";
 
 /* No comment provided by engineer. */
 "Exclude Path from Time Machine" = "Добавить в места не подлежащие резервному копированию";
