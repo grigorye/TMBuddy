@@ -108,15 +108,23 @@ class FinderSync: FIFinderSync {
     // MARK: - Menu and toolbar item support
     
     override var toolbarItemName: String {
-        return "FinderSy"
+        if ({false}()) {
+            guard let appBundle = Bundle.main.plugInRelativeAppBundle else {
+                dump(Bundle.main.bundlePath, name: "plugInRelativeAppBundleFailed")
+                return ""
+            }
+            return FileManager.default.displayName(atPath: appBundle.bundlePath)
+        } else {
+            return NSLocalizedString("Backup", comment: "")
+        }
     }
     
     override var toolbarItemToolTip: String {
-        return "FinderSy: Click the toolbar item for a menu."
+        NSLocalizedString("Exclude or include items into backup", comment: "")
     }
     
     override var toolbarItemImage: NSImage {
-        return NSImage(named: NSImage.cautionName)!
+        NSWorkspace.shared.icon(forFile: Bundle.main.bundlePath)
     }
     
     override func menu(for menuKind: FIMenuKind) -> NSMenu {
