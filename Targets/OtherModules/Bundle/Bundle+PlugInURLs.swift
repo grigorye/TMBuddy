@@ -16,4 +16,24 @@ extension Bundle {
             return nil
         }
     }
+    
+    var plugInRelativeAppBundle: Bundle? {
+        let plugInsURL = bundleURL.deletingLastPathComponent() // .app/Contents/PlugIns
+        guard plugInsURL.lastPathComponent == "PlugIns" else {
+            dump(bundlePath, name: "plugInPathCheckFailed")
+            return nil
+        }
+        let appBundleURL = plugInsURL
+            .deletingLastPathComponent() // .app/Contents
+            .deletingLastPathComponent() // .app
+        guard let appBundle = Bundle(url: appBundleURL) else {
+            dump(plugInsURL.path, name: "bundleAtPathFailed")
+            return nil
+        }
+        guard appBundle.builtInPlugInsURL?.absoluteURL == plugInsURL.absoluteURL else {
+            dump((builtInPlugIns: appBundle.builtInPlugInsURL, bundle: plugInsURL), name: "appBundleURLSanityCheckFailed")
+            return nil
+        }
+        return appBundle
+    }
 }
