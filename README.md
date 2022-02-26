@@ -50,6 +50,7 @@ When selecting folders for the application, typically you want to navigate to Co
 ## Troubleshooting
 
 - Sometimes attempt to toggle sticky exclusion results in nothing. Try re-adding the monitored folders in this case.
+- If attempt to change fixed-path exclusion fails, please add TMBuddy.app (in addition to .appex) to the [list of applications eligible for full disk access](x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles) and make sure the access is enabled.
 
 ## TODO
 
