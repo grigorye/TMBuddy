@@ -36,7 +36,13 @@ class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
                         case plugInHostConnectionVersion:
                             return .blessed
                         case let otherVersion:
-                            return .alien(otherVersion)
+                            guard let otherVersionNumber = Int(otherVersion) else {
+                                return .alien(otherVersion)
+                            }
+                            guard otherVersionNumber >= minimumCompatibleHelperVersionNumber else {
+                                return .alien(otherVersion)
+                            }
+                            return .blessed
                         }
                     }()
                 }
@@ -54,3 +60,5 @@ private func helperVersion() async throws -> String {
         }
     }
 }
+
+let minimumCompatibleHelperVersionNumber = 535
