@@ -1,0 +1,10 @@
+include:
+  - path: ../Compactness/Compact.yml
+    relativePaths: false
+  - path: ../Aspect/Distribution-Settings.yml
+    relativePaths: false
+
+settings:
+  BUNDLE_VERSION: Local
+
+name: TMBuddy-Compact-Distribution-Local
