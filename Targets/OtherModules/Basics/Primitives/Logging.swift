@@ -19,15 +19,11 @@ enum LoggingImp {
                 }
             }()
             
-            if #available(macOSApplicationExtension 11.0, macOS 11.0, *) {
-                let subsystem = URL(fileURLWithPath: "\(file)").deletingPathExtension().lastPathComponent
-                let category = function
-                Logger(subsystem: subsystem, category: category)
-                    .log("\(prefix, privacy: .public)\(valueRep, privacy: .public)")
-            } else {
-                let message = "\(function): \(prefix)\(valueRep)"
-                NSLog(message)
-            }
+            let subsystem = URL(fileURLWithPath: "\(file)").deletingPathExtension().lastPathComponent
+            let category = function
+            let log = OSLog(subsystem: subsystem, category: category)
+            let logType: OSLogType = logType(name: name, file: file, function: function, line: line, callStack: callStack)
+            os_log(logType, log: log, "%{public}s%{public}s", prefix, valueRep)
         }
         postDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
     }
