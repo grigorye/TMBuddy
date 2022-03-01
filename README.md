@@ -29,7 +29,7 @@ When selecting folders for the application, typically you want to navigate to Co
 
 - See exclusion status for every item of each monitored folder/disk:
   
-  <img src="./Targets/TMBuddy/Sources/Legend/LegendView+Snapshots/test.1.png" alt="test.1" style="zoom:50%;" />
+  <img src="./Targets/TMBuddy/Sources/Legend/LegendView+Snapshots/test.1.png" alt="test.1" height="329" />
   
 - Toggle *sticky* or *fixed-path* [^*] exclusion via contextual menu (or toolbar item):
   
