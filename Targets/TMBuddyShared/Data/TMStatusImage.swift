@@ -1,7 +1,8 @@
 import AppKit
 
 func imageForStatus(_ status: TMStatus) -> NSImage? {
-    let statusImage = NSImage(named: "Status")!
+    class BundleTag {}
+    let statusImage = Bundle(for: BundleTag.self).image(forResource: "Status")!
     let alpha: CGFloat = 0.4
     switch status {
     case .included:
