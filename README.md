@@ -29,13 +29,7 @@ When selecting folders for the application, typically you want to navigate to Co
 
 - See exclusion status for every item of each monitored folder/disk:
   
-  |                             Icon                             | State                                      |
-  | :----------------------------------------------------------: | ------------------------------------------ |
-  | <img src=".Images/Finder-Badge-Path-Excluded.png" style="zoom:50%;" > | Excluded by path via Time Machine Settings |
-  | <img src=".Images/Finder-Badge-Sticky-Excluded.png" style="zoom:50%;" > | Excluded via sticky non-backup attribute   |
-  | <img src=".Images/Finder-Badge-Parent-Excluded.png" style="zoom:50%;" > | Excluded due to excluded parent            |
-  
-  
+  <img src="./Targets/TMBuddy/Sources/Legend/LegendView+Snapshots/test.1.png" alt="test.1" style="zoom:50%;" />
   
 - Toggle *sticky* or *fixed-path* [^*] exclusion via contextual menu (or toolbar item):
   
