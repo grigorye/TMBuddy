@@ -11,7 +11,7 @@ func labelForStatus(_ status: TMStatus) -> String {
 
 let syncController = FIFinderSyncController.default()
 
-class FinderSync: FIFinderSync {
+class FinderSync: FIFinderSync, MenuGeneratorActions {
 
     let hostAppConnectionController = HostAppConnectionController()
     
@@ -153,13 +153,7 @@ class FinderSync: FIFinderSync {
             dump(url.path, name: "pathHasNoItemsToDisplayForParentExclusions")
             return
         }
-        let pathSubmenuItem = NSMenuItem() ≈ {
-            $0.title = NSLocalizedString("Backup Exclusion Levels", comment: "")
-            $0.submenu = NSMenu() ≈ {
-                $0.items = menuItems
-            }
-        }
-        menu.addItem(pathSubmenuItem)
+        MenuGenerator().addRevealParentExclusionsMenuItems(menu: menu, menuItems: menuItems)
     }
     
     private func menuItemsForParentPaths(url: URL) -> [NSMenuItem] {
@@ -196,21 +190,7 @@ class FinderSync: FIFinderSync {
     private func addMetadataExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { metadataReader.excludedBasedOnMetadata($0) }
         let mask = Set(exclusions)
-        
-        if mask.contains(true) {
-            menu.addItem(
-                withTitle: NSLocalizedString("Remove Exclusion from Time Machine", comment: ""),
-                action: #selector(removeExclusionFromTimeMachine(_:)),
-                keyEquivalent: ""
-            )
-        }
-        if mask.contains(false) {
-            menu.addItem(
-                withTitle: NSLocalizedString("Exclude from Time Machine", comment: ""),
-                action: #selector(excludeFromTimeMachine(_:)),
-                keyEquivalent: ""
-            )
-        }
+        MenuGenerator().addMetadataExclusionsMenuItems(menu: menu, mask: mask)
     }
     
     private func addPathExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
@@ -218,21 +198,7 @@ class FinderSync: FIFinderSync {
             statusProvider.isPathExcluded(url)
         }
         let mask = Set(exclusions)
-        
-        if mask.contains(true) {
-            menu.addItem(
-                withTitle: NSLocalizedString("Remove Path Exclusion from Time Machine", comment: ""),
-                action: #selector(removePrivilegedExclusionFromTimeMachine(_:)),
-                keyEquivalent: ""
-            )
-        }
-        if mask.contains(false) {
-            menu.addItem(
-                withTitle: NSLocalizedString("Exclude Path from Time Machine", comment: ""),
-                action: #selector(addPrivilegedExclusionInTimeMachine(_:)),
-                keyEquivalent: ""
-            )
-        }
+        MenuGenerator().addPathExclusionMenuItems(menu: menu, mask: mask)
     }
     
     private func addVolumeExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
@@ -240,21 +206,7 @@ class FinderSync: FIFinderSync {
             statusProvider.isVolumeExcluded(url)
         }
         let mask = Set(exclusions)
-        
-        if mask.contains(true) {
-            menu.addItem(
-                withTitle: NSLocalizedString("Include Volume in Time Machine Backups", comment: ""),
-                action: #selector(removePrivilegedExclusionFromTimeMachine(_:)),
-                keyEquivalent: ""
-            )
-        }
-        if mask.contains(false) {
-            menu.addItem(
-                withTitle: NSLocalizedString("Exclude Volume from Time Machine Backups", comment: ""),
-                action: #selector(addPrivilegedExclusionInTimeMachine(_:)),
-                keyEquivalent: ""
-            )
-        }
+        MenuGenerator().addVolumeExclusionsMenuItems(menu: menu, mask: mask)
     }
     
     @IBAction func removePrivilegedExclusionFromTimeMachine(_ sender: AnyObject?) {
