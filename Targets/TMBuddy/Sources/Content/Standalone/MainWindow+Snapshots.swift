@@ -29,30 +29,17 @@ class MainWindowSnapshots: XCTestCase {
                 .fixedSize()
             
             let window = mainWindow(contentView: contentView)
-            
             window.makeKeyAndOrderFront(nil)
             
             defer {
                 window.close()
             }
-            
-            let failure = try verifySnapshot(
-                matching: window.snapshot(options: [.bestResolution, .boundsIgnoreFraming]),
-                as: .image,
-                named: "\(state).borderless",
+
+            snapshotFlakyBorderWindow(
+                window: window,
+                named: "\(state)",
                 record: record
             )
-            if let failure = failure {
-                XCTFail(failure)
-            }
-            if failure != nil || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
-                try assertSnapshot(
-                    matching: window.snapshot(options: [.bestResolution]),
-                    as: .image,
-                    named: "\(state)",
-                    record: record
-                )
-            }
         }
     }
 }
