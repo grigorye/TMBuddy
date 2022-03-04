@@ -4,31 +4,6 @@
 
 See and manipulate exclusions from Time Machine backup, right in Finder.
 
-## Installation
-
-1. Get the app
-   
-   - if you're on macOS 12 or later, from TestFlight:
-     [Join the ™ Buddy beta - TestFlight - Apple](https://testflight.apple.com/join/gQCBR8p7)
-   
-   - from Homebrew:
-     
-     ```
-     brew install grigorye/tools/time-machine-buddy
-     ```
-
-2. Launch the app and follow the checklist, making sure all the red lights:
-   
-   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/test.allRed.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
-   
-   turned green:
-   
-   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/test.allGreen.@2x.png" alt="Checklist-Green.png" width=75% style="zoom:50%;" />
-
-When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
-
-<img src=".Images/Disk-Selection.png" width=75% style="zoom:50%;" />
-
 ## Features
 
 - See exclusion status for every item of each monitored folder/disk:
@@ -52,6 +27,31 @@ When selecting folders for the application, typically you want to navigate to Co
 - Reveal the parent folders which implicitly affect the exclusion of the given item:
   
   <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testRevealParentExclusion.1.@2x.png" alt="testRevealParentExclusion.1" width=50% style="zoom:50%;" />
+
+## Installation
+
+1. Get the app
+
+   - if you're on macOS 12 or later, from TestFlight:
+     [Join the ™ Buddy beta - TestFlight - Apple](https://testflight.apple.com/join/gQCBR8p7)
+
+   - from Homebrew:
+
+     ```
+     brew install grigorye/tools/time-machine-buddy
+     ```
+
+2. Launch the app and follow the checklist, making sure all the red lights:
+
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/test.allRed.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
+
+   turned green:
+
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/test.allGreen.@2x.png" alt="Checklist-Green.png" width=75% style="zoom:50%;" />
+
+When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
+
+<img src=".Images/Disk-Selection.png" width=75% style="zoom:50%;" />
 
 ## Troubleshooting
 
