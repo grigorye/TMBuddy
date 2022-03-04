@@ -189,24 +189,24 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
 
     private func addMetadataExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { metadataReader.excludedBasedOnMetadata($0) }
-        let mask = Set(exclusions)
-        MenuGenerator().addMetadataExclusionsMenuItems(menu: menu, mask: mask)
+        let excluded = Set(exclusions)
+        MenuGenerator().addMetadataExclusionsMenuItems(menu: menu, excluded: excluded)
     }
     
     private func addPathExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { url -> Bool in
             statusProvider.isPathExcluded(url)
         }
-        let mask = Set(exclusions)
-        MenuGenerator().addPathExclusionMenuItems(menu: menu, mask: mask)
+        let excluded = Set(exclusions)
+        MenuGenerator().addPathExclusionMenuItems(menu: menu, excluded: excluded)
     }
     
     private func addVolumeExclusionMenuItems(_ menu: NSMenu, itemURLs: [URL]) {
         let exclusions = itemURLs.map { url -> Bool in
             statusProvider.isVolumeExcluded(url)
         }
-        let mask = Set(exclusions)
-        MenuGenerator().addVolumeExclusionsMenuItems(menu: menu, mask: mask)
+        let excluded = Set(exclusions)
+        MenuGenerator().addVolumeExclusionsMenuItems(menu: menu, excluded: excluded)
     }
     
     @IBAction func removePrivilegedExclusionFromTimeMachine(_ sender: AnyObject?) {

@@ -21,7 +21,7 @@ class MenuGenerator {
         menu.addItem(pathSubmenuItem)
     }
     
-    func addPathExclusionMenuItems(menu: NSMenu, excluded: [Bool]) {
+    func addPathExclusionMenuItems(menu: NSMenu, excluded: Set<Bool>) {
         if excluded.contains(true) {
             menu.addItem(.init() ≈ {
                 $0.title = NSLocalizedString("Remove Path Exclusion from Time Machine", comment: "")
@@ -36,7 +36,7 @@ class MenuGenerator {
         }
     }
     
-    func addMetadataExclusionsMenuItems(menu: NSMenu, excluded: [Bool]) {
+    func addMetadataExclusionsMenuItems(menu: NSMenu, excluded: Set<Bool>) {
         if excluded.contains(true) {
             menu.addItem(.init() ≈ {
                 $0.title = NSLocalizedString("Remove Exclusion from Time Machine", comment: "")
@@ -51,7 +51,7 @@ class MenuGenerator {
         }
     }
     
-    func addVolumeExclusionsMenuItems(menu: NSMenu, excluded: [Bool]) {
+    func addVolumeExclusionsMenuItems(menu: NSMenu, excluded: Set<Bool>) {
         if excluded.contains(true) {
             menu.addItem(.init() ≈ {
                 $0.title = NSLocalizedString("Include Volume in Time Machine Backups", comment: "")
