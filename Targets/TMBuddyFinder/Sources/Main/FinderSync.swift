@@ -168,13 +168,13 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
             if status == .parentExcluded || status == .included {
                 return nil
             }
-            let icon = NSWorkspace.shared.icon(forFile: parentURL.path)
             let displayName = FileManager.default.displayName(atPath: parentURL.path)
+            let badge = imageForStatus(status)!
             return NSMenuItem() ≈ {
                 $0.title = displayName
                 $0.action = #selector(revealParentFrom(menuItem:))
                 $0.target = self
-                $0.image = icon
+                $0.image = badge
                 $0.tag = parentURLs.firstIndex(of: parentURL)!
             }
         }
