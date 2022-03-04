@@ -169,6 +169,9 @@ targetTemplates:
           - "**/*+Snapshots/*.png"
           - "**/*+Snapshots.swift"
           - "**/Integration"
+      - path: Targets/TMBuddyFinder/Sources
+        includes:
+          - Main/MenuGenerator.swift
       - path: Targets/TMBuddyShared
         includes:
           - Data/TMStatus*.swift
