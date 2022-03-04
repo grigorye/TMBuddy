@@ -1,0 +1,3 @@
+[submodule "submodules/screen-resolution-switcher"]
+	path = submodules/screen-resolution-switcher
+	url = https://github.com/th507/screen-resolution-switcher
