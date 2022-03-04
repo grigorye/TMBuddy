@@ -35,11 +35,19 @@ When selecting folders for the application, typically you want to navigate to Co
   
   |                  Exclude from Time Machine                   |              Remove Exclusion from Time Machine              |
   | :----------------------------------------------------------: | :----------------------------------------------------------: |
-  | <img src=".Images/Finder-Contextual-Exclude.png" style="zoom:50%;" > | <img title="" src=".Images/Finder-Contextual-Remove-Exclusion.png" style="zoom:50%;" > |
+  | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testPathExclusion.adding.png" alt="testPathExclusion.adding" style="zoom:50%;" /> | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testPathExclusion.removal.png" alt="testPathExclusion.removal" style="zoom:50%;" /> |
   
   [^*]: Fixed-path exclusions are not availabile in AppStore/TestFlight version, but in Homebrew due to the need to install the privileged helper.
   
+- Toggle exclusion of disks via contextual menu (or toolbar item):
   
+  |                  Exclude from Time Machine                   |              Remove Exclusion from Time Machine              |
+  | :----------------------------------------------------------: | :----------------------------------------------------------: |
+  | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testVolumeExclusion.adding.png" alt="testVolumeExclusion.adding" style="zoom:50%;" /> | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testVolumeExclusion.removal.png" alt="testVolumeExclusion.removal" style="zoom:50%;" /> |
+  
+- Reveal the parent folders which implicitly affect the exclusion of the given item:
+  
+  <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testRevealParentExclusion.1.png" alt="testRevealParentExclusion.1" style="zoom:50%;" />
 
 ## Troubleshooting
 
