@@ -118,6 +118,8 @@ jobs:
 
       - name: Snapshots
         run: |
+          submodules/screen-resolution-switcher/scres.swift -m
+          submodules/screen-resolution-switcher/scres.swift -s 800
           xcodebuild test \
             -project *-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
