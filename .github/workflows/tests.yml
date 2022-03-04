@@ -33,6 +33,7 @@ jobs:
       - name: Setup Environment
         run: |
           echo 'DERIVED_DATA_PATH=${{ runner.temp }}/build.derivedData' >> $GITHUB_ENV
+          echo 'SNAPSHOTS_XCRESULT_PATH=${{ runner.temp }}/snapshots.xcresult' >> $GITHUB_ENV
 
       - uses: maxim-lobanov/setup-xcode@v1.4.1
         with:
@@ -105,7 +106,7 @@ jobs:
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddyAll'
-      
+
       - name: Tests
         run: |
           xcodebuild \
@@ -114,11 +115,20 @@ jobs:
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddyTests'
-      
+
       - name: Snapshots
         run: |
           xcodebuild test \
             -project *-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
-            -scheme 'TMBuddySnapshots'
+            -scheme 'TMBuddySnapshots' \
+            -resultBundlePath "$SNAPSHOTS_XCRESULT_PATH"
+
+      - name: Save .xcresult for Snasphots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: snapshots-xcresult
+          path: |
+            ${{ env.SNAPSHOTS_XCRESULT_PATH }}
