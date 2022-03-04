@@ -11,10 +11,6 @@ extension SampledView {
         line: UInt = #line
     ) {
         for sample in State.Sample.allCases {
-            guard #available(macOS 12.0, *) else {
-                fatalError()
-            }
-            
             let view = Self.new()
                 .environment(Self.sampleStateEnvironmentValuesKeyPath, sample.state)
                 .overlay {
