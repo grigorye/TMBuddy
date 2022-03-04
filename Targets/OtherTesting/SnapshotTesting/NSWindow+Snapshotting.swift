@@ -1,8 +1,13 @@
 import AppKit
+import XCTest
 
 extension NSWindow {
     
     func snapshot(options: CGWindowImageOption, timeout: TimeInterval = 1) throws -> NSImage {
+        try Self.snapshot(windowNumber: windowNumber, imageOptions: options, timeout: timeout)
+    }
+    
+    static func snapshot(windowNumber: Int, listOptions: CGWindowListOption = .optionIncludingWindow, imageOptions: CGWindowImageOption, timeout: TimeInterval = 1) throws -> NSImage {
         let deadline = Date(timeIntervalSinceNow: timeout)
         let cgImage: CGImage = try {
             var attempts = 0
@@ -10,9 +15,9 @@ extension NSWindow {
                 attempts += 1
                 let cgImage = CGWindowListCreateImage(
                     .null,
-                    .optionIncludingWindow,
+                    listOptions,
                     CGWindowID(windowNumber),
-                    options
+                    imageOptions
                 )
                 if let cgImage = cgImage {
                     return cgImage
@@ -36,4 +41,59 @@ extension NSWindow {
 
 enum WindowSnapshotError: Swift.Error {
     case timedOut(attempts: Int, timeout: TimeInterval)
+}
+
+extension XCTestCase {
+    
+    func snapshotFlakyBorderWindow(
+        window: NSWindow,
+        named name: String,
+        record: Bool,
+        file: StaticString = #file,
+        testName: String = #function,
+        line: UInt = #line
+    ) {
+        snapshotFlakyBorderWindow(
+            windowNumber: window.windowNumber,
+            named: name,
+            record: record,
+            file: file,
+            testName: testName,
+            line: line
+        )
+    }
+    
+    func snapshotFlakyBorderWindow(
+        windowNumber: Int,
+        listOptions: CGWindowListOption = .optionIncludingWindow,
+        named name: String?,
+        record: Bool,
+        file: StaticString = #file,
+        testName: String = #function,
+        line: UInt = #line
+    ) {
+        let failure = try verifySnapshot(
+            matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: listOptions, imageOptions: [.bestResolution, .boundsIgnoreFraming]),
+            as: .image,
+            named: name,
+            record: record,
+            file: file,
+            testName: testName + ".borderless",
+            line: line
+        )
+        if let failure = failure {
+            XCTFail(failure)
+        }
+        if failure != nil || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
+            try assertSnapshot(
+                matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: listOptions, imageOptions: [.bestResolution]),
+                as: .image,
+                named: name,
+                record: record,
+                file: file,
+                testName: testName,
+                line: line
+            )
+        }
+    }
 }
