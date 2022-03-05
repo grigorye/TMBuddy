@@ -36,18 +36,15 @@ public func verifySnapshot<Value, Format>(
     testName: String = #function,
     line: UInt = #line
 ) -> String? {
-    let fileUrl = URL(fileURLWithPath: "\(file)", isDirectory: false)
-    let snapshotDirectoryUrl = fileUrl
-        .deletingPathExtension()
-    
     let snapshotEnvironment = SnapshotEnvironment()
+    let snapshotDirectory = snapshotDirectory(forFile: "\(file)")
     
     return SnapshotTesting.verifySnapshot(
         matching: try value(),
         as: Snapshotting(wrapping: snapshotting, prependingPathExtension: snapshotEnvironment.nameSuffix),
         named: name,
         record: recording,
-        snapshotDirectory: snapshotDirectoryUrl.path,
+        snapshotDirectory: snapshotDirectory,
         timeout: timeout,
         file: file,
         testName: testName,
@@ -84,3 +81,18 @@ let scaleFactorSuffix: String = {
         return "@\(scaleFactor)x"
     }
 }()
+
+func snapshotDirectory(forFile file: String) -> String {
+    let fileUrl = URL(fileURLWithPath: file, isDirectory: false)
+    let snapshotDirectoryUrl = fileUrl
+        .deletingPathExtension()
+        .appendingPathComponent(environmentSpecificRelativeSnapshotsPath())
+    return snapshotDirectoryUrl.path
+}
+
+func environmentSpecificRelativeSnapshotsPath() -> String {
+    let osVersion = ProcessInfo.processInfo.operatingSystemVersion
+    return [
+        "macOS-\(osVersion.majorVersion).\(osVersion.minorVersion)"
+    ].joined(separator: "/")
+}
