@@ -73,9 +73,10 @@ extension XCTestCase {
         testName: String = #function,
         line: UInt = #line
     ) {
+        let window = NSApp.window(withWindowNumber: windowNumber)!
         let failure = try verifySnapshot(
             matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: listOptions, imageOptions: [.bestResolution, .boundsIgnoreFraming]),
-            as: .image,
+            as: .image(scaleFactor: window.backingScaleFactor),
             named: name,
             record: record,
             file: file,
@@ -88,7 +89,7 @@ extension XCTestCase {
         if ((failure != nil) && (SnapshotTesting.isRecording == false)) || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
             try assertSnapshot(
                 matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: listOptions, imageOptions: [.bestResolution]),
-                as: .image,
+                as: .image(scaleFactor: window.backingScaleFactor),
                 named: name,
                 record: record,
                 file: file,
