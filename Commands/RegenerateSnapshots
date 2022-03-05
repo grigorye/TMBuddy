@@ -3,4 +3,15 @@
 set -x
 set -euo pipefail
 
-find . -name '*+Snapshots' -exec rm -r '{}' \;
+PROJECT_KIND=DeveloperID
+
+mint run xcodegen -s XcodeGen/Variant/DeveloperID.yml -r . -p .
+
+env \
+    TEST_RUNNER_SNAPSHOT_RECORDING=YES \
+    \
+    xcodebuild test \
+    -project ./*-"$PROJECT_KIND".xcodeproj \
+    -disableAutomaticPackageResolution \
+    -scheme 'TMBuddySnapshots' \
+    "$@"
