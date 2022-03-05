@@ -27,6 +27,7 @@ jobs:
 
       - name: Dump Environment
         run: |
+          /usr/bin/python ./submodules/display_manager/display_manager.py show available
           env | sort
           git log
 
@@ -118,8 +119,7 @@ jobs:
 
       - name: Snapshots
         run: |
-          submodules/screen-resolution-switcher/scres.swift -m
-          submodules/screen-resolution-switcher/scres.swift -s 800
+          /usr/bin/python ./submodules/display_manager/display_manager.py res 800 600 30 only-hidpi
           xcodebuild test \
             -project *-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
