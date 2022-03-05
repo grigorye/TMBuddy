@@ -36,12 +36,11 @@ public func verifySnapshot<Value, Format>(
     testName: String = #function,
     line: UInt = #line
 ) -> String? {
-    let snapshotEnvironment = SnapshotEnvironment()
     let snapshotDirectory = snapshotDirectory(forFile: "\(file)")
     
     return SnapshotTesting.verifySnapshot(
         matching: try value(),
-        as: Snapshotting(wrapping: snapshotting, prependingPathExtension: snapshotEnvironment.nameSuffix),
+        as: snapshotting,
         named: name,
         record: recording,
         snapshotDirectory: snapshotDirectory,
@@ -52,27 +51,39 @@ public func verifySnapshot<Value, Format>(
     )
 }
 
+extension Snapshotting where Value == NSView, Format == NSImage {
+    
+    public static func image(size: CGSize? = nil) -> Snapshotting {
+        Snapshotting(
+            wrapping: .image(precision: 1, size: size),
+            prependingPathExtension: suffixForScaleFactor(NSScreen.main!.backingScaleFactor)
+        )
+    }
+}
+
+extension Snapshotting where Value == NSImage, Format == NSImage {
+    
+    public static func image(scaleFactor: CGFloat) -> Snapshotting {
+        Snapshotting(wrapping: .image, prependingPathExtension: suffixForScaleFactor(scaleFactor))
+    }
+}
+
 extension Snapshotting {
-    init(wrapping: Self, prependingPathExtension: String) {
+    
+    init(wrapping: Self, prependingPathExtension: String?) {
+        let pathExtensionPrefix = prependingPathExtension.flatMap { $0 + "." } ?? ""
         self.init(
-            pathExtension: prependingPathExtension + "." + wrapping.pathExtension!,
+            pathExtension: pathExtensionPrefix + wrapping.pathExtension!,
             diffing: wrapping.diffing,
             asyncSnapshot: wrapping.snapshot
         )
     }
 }
 
-struct SnapshotEnvironment {
-    
-    var nameSuffix: String {
-        scaleFactorSuffix
-    }
-}
 
-let scaleFactorSuffix: String = {
-    let scaleFactor = NSScreen.main!.backingScaleFactor
+func suffixForScaleFactor(_ scaleFactor: CGFloat) -> String? {
     guard scaleFactor != 1.0 else {
-        return ""
+        return nil
     }
     switch scaleFactor {
     case let rounded where scaleFactor == scaleFactor.rounded():
@@ -80,7 +91,7 @@ let scaleFactorSuffix: String = {
     default:
         return "@\(scaleFactor)x"
     }
-}()
+}
 
 func snapshotDirectory(forFile file: String) -> String {
     let fileUrl = URL(fileURLWithPath: file, isDirectory: false)
