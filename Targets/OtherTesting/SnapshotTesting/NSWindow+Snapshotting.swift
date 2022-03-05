@@ -1,3 +1,4 @@
+import SnapshotTesting
 import AppKit
 import XCTest
 
@@ -84,7 +85,7 @@ extension XCTestCase {
         if let failure = failure {
             XCTFail(failure)
         }
-        if failure != nil || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
+        if ((failure != nil) && (SnapshotTesting.isRecording == false)) || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
             try assertSnapshot(
                 matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: listOptions, imageOptions: [.bestResolution]),
                 as: .image,
