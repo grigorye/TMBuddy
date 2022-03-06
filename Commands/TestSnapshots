@@ -1,0 +1,15 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+PROJECT_KIND=DeveloperID
+
+mint run xcodegen -s XcodeGen/Variant/DeveloperID.yml -r . -p .
+
+env \
+    xcodebuild test \
+    -project ./*-"$PROJECT_KIND".xcodeproj \
+    -disableAutomaticPackageResolution \
+    -scheme 'TMBuddySnapshots' \
+    "$@"
