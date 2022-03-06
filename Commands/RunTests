@@ -1,0 +1,35 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+PROJECT_KIND=DeveloperID
+
+mint run xcodegen -s XcodeGen/Variant/DeveloperID.yml -r . -p .
+
+tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
+
+xcodebuild() {
+    command xcodebuild \
+        -project ./*-"$PROJECT_KIND".xcodeproj \
+        -disableAutomaticPackageResolution \
+        -IDEClonedSourcePackagesDirPathOverride=~/.pre-push/XcodeClonedSourcePackages \
+        -scheme 'TMBuddyTests' \
+        "$@"
+}
+
+xcpretty() {
+    if which xcpretty > /dev/null; then
+        command xcpretty
+    else
+        grep -v '^ '
+    fi
+}
+
+time xcodebuild build-for-testing |
+    tee "$tmpdir/xcodebuild.build-for-testing.log" |
+    xcpretty
+
+time xcodebuild test-without-building -parallel-testing-enabled YES |
+    tee "$tmpdir/xcodebuild.test-without-building.log" |
+    grep -v '^ '
