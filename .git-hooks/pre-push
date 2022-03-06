@@ -1,0 +1,14 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
+
+# shellcheck disable=SC2162
+while read _ commit _ _; do
+    commitDir="$tmpdir/$commit"
+    mkdir "$commitDir"
+    git archive "$commit" | tar -x -C "$commitDir"
+    (cd "$commitDir" && env -u GIT_DIR ./Commands/RunTests)
+done
