@@ -35,6 +35,7 @@ jobs:
         run: |
           echo 'DERIVED_DATA_PATH=${{ runner.temp }}/build.derivedData' >> $GITHUB_ENV
           echo 'XCRESULTS_DIRECTORY=${{ runner.temp }}' >> $GITHUB_ENV
+          echo 'REGENERATED_SNAPSHOTS_ARCHIVE=${{ runner.temp }}/Regenerated-Snapshots-$GITHUB_RUN_ID.$GITHUB_RUN_NUMBER.tar.gz' >> $GITHUB_ENV
 
       - uses: maxim-lobanov/setup-xcode@v1.4.1
         with:
@@ -134,3 +135,25 @@ jobs:
           name: snapshots-xcresult
           path: |
             ${{ env.XCRESULTS_DIRECTORY }}/*Snapshots.xcresult
+
+      - name: Regenerate Snapshots
+        if: always()
+        run: |
+          stamp=$(mktemp /tmp/RegenerateSnapshots.XXXXXX)
+          env \
+            TEST_RUNNER_SNAPSHOT_RECORDING=YES \
+            \
+            xcodebuild test \
+            -project *-"$PROJECT_KIND".xcodeproj \
+            -derivedDataPath "$DERIVED_DATA_PATH" \
+            -disableAutomaticPackageResolution \
+            -scheme 'TMBuddySnapshots'
+          find . -name '*.png' -newer "$stamp" -print0 | xargrs -0 tar czf "$REGENERATED_SNAPSHOTS_ARCHIVE"
+      
+      - name: Save Regenerated Snasphots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: regenerated-snapshots
+          path: |
+            ${{ env.REGENERATED_SNAPSHOTS_ARCHIVE }}
