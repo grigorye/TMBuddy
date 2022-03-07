@@ -5,10 +5,20 @@ set -euo pipefail
 
 tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
 
+runTests() {
+    env -u GIT_DIR ./Commands/RunTests ${PRE_PUSH_DERIVED_DATA_PATH:+"-derivedDataPath" "$PRE_PUSH_DERIVED_DATA_PATH"}
+}
+
 # shellcheck disable=SC2162
 while read _ commit _ _; do
-    commitDir="$tmpdir/$commit"
+    if [ z"$PRE_PUSH_COMMIT_DIR" != z"" ]; then
+        rm -rf "$PRE_PUSH_COMMIT_DIR"
+        commitDir="$PRE_PUSH_COMMIT_DIR"
+    else
+        commitDir="$tmpdir/$commit"
+    fi
     mkdir "$commitDir"
+
     git archive "$commit" | tar -x -C "$commitDir"
-    (cd "$commitDir" && env -u GIT_DIR ./Commands/RunTests)
+    (cd "$commitDir" && runTests)
 done
