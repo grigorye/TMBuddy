@@ -16,7 +16,7 @@ targets:
         buildPhase: none
       - path: Targets/TMBuddy/Sources
         excludes:
-          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots"
           - "**/*+Snapshots.swift"
           # - "**/*+SampleView.swift"
           # - "**/*+Samples.swift"
@@ -102,7 +102,7 @@ targets:
           - "**/Standalone/*+Model.swift"
         excludes:
           - Main
-          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots"
           - "**/*+Snapshots.swift"
           - "**/*+SampleView.swift"
           - "**/*+Samples.swift"
@@ -125,6 +125,8 @@ targets:
       - path: Targets/TMBuddy/Sources
         includes:
           - "**/*Snapshots.swift"
+        excludes:
+          - "**/*+Snapshots"
       - Targets/OtherTesting
 
   TMBuddySnapshotViews:
@@ -166,7 +168,7 @@ targetTemplates:
           - AppGlobals/BuildInfo.swift
         excludes:
           - Main
-          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots"
           - "**/*+Snapshots.swift"
           - "**/Integration"
       - path: Targets/TMBuddyFinder/Sources

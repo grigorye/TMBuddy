@@ -6,7 +6,7 @@ targets:
           - SMJobBless
           - PostInstallHelper
         excludes:
-          - "**/*+Snapshots/*.png"
+          - "**/*+Snapshots"
           - "**/*+Snapshots.swift"
     settings:
       GE_HELPER_ACTIVE_COMPILATION_CONDITIONS: GE_BLESS
