@@ -140,7 +140,7 @@ jobs:
         uses: grigorye/xcodegen-action@feature/projectRoot
         with:
           spec: XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml
-          project: .
+          project: Xcodeproj
           project-root: .
           version: '2.26.0'
 
@@ -149,7 +149,7 @@ jobs:
         run: |
           # build
           xcodebuild archive \
-            -project *-${{ matrix.build-config.projectKind }}.xcodeproj \
+            -project Xcodeproj/*-${{ matrix.build-config.projectKind }}.xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -archivePath "$ARCHIVE_PATH" \

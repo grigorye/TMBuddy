@@ -3,11 +3,11 @@
 set -x
 set -euo pipefail
 
-xcodegen -s XcodeGen/Variant/ExportLocalizations.yml -r . -p .
+xcodegen -s XcodeGen/Variant/ExportLocalizations.yml -r . -p Xcodeproj
 
 for lang in ru en; do
     xcodebuild \
         -importLocalizations \
-        -project TMBuddy-ExportLocalizations.xcodeproj \
+        -project Xcodeproj/TMBuddy-ExportLocalizations.xcodeproj \
         -localizationPath Localizations/Pulled/"$lang".xliff
 done
