@@ -27,42 +27,42 @@ class DirectLookupBasedStatusProviderTests: XCTestCase {
     
     // MARK: -
     
-    func testIncluded() async throws {
+    func testIncluded() {
         let url = nonExcludedURL
-        let status = try provider.statusForItem(url)
+        let status = provider.statusForItem(url)
         XCTAssertEqual(status, .included)
     }
     
-    func testExcludedBasedOnMetadata() async throws {
-        let status = try provider.statusForItem(stickyExcludedDirectory)
+    func testExcludedBasedOnMetadata() {
+        let status = provider.statusForItem(stickyExcludedDirectory)
         XCTAssertEqual(status, .stickyExcluded)
     }
     
-    func testExcludedBasedOnParentMetadata() async throws {
-        let status = try provider.statusForItem(stickyExcludedDirectoryChild)
+    func testExcludedBasedOnParentMetadata() {
+        let status = provider.statusForItem(stickyExcludedDirectoryChild)
         XCTAssertEqual(status, .parentExcluded)
     }
     
     // MARK: -
     
-    func testExcludedBasedOnPath() async throws {
+    func testExcludedBasedOnPath() throws {
         let url = excludedByPathURL
         try XCTSkipUnless(url.checkResourceIsReachable())
-        let status = try provider.statusForItem(url)
+        let status = provider.statusForItem(url)
         XCTAssertEqual(status, .pathExcluded)
     }
     
-    func testExcludedVolume() async throws {
+    func testExcludedVolume() throws {
         let url = excludedVolumeURL
         try XCTSkipUnless(url.checkResourceIsReachable())
-        let status = try provider.statusForItem(url)
+        let status = provider.statusForItem(url)
         XCTAssertEqual(status, .excludedVolume)
     }
     
-    func testExcludedOnParentVolume() async throws {
+    func testExcludedOnParentVolume() throws {
         let url = excludedByParentVolumeURL
         try XCTSkipUnless(url.checkResourceIsReachable())
-        let status = try provider.statusForItem(url)
+        let status = provider.statusForItem(url)
         XCTAssertEqual(status, .parentExcluded)
     }
 }
