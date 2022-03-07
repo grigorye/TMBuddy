@@ -26,10 +26,10 @@ xcpretty() {
     fi
 }
 
-time xcodebuild build-for-testing |
+time xcodebuild build-for-testing "$@" |
     tee "$tmpdir/xcodebuild.build-for-testing.log" |
     xcpretty
 
-time xcodebuild test-without-building -parallel-testing-enabled YES |
+time xcodebuild test-without-building -parallel-testing-enabled YES "$@" |
     tee "$tmpdir/xcodebuild.test-without-building.log" |
-    grep -v '^ '
+    xcpretty
