@@ -8,13 +8,13 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
 
 - See exclusion status for every item of each monitored folder/disk:
   
-  <img src="./Targets/TMBuddy/Sources/Legend/LegendView+Snapshots/test.1.@2x.png" alt="test.1" width=50% style="zoom:50%;" />
+  <img src="./Targets/TMBuddy/Sources/Legend/LegendView+Snapshots/macOS-12.2/test.1.@2x.png" alt="test.1" width=50% style="zoom:50%;" />
   
 - Toggle *sticky* or *fixed-path* [^*] exclusion via contextual menu (or toolbar item):
   
   |                  Exclude from Time Machine                   |              Remove Exclusion from Time Machine              |
   | :----------------------------------------------------------: | :----------------------------------------------------------: |
-  | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testPathExclusion.adding.@2x.png" alt="testPathExclusion.adding" width=75% style="zoom:50%;" /> | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testPathExclusion.removal.@2x.png" alt="testPathExclusion.removal" width=75% style="zoom:50%;" /> |
+  | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/macOS-12.2/testPathExclusion.adding.@2x.png" alt="testPathExclusion.adding" width=75% style="zoom:50%;" /> | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/macOS-12.2/testPathExclusion.removal.@2x.png" alt="testPathExclusion.removal" width=75% style="zoom:50%;" /> |
   
   [^*]: Fixed-path exclusions are not availabile in AppStore/TestFlight version, but in Homebrew due to the need to install the privileged helper.
   
@@ -22,11 +22,11 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
   
   |                  Exclude from Time Machine                   |              Remove Exclusion from Time Machine              |
   | :----------------------------------------------------------: | :----------------------------------------------------------: |
-  | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testVolumeExclusion.adding.@2x.png" alt="testVolumeExclusion.adding" width=75% style="zoom:50%;" /> | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testVolumeExclusion.removal.@2x.png" alt="testVolumeExclusion.removal" width=75% style="zoom:50%;" /> |
+  | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/macOS-12.2/testVolumeExclusion.adding.@2x.png" alt="testVolumeExclusion.adding" width=75% style="zoom:50%;" /> | <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/macOS-12.2/testVolumeExclusion.removal.@2x.png" alt="testVolumeExclusion.removal" width=75% style="zoom:50%;" /> |
   
 - Reveal the parent folders which implicitly affect the exclusion of the given item:
   
-  <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/testRevealParentExclusion.1.@2x.png" alt="testRevealParentExclusion.1" width=50% style="zoom:50%;" />
+  <img src="Targets/TMBuddy/Sources/Content/Standalone/Menu+Snapshots/macOS-12.2/testRevealParentExclusion.1.@2x.png" alt="testRevealParentExclusion.1" width=50% style="zoom:50%;" />
 
 ## Installation
 
@@ -43,11 +43,11 @@ See and manipulate exclusions from Time Machine backup, right in Finder.
 
 2. Launch the app and follow the checklist, making sure all the red lights:
 
-   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/test.allRed.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/macOS-12.2/test.allRed.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
 
    turned green:
 
-   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/test.allGreen.@2x.png" alt="Checklist-Green.png" width=75% style="zoom:50%;" />
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/macOS-12.2/test.allGreen.@2x.png" alt="Checklist-Green.png" width=75% style="zoom:50%;" />
 
 When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
 
