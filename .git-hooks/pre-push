@@ -6,7 +6,11 @@ set -euo pipefail
 tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
 
 runTests() {
-    env -u GIT_DIR ./Commands/RunTests ${PRE_PUSH_DERIVED_DATA_PATH:+"-derivedDataPath" "$PRE_PUSH_DERIVED_DATA_PATH"}
+    env -u GIT_DIR \
+        ./Commands/RunTests \
+        -IDEClonedSourcePackagesDirPathOverride=~/.pre-push/XcodeClonedSourcePackages \
+        ${PRE_PUSH_DERIVED_DATA_PATH:+"-derivedDataPath" "$PRE_PUSH_DERIVED_DATA_PATH"} \
+        "$@"
 }
 
 # shellcheck disable=SC2162
@@ -20,5 +24,6 @@ while read _ commit _ _; do
     mkdir "$commitDir"
 
     git archive "$commit" | tar -x -C "$commitDir"
-    (cd "$commitDir" && runTests)
+    (cd "$commitDir" && runTests -scheme 'TMBuddyTests')
+    (cd "$commitDir" && runTests -scheme 'TMBuddySnapshots')
 done

@@ -13,8 +13,6 @@ xcodebuild() {
     command xcodebuild \
         -project ./*-"$PROJECT_KIND".xcodeproj \
         -disableAutomaticPackageResolution \
-        -IDEClonedSourcePackagesDirPathOverride=~/.pre-push/XcodeClonedSourcePackages \
-        -scheme 'TMBuddyTests' \
         "$@"
 }
 
