@@ -1,3 +1,3 @@
 *.xcscheme
-/*.xcodeproj/project.pbxproj
+Xcodeproj/**/project.pbxproj
 *.xcworkspacedata

@@ -5,13 +5,13 @@ set -euo pipefail
 
 PROJECT_KIND=DeveloperID
 
-mint run xcodegen -s XcodeGen/Variant/DeveloperID.yml -r . -p .
+mint run xcodegen -s XcodeGen/Variant/DeveloperID.yml -r . -p Xcodeproj
 
 env \
     TEST_RUNNER_SNAPSHOT_RECORDING=YES \
     \
     xcodebuild test \
-    -project ./*-"$PROJECT_KIND".xcodeproj \
+    -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
     -disableAutomaticPackageResolution \
     -scheme 'TMBuddySnapshots' \
     "$@"

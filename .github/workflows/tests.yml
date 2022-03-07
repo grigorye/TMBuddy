@@ -96,7 +96,7 @@ jobs:
         uses: grigorye/xcodegen-action@feature/projectRoot
         with:
           spec: XcodeGen/Variant/${{ env.PROJECT_KIND }}.yml
-          project: .
+          project: Xcodeproj
           project-root: .
           version: '2.26.0'
 
@@ -104,7 +104,7 @@ jobs:
         run: |
           xcodebuild \
             build \
-            -project *-"$PROJECT_KIND".xcodeproj \
+            -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddyAll'
@@ -113,7 +113,7 @@ jobs:
         run: |
           xcodebuild \
             test \
-            -project *-"$PROJECT_KIND".xcodeproj \
+            -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddyTests'
@@ -121,7 +121,7 @@ jobs:
       - name: Snapshots
         run: |
           xcodebuild test \
-            -project *-"$PROJECT_KIND".xcodeproj \
+            -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddySnapshots' \
@@ -143,7 +143,7 @@ jobs:
             TEST_RUNNER_SNAPSHOT_RECORDING=YES \
             \
             xcodebuild test \
-            -project *-"$PROJECT_KIND".xcodeproj \
+            -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddySnapshots' \

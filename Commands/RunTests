@@ -5,13 +5,13 @@ set -euo pipefail
 
 PROJECT_KIND=DeveloperID
 
-mint run xcodegen -s XcodeGen/Variant/DeveloperID.yml -r . -p .
+mint run xcodegen -s XcodeGen/Variant/DeveloperID.yml -r . -p Xcodeproj
 
 tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
 
 xcodebuild() {
     command xcodebuild \
-        -project ./*-"$PROJECT_KIND".xcodeproj \
+        -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
         -disableAutomaticPackageResolution \
         "$@"
 }
