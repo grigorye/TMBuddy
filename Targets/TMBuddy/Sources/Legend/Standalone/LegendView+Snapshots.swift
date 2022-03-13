@@ -7,7 +7,7 @@ class LegendViewSnapshots: XCTestCase {
     
     func test() throws {
         assertSnapshot(
-            matching: LegendView(),
+            matching: LegendView(state: .init(), actions: nil),
             record: record
         )
     }
