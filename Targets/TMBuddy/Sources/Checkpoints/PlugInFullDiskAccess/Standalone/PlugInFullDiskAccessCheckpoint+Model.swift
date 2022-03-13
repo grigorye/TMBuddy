@@ -5,7 +5,7 @@ enum PlugInFullDiskAccessCheckpointState {
     case none
 }
 
-protocol PlugInFullDiskAccessCheckpointActions {
+protocol PlugInFullDiskAccessCheckpointActions: ViewActions {
     func revealExtensionInFinder()
     func openFullDiskAccessPreferences()
 }

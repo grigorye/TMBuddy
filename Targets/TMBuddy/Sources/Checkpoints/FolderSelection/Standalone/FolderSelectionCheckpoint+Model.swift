@@ -1,7 +1,7 @@
 enum FolderSelectionCheckpointState {
 }
 
-protocol FolderSelectionCheckpointActions {
+protocol FolderSelectionCheckpointActions: ViewActions {
     func selectFolders()
     func revokeAccess()
 }

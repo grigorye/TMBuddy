@@ -1,3 +1,3 @@
-protocol DebugCheckpointActions {
+protocol DebugCheckpointActions: ViewActions {
     func crash()
 }

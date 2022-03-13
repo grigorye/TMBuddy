@@ -8,7 +8,7 @@ struct PostInstallHelperCheckpointView: View {
     }
     
     let state: State
-    var actions: PostInstallHelperCheckpointActions!
+    let actions: PostInstallHelperCheckpointActions?
     
     var body: some View {
         let readiness: Readiness = {
@@ -52,7 +52,8 @@ struct PostInstallHelperCheckpointView: View {
             value: value,
             readiness: readiness
         ) {
-            Button("Install Support", action: { actions.installMacOSSupport() })
+            Button("Install Support", action: { actions?.installMacOSSupport() })
         }
+        .onVisibilityChange(perform: actions?.trackVisibility)
     }
 }

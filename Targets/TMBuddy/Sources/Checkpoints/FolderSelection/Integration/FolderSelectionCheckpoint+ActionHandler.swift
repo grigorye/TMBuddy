@@ -1,12 +1,16 @@
 import AppKit
 
-struct FolderSelectionCheckpointActionsActionHandler: FolderSelectionCheckpointActions {
+struct FolderSelectionCheckpointActionsActionHandler: FolderSelectionCheckpointActions, Traceable {
     
     func selectFolders() {
+        dump((), name: "")
+        
         selectDisks()
     }
     
     func revokeAccess() {
+        dump((), name: "")
+        
         processURLs([])
     }
 }

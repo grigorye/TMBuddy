@@ -7,7 +7,7 @@ struct FolderSelectionCheckpointView: View {
     }
     
     let state: State
-    var actions: FolderSelectionCheckpointActions!
+    let actions: FolderSelectionCheckpointActions?
     
     var body: some View {
         let bookmarkCount = state.bookmarkCount
@@ -21,15 +21,16 @@ struct FolderSelectionCheckpointView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button(bookmarkCount > 0 ? "Add More Folders" : "Select Folders") {
-                        actions.selectFolders()
+                        actions?.selectFolders()
                     }
                     if bookmarkCount > 0 {
                         Button("Clear Selection") {
-                            actions.revokeAccess()
+                            actions?.revokeAccess()
                         }
                     }
                 }
             }
         }
+        .onVisibilityChange(perform: actions?.trackVisibility)
     }
 }

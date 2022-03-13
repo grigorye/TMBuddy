@@ -7,12 +7,13 @@ extension PlugInFullDiskAccessCheckpointView {
             PlugInFullDiskAccessCheckpointProvider(),
             FinderSyncExtensionCheckpointProvider()
         ) { fullDiskAccess, finderSync in
-            Self(state: .init(
-                fullDiskAccess: fullDiskAccess.state,
-                finderSync: finderSync.state
-            )) ≈ {
-                $0.actions = PlugInFullDiskAccessCheckpointActionHandler()
-            }
+            Self(
+                state: .init(
+                    fullDiskAccess: fullDiskAccess.state,
+                    finderSync: finderSync.state
+                ),
+                actions: PlugInFullDiskAccessCheckpointActionHandler()
+            )
         }
     }
 }

@@ -11,7 +11,7 @@ enum AlienInfo {
     case failing
 }
 
-protocol FinderSyncExtensionCheckpointActions {
+protocol FinderSyncExtensionCheckpointActions: ViewActions {
     func showExtensionsPreferences()
     func revealAlienInFinder(path: String)
 }

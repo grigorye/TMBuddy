@@ -7,9 +7,10 @@ extension PostInstallHelperCheckpointView {
             SMJobBlessCheckpointProvider(),
             PostInstallHelperCheckpointProvider()
         ) { bless, postInstall in
-            Self(state: .init(bless: bless.state, postInstall: postInstall.state)) ≈ {
-                $0.actions = PostInstallHelperCheckpointActionHandler()
-            }
+            Self(
+                state: .init(bless: bless.state, postInstall: postInstall.state),
+                actions: PostInstallHelperCheckpointActionHandler()
+            )
         }
     }
 }

@@ -8,7 +8,7 @@ struct PlugInFullDiskAccessCheckpointView: View {
     }
     
     let state: State
-    var actions: PlugInFullDiskAccessCheckpointActions!
+    let actions: PlugInFullDiskAccessCheckpointActions?
 
     var body: some View {
         let accessGranted = state.fullDiskAccess
@@ -61,10 +61,10 @@ struct PlugInFullDiskAccessCheckpointView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button("Reveal Extension in \(finderName)") {
-                        actions.revealExtensionInFinder()
+                        actions?.revealExtensionInFinder()
                     }
                     Button("Full Disk Access Preferences") {
-                        actions.openFullDiskAccessPreferences()
+                        actions?.openFullDiskAccessPreferences()
                     }
                 }
                 Text("To grant \(appName) access to Time Machine settings, please unlock Full Disk Access preferences and then drop \(plugInName) into the list of apps with allowed access.")
@@ -73,6 +73,7 @@ struct PlugInFullDiskAccessCheckpointView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
+        .onVisibilityChange(perform: actions?.trackVisibility)
     }
 }
 
