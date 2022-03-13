@@ -24,11 +24,11 @@ jobs:
             packageExtension: '.pkg'
         build-config:
           - name: 'AppStore'
-            if: ${{ github.ref == 'refs/heads/main' }}
+            if: ${{ github.ref == 'refs/heads/main' && github.event == 'workflow_dispatch' }}
             projectKind: 'AppStore'
             exportOptionsPlist: 'dist/appstore-exportOptions.plist'
           - name: 'DeveloperID'
-            if: true
+            if: true && {{ github.event != 'workflow_dispatch' }}
             projectKind: 'DeveloperID'
             exportOptionsPlist: 'dist/developer-id-exportOptions.plist'
 
