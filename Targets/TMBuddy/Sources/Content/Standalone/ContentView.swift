@@ -12,7 +12,7 @@ struct ContentView: View {
                     }
                     .padding()
                 
-                LegendView()
+                LegendView.new()
                     .frame(minHeight: 240)
                     .tabItem {
                         Text("Legend")
@@ -32,7 +32,7 @@ struct ContentView: View {
                 VStack(alignment: .leading) {
                     Text("Legend")
                     GroupBox() {
-                        LegendView()
+                        LegendView.new()
                             .padding()
                     }
                 }

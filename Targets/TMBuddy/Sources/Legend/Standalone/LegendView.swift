@@ -3,6 +3,11 @@ import AppKit
 
 struct LegendView: View {
     
+    struct State {}
+
+    let state: State
+    let actions: LegendViewActions!
+
     var body: some View {
         let cases = TMStatus.allCases.filter { [.included, .unknown].contains($0) == false }
         VStack(alignment: .leading) {
@@ -19,6 +24,7 @@ struct LegendView: View {
         }
         .padding()
         .fixedSize()
+        .onVisibilityChange(perform: actions?.trackVisibility)
     }
 }
 
@@ -97,6 +103,6 @@ func localizedStatus(_ status: TMStatus) -> LocalizedStringKey {
 struct LegendView_Previews: PreviewProvider {
     
     static var previews: some View {
-        LegendView()
+        LegendView(state: .init(), actions: nil)
     }
 }
