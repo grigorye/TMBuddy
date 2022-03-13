@@ -4,7 +4,7 @@ struct SMJobBlessCheckpointView: View {
     
     typealias State = SMJobBlessCheckpointState
     
-    var state: State
+    let state: State
     var actions: SMJobBlessCheckpointActions!
     
     var body: some View {
