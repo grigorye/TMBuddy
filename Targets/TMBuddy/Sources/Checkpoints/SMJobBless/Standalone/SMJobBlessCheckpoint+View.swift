@@ -5,7 +5,7 @@ struct SMJobBlessCheckpointView: View {
     typealias State = SMJobBlessCheckpointState
     
     let state: State
-    var actions: SMJobBlessCheckpointActions!
+    let actions: SMJobBlessCheckpointActions?
     
     var body: some View {
         let value: LocalizedStringKey = {
@@ -44,23 +44,24 @@ struct SMJobBlessCheckpointView: View {
                 case .blessed where bundleVersion == "Local":
                     Button(
                         "Reinstall Helper",
-                        action: { actions.reinstallHelper() }
+                        action: { actions?.reinstallHelper() }
                     )
                 case .missingBless:
                     Button(
                         "Install Helper",
-                        action: { actions.installHelper() }
+                        action: { actions?.installHelper() }
                     )
                 case .alien:
                     Button(
                         "Update Helper",
-                        action: { actions.updateHandler() }
+                        action: { actions?.updateHandler() }
                     )
                 default:
                     EmptyView()
                 }
             }
         }
+        .onVisibilityChange(perform: actions?.trackVisibility)
     }
 }
 
@@ -99,7 +100,7 @@ private struct Preview: View {
             Button(.verbatim("Next")) {
                 sampleIndex = nextSampleIndex
             }
-            SMJobBlessCheckpointView(state: state)
+            SMJobBlessCheckpointView(state: state, actions: nil)
                 .border(.red)
         }
         .padding()

@@ -1,8 +1,10 @@
 import AppKit
 
-struct PostInstallHelperCheckpointActionHandler: PostInstallHelperCheckpointActions {
+struct PostInstallHelperCheckpointActionHandler: PostInstallHelperCheckpointActions, Traceable {
     
     func installMacOSSupport() {
+        dump((), name: "")
+        
         let task = Task {
             try await performCommonHelperXPC { (proxy: CommonHelperXPC, continuation) in
                 proxy.postInstallAsync(sourceBundlePath: postInstallHelperSourceBundlePath) { error in

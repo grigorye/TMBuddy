@@ -5,7 +5,7 @@ enum SMJobBlessCheckpointState {
     case missingBless
 }
 
-protocol SMJobBlessCheckpointActions {
+protocol SMJobBlessCheckpointActions: ViewActions {
     func reinstallHelper()
     func installHelper()
     func updateHandler()

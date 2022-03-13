@@ -6,7 +6,7 @@ struct FinderSyncExtensionCheckpointView: View {
     typealias State = FinderSyncExtensionCheckpointState
     
     let state: State
-    var actions: FinderSyncExtensionCheckpointActions!
+    let actions: FinderSyncExtensionCheckpointActions?
     
     var body: some View {
         let (readiness, value) = checkpointStatus
@@ -33,16 +33,17 @@ struct FinderSyncExtensionCheckpointView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button("Extensions Preferences") {
-                        actions.showExtensionsPreferences()
+                        actions?.showExtensionsPreferences()
                     }
                     if case let .alien(path: path) = state.alienInfo {
                         Button("Reveal Alien Extension in Finder") {
-                            actions.revealAlienInFinder(path: path)
+                            actions?.revealAlienInFinder(path: path)
                         }
                     }
                 }
             }
         }
+        .onVisibilityChange(perform: actions?.trackVisibility)
     }
     
     var checkpointStatus: (Readiness, LocalizedStringKey) {

@@ -6,6 +6,6 @@ enum PostInstallHelperCheckpointState {
     case failing(Error)
 }
 
-protocol PostInstallHelperCheckpointActions {
+protocol PostInstallHelperCheckpointActions: ViewActions {
     func installMacOSSupport()
 }
