@@ -6,6 +6,14 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      build-config:
+        type: choice
+        description: build-config
+        options: 
+        - app-store
+        - developer-id
+        required: true
 
 defaults:
   run:
@@ -24,11 +32,11 @@ jobs:
             packageExtension: '.pkg'
         build-config:
           - name: 'AppStore'
-            if: ${{ github.ref == 'refs/heads/main' }}
+            if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.build-config == 'app-store' }}
             projectKind: 'AppStore'
             exportOptionsPlist: 'dist/appstore-exportOptions.plist'
           - name: 'DeveloperID'
-            if: true
+            if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.build-config == 'developer-id' }}
             projectKind: 'DeveloperID'
             exportOptionsPlist: 'dist/developer-id-exportOptions.plist'
 
@@ -38,6 +46,11 @@ jobs:
       APP_STORE_AUTHENTICATION_KEY_ISSUER_ID: ${{ secrets.APP_STORE_AUTHENTICATION_KEY_ISSUER_ID }}
 
     steps:
+      - name: Dump GitHub Action Properties
+        run: |
+          echo "github.event_name: ${{ github.event_name }}"
+          echo "github.event.inputs.build-config: ${{ github.event.inputs.build-config }}"
+
       - uses: actions/checkout@v2
         if: ${{ matrix.build-config.if }}
         with:
