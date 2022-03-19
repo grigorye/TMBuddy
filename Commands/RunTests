@@ -13,7 +13,7 @@ xcodebuild() {
 }
 
 xcpretty() {
-    if which xcpretty > /dev/null; then
+    if [ "${XCPRETTY_ENABLED:-}" != "NO" ] && which xcpretty > /dev/null; then
         command xcpretty
     else
         grep -v '^ '
