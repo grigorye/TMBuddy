@@ -14,7 +14,7 @@ runTests() {
 
 # shellcheck disable=SC2162
 while read _ commit _ _; do
-    if [ z"$PRE_PUSH_COMMIT_DIR" != z"" ]; then
+    if [ z"${PRE_PUSH_COMMIT_DIR:-}" != z"" ]; then
         rm -rf "$PRE_PUSH_COMMIT_DIR"
         commitDir="$PRE_PUSH_COMMIT_DIR"
     else
