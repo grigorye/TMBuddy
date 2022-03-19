@@ -66,5 +66,5 @@ targets:
 
 packages:
   Blessed:
-    url: https://github.com/trilemma-dev/Blessed
-    from: "0.0.1"
+    url: https://github.com/grigorye/Blessed
+    branch: main
