@@ -9,7 +9,6 @@ runTests() {
     env -u GIT_DIR \
         ./Commands/RunTests \
         -IDEClonedSourcePackagesDirPathOverride=~/.pre-push/XcodeClonedSourcePackages \
-        ${PRE_PUSH_DERIVED_DATA_PATH:+"-derivedDataPath" "$PRE_PUSH_DERIVED_DATA_PATH"} \
         "$@"
 }
 
@@ -24,6 +23,20 @@ while read _ commit _ _; do
     mkdir "$commitDir"
 
     git archive "$commit" | tar -x -C "$commitDir"
-    (cd "$commitDir" && runTests -scheme 'TMBuddyTests')
-    (cd "$commitDir" && runTests -scheme 'TMBuddySnapshots')
+    (cd "$commitDir" && ./Commands/PrepareTests)
+
+    testsLog="$tmpdir/$commit-Tests.log"
+    testsErrorLog="$tmpdir/$commit-Tests-error.log"
+    snapshotsLog="$tmpdir/$commit-Snapshots.log"
+    snapshotsErrorLog="$tmpdir/$commit-Snapshots-error.log"
+
+    trap 'cat "$snapshotsErrorLog" "$testsErrorLog" > /dev/stderr' EXIT
+
+    (cd "$commitDir" && runTests -scheme 'TMBuddyTests' -derivedDataPath "${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Tests") > "$testsLog" 2> "$testsErrorLog" &
+    testsPid=$!
+    (cd "$commitDir" && runTests -scheme 'TMBuddySnapshots' -derivedDataPath "${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Snapshots") > "$snapshotsLog" 2> "$snapshotsErrorLog" &
+    snapshotsPid=$!
+
+    wait $snapshotsPid
+    wait $testsPid
 done
