@@ -3,9 +3,11 @@
 import Firebase
 
 func activateFirebase() {
-    #if !DEBUG
-    FirebaseApp.configure()
-    #endif
+#if !DEBUG
+    _ = configureFirebaseAppOnce
+#endif
 }
+
+let configureFirebaseAppOnce: Void = FirebaseApp.configure()
 
 #endif
