@@ -95,7 +95,9 @@ targets:
         - TMBuddyTests
     sources:
       - Targets/TMBuddyTests
-      - Targets/TMBuddyShared
+      - path: Targets/TMBuddyShared
+        excludes:
+          - AppIntegration
       - path: Targets/OtherModules
         excludes:
           - Firebase
