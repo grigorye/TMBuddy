@@ -3,6 +3,7 @@ enum DefaultsKey: String, CaseIterable {
     case scopedSandboxedBookmarks
     
     case suppressErrorReporting
+    case suppressActionTracking
     case debug
     case debugAlienPlugin
     case debugAlienPrivilegedHelper
