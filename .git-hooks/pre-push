@@ -32,9 +32,12 @@ while read _ commit _ _; do
 
     trap 'cat "$snapshotsErrorLog" "$testsErrorLog" > /dev/stderr' EXIT
 
-    (cd "$commitDir" && runTests -scheme 'TMBuddyTests' -derivedDataPath "${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Tests") > "$testsLog" 2> "$testsErrorLog" &
+    testsBuildDir="${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Tests"
+    (cd "$commitDir" && runTests -scheme 'TMBuddyTests' -derivedDataPath "$testsBuildDir" -IDECustomBuildProductsPath="" -IDECustomBuildIntermediatesPath="") > "$testsLog" 2> "$testsErrorLog" &
     testsPid=$!
-    (cd "$commitDir" && runTests -scheme 'TMBuddySnapshots' -derivedDataPath "${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Snapshots") > "$snapshotsLog" 2> "$snapshotsErrorLog" &
+
+    snapshotsBuildDir="${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Snapshots"
+    (cd "$commitDir" && runTests -scheme 'TMBuddySnapshots' -derivedDataPath "$snapshotsBuildDir" -IDECustomBuildProductsPath="" -IDECustomBuildIntermediatesPath="") > "$snapshotsLog" 2> "$snapshotsErrorLog" &
     snapshotsPid=$!
 
     wait $snapshotsPid
