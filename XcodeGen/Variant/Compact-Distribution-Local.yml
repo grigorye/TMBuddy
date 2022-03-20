@@ -3,8 +3,7 @@ include:
     relativePaths: false
   - path: ../Aspect/Distribution-Settings.yml
     relativePaths: false
-
-settings:
-  BUNDLE_VERSION: Local
+  - path: ../Aspect/Local.yml
+    relativePaths: true
 
 name: TMBuddy-Compact-Distribution-Local

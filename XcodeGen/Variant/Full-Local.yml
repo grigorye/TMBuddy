@@ -1,0 +1,7 @@
+include:
+  - path: ../Compactness/Full.yml
+    relativePaths: false
+  - path: ../Aspect/Local.yml
+    relativePaths: false
+
+name: TMBuddy-Full-Local
