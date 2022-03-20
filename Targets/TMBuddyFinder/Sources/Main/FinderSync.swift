@@ -181,6 +181,7 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
     }
     
     @objc private func revealParentFrom(menuItem: NSMenuItem) {
+        dump((), name: "")
         let selectedURL = syncController.selectedItemURLs()!.first!
         let parentPaths = Array(parentPaths(for: selectedURL).reversed().dropFirst())
         let url = URL(fileURLWithPath: parentPaths[menuItem.tag])
@@ -210,10 +211,12 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
     }
     
     @IBAction func removePrivilegedExclusionFromTimeMachine(_ sender: AnyObject?) {
+        dump((), name: "")
         setSelectedItemsPrivilegeExcludedFromTimeMachine(false)
     }
     
     @IBAction func addPrivilegedExclusionInTimeMachine(_ sender: AnyObject?) {
+        dump((), name: "")
         setSelectedItemsPrivilegeExcludedFromTimeMachine(true)
     }
 
@@ -250,15 +253,18 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
     
     private func processResultForSetSelectedItemsPathExcludedFromTimeMachine(_ exclude: Bool, result: Result<(), Error>) {
         if case let .failure(error) = result {
+            dump((error, exclude: exclude), name: "setSelectedItemsPathExcludedFailed")
             NSApp.presentError(error)
         }
     }
     
     @IBAction func removeExclusionFromTimeMachine(_ sender: AnyObject?) {
+        dump((), name: "")
         setSelectedItemsStickyExcludedFromTimeMachine(false)
     }
     
     @IBAction func excludeFromTimeMachine(_ sender: AnyObject?) {
+        dump((), name: "")
         setSelectedItemsStickyExcludedFromTimeMachine(true)
     }
     
@@ -289,6 +295,7 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
     
     private func processResultForSetSelectedItemsStickyExcludedFromTimeMachine(_ exclude: Bool, result: Result<(), Error>) {
         if case let .failure(error) = result {
+            dump((error, exclude: exclude), name: "setSelectedItemsStickyExcludedFailed")
             NSApp.presentError(error)
         }
     }
