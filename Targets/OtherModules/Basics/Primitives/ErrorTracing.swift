@@ -1,10 +1,6 @@
 import Foundation
 import os.log
 
-func postDump<T>(_ value: T, name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) {
-    hookErrorReportersForDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
-}
-
 func shouldBeReportedAsError(name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) -> Bool {
     guard let name = name else {
         return false
@@ -21,7 +17,7 @@ func logType(name: String?, file: StaticString, function: String, line: Int, cal
     : .default
 }
 
-private func hookErrorReportersForDump<T>(_ value: T, name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) {
+func hookErrorReportersForDump<T>(_ value: T, name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) {
     
     guard shouldBeReportedAsError(name: name, file: file, function: function, line: line, callStack: callStack) else {
         return
