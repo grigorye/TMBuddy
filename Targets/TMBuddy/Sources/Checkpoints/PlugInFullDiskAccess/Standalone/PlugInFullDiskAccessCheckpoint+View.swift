@@ -76,10 +76,3 @@ struct PlugInFullDiskAccessCheckpointView: View {
         .onVisibilityChange(perform: actions?.trackVisibility)
     }
 }
-
-struct PlugInFullDiskAccessCheckpointView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        PlugInFullDiskAccessCheckpointView.previews(frameWidth: sampleCheckpointWidth)
-    }
-}
