@@ -18,8 +18,9 @@ targets:
         excludes:
           - "**/*+Snapshots"
           - "**/*+Snapshots.swift"
-          # - "**/*+SampleView.swift"
-          # - "**/*+Samples.swift"
+          - "**/*+SampleView.swift"
+          - "**/*+Samples.swift"
+          - "**/*+Preview.swift"
           # Excluded for Aspect/Helper.yml:
           - Checkpoints/SMJobBless
           - Checkpoints/PostInstallHelper
