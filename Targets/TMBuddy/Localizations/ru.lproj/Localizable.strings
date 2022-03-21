@@ -26,6 +26,9 @@
 "alien" = "чужое";
 
 /* No comment provided by engineer. */
+"Analytics" = "Аналитика";
+
+/* No comment provided by engineer. */
 "checking" = "проверка";
 
 /* No comment provided by engineer. */
@@ -44,10 +47,16 @@
 "denied" = "недоступно";
 
 /* No comment provided by engineer. */
+"Disable Analytics" = "Запретить сбор аналитики";
+
+/* No comment provided by engineer. */
 "disabled" = "выключено";
 
 /* No comment provided by engineer. */
 "disabled (failing)" = "выключено (сбой)";
+
+/* No comment provided by engineer. */
+"Enable Analytics" = "Разрешить сбор аналитики";
 
 /* No comment provided by engineer. */
 "enabled" = "включено";

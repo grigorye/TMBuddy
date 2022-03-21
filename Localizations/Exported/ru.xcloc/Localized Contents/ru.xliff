@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Targets/TMBuddy/Bundle/ca.lproj/Info-Distribution-InfoPlist.strings" source-language="ca" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -14,7 +14,7 @@
   </file>
   <file original="Targets/TMBuddy/Localizations/Base.lproj/Localizable.strings" source-language="ca" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
     </header>
     <body>
       <trans-unit id=" * " xml:space="preserve">
@@ -57,6 +57,10 @@
         <target>Добавить еще папки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Analytics" xml:space="preserve">
+        <source>Analytics</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Clear Selection" xml:space="preserve">
         <source>Clear Selection</source>
         <target>Очистить выбранное</target>
@@ -70,6 +74,14 @@
       <trans-unit id="Debug" xml:space="preserve">
         <source>Debug</source>
         <target>Отладка</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Disable Analytics" xml:space="preserve">
+        <source>Disable Analytics</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable Analytics" xml:space="preserve">
+        <source>Enable Analytics</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Excluded because of parent folder" xml:space="preserve">
@@ -336,7 +348,7 @@
   </file>
   <file original="Targets/TMBuddyFinder/Bundle/ca.lproj/InfoPlist.strings" datatype="plaintext" source-language="ca" target-language="ru">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -351,7 +363,7 @@
   </file>
   <file original="Targets/TMBuddyFinder/Localizations/Base.lproj/Localizable.strings" source-language="ca" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
