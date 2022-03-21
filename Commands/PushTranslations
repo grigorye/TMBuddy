@@ -3,4 +3,4 @@
 set -x
 set -euo pipefail
 
-poeditor -f poeditor-push.yml push
+poeditor -f poeditor-push.yml push "$@"

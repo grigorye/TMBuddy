@@ -3,4 +3,4 @@
 set -x
 set -euo pipefail
 
-poeditor -f poeditor-pull.yml pull
+poeditor -f poeditor-pull.yml pull "$@"
