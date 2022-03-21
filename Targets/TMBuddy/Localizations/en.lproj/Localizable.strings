@@ -26,6 +26,9 @@
 "alien" = "alien";
 
 /* No comment provided by engineer. */
+"Analytics" = "Analytics";
+
+/* No comment provided by engineer. */
 "checking" = "checking";
 
 /* No comment provided by engineer. */
@@ -44,10 +47,16 @@
 "denied" = "denied";
 
 /* No comment provided by engineer. */
+"Disable Analytics" = "Disable Analytics";
+
+/* No comment provided by engineer. */
 "disabled" = "disabled";
 
 /* No comment provided by engineer. */
 "disabled (failing)" = "disabled (failing)";
+
+/* No comment provided by engineer. */
+"Enable Analytics" = "Enable Analytics";
 
 /* No comment provided by engineer. */
 "enabled" = "enabled";
