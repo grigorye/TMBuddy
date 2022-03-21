@@ -14,11 +14,7 @@ struct CrashlyticsErrorReporter: ErrorReporter {
         let exceptionModel = ExceptionModel(name: name ?? "Unnamed", reason: "\(Swift.dump(value))") ≈ {
             $0.stackTrace = callStack.returnAddresses.map { StackFrame(address: $0.uintValue) }
         }
-#if DEBUG
-        _ = exceptionModel
-#else
         Crashlytics.crashlytics().record(exceptionModel: exceptionModel)
-#endif
     }
 }
 

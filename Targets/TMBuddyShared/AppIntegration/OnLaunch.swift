@@ -1,3 +1,5 @@
+import Foundation
+
 func onLaunch() {
     activateErrorReporting()
     activateActionTracking()
@@ -5,6 +7,9 @@ func onLaunch() {
 }
 
 func activateErrorReporting() {
+    guard UserDefaults.standard.errorReportingEnabled else {
+        return
+    }
 #if canImport(FirebaseCrashlytics)
     let crashlyticsErrorReporter = CrashlyticsErrorReporter()
     crashlyticsErrorReporter.activate()
@@ -13,6 +18,9 @@ func activateErrorReporting() {
 }
 
 func activateActionTracking() {
+    guard UserDefaults.standard.actionTrackingEnabled else {
+        return
+    }
     actionTrackers += [simpleActionTracker]
 #if canImport(FirebaseAnalytics)
     let firebaseActionTracker = FirebaseActionTracker()
