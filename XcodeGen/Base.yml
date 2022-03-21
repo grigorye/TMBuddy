@@ -134,6 +134,8 @@ targets:
         excludes:
           - "**/*+Snapshots"
       - Targets/OtherTesting
+    settings:
+      LOCALIZATION_EXPORT_SUPPORTED: NO
 
   TMBuddySnapshotViews:
     type: framework
@@ -141,6 +143,7 @@ targets:
     templates:
       - TMBuddyStandaloneViewsTarget
     settings:
+      LOCALIZATION_EXPORT_SUPPORTED: NO
       LOCALIZED_STRING_SWIFTUI_SUPPORT: NO
 
 targetTemplates:
