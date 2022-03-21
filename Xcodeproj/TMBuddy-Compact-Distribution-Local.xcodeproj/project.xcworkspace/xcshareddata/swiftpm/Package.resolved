@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Blessed",
-        "repositoryURL": "https://github.com/grigorye/Blessed",
+        "repositoryURL": "https://github.com/trilemma-dev/Blessed",
         "state": {
           "branch": "main",
           "revision": "60fd6acf37147dc18f7516c8d310c55d0211998c",
