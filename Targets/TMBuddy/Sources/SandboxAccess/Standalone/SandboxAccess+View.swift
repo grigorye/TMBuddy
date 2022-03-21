@@ -29,9 +29,12 @@ struct SandboxAccessView: View {
                 FinderSyncExtensionCheckpointView.new()
                 PlugInFullDiskAccessCheckpointView.new()
                 
+                Divider()
+
                 if state.showDebug {
                     DebugCheckpointView.new()
                 }
+                AnalyticsCheckpointView.new()
             }
             .padding([.vertical], 4)
         }
