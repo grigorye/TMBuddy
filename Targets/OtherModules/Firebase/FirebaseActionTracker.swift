@@ -9,13 +9,9 @@ struct FirebaseActionTracker: ActionTracker {
     }
     
     func trackAction(_ action: TrackedAction) {
-#if DEBUG
-        _ = action.name
-#else
         Analytics.logEvent("action", parameters: [
             "name": action.name
         ])
-#endif
     }
 }
 
