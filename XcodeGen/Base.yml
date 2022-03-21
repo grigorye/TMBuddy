@@ -54,6 +54,7 @@ targets:
         "-enableDump YES": true
         "-suppressNSLog YES": true
         "-suppressErrorReporting YES": true
+        "-suppressActionTracking YES": true
         "-forceAppStoreLikeWindowTitle YES": false
         "-fakeFailureOnSetExcludedPrivileged YES": false
         "-forcePostInstallCheckpoint YES": false
