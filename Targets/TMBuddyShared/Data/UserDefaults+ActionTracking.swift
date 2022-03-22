@@ -4,15 +4,6 @@ extension UserDefaults {
     
     var actionTrackingEnabled: Bool {
         get {
-            !actionTrackingSuppressed
-        }
-        set {
-            actionTrackingSuppressed = !newValue
-        }
-    }
-    
-    var actionTrackingSuppressed: Bool {
-        get {
             bool(forKey: Self.key)
         }
         set {
@@ -20,5 +11,5 @@ extension UserDefaults {
         }
     }
     
-    static private let key = DefaultsKey.suppressActionTracking
+    static private let key = DefaultsKey.forceActionTracking
 }

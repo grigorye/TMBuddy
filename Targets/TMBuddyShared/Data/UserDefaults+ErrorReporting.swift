@@ -4,15 +4,6 @@ extension UserDefaults {
     
     var errorReportingEnabled: Bool {
         get {
-            !errorReportingSuppressed
-        }
-        set {
-            errorReportingSuppressed = !newValue
-        }
-    }
-    
-    var errorReportingSuppressed: Bool {
-        get {
             bool(forKey: Self.key)
         }
         set {
@@ -20,5 +11,5 @@ extension UserDefaults {
         }
     }
     
-    static private let key = DefaultsKey.suppressErrorReporting
+    static private let key = DefaultsKey.forceErrorReporting
 }
