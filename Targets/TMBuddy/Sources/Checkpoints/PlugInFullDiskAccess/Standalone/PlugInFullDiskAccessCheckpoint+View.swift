@@ -73,6 +73,6 @@ struct PlugInFullDiskAccessCheckpointView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
-        .onVisibilityChange(perform: actions?.trackVisibility)
+        .onVisibilityChange(perform: actions?.track(visible:))
     }
 }

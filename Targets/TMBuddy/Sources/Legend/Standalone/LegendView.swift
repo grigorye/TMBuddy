@@ -24,7 +24,7 @@ struct LegendView: View {
         }
         .padding()
         .fixedSize()
-        .onVisibilityChange(perform: actions?.trackVisibility)
+        .onVisibilityChange(perform: actions?.track(visible:))
     }
 }
 
