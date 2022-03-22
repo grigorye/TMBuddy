@@ -23,10 +23,8 @@ func hookErrorReportersForDump<T>(_ value: T, name: String?, file: StaticString,
         return
     }
     
-    if !UserDefaults.standard.bool(forKey: DefaultsKey.suppressErrorReporting) {
-        errorReporters.forEach {
-            $0.reportError(value, name: name, file: file, function: function, line: line, callStack: callStack)
-        }
+    errorReporters.forEach {
+        $0.reportError(value, name: name, file: file, function: function, line: line, callStack: callStack)
     }
 }
 

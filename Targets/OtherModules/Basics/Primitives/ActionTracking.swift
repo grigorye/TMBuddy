@@ -20,10 +20,8 @@ func hookActionTrackersForDump<T>(_ value: T, name: String?, file: StaticString,
 
     let action = TrackedAction(name: function)
     
-    if !UserDefaults.standard.bool(forKey: DefaultsKey.suppressActionTracking) {
-        actionTrackers.forEach {
-            $0.trackAction(action)
-        }
+    actionTrackers.forEach {
+        $0.trackAction(action)
     }
 }
 
