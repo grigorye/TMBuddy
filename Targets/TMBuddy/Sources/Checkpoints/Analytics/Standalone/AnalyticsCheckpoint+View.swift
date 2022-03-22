@@ -22,6 +22,6 @@ struct AnalyticsCheckpointView: View {
                 }
             }
         }
-        .onVisibilityChange(perform: actions?.trackVisibility)
+        .onVisibilityChange(perform: actions?.track(visible:))
     }
 }

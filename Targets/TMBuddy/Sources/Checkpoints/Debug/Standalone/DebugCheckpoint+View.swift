@@ -13,6 +13,6 @@ struct DebugCheckpointView: View {
                 actions?.crash()
             }
         }
-        .onVisibilityChange(perform: actions?.trackVisibility)
+        .onVisibilityChange(perform: actions?.track(visible:))
     }
 }

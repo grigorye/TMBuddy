@@ -54,6 +54,6 @@ struct PostInstallHelperCheckpointView: View {
         ) {
             Button("Install Support", action: { actions?.installMacOSSupport() })
         }
-        .onVisibilityChange(perform: actions?.trackVisibility)
+        .onVisibilityChange(perform: actions?.track(visible:))
     }
 }

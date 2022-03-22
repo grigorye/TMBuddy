@@ -43,7 +43,7 @@ struct FinderSyncExtensionCheckpointView: View {
                 }
             }
         }
-        .onVisibilityChange(perform: actions?.trackVisibility)
+        .onVisibilityChange(perform: actions?.track(visible:))
     }
     
     var checkpointStatus: (Readiness, LocalizedStringKey) {

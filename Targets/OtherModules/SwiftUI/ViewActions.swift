@@ -1,10 +1,10 @@
 protocol ViewActions {
-    func trackVisibility(_ visible: Bool)
+    func track(visible: Bool)
 }
 
 extension Traceable {
     
-    func trackVisibility(_ visible: Bool) {
-        dump(visible, name: "")
+    func track(visible: Bool) {
+        dump(visible, name: "visible")
     }
 }
