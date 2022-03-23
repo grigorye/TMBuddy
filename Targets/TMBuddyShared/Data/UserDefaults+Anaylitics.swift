@@ -2,7 +2,7 @@ import Foundation
 
 extension UserDefaults {
     
-    var errorReportingEnabled: Bool {
+    var analyticsEnabled: Bool {
         get {
             bool(forKey: Self.key)
         }
@@ -11,5 +11,5 @@ extension UserDefaults {
         }
     }
     
-    static private let key = DefaultsKey.errorReportingEnabled
+    static private let key = DefaultsKey.analyticsEnabled
 }

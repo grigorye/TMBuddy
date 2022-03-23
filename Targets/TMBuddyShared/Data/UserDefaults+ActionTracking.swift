@@ -11,5 +11,5 @@ extension UserDefaults {
         }
     }
     
-    static private let key = DefaultsKey.forceActionTracking
+    static private let key = DefaultsKey.actionTrackingEnabled
 }
