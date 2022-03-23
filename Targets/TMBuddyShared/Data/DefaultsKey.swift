@@ -2,8 +2,9 @@ enum DefaultsKey: String, CaseIterable {
     case sandboxedBookmarks
     case scopedSandboxedBookmarks
     
-    case forceErrorReporting
-    case forceActionTracking
+    case errorReportingEnabled
+    case actionTrackingEnabled
+    case analyticsEnabled
     case debug
     case debugAlienPlugin
     case debugAlienPrivilegedHelper

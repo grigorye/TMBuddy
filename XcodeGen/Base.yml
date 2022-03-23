@@ -53,8 +53,9 @@ targets:
       commandLineArguments:
         "-enableDump YES": true
         "-suppressNSLog YES": true
-        "-forceErrorReporting YES": false
-        "-forceActionTracking YES": false
+        "-analyticsEnabled YES": false
+        "-errorReportingEnabled YES": false
+        "-actionTrackingEnabled YES": false
         "-forceAppStoreLikeWindowTitle YES": false
         "-fakeFailureOnSetExcludedPrivileged YES": false
         "-forcePostInstallCheckpoint YES": false

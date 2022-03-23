@@ -1,13 +1,26 @@
 import Foundation
 
 func onLaunch() {
+    registerDefaults()
     activateErrorReporting()
     activateActionTracking()
     checkSanity()
 }
 
+func registerDefaults() {
+    let defaults: [DefaultsKey: Any] = [
+        .errorReportingEnabled: true,
+        .actionTrackingEnabled: true
+    ]
+    UserDefaults.standard.register(
+        defaults: defaults.reduce(into: [:], { (d, x) in
+            d[x.key.rawValue] = x.value
+        })
+    )
+}
+
 func activateErrorReporting() {
-    guard UserDefaults.standard.errorReportingEnabled else {
+    guard defaults.errorReportingEnabled || defaults.analyticsEnabled else {
         return
     }
 #if canImport(FirebaseCrashlytics)
@@ -18,7 +31,7 @@ func activateErrorReporting() {
 }
 
 func activateActionTracking() {
-    guard UserDefaults.standard.actionTrackingEnabled else {
+    guard defaults.actionTrackingEnabled || defaults.analyticsEnabled else {
         return
     }
     actionTrackers += [simpleActionTracker]
@@ -36,3 +49,5 @@ struct SimpleActionTracker: ActionTracker {
         dump(action.name, name: "trackedAction")
     }
 }
+
+private let defaults = UserDefaults.standard

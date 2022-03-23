@@ -13,8 +13,7 @@ class AnalyticsCheckpointActionsHandler: Traceable, AnalyticsCheckpointActions {
     }
     
     func setAnalytics(enabled: Bool) {
-        UserDefaults.standard.actionTrackingEnabled = enabled
-        UserDefaults.standard.errorReportingEnabled = enabled
+        UserDefaults.standard.analyticsEnabled = enabled
         UserDefaults.standard.synchronize()
     }
 }
