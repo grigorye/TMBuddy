@@ -10,7 +10,12 @@ struct AnalyticsCheckpointView: View {
     let actions: AnalyticsCheckpointActions?
     
     var body: some View {
-        CheckpointView(title: "Analytics", subtitle: nil, value: state.analyticsEnabled ? "enabled" : "disabled", readiness: .ready) {
+        CheckpointView(
+            title: "Analytics",
+            subtitle: "Let \(appName) gather information about its usage, for further improvements.",
+            value: state.analyticsEnabled ? "enabled" : "disabled",
+            readiness: .ready
+        ) {
             switch state.analyticsEnabled {
             case false:
                 Button("Enable Analytics") {
