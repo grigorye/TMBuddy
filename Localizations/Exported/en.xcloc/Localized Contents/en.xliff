@@ -58,6 +58,7 @@
       </trans-unit>
       <trans-unit id="Analytics" xml:space="preserve">
         <source>Analytics</source>
+        <target>Analytics</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Clear Selection" xml:space="preserve">
@@ -77,10 +78,12 @@
       </trans-unit>
       <trans-unit id="Disable Analytics" xml:space="preserve">
         <source>Disable Analytics</source>
+        <target>Disable Analytics</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable Analytics" xml:space="preserve">
         <source>Enable Analytics</source>
+        <target>Enable Analytics</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Excluded because of parent folder" xml:space="preserve">
@@ -141,6 +144,11 @@
       <trans-unit id="Legend" xml:space="preserve">
         <source>Legend</source>
         <target>Legend</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Let %@ gather information about its usage, for further improvements." xml:space="preserve">
+        <source>Let %@ gather information about its usage, for further improvements.</source>
+        <target>Let %@ gather information about its usage, for further improvements.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Not excluded" xml:space="preserve">
