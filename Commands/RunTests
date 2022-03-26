@@ -5,8 +5,13 @@ set -euo pipefail
 
 tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
 
+stderr-filter() {
+    grep -v '^objc\[.*\]'
+}
+
 xcodebuild() {
-    command xcodebuild \
+    command 2> >(stderr-filter >&2) \
+        xcodebuild \
         -project Xcodeproj/*-DeveloperID.xcodeproj \
         -disableAutomaticPackageResolution \
         "$@"
