@@ -3,6 +3,10 @@
 set -x
 set -euo pipefail
 
+. "$(dirname "$0")"/Xcodebuild-env.sh
+
+tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
+
 xcodegen -s XcodeGen/Variant/ExportLocalizations.yml -r . -p Xcodeproj
 
 xcodebuild \
@@ -11,4 +15,6 @@ xcodebuild \
     -localizationPath Localizations/Exported \
     -exportLanguage en \
     -exportLanguage ru \
-    -exportLanguage ca
+    -exportLanguage ca |
+    tee "$tmpdir/xcodebuild.exportLocalizations.log" |
+    xcpretty
