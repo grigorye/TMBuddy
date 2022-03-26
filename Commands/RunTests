@@ -3,32 +3,23 @@
 set -x
 set -euo pipefail
 
+wd=$(dirname "$0")
+
+. "$wd"/Xcodebuild-env.sh
+
 tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
 
-stderr-filter() {
-    grep -v '^objc\[.*\]'
-}
-
-xcodebuild() {
-    command 2> >(stderr-filter >&2) \
-        xcodebuild \
+xcodebuildProject() {
+    xcodebuild \
         -project Xcodeproj/*-DeveloperID.xcodeproj \
         -disableAutomaticPackageResolution \
         "$@"
 }
 
-xcpretty() {
-    if [ "${XCPRETTY_ENABLED:-}" != "NO" ] && which xcpretty > /dev/null; then
-        command xcpretty
-    else
-        grep -v '^ '
-    fi
-}
-
-time xcodebuild build-for-testing "$@" |
+time xcodebuildProject build-for-testing "$@" |
     tee "$tmpdir/xcodebuild.build-for-testing.log" |
     xcpretty
 
-time xcodebuild test-without-building -parallel-testing-enabled YES "$@" |
+time xcodebuildProject test-without-building -parallel-testing-enabled YES "$@" |
     tee "$tmpdir/xcodebuild.test-without-building.log" |
     xcpretty
