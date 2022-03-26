@@ -113,6 +113,9 @@
 "Legend" = "Легенда";
 
 /* No comment provided by engineer. */
+"Let %@ gather information about its usage, for further improvements." = "Разрешите %@ собирать информацию о своем использовании, для дальнейшего улучшения программы.";
+
+/* No comment provided by engineer. */
 "likely enabled (still connected), but superseded by another version" = "вероятно включено (соединение установлено), но конфликтует с другим расширением";
 
 /* No comment provided by engineer. */

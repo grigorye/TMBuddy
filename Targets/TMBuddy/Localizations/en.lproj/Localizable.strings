@@ -113,6 +113,9 @@
 "Legend" = "Legend";
 
 /* No comment provided by engineer. */
+"Let %@ gather information about its usage, for further improvements." = "Let %@ gather information about its usage, for further improvements.";
+
+/* No comment provided by engineer. */
 "likely enabled (still connected), but superseded by another version" = "likely enabled (still connected), but superseded by another version";
 
 /* No comment provided by engineer. */

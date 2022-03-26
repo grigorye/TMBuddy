@@ -147,6 +147,11 @@
         <target>Legend</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Let %@ gather information about its usage, for further improvements." xml:space="preserve">
+        <source>Let %@ gather information about its usage, for further improvements.</source>
+        <target>Let %@ gather information about its usage, for further improvements.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Not excluded" xml:space="preserve">
         <source>Not excluded</source>
         <target>Not excluded</target>

@@ -347,6 +347,11 @@
         <target>Разрешить сбор аналитики</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Let %@ gather information about its usage, for further improvements." xml:space="preserve">
+        <source>Let %@ gather information about its usage, for further improvements.</source>
+        <target>Разрешите %@ собирать информацию о своем использовании, для дальнейшего улучшения программы.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
     </body>
   </file>
   <file original="Targets/TMBuddyFinder/Bundle/ca.lproj/InfoPlist.strings" datatype="plaintext" xml:space="preserve" source-language="ca" target-language="ru">
