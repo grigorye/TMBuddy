@@ -361,10 +361,12 @@
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
         <source>TMBuddy</source>
+        <target>TMBuddy</target>
         <note>Bundle display name</note>
       </trans-unit>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>TMBuddyFinder</source>
+        <target>TMBuddyFinder</target>
         <note>Bundle name</note>
       </trans-unit>
     </body>

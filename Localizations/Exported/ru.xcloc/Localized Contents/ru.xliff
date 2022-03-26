@@ -354,17 +354,19 @@
       </trans-unit>
     </body>
   </file>
-  <file original="Targets/TMBuddyFinder/Bundle/ca.lproj/InfoPlist.strings" datatype="plaintext" source-language="ca" target-language="ru">
+  <file original="Targets/TMBuddyFinder/Bundle/ca.lproj/InfoPlist.strings" source-language="ca" target-language="ru" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
         <source>TMBuddy</source>
+        <target>TMBuddy</target>
         <note>Bundle display name</note>
       </trans-unit>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>TMBuddyFinder</source>
+        <target>TMBuddyFinder</target>
         <note>Bundle name</note>
       </trans-unit>
     </body>
