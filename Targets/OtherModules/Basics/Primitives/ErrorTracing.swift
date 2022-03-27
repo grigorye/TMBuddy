@@ -1,7 +1,7 @@
 import Foundation
 import os.log
 
-func shouldBeReportedAsError(name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) -> Bool {
+func shouldBeReportedAsError(name: String?, sourceInfo: SourceInfo) -> Bool {
     guard let name = name else {
         return false
     }
@@ -11,20 +11,20 @@ func shouldBeReportedAsError(name: String?, file: StaticString, function: String
     return true
 }
 
-func logType(name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) -> OSLogType {
-    shouldBeReportedAsError(name: name, file: file, function: function, line: line, callStack: callStack)
+func logType(name: String?, sourceInfo: SourceInfo) -> OSLogType {
+    shouldBeReportedAsError(name: name, sourceInfo: sourceInfo)
     ? .error
     : .default
 }
 
-func hookErrorReportersForDump<T>(_ value: T, name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) {
+func hookErrorReportersForDump<T>(_ value: T, name: String?, sourceInfo: SourceInfo) {
     
-    guard shouldBeReportedAsError(name: name, file: file, function: function, line: line, callStack: callStack) else {
+    guard shouldBeReportedAsError(name: name, sourceInfo: sourceInfo) else {
         return
     }
     
     errorReporters.forEach {
-        $0.reportError(value, name: name, file: file, function: function, line: line, callStack: callStack)
+        $0.reportError(value, name: name, sourceInfo: sourceInfo)
     }
 }
 
