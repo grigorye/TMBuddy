@@ -9,11 +9,10 @@ class BoolUserDefaultsProvider: ObservableObject {
     deinit {
         _ = ()
     }
-    init(key: String) {
+    
+    init(key: String, defaults: UserDefaults) {
         userDefaultsObserver = .init(defaults: defaults, key: key, options: [.initial]) { [weak self] change in
             self?.value = defaults.bool(forKey: key)
         }
     }
 }
-
-private let defaults = UserDefaults.standard
