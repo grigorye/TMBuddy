@@ -29,3 +29,7 @@ func hookErrorReportersForDump<T>(_ value: T, name: String?, sourceInfo: SourceI
 }
 
 var errorReporters: [ErrorReporter] = []
+
+protocol ErrorReporter {
+    func reportError<T>(_ value: T, name: String?, sourceInfo: SourceInfo)
+}
