@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         dump(Bundle.main.bundlePath, name: "bundlePath")
         onLaunch()
+        applicationLoadActivity = beginActivity((), name: "applicationLoad")
         mainWindow().makeKeyAndOrderFront(nil)
     }
     
