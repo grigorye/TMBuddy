@@ -4,6 +4,9 @@ import SwiftUI
 func mainWindowContentView() -> some View {
     ContentView()
         .fixedSize()
+        .onAppear {
+            applicationLoadActivity?.end(())
+        }
 }
 
 func mainWindow() -> NSWindow {
@@ -23,3 +26,5 @@ func mainWindow<ContentView: View>(contentView: ContentView) -> NSWindow {
         $0.contentView = NSHostingView(rootView: contentView)
     }
 }
+
+var applicationLoadActivity: TrackedActivity?
