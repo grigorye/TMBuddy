@@ -1,5 +1,6 @@
 import Cocoa
 import FinderSync
+import os.signpost
 
 func badgeIdentifierForStatus(_ status: TMStatus) -> String {
     status.rawValue
@@ -92,12 +93,18 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
     var statusProvider: DirectLookupBasedStatusProvider { .init() }
 
     func updateBadgeIdentifier(for url: URL) {
+        let activity = beginActivity(url.path, name: "updateBadgeIdentifier")
         Task {
-            let status = statusProvider.statusForItem(url)
-            dump((status, path: url.path), name: "status")
-            let badgeIdentifier = badgeIdentifierForStatus(status)
-            syncController.setBadgeIdentifier(badgeIdentifier, for: url)
+            self.updateBadgeIdentifierSync(for: url)
+            activity.end(url.path)
         }
+    }
+    
+    func updateBadgeIdentifierSync(for url: URL) {
+        let status = statusProvider.statusForItem(url)
+        dump((status, path: url.path), name: "status")
+        let badgeIdentifier = badgeIdentifierForStatus(status)
+        syncController.setBadgeIdentifier(badgeIdentifier, for: url)
     }
     
     func refreshItem(at url: URL) {
