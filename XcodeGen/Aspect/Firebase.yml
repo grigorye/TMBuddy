@@ -14,8 +14,10 @@ targetTemplates:
         product: FirebaseCrashlytics
       - package: Firebase
         product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebasePerformance
 
 packages:
   Firebase:
-    url: https://github.com/firebase/firebase-ios-sdk.git
-    from: "8.0"
+    url: https://github.com/grigorye/firebase-ios-sdk.git
+    branch: feature/Performance-macOS

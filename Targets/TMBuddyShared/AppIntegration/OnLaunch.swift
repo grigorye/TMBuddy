@@ -56,6 +56,11 @@ func activateActivityTracking() {
         return
     }
     activityTrackers += [SimpleActivityTracker()]
+#if canImport(FirebasePerformance)
+    let firebaseActivityTracker = FirebaseActivityTracker()
+    firebaseActivityTracker.activate()
+    activityTrackers += [firebaseActivityTracker]
+#endif
 }
 
 struct SimpleActionTracker: ActionTracker {
