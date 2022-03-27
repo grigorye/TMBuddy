@@ -66,3 +66,15 @@ extension Traceable {
 }
 
 extension NSObject: Traceable {}
+
+@discardableResult
+func dump<T>(_ value: T, name: String, sourceInfo: SourceInfo) -> T {
+    dump(
+        value,
+        name: name,
+        file: sourceInfo.file,
+        function: sourceInfo.originalFunction,
+        line: sourceInfo.line,
+        callStack: sourceInfo.callStack
+    )
+}

@@ -4,6 +4,8 @@ func onLaunch() {
     registerDefaults()
     activateErrorReporting()
     activateActionTracking()
+    activateElapsedTimeTracking()
+    activateActivityTracking()
     checkSanity()
 }
 
@@ -30,11 +32,18 @@ func activateErrorReporting() {
 #endif
 }
 
+func activateElapsedTimeTracking() {
+    guard defaults.elapsedTimeTrackingEnabled || defaults.analyticsEnabled else {
+        return
+    }
+    elapsedTimeTrackers += [SimpleElapsedTimeTracker()]
+}
+
 func activateActionTracking() {
     guard defaults.actionTrackingEnabled || defaults.analyticsEnabled else {
         return
     }
-    actionTrackers += [simpleActionTracker]
+    actionTrackers += [SimpleActionTracker()]
 #if canImport(FirebaseAnalytics)
     let firebaseActionTracker = FirebaseActionTracker()
     firebaseActionTracker.activate()
@@ -42,11 +51,39 @@ func activateActionTracking() {
 #endif
 }
 
-private let simpleActionTracker = SimpleActionTracker()
+func activateActivityTracking() {
+    guard defaults.activityTrackingEnabled || defaults.analyticsEnabled else {
+        return
+    }
+    activityTrackers += [SimpleActivityTracker()]
+}
 
 struct SimpleActionTracker: ActionTracker {
     func trackAction(_ action: TrackedAction) {
         dump(action.name, name: "trackedAction")
+    }
+}
+
+struct SimpleElapsedTimeTracker: ElapsedTimeTracker {
+    func trackElapsedTime<T>(_ value: T, name: String?, sourceInfo: SourceInfo) {
+        _ = value
+    }
+}
+
+struct SimpleActivityTracker: ActivityTracker {
+    func beginActivity<T>(_ value: T, name: String, sourceInfo: SourceInfo) -> TrackedActivity {
+        dump(value, name: name + ".activityBegan", sourceInfo: sourceInfo)
+        return SimpleTrackedActivity(name: name)
+    }
+}
+
+struct SimpleTrackedActivity: TrackedActivity {
+    let timestamp = Date()
+    let name: String
+    
+    func endActivity<T>(_ value: T, sourceInfo: (SourceInfo)) {
+        let elapsed = Date().timeIntervalSince(timestamp)
+        dump((elapsed: elapsed, value), name: name + ".activityEnded", sourceInfo: sourceInfo)
     }
 }
 
