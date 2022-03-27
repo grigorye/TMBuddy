@@ -30,11 +30,11 @@
       },
       {
         "package": "Firebase",
-        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
+        "repositoryURL": "https://github.com/grigorye/firebase-ios-sdk.git",
         "state": {
-          "branch": null,
-          "revision": "d4c4e8c7b8898ea771e90beab71112ea279d73a5",
-          "version": "8.13.0"
+          "branch": "feature/Performance-macOS",
+          "revision": "1440878b5a8b3f8ff08af553b1730ae32ec80d6f",
+          "version": null
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "6cc2991c11872510a5314bc112cc7558dd9d046a",
-          "version": "8.12.0"
+          "revision": "9b74e6a3f875208c04c22b39b580a21d4de0f4f9",
+          "version": "8.14.0"
         }
       },
       {
