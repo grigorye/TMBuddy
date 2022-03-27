@@ -56,6 +56,8 @@ targets:
         "-analyticsEnabled YES": false
         "-errorReportingEnabled YES": false
         "-actionTrackingEnabled YES": false
+        "-elapsedTimeTrackingEnabled YES": false
+        "-activityTrackingEnabled YES": false
         "-forceAppStoreLikeWindowTitle YES": false
         "-fakeFailureOnSetExcludedPrivileged YES": false
         "-forcePostInstallCheckpoint YES": false
