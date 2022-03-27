@@ -22,7 +22,7 @@ func registerDefaults() {
 }
 
 func activateErrorReporting() {
-    guard defaults.errorReportingEnabled || defaults.analyticsEnabled else {
+    guard defaults.errorReportingEnabled || sharedDefaults.analyticsEnabled else {
         return
     }
 #if canImport(FirebaseCrashlytics)
@@ -33,14 +33,14 @@ func activateErrorReporting() {
 }
 
 func activateElapsedTimeTracking() {
-    guard defaults.elapsedTimeTrackingEnabled || defaults.analyticsEnabled else {
+    guard defaults.elapsedTimeTrackingEnabled || sharedDefaults.analyticsEnabled else {
         return
     }
     elapsedTimeTrackers += [SimpleElapsedTimeTracker()]
 }
 
 func activateActionTracking() {
-    guard defaults.actionTrackingEnabled || defaults.analyticsEnabled else {
+    guard defaults.actionTrackingEnabled || sharedDefaults.analyticsEnabled else {
         return
     }
     actionTrackers += [SimpleActionTracker()]
@@ -52,7 +52,7 @@ func activateActionTracking() {
 }
 
 func activateActivityTracking() {
-    guard defaults.activityTrackingEnabled || defaults.analyticsEnabled else {
+    guard defaults.activityTrackingEnabled || sharedDefaults.analyticsEnabled else {
         return
     }
     activityTrackers += [SimpleActivityTracker()]
