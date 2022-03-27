@@ -1,4 +1,4 @@
-func postDump<T>(_ value: T, name: String?, file: StaticString, function: String, line: Int, callStack: CallStack) {
-    hookActionTrackersForDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
-    hookErrorReportersForDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
+func postDump<T>(_ value: T, name: String?, sourceInfo: SourceInfo) {
+    hookActionTrackersForDump(value, name: name, sourceInfo: sourceInfo)
+    hookErrorReportersForDump(value, name: name, sourceInfo: sourceInfo)
 }

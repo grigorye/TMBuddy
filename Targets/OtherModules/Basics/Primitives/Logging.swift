@@ -3,10 +3,10 @@ import os.log
 
 enum LoggingImp {
     
-    static func log<T>(_ value: T, name: String?, file: StaticString, function: String, line: Int, callStack: CallStack, indent: Int, maxDepth: Int, maxItems: Int) {
+    static func log<T>(_ value: T, name: String?, sourceInfo s: SourceInfo, indent: Int, maxDepth: Int, maxItems: Int) {
         if dumpIsEnabled {
             let suffix = name.flatMap { ", " + $0 } ?? ""
-            Swift.dump(value, name: function + suffix, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
+            Swift.dump(value, name: s.function + suffix, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
         }
         if nsLogIsEnabled {
             let prefix = name.flatMap { $0 + ": " } ?? ""
@@ -19,13 +19,13 @@ enum LoggingImp {
                 }
             }()
             
-            let subsystem = URL(fileURLWithPath: "\(file)").deletingPathExtension().lastPathComponent
-            let category = function
+            let subsystem = URL(fileURLWithPath: "\(s.file)").deletingPathExtension().lastPathComponent
+            let category = s.function
             let log = OSLog(subsystem: subsystem, category: category)
-            let logType: OSLogType = logType(name: name, file: file, function: function, line: line, callStack: callStack)
+            let logType: OSLogType = logType(name: name, sourceInfo: s)
             os_log(logType, log: log, "%{public}s%{public}s", prefix, valueRep)
         }
-        postDump(value, name: name, file: file, function: function, line: line, callStack: callStack)
+        postDump(value, name: name, sourceInfo: s)
     }
 }
 
