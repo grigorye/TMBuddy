@@ -2,6 +2,8 @@ import Foundation
 
 class AnalyticsCheckpointActionsHandler: Traceable, AnalyticsCheckpointActions {
     
+    let defaults = sharedDefaults
+    
     func setAnalyticsEnabled() {
         dump((), name: "")
         setAnalytics(enabled: true)
@@ -13,7 +15,7 @@ class AnalyticsCheckpointActionsHandler: Traceable, AnalyticsCheckpointActions {
     }
     
     func setAnalytics(enabled: Bool) {
-        UserDefaults.standard.analyticsEnabled = enabled
-        UserDefaults.standard.synchronize()
+        defaults.analyticsEnabled = enabled
+        defaults.synchronize()
     }
 }

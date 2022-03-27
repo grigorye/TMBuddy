@@ -6,6 +6,7 @@ import Foundation
 class FirebaseAnalyticsEnabler: NSObject {
     
     var userDefaultsObserver: UserDefaultsObserver?
+    let defaults = sharedDefaults
     
     override init() {
         super.init()
@@ -27,7 +28,5 @@ class FirebaseAnalyticsEnabler: NSObject {
 }
 
 extension FirebaseActionTracker: Traceable {}
-
-private let defaults = UserDefaults.standard
 
 #endif
