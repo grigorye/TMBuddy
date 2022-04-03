@@ -16,6 +16,19 @@ targetTemplates:
         product: FirebaseAnalytics
       - package: Firebase
         product: FirebasePerformance
+    settings:
+      GE_SRC_GOOGLE_SERVICE_INFO_PLIST: ./Targets/$(TARGET_NAME)/Resources/GoogleService-Info-$(GE_INFOPLIST_KIND).plist
+      GE_GOOGLE_SERVICE_INFO_PLIST: $(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist    
+    postBuildScripts:
+      - name: 'Embed GoogleService-Info.plist'
+        shell: /bin/bash
+        script: |
+          set -xeuo pipefail
+          cp "$GE_SRC_GOOGLE_SERVICE_INFO_PLIST" "$GE_GOOGLE_SERVICE_INFO_PLIST"
+        inputFiles:
+          - $(GE_SRC_GOOGLE_SERVICE_INFO_PLIST)
+        outputFiles:
+          - $(GE_GOOGLE_SERVICE_INFO_PLIST)
 
 packages:
   Firebase:
