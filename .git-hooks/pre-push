@@ -22,7 +22,7 @@ while read _ commit _ _; do
     fi
     mkdir "$commitDir"
 
-    git archive "$commit" | tar -x -C "$commitDir"
+    git archive-all "$commit" | tar -x -C "$commitDir"
     (cd "$commitDir" && ./Commands/PrepareTests)
 
     testsLog="$tmpdir/$commit-Tests.log"
