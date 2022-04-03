@@ -31,6 +31,8 @@ targetTemplates:
           - $(GE_GOOGLE_SERVICE_INFO_PLIST)
 
 packages:
+  GoogleUtilities:
+    path: ThirdParties/GoogleUtilities
   Firebase:
     url: https://github.com/grigorye/firebase-ios-sdk.git
     branch: feature/Performance-macOS
