@@ -1,0 +1,3 @@
+[submodule "Xcodeproj/GoogleUtilities"]
+	path = Xcodeproj/GoogleUtilities
+	url = https://github.com/grigorye/GoogleUtilities.git
