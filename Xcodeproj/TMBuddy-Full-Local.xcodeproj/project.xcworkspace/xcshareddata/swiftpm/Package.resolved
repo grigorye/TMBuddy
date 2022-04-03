@@ -56,15 +56,6 @@
         }
       },
       {
-        "package": "GoogleUtilities",
-        "repositoryURL": "https://github.com/google/GoogleUtilities.git",
-        "state": {
-          "branch": null,
-          "revision": "b3bb0c5551fb3f80ca939829639ab5b093edd14f",
-          "version": "7.7.0"
-        }
-      },
-      {
         "package": "gRPC",
         "repositoryURL": "https://github.com/firebase/grpc-SwiftPM.git",
         "state": {
@@ -78,8 +69,8 @@
         "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
         "state": {
           "branch": null,
-          "revision": "bc6a19702ac76ac4e488b68148710eb815f9bc56",
-          "version": "1.7.0"
+          "revision": "eca9404a18f53727e4698211aaf2615eb93b962a",
+          "version": "1.7.1"
         }
       },
       {
@@ -98,6 +89,15 @@
           "branch": null,
           "revision": "7ee9ef9f627d85cbe1b8c4f49a3ed26eed216c77",
           "version": "2.30908.0"
+        }
+      },
+      {
+        "package": "OCMock",
+        "repositoryURL": "https://github.com/firebase/ocmock.git",
+        "state": {
+          "branch": null,
+          "revision": "7291762d3551c5c7e31c49cce40a0e391a52e889",
+          "version": null
         }
       },
       {
