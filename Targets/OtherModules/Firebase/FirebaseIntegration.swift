@@ -8,14 +8,14 @@ func activateFirebase() {
     _ = firebaseAnalyticsEnabler
 }
 
-let customGULLogImp: GULLogImp = { (level: GoogleLoggerLevel, version: String, service: String, messageCode: String, message: String) in
-    dump((service: service, message: message), name: "GULLog")
-}
+let configureFirebaseAppOnce: Void = configureFirebase()
 
-let configureFirebaseAppOnce: Void = {
-    GULLoggerConfig.logImp = customGULLogImp
+func configureFirebase() {
+    injectCustomGoogleLogger()
     FirebaseApp.configure()
-}()
+    dump(Performance.sharedInstance().isDataCollectionEnabled, name: "dataCollectionEnabled")
+    dump(Performance.sharedInstance().isInstrumentationEnabled, name: "instrumentationEnabled")
+}
 
 let firebaseAnalyticsEnabler = FirebaseAnalyticsEnabler()
 
