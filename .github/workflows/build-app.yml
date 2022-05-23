@@ -20,7 +20,7 @@ defaults:
     shell: bash --noprofile --norc -x -euo pipefail {0}
 
 jobs:
-  build:
+  build-app:
     name: ${{ matrix.run-config.scheme }}-${{ matrix.build-config.name }}
     runs-on: macos-12
     strategy:
