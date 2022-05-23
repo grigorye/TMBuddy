@@ -29,7 +29,7 @@ jobs:
       - name: Dump Environment
         run: |
           env | sort
-          git log
+          git --no-pager log -10 --pretty=format:"%h %ad %an %s"
 
       - name: Setup Environment
         run: |

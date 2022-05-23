@@ -61,7 +61,7 @@ jobs:
         if: ${{ matrix.build-config.if }}
         run: |
           env | sort
-          git log
+          git --no-pager log -10 --pretty=format:"%h %ad %an %s"
 
       - name: Setup Environment
         if: ${{ matrix.build-config.if }}
