@@ -111,25 +111,41 @@ jobs:
             -scheme 'TMBuddyAll'
 
       - name: Tests
+        continue-on-error: true
         run: |
+          testExitCode=0
           xcodebuild \
             test \
             -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
-            -scheme 'TMBuddyTests'
+            -scheme 'TMBuddyTests' \
+            || testExitCode=$?
+          echo "$testExitCode" > "$XCRESULTS_DIRECTORY"/TMBuddyTests.exit-code
 
-      - name: Snapshots
+      - name: Exit on Tests Malfunction
         run: |
+          testExitCode=$(cat "$XCRESULTS_DIRECTORY"/TMBuddyTests.exit-code)
+          [ "$testExitCode" -eq 0 ] || [ "$testExitCode" -eq 65 ] || exit "$testExitCode"
+        
+      - name: Snapshots
+        continue-on-error: true
+        run: |
+          SNAPSHOTS_XCRESULT="$XCRESULTS_DIRECTORY"/TMBuddySnapshots.xcresult
+          echo "SNAPSHOTS_XCRESULT=$SNAPSHOTS_XCRESULT" >> $GITHUB_ENV
+
+          testExitCode=0
           xcodebuild test \
             -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddySnapshots' \
-            -resultBundlePath "$XCRESULTS_DIRECTORY"/TMBuddySnapshots.xcresult
+            -resultBundlePath "$SNAPSHOTS_XCRESULT" \
+            || testExitCode=$?
+          echo "$testExitCode" > "$XCRESULTS_DIRECTORY"/TMBuddySnapshots.exit-code
+          exit "$testExitCode"
 
-      - name: Save .xcresult for Snasphots
-        if: always()
+      - name: Save .xcresult for Snapshots
         uses: actions/upload-artifact@v2
         with:
           name: snapshots-xcresult
@@ -137,7 +153,6 @@ jobs:
             ${{ env.XCRESULTS_DIRECTORY }}/*Snapshots.xcresult
 
       - name: Regenerate Snapshots
-        if: always()
         run: |
           stamp=$(mktemp /tmp/RegenerateSnapshots.XXXXXX)
           env \
@@ -151,10 +166,14 @@ jobs:
             || true
           find . -name '*.png' -newer "$stamp" -print0 | xargs -0 tar czf "$REGENERATED_SNAPSHOTS_ARCHIVE"
       
-      - name: Save Regenerated Snasphots
-        if: always()
+      - name: Save Regenerated Snapshots
         uses: actions/upload-artifact@v2
         with:
           name: regenerated-snapshots
           path: |
             ${{ env.REGENERATED_SNAPSHOTS_ARCHIVE }}
+
+      - name: Report Snapshots Failure
+        run: |
+          testExitCode=$(cat "$XCRESULTS_DIRECTORY"/TMBuddySnapshots.exit-code)
+          exit "$testExitCode"
