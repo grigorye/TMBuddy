@@ -14,7 +14,9 @@ xcodebuild() {
 xcpretty() {
     if [ "${XCPRETTY_ENABLED:-}" != "NO" ] && which xcpretty > /dev/null; then
         command xcpretty
+    elif [ "${XCODEBUILD_GREP_VERBOSE:-}" != "NO" ]; then
+        grep --line-buffered -v '^ '
     else
-        grep -v '^ '
+        grep --line-buffered '^'
     fi
 }
