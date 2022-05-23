@@ -8,7 +8,7 @@ stderr-filter() {
 }
 
 xcodebuild() {
-    (command xcodebuild "$@" 2>&1 >&3 3>&- | stderr-filter >&2 3>&-) 3>&1        
+    (command xcodebuild "$@" 2>&1 >&3 3>&- | stderr-filter >&2 3>&-) 3>&1
 }
 
 xcpretty() {
