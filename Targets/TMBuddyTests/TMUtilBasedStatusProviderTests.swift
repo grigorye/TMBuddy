@@ -1,4 +1,5 @@
 import XCTest
+import Foundation
 
 class TMUtilBasedStatusProviderTests: XCTestCase {
     
@@ -8,7 +9,11 @@ class TMUtilBasedStatusProviderTests: XCTestCase {
         let url = excludedVolumeURL
         try XCTSkipUnless(url.checkResourceIsReachable())
         let status = try provider.statusForItem(url)
-        XCTAssertEqual(status, .parentExcluded)
+        if NSUserName().contains("-runner") {
+            XCTAssertEqual(status, .unknown)
+        } else {
+            XCTAssertEqual(status, .parentExcluded)
+        }
     }
     
     func testTmpIsExcluded() throws {
