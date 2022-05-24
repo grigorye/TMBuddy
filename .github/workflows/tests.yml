@@ -145,6 +145,11 @@ jobs:
           echo "$testExitCode" > "$XCRESULTS_DIRECTORY"/TMBuddySnapshots.exit-code
           exit "$testExitCode"
 
+      - name: Exit on Snapshots Malfunction
+        run: |
+          testExitCode=$(cat "$XCRESULTS_DIRECTORY"/TMBuddySnapshots.exit-code)
+          [ "$testExitCode" -eq 0 ] || [ "$testExitCode" -eq 65 ] || exit "$testExitCode"
+
       - name: Save .xcresult for Snapshots
         uses: actions/upload-artifact@v2
         with:
