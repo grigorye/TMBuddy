@@ -182,6 +182,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: xcarchive-${{ matrix.build-config.name }}
+          if-no-files-found: error
           path: |
             ${{ env.ARCHIVE_PATH }}.tar
 
@@ -218,6 +219,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: dmg
+          if-no-files-found: error
           path: |
             ${{ env.DMG_PATH }}
 
