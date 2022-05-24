@@ -22,7 +22,7 @@ defaults:
 jobs:
   build:
     name: ${{ matrix.run-config.scheme }}-${{ matrix.build-config.name }}
-    runs-on: macos-11
+    runs-on: macos-12
     strategy:
       matrix:
         run-config:
@@ -75,7 +75,7 @@ jobs:
       - uses: maxim-lobanov/setup-xcode@v1.4.1
         if: ${{ matrix.build-config.if }}
         with:
-          xcode-version: '13.2.1'
+          xcode-version: '13.4'
 
       - name: Install App Store Connect API Key
         if: ${{ matrix.build-config.if }}
