@@ -161,6 +161,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: snapshots-xcresult
+          if-no-files-found: error
           path: |
             ${{ env.SNAPSHOTS_XCRESULT }}.tar
 
@@ -186,6 +187,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: regenerated-snapshots
+          if-no-files-found: error
           path: |
             ${{ env.REGENERATED_SNAPSHOTS_ARCHIVE }}
 
