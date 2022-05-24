@@ -103,16 +103,19 @@ jobs:
 
       - name: Build All
         run: |
+          . ./Commands/Xcodebuild-env.sh
           xcodebuild \
             build \
             -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
-            -scheme 'TMBuddyAll'
+            -scheme 'TMBuddyAll' \
+            | xcpretty
 
       - name: Tests
         continue-on-error: true
         run: |
+          . ./Commands/Xcodebuild-env.sh
           testExitCode=0
           xcodebuild \
             test \
@@ -120,7 +123,8 @@ jobs:
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddyTests' \
-            || testExitCode=$?
+            | xcpretty \
+            || testExitCode=${PIPESTATUS[0]}
           echo "$testExitCode" > "$XCRESULTS_DIRECTORY"/TMBuddyTests.exit-code
 
       - name: Exit on Tests Malfunction
@@ -134,6 +138,7 @@ jobs:
           SNAPSHOTS_XCRESULT="$XCRESULTS_DIRECTORY"/TMBuddySnapshots.xcresult
           echo "SNAPSHOTS_XCRESULT=$SNAPSHOTS_XCRESULT" >> $GITHUB_ENV
 
+          . ./Commands/Xcodebuild-env.sh
           testExitCode=0
           xcodebuild test \
             -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
@@ -141,7 +146,8 @@ jobs:
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddySnapshots' \
             -resultBundlePath "$SNAPSHOTS_XCRESULT" \
-            || testExitCode=$?
+            | xcpretty \
+            || testExitCode=${PIPESTATUS[0]}
           echo "$testExitCode" > "$XCRESULTS_DIRECTORY"/TMBuddySnapshots.exit-code
           ./GHAShortcuts/gh-tar "$(dirname "$SNAPSHOTS_XCRESULT")" "$SNAPSHOTS_XCRESULT"
           exit "$testExitCode"
@@ -160,6 +166,7 @@ jobs:
 
       - name: Regenerate Snapshots
         run: |
+          . ./Commands/Xcodebuild-env.sh
           stamp=$(mktemp /tmp/RegenerateSnapshots.XXXXXX)
           testExitCode=0
           env \
@@ -170,7 +177,8 @@ jobs:
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddySnapshots' \
-            || testExitCode=$?
+            | xcpretty \
+            || testExitCode=${PIPESTATUS[0]}
           [ "$testExitCode" -eq 65 ] || exit "$testExitCode"
           find . -name '*.png' -newer "$stamp" -print0 | xargs -0 tar czf "$REGENERATED_SNAPSHOTS_ARCHIVE"
       
