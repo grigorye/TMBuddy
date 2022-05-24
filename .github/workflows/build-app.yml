@@ -161,6 +161,7 @@ jobs:
         if: ${{ matrix.build-config.if }}
         run: |
           # build
+          . ./Commands/Xcodebuild-env.sh
           xcodebuild archive \
             -project Xcodeproj/*-${{ matrix.build-config.projectKind }}.xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
@@ -173,7 +174,8 @@ jobs:
             -authenticationKeyPath "$AUTHENTICATION_KEY_PATH" \
             -authenticationKeyID "$APP_STORE_AUTHENTICATION_KEY_ID" \
             -authenticationKeyIssuerID "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID" \
-            BUNDLE_VERSION="$BUNDLE_VERSION"
+            BUNDLE_VERSION="$BUNDLE_VERSION" \
+            | xcpretty
 
       - name: Save .xcarchive
         if: ${{ matrix.build-config.if }}
