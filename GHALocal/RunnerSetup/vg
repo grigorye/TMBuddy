@@ -1,0 +1,34 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+userName="$1"
+shift
+password="$1"
+shift
+
+vg() {
+    password="$1"
+    shift
+
+    tmpfile=$(mktemp)
+
+    for chunk in $(echo "$password" | fold -w8); do
+        x11vnc -storepasswd "$chunk" "$tmpfile" 2> /dev/null
+        cat "$tmpfile"
+    done
+}
+
+encryptedPassword=$(vg "$password" | xxd -p)
+
+cat << END
+ConnMethod=tcp
+ConnTime=2022-05-20T01:28:58.252Z
+Host=localhost:5901
+Password=$encryptedPassword
+RelativePtr=0
+SendMediaKeys=0
+UserName=$userName
+Uuid=$(uuidgen)
+END

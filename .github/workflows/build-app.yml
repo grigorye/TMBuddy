@@ -17,7 +17,7 @@ on:
 
 defaults:
   run:
-    shell: bash --noprofile --norc -x -euo pipefail {0}
+    shell: /tmp/gh-sh {0}
 
 jobs:
   build-app:
@@ -44,9 +44,23 @@ jobs:
       APP_STORE_AUTHENTICATION_KEY_BASE64: ${{ secrets.APP_STORE_AUTHENTICATION_KEY_BASE64 }}
       APP_STORE_AUTHENTICATION_KEY_ID: ${{ secrets.APP_STORE_AUTHENTICATION_KEY_ID }}
       APP_STORE_AUTHENTICATION_KEY_ISSUER_ID: ${{ secrets.APP_STORE_AUTHENTICATION_KEY_ISSUER_ID }}
+      KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+      KEYCHAIN_NAME: app-signing.keychain-db
 
     steps:
+      - name: ACT preamble
+        shell: bash --noprofile --norc -x -euo pipefail {0}
+        run: |
+          if [ z"${ACT:-}" == z"true" ]; then
+            ./GHALocal/bin/gh-runner-host-preamble
+          else
+            echo '#!/bin/bash --noprofile --norc -x -euo pipefail' > /tmp/gh-sh
+            echo 'source "$@"' >> /tmp/gh-sh
+            chmod +x /tmp/gh-sh
+          fi
+
       - name: Dump GitHub Action Properties
+        if: ${{ !env.ACT }}
         run: |
           echo "github.event_name: ${{ github.event_name }}"
           echo "github.event.inputs.build-config: ${{ github.event.inputs.build-config }}"
@@ -67,12 +81,12 @@ jobs:
         if: ${{ matrix.build-config.if }}
         run: |
           echo 'PRODUCT_NAME=${{ matrix.run-config.scheme }}' >> $GITHUB_ENV
-          echo 'DERIVED_DATA_PATH=${{ runner.temp }}/build.derivedData' >> $GITHUB_ENV
-          echo 'EXPORT_PATH=${{ runner.temp }}/build.export' >> $GITHUB_ENV
-          echo 'AUTHENTICATION_KEY_PATH=${{ runner.temp }}/authentication.p8' >> $GITHUB_ENV
+          echo "DERIVED_DATA_PATH=$RUNNER_TEMP/build.derivedData" >> $GITHUB_ENV
+          echo "EXPORT_PATH=$RUNNER_TEMP/build.export" >> $GITHUB_ENV
+          echo "AUTHENTICATION_KEY_PATH=$RUNNER_TEMP/authentication.p8" >> $GITHUB_ENV
 
       - uses: maxim-lobanov/setup-xcode@v1.4.1
-        if: ${{ matrix.build-config.if }}
+        if: ${{ matrix.build-config.if && !env.ACT }}
         with:
           xcode-version: '13.4'
 
@@ -98,7 +112,7 @@ jobs:
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
           # create variables
-          KEYCHAIN_PATH="$RUNNER_TEMP"/app-signing.keychain-db
+          KEYCHAIN_PATH="$RUNNER_TEMP"/"$KEYCHAIN_NAME"
 
           # create temporary keychain
           security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
@@ -148,13 +162,18 @@ jobs:
             ${{ runner.os }}-spm-
 
       - name: XcodeGen
-        if: ${{ matrix.build-config.if }}
+        if: ${{ matrix.build-config.if && !env.ACT }}
         uses: grigorye/xcodegen-action@feature/projectRoot
         with:
           spec: XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml
           project: Xcodeproj
           project-root: .
           version: '2.26.0'
+
+      - name: XcodeGen
+        if: ${{ env.ACT }}
+        run: |
+          /usr/local/bin/mint run xcodegen -s XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml -r . -p Xcodeproj
 
       - name: Build .xcarchive
         if: ${{ matrix.build-config.if }}
@@ -176,6 +195,12 @@ jobs:
             BUNDLE_VERSION="$BUNDLE_VERSION" \
             | xcpretty
           ./GHAShortcuts/gh-tar "$(dirname "$ARCHIVE_PATH")" "$ARCHIVE_PATH"
+
+      - name: Pull .xcarchive
+        if: ${{ matrix.build-config.if && env.ACT }}
+        shell: bash --noprofile --norc -x -euo pipefail {0}
+        run: |
+          scp -pr "$REMOTE_RUNNER_USER"@host.docker.internal:"$ARCHIVE_PATH".tar "$ARCHIVE_PATH".tar
 
       - name: Save .xcarchive
         if: ${{ matrix.build-config.if }}
@@ -214,6 +239,12 @@ jobs:
               -format UDZO \
               "$DMG_PATH"
 
+      - name: Pull .dmg
+        if: ${{ matrix.build-config.if && matrix.build-config.name == 'DeveloperID' && env.ACT }}
+        shell: bash --noprofile --norc -x -euo pipefail {0}
+        run: |
+          scp -pr "$REMOTE_RUNNER_USER"@host.docker.internal:"$DMG_PATH" "$DMG_PATH"
+          
       - name: Save .dmg
         if: ${{ matrix.build-config.if && matrix.build-config.name == 'DeveloperID' }}
         uses: actions/upload-artifact@v2
@@ -224,7 +255,7 @@ jobs:
             ${{ env.DMG_PATH }}
 
       - name: Upload to TestFlight
-        if: ${{ matrix.build-config.if && matrix.build-config.name == 'AppStore' }}
+        if: ${{ matrix.build-config.if && matrix.build-config.name == 'AppStore' && !env.ACT }}
         run: |
           # create variables
           API_KEY_NAME="$APP_STORE_AUTHENTICATION_KEY_ID"
@@ -245,3 +276,9 @@ jobs:
             --file "$EXPORT_PATH"/*${{ matrix.run-config.packageExtension }} \
             --apiKey "$API_KEY_NAME" \
             --apiIssuer "$APP_STORE_AUTHENTICATION_KEY_ISSUER_ID"
+
+      - name: ACT epilogue
+        if: ${{ env.ACT && always() }}
+        shell: bash --noprofile --norc -x -euo pipefail {0}
+        run: |
+          ./GHALocal/bin/gh-runner-host-epilogue

@@ -1,0 +1,25 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+user="$1"; shift
+secretNameForPassword="$1"; shift
+
+bn=$(basename "$0")
+wd=$(dirname "$0")
+tmpdir=$(mktemp -d /tmp/"$bn".XXXXXX)
+
+# Retrieve the password (typically shared between the runners) from the keychain.
+password=$(security find-generic-password -s "$secretNameForPassword" -w)
+
+# Generate .vnc to be open by VNC viewer.
+vnc="$tmpdir/$user.vnc"
+"$wd"/vg "$user" "$password" > "$vnc"
+
+# Allow VNC connection for the user.
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart \
+    -configure -access -on -privs -all -users "$user"
+
+# Trigger interactive session by opening VNC connection for the user.
+open -ja 'VNC Viewer' "$vnc"

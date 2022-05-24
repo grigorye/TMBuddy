@@ -1,0 +1,6 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+sudo sysadminctl -deleteUser "$@"

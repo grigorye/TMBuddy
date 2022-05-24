@@ -1,0 +1,75 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+# A bit of diagnostics
+env | sort
+
+# "Install" gh-remote-sh
+cp -p ./GHALocal/bin/gh-remote-sh /tmp/gh-sh
+
+# Prepare ssh client
+apt-get update
+apt-get install -y sshpass rsync
+ssh-keyscan -H host.docker.internal >> ~/.ssh/known_hosts
+ssh-keygen -t rsa -b 4096 -C "" -N "" -f ~/.ssh/id_rsa
+
+# Let the first runner user be reused as the coordinator.
+REMOTE_RUNNER_COORDINATOR_USER="$REMOTE_RUNNER_USER_PREFIX-1"
+
+# Enable password-less ssh into the coordinator.
+sshpass -v -p "$SSHPASS" ssh-copy-id -i ~/.ssh/id_rsa.pub "$REMOTE_RUNNER_COORDINATOR_USER"@host.docker.internal
+
+# Obtain a free runner using the coordinator runner.
+
+script=$(mktemp /tmp/gh-runner-host-preamble.XXXXXX)
+cat << END > "$script"
+for i in $(seq -s ' ' 1 "$REMOTE_RUNNER_COUNT"); do
+    if ln ~/.CFUserTextEncoding /tmp/"$REMOTE_RUNNER_USER_PREFIX-\$i.lock"; then
+        echo "$REMOTE_RUNNER_USER_PREFIX-\$i"
+        exit 0
+    fi
+done
+exit 1
+END
+
+cat "$script"
+
+REMOTE_RUNNER_USER=$(ssh "$REMOTE_RUNNER_COORDINATOR_USER"@host.docker.internal bash --noprofile --norc -x -euo pipefail < "$script")
+echo "REMOTE_RUNNER_USER=$REMOTE_RUNNER_USER" >> "$GITHUB_ENV"
+export REMOTE_RUNNER_USER
+
+# Enable password-less ssh into the runner.
+sshpass -v -p "$SSHPASS" ssh-copy-id -i ~/.ssh/id_rsa.pub "$REMOTE_RUNNER_USER"@host.docker.internal
+
+# Override RUNNER_TEMP, in favor of the runner.
+RUNNER_TEMP="${FIXED_RUNNER_TEMP:-$(ssh "$REMOTE_RUNNER_USER"@host.docker.internal mktemp -d /tmp/"$GITHUB_JOB".XXXXXX)}"
+[ z"${FIXED_RUNNER_TEMP:-}" == "z" ] || ssh "$REMOTE_RUNNER_USER"@host.docker.internal mkdir -p "$FIXED_RUNNER_TEMP"
+echo "RUNNER_TEMP=$RUNNER_TEMP" >> "$GITHUB_ENV"
+export RUNNER_TEMP
+mkdir -p "$RUNNER_TEMP" # Create the same dir on the host, e.g. to be able to copy artifacts.
+
+# Override KEYCHAIN_PATH set in global env, as it already captured the "original" value of RUNNER_TEMP.
+KEYCHAIN_PATH="$RUNNER_TEMP"/"$KEYCHAIN_NAME"
+echo "KEYCHAIN_PATH=$KEYCHAIN_PATH" >> "$GITHUB_ENV"
+export KEYCHAIN_PATH
+
+# Add REMOTE_RUNNER_DIR to GITHUB_ENV, so that it would be available in every gh-sh invocation later.
+REMOTE_RUNNER_DIR="${FIXED_REMOTE_RUNNER_DIR:-$(ssh "$REMOTE_RUNNER_USER"@host.docker.internal mktemp -d /tmp/remote-runner.XXXXXX)}"
+echo "REMOTE_RUNNER_DIR=$REMOTE_RUNNER_DIR" >> "$GITHUB_ENV"
+export REMOTE_RUNNER_DIR
+
+# Copy working tree to runner.
+rsync -urtl --delete ./ "$REMOTE_RUNNER_USER"@host.docker.internal:"$REMOTE_RUNNER_DIR"/
+
+# Help a bit with modules in the copied working tree.
+./GHALocal/bin/gh-remote-sh <<END
+git submodule update --init --force
+END
+
+# When RUNNER_TEMP is reused, clean up the old side products.
+[ z"${FIXED_RUNNER_TEMP:-}" == "z" ] || ./GHALocal/bin/gh-remote-sh <<END
+rm -f "$KEYCHAIN_PATH"
+rm -rf "$RUNNER_TEMP"/*.xcresult
+END

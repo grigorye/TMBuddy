@@ -1,0 +1,6 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+sudo rm -r /tmp/TMBuddy-*.* /tmp/remote-runner.* /tmp/runner /tmp/Tests.* /tmp/RegenerateSnapshots.*
