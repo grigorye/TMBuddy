@@ -143,6 +143,7 @@ jobs:
             -resultBundlePath "$SNAPSHOTS_XCRESULT" \
             || testExitCode=$?
           echo "$testExitCode" > "$XCRESULTS_DIRECTORY"/TMBuddySnapshots.exit-code
+          ./GHAShortcuts/gh-tar "$(dirname "$SNAPSHOTS_XCRESULT")" "$SNAPSHOTS_XCRESULT"
           exit "$testExitCode"
 
       - name: Exit on Snapshots Malfunction
@@ -155,7 +156,7 @@ jobs:
         with:
           name: snapshots-xcresult
           path: |
-            ${{ env.XCRESULTS_DIRECTORY }}/*Snapshots.xcresult
+            ${{ env.SNAPSHOTS_XCRESULT }}.tar
 
       - name: Regenerate Snapshots
         run: |

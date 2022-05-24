@@ -1,0 +1,12 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+destination="$1"; shift
+source="$1"; shift
+
+sourceBasename=$(basename "$source")
+sourceDirname=$(dirname "$source")
+
+tar -cf "$destination/$sourceBasename".tar -C "$sourceDirname" "$sourceBasename"
