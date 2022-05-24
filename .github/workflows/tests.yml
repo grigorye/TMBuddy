@@ -160,6 +160,7 @@ jobs:
       - name: Regenerate Snapshots
         run: |
           stamp=$(mktemp /tmp/RegenerateSnapshots.XXXXXX)
+          testExitCode=0
           env \
             TEST_RUNNER_SNAPSHOT_RECORDING=YES \
             \
@@ -168,7 +169,8 @@ jobs:
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
             -scheme 'TMBuddySnapshots' \
-            || true
+            || testExitCode=$?
+          [ "$testExitCode" -eq 65 ] || exit "$testExitCode"
           find . -name '*.png' -newer "$stamp" -print0 | xargs -0 tar czf "$REGENERATED_SNAPSHOTS_ARCHIVE"
       
       - name: Save Regenerated Snapshots
