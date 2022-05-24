@@ -1,0 +1,12 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+# Let the first runner user be reused as the coordinator.
+REMOTE_RUNNER_COORDINATOR_USER="$REMOTE_RUNNER_USER_PREFIX-1"
+
+# Release the runner
+ssh "$REMOTE_RUNNER_COORDINATOR_USER"@host.docker.internal sh << END
+rm "/tmp/$REMOTE_RUNNER_USER.lock"
+END

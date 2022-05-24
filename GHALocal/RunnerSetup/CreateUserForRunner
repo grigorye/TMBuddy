@@ -1,0 +1,23 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+user="$1"; shift
+fullName="$1"; shift
+secretNameForPassword="$1"; shift
+
+# Retrieve the password (typically shared between the runners) from the keychain.
+password=$(security find-generic-password -s "$secretNameForPassword" -w)
+
+# Create the user.
+sudo sysadminctl \
+    -addUser "$user" \
+    -fullName "$fullName" \
+    -password "$password"
+
+# Hide the user from the login window.
+sudo dscl . create /Users/"$user" IsHidden 1
+
+# Allow ssh for the user.
+sudo dseditgroup -o edit -a "$user" -t user com.apple.access_ssh

@@ -1,0 +1,15 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+runnerCount="$1"; shift
+runnerNamePrefix="$1"; shift
+secretNameForPassword="$1"; shift
+
+wd="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >& /dev/null && pwd)"
+
+for i in $(seq 1 "$runnerCount"); do
+    userName="$runnerNamePrefix$i"
+    "$wd/ActivateRunner" "$userName" "$secretNameForPassword"
+done

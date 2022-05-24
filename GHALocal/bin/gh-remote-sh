@@ -1,0 +1,42 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+preamble=$(mktemp /tmp/gh-sh-preamble.XXXXXX)
+
+exportedEnvironment() {
+    env |
+        grep -e 'RUNNER\|GITHUB\|KEYCHAIN\|APPLE\|CERTIFICATE\|PASSWORD\|PROJECT\|DERIVED\|XCRESULTS\|SNAPSHOTS\|STAMP\|AUTHENTICATION\|PRODUCT\|ARTIFACT\|ARCHIVE\|BUNDLE\|EXPORT\|DMG\|XCODEBUILD' |
+        grep -ve '^GITHUB_ENV=' |
+        grep -ve '^USER=' |
+        sed 's/^/export /'
+}
+
+cat << END >> "$preamble"
+export GITHUB_ENV="$RUNNER_TEMP"/.github-env
+export USER="$REMOTE_RUNNER_USER"
+
+set +x
+$(exportedEnvironment)
+set -x
+
+cd "$REMOTE_RUNNER_DIR"
+
+. "$PWD"/GHALocal/bin/gh-runner-preamble.sh
+END
+
+# Push GITHUB_ENV to the runner.
+scp -q "$GITHUB_ENV" "$REMOTE_RUNNER_USER"@host.docker.internal:"$RUNNER_TEMP"/.github-env
+
+exitCode=0
+
+# Run the actual commands, prefixed with the preamble (assuming script passed either as a file in arguments or via stdin).
+(cat "$preamble" && cat "$@") |
+    ssh "$REMOTE_RUNNER_USER"@host.docker.internal bash --noprofile --norc -x -euo pipefail \
+    || exitCode=$?
+
+# Pull updated GITHUB_ENV from the runner.
+scp -q "$REMOTE_RUNNER_USER"@host.docker.internal:"$RUNNER_TEMP"/.github-env "$GITHUB_ENV"
+
+exit $exitCode
