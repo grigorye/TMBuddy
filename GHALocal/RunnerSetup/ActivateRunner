@@ -22,4 +22,17 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
     -configure -access -on -privs -all -users "$user"
 
 # Trigger interactive session by opening VNC connection for the user.
-open -ja 'VNC Viewer' "$vnc"
+~/Applications/'VNC Viewer.app'/Contents/MacOS/vncviewer -config "$vnc" &
+vncViewerPid=$!
+
+# Wait until the session is registered.
+while true; do
+    sleep 1
+    if sudo launchctl print gui/"$(id -u "$user")"
+    then
+        break
+    fi
+done
+
+# Kill the viewer as it's no longer needed.
+kill $vncViewerPid
