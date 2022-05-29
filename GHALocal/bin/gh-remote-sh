@@ -37,8 +37,8 @@ exitCode=0
 
 # Run the actual commands, prefixed with the preamble (assuming script passed either as a file in arguments or via stdin).
 (cat "$preamble" && cat "$@") |
-    ssh "$REMOTE_RUNNER_USER"@host.docker.internal bash --noprofile --norc -x -euo pipefail \
-    || exitCode=$?
+    ssh "$REMOTE_RUNNER_USER"@host.docker.internal bash --noprofile --norc -x -euo pipefail ||
+    exitCode=$?
 
 # Pull updated GITHUB_ENV from the runner.
 scp -q "$REMOTE_RUNNER_USER"@host.docker.internal:"$RUNNER_TEMP"/.github-env "$GITHUB_ENV"
