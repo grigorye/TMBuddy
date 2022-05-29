@@ -25,7 +25,7 @@ encryptedPassword=$(vg "$password" | xxd -p)
 cat << END
 ConnMethod=tcp
 ConnTime=2022-05-20T01:28:58.252Z
-Host=localhost:5901
+Host=localhost:5900
 Password=$encryptedPassword
 RelativePtr=0
 SendMediaKeys=0

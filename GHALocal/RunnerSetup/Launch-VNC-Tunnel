@@ -1,6 +1,0 @@
-#! /bin/bash
-
-set -x
-set -euo pipefail
-
-ssh -NL 5901:localhost:5900 tm-buddy-runner-1@localhost
