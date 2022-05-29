@@ -63,8 +63,10 @@ export REMOTE_RUNNER_DIR
 # Copy working tree to runner.
 rsync -urtl --delete ./ "$REMOTE_RUNNER_USER"@host.docker.internal:"$REMOTE_RUNNER_DIR"/
 
-# Help a bit with modules in the copied working tree.
-./GHALocal/bin/gh-remote-sh <<END
+# Help a bit with modules in the copied working tree, but only if we're indeed
+# cloning, not just copying (as the latter does not work well with Git
+# worktrees).
+true || ./GHALocal/bin/gh-remote-sh <<END
 git submodule update --init --force
 END
 
