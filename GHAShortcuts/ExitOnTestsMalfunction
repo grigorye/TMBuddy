@@ -1,0 +1,31 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+xcresult="$1" # e.g. /tmp/Tests.seyMey/TMBuddyTests.xcresult
+shift
+
+testExitCode=$(cat "${xcresult/%.xcresult/.exit-code}")
+
+[ "$testExitCode" -eq 0 ] || [ "$testExitCode" -eq 65 ] || exit "$testExitCode"
+
+detectRunnerIssue() {
+    jq -r '.issues.errorSummaries._values[].message._value|startswith("The test runner encountered an error")'
+}
+
+runnerIssue() {
+    jq -r '.issues.errorSummaries._values[].message._value'
+}
+
+xcresultJson() {
+    xcrun xcresulttool get --format json --path "$xcresult"
+}
+
+if [ "null" != "$(xcresultJson | jq -r '.issues.errorSummaries')" ]; then
+    r="$(xcresultJson | detectRunnerIssue)"
+    if [ z"true" == z"${r:-xxx}" ]; then
+        xcresultJson | runnerIssue
+        exit 1
+    fi
+fi
