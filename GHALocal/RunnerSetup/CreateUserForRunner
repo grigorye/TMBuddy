@@ -7,8 +7,10 @@ user="$1"; shift
 fullName="$1"; shift
 secretNameForPassword="$1"; shift
 
+wd=$(dirname "$0")
+
 # Retrieve the password (typically shared between the runners) from the keychain.
-password=$(security find-generic-password -s "$secretNameForPassword" -w)
+password=$("$wd/SharedRunnerPassword" "$secretNameForPassword")
 
 # Create the user.
 sudo sysadminctl \

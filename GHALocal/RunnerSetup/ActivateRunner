@@ -11,7 +11,7 @@ wd=$(dirname "$0")
 tmpdir=$(mktemp -d /tmp/"$bn".XXXXXX)
 
 # Retrieve the password (typically shared between the runners) from the keychain.
-password=$(security find-generic-password -s "$secretNameForPassword" -w)
+password=$("$wd/SharedRunnerPassword" "$secretNameForPassword")
 
 # Generate .vnc to be open by VNC viewer.
 vnc="$tmpdir/$user.vnc"
