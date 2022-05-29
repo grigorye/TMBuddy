@@ -8,7 +8,7 @@ runnerNamePrefix="$1"; shift
 
 wd="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >& /dev/null && pwd)"
 
-for i in $(seq 1 "$runnerCount"); do
+for i in $(seq "$runnerCount"); do
     userName="$runnerNamePrefix$i"
     "$wd/DeleteUserForRunner" "$userName"
 done
