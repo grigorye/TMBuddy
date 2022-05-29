@@ -29,6 +29,9 @@ Host=localhost:5900
 Password=$encryptedPassword
 RelativePtr=0
 SendMediaKeys=0
+SendKeyEvents=0
+SendPointerEvents=0
+SendSpecialKeys=0
 UserName=$userName
 Uuid=$(uuidgen)
 END
