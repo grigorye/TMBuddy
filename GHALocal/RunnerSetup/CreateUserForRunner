@@ -3,11 +3,15 @@
 set -x
 set -euo pipefail
 
-user="$1"; shift
-fullName="$1"; shift
-secretNameForPassword="$1"; shift
 
 wd=$(dirname "$0")
+
+user="$1" # e.g. tm-buddy-runner-1
+shift
+fullName="$1" # e.g. TM Buddy Runner
+shift
+secretNameForPassword="$1" # e.g. TM-Buddy-Runner
+shift
 
 # Retrieve the password (typically shared between the runners) from the keychain.
 password=$("$wd/SharedRunnerPassword" "$secretNameForPassword")
