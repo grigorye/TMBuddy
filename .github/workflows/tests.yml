@@ -161,7 +161,7 @@ jobs:
         shell: bash --noprofile --norc -x -euo pipefail {0}
         run: |
           scp -pr "$REMOTE_RUNNER_USER"@host.docker.internal:"$SNAPSHOTS_XCRESULT".tar "$SNAPSHOTS_XCRESULT".tar
-          
+
       - name: Save .xcresult for Snapshots
         uses: actions/upload-artifact@v2
         with:
@@ -187,7 +187,7 @@ jobs:
             || testExitCode=${PIPESTATUS[0]}
           [ "$testExitCode" -eq 65 ] || exit "$testExitCode"
           find . -name '*.png' -newer "$stamp" -print0 | xargs -0 tar czf "$REGENERATED_SNAPSHOTS_ARCHIVE"
-      
+
       - name: Pull Regenerated Snapshots
         if: ${{ env.ACT }}
         shell: bash --noprofile --norc -x -euo pipefail {0}
