@@ -6,11 +6,15 @@ set -euo pipefail
 preamble=$(mktemp /tmp/gh-sh-preamble.XXXXXX)
 
 exportedEnvironment() {
-    env |
-        grep -e 'RUNNER\|GITHUB\|KEYCHAIN\|APPLE\|CERTIFICATE\|PASSWORD\|PROJECT\|DERIVED\|XCRESULTS\|SNAPSHOTS\|STAMP\|AUTHENTICATION\|PRODUCT\|ARTIFACT\|ARCHIVE\|BUNDLE\|EXPORT\|DMG\|XCODEBUILD' |
-        grep -ve '^GITHUB_ENV=' |
-        grep -ve '^USER=' |
-        sed 's/^/export /'
+    {
+        env |
+            grep -ve '^GITHUB_ENV=' |
+            grep -ve '^USER=' |
+            grep -ve '^HOME=' |
+            while read -r i; do
+                printf '%q ' "$i" | sed 's/^/export /'
+            done
+    } 2> /dev/null
 }
 
 cat << END >> "$preamble"
