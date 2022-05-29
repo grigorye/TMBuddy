@@ -25,7 +25,7 @@ sshpass -v -p "$SSHPASS" ssh-copy-id -i ~/.ssh/id_rsa.pub "$REMOTE_RUNNER_COORDI
 
 script=$(mktemp /tmp/gh-runner-host-preamble.XXXXXX)
 cat << END > "$script"
-for i in $(seq -s ' ' 1 "$REMOTE_RUNNER_COUNT"); do
+for i in $(seq -s ' ' "$REMOTE_RUNNER_COUNT"); do
     if ln ~/.CFUserTextEncoding /tmp/"$REMOTE_RUNNER_USER_PREFIX-\$i.lock"; then
         echo "$REMOTE_RUNNER_USER_PREFIX-\$i"
         exit 0
