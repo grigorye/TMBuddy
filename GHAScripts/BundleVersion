@@ -10,7 +10,7 @@ commitsFromRoot=$(git rev-list --count HEAD)
 pr=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH" || true)
 
 if [ "$pr" != "null" ]; then
-    git fetch --no-tags origin "$trunk":"$trunk"
+    [ z"${ACT:-}" == z"true" ] || git fetch --no-tags origin "$trunk":"$trunk"
     commitsInBranch=$(git rev-list --count "$trunk"..HEAD)
     commitsInTrunk=$((commitsFromRoot - commitsInBranch))
     bundleVersion="$commitsInTrunk.$pr.$commitsInBranch"
