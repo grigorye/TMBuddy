@@ -90,6 +90,17 @@ jobs:
         with:
           xcode-version: '13.4'
 
+      - name: Install Brew
+        if: ${{ matrix.build-config.if && env.ACT }}
+        run: |
+          ./GHAShortcuts/InstallBrew
+
+      - name: Install Dependencies
+        if: ${{ matrix.build-config.if }}
+        run: |
+          ./GHAShortcuts/InstallDependencies
+          ./GHAShortcuts/InstallDependencies-build-app
+
       - name: Install App Store Connect API Key
         if: ${{ matrix.build-config.if }}
         run: |
