@@ -17,7 +17,8 @@ formulaName="time-machine-buddy"
 appName="TMBuddy"
 
 for buildKind in DeveloperID AppStore; do
-    if gh run download "$lastRun" --name "xcarchive-$buildKind" --dir  "$tmpdir"/"$buildKind"; then
+    if gh run download "$lastRun" --name "xcarchive-$buildKind" --dir "$tmpdir"/"$buildKind"; then
+        tar -xf "$tmpdir"/"$buildKind"/*.xcarchive.tar -C "$tmpdir"/"$buildKind"
         ./Publishing/UploadDSymsToCrashlytics "$tmpdir"/"$buildKind"/*.xcarchive
     fi
 done
