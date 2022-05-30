@@ -55,6 +55,16 @@ jobs:
         with:
           xcode-version: '13.4'
 
+      - name: Install Brew
+        if: ${{ env.ACT }}
+        run: |
+          ./GHAShortcuts/InstallBrew
+
+      - name: Install Dependencies
+        run: |
+          ./GHAShortcuts/InstallDependencies
+          ./GHAShortcuts/InstallDependencies-tests
+
       - name: Create Keychain
         env:
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
