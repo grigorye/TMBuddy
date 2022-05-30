@@ -101,6 +101,19 @@ jobs:
           ./GHAShortcuts/InstallDependencies
           ./GHAShortcuts/InstallDependencies-build-app
 
+      - name: Cache Mint packages
+        if: ${{ matrix.build-config.if }}
+        id: mint-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.mint
+          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
+          restore-keys: ${{ runner.os }}-mint-
+
+      - name: Install Mint packages
+        if: matrix.build-config.if && steps.mint-cache.outputs.cache-hit != 'true'
+        run: mint bootstrap
+
       - name: Install App Store Connect API Key
         if: ${{ matrix.build-config.if }}
         run: |
@@ -163,7 +176,7 @@ jobs:
         if: ${{ matrix.build-config.if }}
         run: |
           rm -rf ~/Library/MobileDevice/Provisioning\ Profiles
-
+      
       - uses: actions/cache@v2
         if: ${{ false && matrix.build-config.if }}
         with:

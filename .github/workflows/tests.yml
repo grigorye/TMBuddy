@@ -65,6 +65,18 @@ jobs:
           ./GHAShortcuts/InstallDependencies
           ./GHAShortcuts/InstallDependencies-tests
 
+      - name: Cache Mint packages
+        id: mint-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.mint
+          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
+          restore-keys: ${{ runner.os }}-mint-
+
+      - name: Install Mint packages
+        if: steps.mint-cache.outputs.cache-hit != 'true'
+        run: mint bootstrap
+
       - name: Create Keychain
         env:
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
