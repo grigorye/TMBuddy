@@ -173,18 +173,9 @@ jobs:
             ${{ runner.os }}-spm-
 
       - name: XcodeGen
-        if: ${{ matrix.build-config.if && !env.ACT }}
-        uses: grigorye/xcodegen-action@feature/projectRoot
-        with:
-          spec: XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml
-          project: Xcodeproj
-          project-root: .
-          version: '2.26.0'
-
-      - name: XcodeGen
-        if: ${{ env.ACT }}
+        if: ${{ matrix.build-config.if }}
         run: |
-          /usr/local/bin/mint run xcodegen -s XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml -r . -p Xcodeproj
+          mint run xcodegen -s XcodeGen/Variant/${{ matrix.build-config.projectKind }}.yml -r . -p Xcodeproj
 
       - name: Build .xcarchive
         if: ${{ matrix.build-config.if }}
