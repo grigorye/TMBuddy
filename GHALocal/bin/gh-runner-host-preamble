@@ -6,8 +6,8 @@ set -euo pipefail
 # A bit of diagnostics
 env | sort
 
-# "Install" gh-remote-sh
-cp -p ./GHALocal/bin/gh-remote-sh /tmp/gh-sh
+# "Install" shim for gh-remote-sh
+echo "PATH=$PWD/GHALocal/shims:$PATH" >> "$GITHUB_ENV"
 
 # Prepare ssh client
 apt-get update
