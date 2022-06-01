@@ -9,7 +9,7 @@ on:
 
 defaults:
   run:
-    shell: /tmp/gh-sh {0}
+    shell: bash {0}
 
 jobs:
   tests:
@@ -24,15 +24,10 @@ jobs:
 
     steps:
       - name: ACT preamble
-        shell: bash --noprofile --norc -x -euo pipefail {0}
+        if: ${{ env.ACT }}
+        shell: /bin/bash --noprofile --norc -x -euo pipefail {0}
         run: |
-          if [ z"${ACT:-}" == z"true" ]; then
-            ./GHALocal/bin/gh-runner-host-preamble
-          else
-            echo '#!/bin/bash --noprofile --norc -x -euo pipefail' > /tmp/gh-sh
-            echo 'source "$@"' >> /tmp/gh-sh
-            chmod +x /tmp/gh-sh
-          fi
+          ./GHALocal/bin/gh-runner-host-preamble
 
       - uses: actions/checkout@v2
         with:
@@ -221,6 +216,6 @@ jobs:
 
       - name: ACT epilogue
         if: ${{ env.ACT && always() }}
-        shell: bash --noprofile --norc -x -euo pipefail {0}
+        shell: /bin/bash --noprofile --norc -x -euo pipefail {0}
         run: |
           ./GHALocal/bin/gh-runner-host-epilogue
