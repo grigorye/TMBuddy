@@ -3,9 +3,11 @@
 set -x
 set -euo pipefail
 
+arch=$(uname -m)
+
 act \
     --artifact-server-path="$PWD"/artifacts \
     -b \
     -P macos-12=ghcr.io/catthehacker/ubuntu:act-latest \
-    --container-architecture linux/arm64 \
+    --container-architecture linux/"$arch" \
     "$@" # e.g. -j build-app or -j tests
