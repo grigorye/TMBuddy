@@ -4,6 +4,8 @@ set -x
 set -euo pipefail
 
 # A bit of diagnostics
+uname -a
+arch
 env | sort
 
 # "Install" shim for gh-remote-sh
