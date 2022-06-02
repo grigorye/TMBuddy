@@ -22,7 +22,10 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
     -configure -access -on -privs -all -users "$user"
 
 # Trigger interactive session by opening VNC connection for the user.
-~/Applications/'VNC Viewer.app'/Contents/MacOS/vncviewer -config "$vnc" &
+vncViewer=~/"Applications/VNC Viewer.app/Contents/MacOS/vncviewer"
+
+test -e "$vncViewer"
+"$vncViewer" -config "$vnc" &
 vncViewerPid=$!
 
 # Wait until the session is registered.
