@@ -50,10 +50,13 @@ echo "RUNNER_TEMP=$RUNNER_TEMP" >> "$GITHUB_ENV"
 export RUNNER_TEMP
 mkdir -p "$RUNNER_TEMP" # Create the same dir on the host, e.g. to be able to copy artifacts.
 
-# Override KEYCHAIN_PATH set in global env, as it already captured the "original" value of RUNNER_TEMP.
-KEYCHAIN_PATH="$RUNNER_TEMP"/"$KEYCHAIN_NAME"
-echo "KEYCHAIN_PATH=$KEYCHAIN_PATH" >> "$GITHUB_ENV"
-export KEYCHAIN_PATH
+if [ -n "${KEYCHAIN_NAME:-}" ]
+then
+    # Override KEYCHAIN_PATH set in global env, as it already captured the "original" value of RUNNER_TEMP.
+    KEYCHAIN_PATH="$RUNNER_TEMP"/"$KEYCHAIN_NAME"
+    echo "KEYCHAIN_PATH=$KEYCHAIN_PATH" >> "$GITHUB_ENV"
+    export KEYCHAIN_PATH
+fi
 
 # Add REMOTE_RUNNER_DIR to GITHUB_ENV, so that it would be available in every gh-sh invocation later.
 REMOTE_RUNNER_DIR="${FIXED_REMOTE_RUNNER_DIR:-$(ssh "$REMOTE_RUNNER_USER"@host.docker.internal mktemp -d /tmp/remote-runner.XXXXXX)}"
