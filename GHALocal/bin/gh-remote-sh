@@ -11,6 +11,7 @@ exportedEnvironment() {
             grep -ve '^GITHUB_ENV=' |
             grep -ve '^USER=' |
             grep -ve '^HOME=' |
+            grep -ve '^RUNNER_TOOL_CACHE=' |
             while read -r i; do
                 printf '%q ' "$i" | sed 's/^/export /'
             done
@@ -20,6 +21,7 @@ exportedEnvironment() {
 cat << END >> "$preamble"
 export GITHUB_ENV="$RUNNER_TEMP"/.github-env
 export USER="$REMOTE_RUNNER_USER"
+export RUNNER_TOOL_CACHE=~/hostedtoolcache
 
 set +x
 $(exportedEnvironment)
