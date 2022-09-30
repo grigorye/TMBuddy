@@ -26,7 +26,7 @@ extension XCTestCase {
         
         let menuDelegate = MenuDelegate { menu in
             let windowNumbers = NSWindow.windowNumbers()!.map { $0.intValue }
-            guard let windowNumber = windowNumbers.first(where: { $0 != window.windowNumber }) else {
+            guard let windowNumber = windowNumbers.first(where: { NSApp.window(withWindowNumber: $0)?.level == .popUpMenu }) else {
                 XCTFail()
                 return
             }
@@ -88,4 +88,3 @@ private class MenuDelegate: NSObject, NSMenuDelegate {
         RunLoop.current.add(timer, forMode: .eventTracking)
     }
 }
-
