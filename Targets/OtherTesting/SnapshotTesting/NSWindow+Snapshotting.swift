@@ -72,20 +72,26 @@ extension XCTestCase {
         testName: String = #function,
         line: UInt = #line
     ) {
-        let window = NSApp.window(withWindowNumber: windowNumber)!
-        let failure = try verifySnapshot(
-            matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: listOptions, imageOptions: [.bestResolution, .boundsIgnoreFraming]),
-            as: .image(scaleFactor: window.backingScaleFactor),
-            named: name,
-            record: record,
-            file: file,
-            testName: testName + ".borderless",
-            line: line
-        )
-        if let failure = failure {
-            XCTFail(failure)
+        let windowNumbers = NSWindow.windowNumbers(listOptions: listOptions, windowNumber: windowNumber)
+        
+        let failures: [String] = windowNumbers.compactMap { windowNumber in
+            let window = NSApp.window(withWindowNumber: windowNumber)!
+            
+            return try! verifySnapshot(
+                matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: .optionIncludingWindow, imageOptions: [.bestResolution, .boundsIgnoreFraming]),
+                as: .image(scaleFactor: window.backingScaleFactor),
+                named: name,
+                record: record,
+                file: file,
+                testName: testName + ".borderless",
+                line: line
+            )
         }
-        if failure != nil || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
+        if !failures.isEmpty {
+            XCTFail(failures.first!)
+        }
+        if !failures.isEmpty || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
+            let window = NSApp.window(withWindowNumber: windowNumber)!
             try assertSnapshot(
                 matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: listOptions, imageOptions: [.bestResolution]),
                 as: .image(scaleFactor: window.backingScaleFactor),
@@ -96,5 +102,19 @@ extension XCTestCase {
                 line: line
             )
         }
+    }
+}
+
+extension NSWindow {
+    
+    static func windowNumbers(listOptions: CGWindowListOption = .optionIncludingWindow, windowNumber: Int) -> [Int] {
+        let windowInfos = CGWindowListCopyWindowInfo(listOptions, CGWindowID(exactly: windowNumber)!)!
+        let pid = ProcessInfo().processIdentifier
+        return (windowInfos as! [[CFString: Any]])
+            .filter { info in
+                (info[kCGWindowOwnerPID] as! Int) == pid
+            }.map { info in
+                info[kCGWindowNumber] as! Int
+            }
     }
 }
