@@ -8,7 +8,7 @@ tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
 runTests() {
     env -u GIT_DIR \
         ./Commands/RunTests \
-        -IDEClonedSourcePackagesDirPathOverride=~/.pre-push/XcodeClonedSourcePackages \
+        -IDEClonedSourcePackagesDirPathOverride=~/.pre-push/XcodeClonedSourcePackages/"$PRE_PUSH_TESTS_KIND" \
         "$@"
 }
 
@@ -35,11 +35,11 @@ while read _ commit _ _; do
     trap 'cat "$snapshotsErrorLog" "$testsErrorLog" > /dev/stderr' EXIT
 
     testsBuildDir="${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Tests"
-    (cd "$commitDir" && runTests -scheme 'TMBuddyTests' -derivedDataPath "$testsBuildDir" -IDECustomBuildProductsPath="" -IDECustomBuildIntermediatesPath="") > "$testsLog" 2> "$testsErrorLog" &
+    (PRE_PUSH_TESTS_KIND=Tests && cd "$commitDir" && runTests -scheme 'TMBuddyTests' -derivedDataPath "$testsBuildDir" -IDECustomBuildProductsPath="" -IDECustomBuildIntermediatesPath="") > "$testsLog" 2> "$testsErrorLog" &
     testsPid=$!
 
     snapshotsBuildDir="${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Snapshots"
-    (cd "$commitDir" && runTests -scheme 'TMBuddySnapshots' -derivedDataPath "$snapshotsBuildDir" -IDECustomBuildProductsPath="" -IDECustomBuildIntermediatesPath="") > "$snapshotsLog" 2> "$snapshotsErrorLog" &
+    (PRE_PUSH_TESTS_KIND=Snapshots && cd "$commitDir" && runTests -scheme 'TMBuddySnapshots' -derivedDataPath "$snapshotsBuildDir" -IDECustomBuildProductsPath="" -IDECustomBuildIntermediatesPath="") > "$snapshotsLog" 2> "$snapshotsErrorLog" &
     snapshotsPid=$!
 
     wait $snapshotsPid
