@@ -194,6 +194,7 @@ jobs:
             -project Xcodeproj/*-${{ matrix.build-config.projectKind }}.xcodeproj \
             -derivedDataPath "$DERIVED_DATA_PATH" \
             -disableAutomaticPackageResolution \
+            -onlyUsePackageVersionsFromResolvedFile \
             -archivePath "$ARCHIVE_PATH" \
             -scheme '${{ matrix.run-config.scheme }}' \
             -destination '${{ matrix.run-config.destination }}' \
