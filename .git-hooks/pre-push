@@ -27,12 +27,29 @@ while read _ commit _ _; do
 
     (cd "$commitDir" && ./Commands/PrepareTests)
 
+    allLog="$tmpdir/$commit-All.log"
+    allErrorLog="$tmpdir/$commit-All-error.log"
     testsLog="$tmpdir/$commit-Tests.log"
     testsErrorLog="$tmpdir/$commit-Tests-error.log"
     snapshotsLog="$tmpdir/$commit-Snapshots.log"
     snapshotsErrorLog="$tmpdir/$commit-Snapshots-error.log"
 
     trap 'cat "$snapshotsErrorLog" "$testsErrorLog" > /dev/stderr' EXIT
+
+    allBuildDir="${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-All"
+    (
+        cd "$commitDir"
+        env -u GIT_DIR xcodebuild \
+            build \
+            -project Xcodeproj/*-DeveloperID.xcodeproj \
+            -scheme 'TMBuddyAll' \
+            -disableAutomaticPackageResolution \
+            -IDEClonedSourcePackagesDirPathOverride=~/.pre-push/XcodeClonedSourcePackages/All \
+            -IDECustomBuildProductsPath="" \
+            -IDECustomBuildIntermediatesPath="" \
+            -derivedDataPath "$allBuildDir"
+    ) > "$allLog" 2> "$allErrorLog" &
+    allPid=$!
 
     testsBuildDir="${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Tests"
     (PRE_PUSH_TESTS_KIND=Tests && cd "$commitDir" && runTests -scheme 'TMBuddyTests' -derivedDataPath "$testsBuildDir" -IDECustomBuildProductsPath="" -IDECustomBuildIntermediatesPath="") > "$testsLog" 2> "$testsErrorLog" &
@@ -44,4 +61,5 @@ while read _ commit _ _; do
 
     wait $snapshotsPid
     wait $testsPid
+    wait $allPid
 done
