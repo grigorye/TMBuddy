@@ -1,24 +1,29 @@
 import AppKit
 import XCTest
 
+/// Converts given window numbers into CFArray of CGWindowID's.
+func windowArray(_ windowNumbers: [Int]) -> CFArray {
+    // https://stackoverflow.com/a/46652374/1859783
+    let pointer = UnsafeMutablePointer<UnsafeRawPointer?>.allocate(capacity: windowNumbers.count)
+    for (index, windowNumber) in windowNumbers.enumerated() {
+        pointer[index] = UnsafeRawPointer(bitPattern: windowNumber)
+    }
+    return CFArrayCreate(nil, pointer, windowNumbers.count, nil)!
+}
+
 extension NSWindow {
     
     func snapshot(options: CGWindowImageOption, timeout: TimeInterval = 1) throws -> NSImage {
-        try Self.snapshot(windowNumber: windowNumber, imageOptions: options, timeout: timeout)
+        try Self.snapshot(windowNumbers: [windowNumber], imageOptions: options, timeout: timeout)
     }
     
-    static func snapshot(windowNumber: Int, listOptions: CGWindowListOption = .optionIncludingWindow, imageOptions: CGWindowImageOption, timeout: TimeInterval = 1) throws -> NSImage {
+    static func snapshot(windowNumbers: [Int], imageOptions: CGWindowImageOption, timeout: TimeInterval = 1) throws -> NSImage {
         let deadline = Date(timeIntervalSinceNow: timeout)
         let cgImage: CGImage = try {
             var attempts = 0
             repeat {
                 attempts += 1
-                let cgImage = CGWindowListCreateImage(
-                    .null,
-                    listOptions,
-                    CGWindowID(windowNumber),
-                    imageOptions
-                )
+                let cgImage = CGImage(windowListFromArrayScreenBounds: .null, windowArray: windowArray(windowNumbers), imageOption: imageOptions)
                 if let cgImage = cgImage {
                     return cgImage
                 }
@@ -78,7 +83,7 @@ extension XCTestCase {
             let window = NSApp.window(withWindowNumber: windowNumber)!
             
             return try! verifySnapshot(
-                matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: .optionIncludingWindow, imageOptions: [.bestResolution, .boundsIgnoreFraming]),
+                matching: NSWindow.snapshot(windowNumbers: [windowNumber], imageOptions: [.bestResolution, .boundsIgnoreFraming]),
                 as: .image(scaleFactor: window.backingScaleFactor),
                 named: name,
                 record: record,
@@ -93,7 +98,7 @@ extension XCTestCase {
         if !failures.isEmpty || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
             let window = NSApp.window(withWindowNumber: windowNumber)!
             try assertSnapshot(
-                matching: NSWindow.snapshot(windowNumber: windowNumber, listOptions: listOptions, imageOptions: [.bestResolution]),
+                matching: NSWindow.snapshot(windowNumbers: windowNumbers, imageOptions: [.bestResolution]),
                 as: .image(scaleFactor: window.backingScaleFactor),
                 named: name,
                 record: record,
