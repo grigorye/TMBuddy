@@ -10,9 +10,9 @@ on:
       build-config:
         type: choice
         description: build-config
-        options: 
-        - app-store
-        - developer-id
+        options:
+          - app-store
+          - developer-id
         required: true
 
 defaults:
