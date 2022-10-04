@@ -263,7 +263,7 @@ jobs:
               "$DMG_PATH"
 
       - name: Pull .dmg
-        if: ${{ inputs.buildConfigName == 'DeveloperID' && env.ACT }}
+        if: ${{ env.ACT && inputs.buildConfigName == 'DeveloperID' }}
         shell: bash --noprofile --norc -x -euo pipefail {0}
         run: |
           scp -pr "$REMOTE_RUNNER_USER"@host.docker.internal:"$DMG_PATH" "$DMG_PATH"
@@ -278,7 +278,7 @@ jobs:
             ${{ env.DMG_PATH }}
 
       - name: Upload to TestFlight
-        if: ${{ inputs.buildConfigName == 'AppStore' && !env.ACT }}
+        if: ${{ !env.ACT && inputs.buildConfigName == 'AppStore' }}
         run: |
           # create variables
           API_KEY_NAME="$APP_STORE_AUTHENTICATION_KEY_ID"
