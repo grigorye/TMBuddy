@@ -40,6 +40,7 @@ jobs:
       destination: 'generic/platform=macOS'
       uploadType: 'macos'
       packageExtension: '.pkg'
+      xcodebuildProjectOrWorkspace: '-project Xcodeproj/*-${{ matrix.build-config.projectKind }}.xcodeproj'
       buildConfigName: ${{ matrix.build-config.name }}
       projectKind: ${{ matrix.build-config.projectKind }}
       exportOptionsPlist: ${{ matrix.build-config.exportOptionsPlist }}
