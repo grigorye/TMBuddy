@@ -33,7 +33,7 @@ jobs:
             projectKind: 'DeveloperID'
             exportOptionsPlist: 'dist/developer-id-exportOptions.plist'
     name: ${{ matrix.build-config.name }}
-    uses: ./.github/workflows/build-app-reusable.yml
+    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-reusable.yml@main
     with:
       if: ${{ matrix.build-config.if }}
       scheme: 'TMBuddy'

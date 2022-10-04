@@ -10,7 +10,7 @@ on:
 jobs:
   tests:
     name: 'Tests'
-    uses: ./.github/workflows/tests-reusable.yml
+    uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@main
     secrets: inherit
     with:
       runs-on: 'macos-12'
