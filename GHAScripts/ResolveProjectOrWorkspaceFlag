@@ -1,0 +1,8 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+projectKind="$1"; shift
+
+echo -project Xcodeproj/*-"$projectKind".xcodeproj
