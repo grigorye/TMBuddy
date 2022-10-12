@@ -1,5 +1,8 @@
 #! /bin/bash
 
+set -x
+set -euo pipefail
+
 scheme="$1" # e.g. "TMBuddyTests"
 shift
 xcresult="$1" # e.g. /tmp/Tests.seyMey/TMBuddyTests.xcresult
