@@ -19,5 +19,5 @@ xcodebuild \
     xcpretty ||
     testExitCode=${PIPESTATUS[0]}
 echo "$testExitCode" > "${xcresult/%.xcresult/.exit-code}"
-./GHAShortcuts/gh-tar "$(dirname "$xcresult")" "$xcresult"
+./GHAScripts/gh-tar "$(dirname "$xcresult")" "$xcresult"
 exit "$testExitCode"
