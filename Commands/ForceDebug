@@ -5,6 +5,6 @@ set -euo pipefail
 
 enabled="$1"; shift
 
-defaults write com.grigorye.TMBuddy debug -bool "$enabled"
-defaults write com.grigorye.TMBuddy.Finder debug -bool "$enabled"
-defaults write com.grigorye.TMBuddy.Finder FIRDebugEnabled -bool "$enabled"
+defaults write com.gentin.TMBuddy debug -bool "$enabled"
+defaults write com.gentin.TMBuddy.Finder debug -bool "$enabled"
+defaults write com.gentin.TMBuddy.Finder FIRDebugEnabled -bool "$enabled"

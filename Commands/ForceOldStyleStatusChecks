@@ -6,4 +6,4 @@ set -euo pipefail
 enabled="$1"
 shift
 
-defaults write com.grigorye.TMBuddy.Finder ForceTMUtilBasedStatusProvider -bool "$enabled"
+defaults write com.gentin.TMBuddy.Finder ForceTMUtilBasedStatusProvider -bool "$enabled"

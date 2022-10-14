@@ -11,7 +11,7 @@ casksDir="$1"; shift
 bn=$(basename "$0")
 tmpdir=$(mktemp -d /tmp/"$bn".XXXXXX)
 
-bundleID="com.grigorye.TMBuddy"
+bundleID="com.gentin.TMBuddy"
 bucket="tmbuddy"
 formulaName="time-machine-buddy"
 appName="TMBuddy"
