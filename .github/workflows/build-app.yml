@@ -3,10 +3,12 @@ name: build-app
 on:
   workflow_dispatch: {}
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     branches: [main]
 
 jobs:
   build-app:
+    if: github.event.pull_request.draft == false
     uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v1
     with:
       macos-app-scheme: 'TMBuddy'
