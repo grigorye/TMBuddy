@@ -1,3 +1,6 @@
 [submodule "Xcodeproj/GoogleUtilities"]
 	path = Xcodeproj/GoogleUtilities
 	url = https://github.com/grigorye/GoogleUtilities.git
+[submodule "ReusableWorkflows"]
+	path = ReusableWorkflows
+	url = https://github.com/grigorye/ReusableWorkflows
