@@ -9,7 +9,7 @@ on:
 jobs:
   build-app:
     if: github.event.pull_request.draft == false
-    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v1
+    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v2
     with:
       macos-app-scheme: 'TMBuddy'
       build-configs: '[\"app-store\", \"developer-id\"]'
