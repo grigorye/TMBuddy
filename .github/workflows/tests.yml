@@ -4,12 +4,14 @@ on:
   push:
     branches: [main]
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     branches: [main]
   workflow_dispatch:
 
 jobs:
   tests:
     name: 'Tests'
+    if: github.event.pull_request.draft == false
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v1
     secrets: inherit
     with:
