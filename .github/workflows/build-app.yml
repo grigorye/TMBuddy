@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-app:
+    name: 'App'
     if: github.event.pull_request.draft == false
     uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v2
     with:
