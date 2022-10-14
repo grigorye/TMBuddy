@@ -1,47 +1,14 @@
 name: build-app
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch: {}
   pull_request:
     branches: [main]
-  workflow_dispatch:
-    inputs:
-      build-config:
-        type: choice
-        description: build-config
-        options:
-          - app-store
-          - developer-id
-        required: true
-
-defaults:
-  run:
-    shell: bash {0}
 
 jobs:
   build-app:
-    strategy:
-      matrix:
-        build-config:
-          - name: 'AppStore'
-            if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.build-config == 'app-store' }}
-            projectKind: 'AppStore'
-            exportOptionsPlist: 'dist/appstore-exportOptions.plist'
-          - name: 'DeveloperID'
-            if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.build-config == 'developer-id' }}
-            projectKind: 'DeveloperID'
-            exportOptionsPlist: 'dist/developer-id-exportOptions.plist'
-    name: ${{ matrix.build-config.name }}
-    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-reusable.yml@main
+    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v1
     with:
-      if: ${{ matrix.build-config.if }}
-      scheme: 'TMBuddy'
-      destination: 'generic/platform=macOS'
-      uploadType: 'macos'
-      packageExtension: '.pkg'
-      xcodebuildProjectOrWorkspace: '-project Xcodeproj/*-${{ matrix.build-config.projectKind }}.xcodeproj'
-      buildConfigName: ${{ matrix.build-config.name }}
-      projectKind: ${{ matrix.build-config.projectKind }}
-      exportOptionsPlist: ${{ matrix.build-config.exportOptionsPlist }}
+      macos-app-scheme: 'TMBuddy'
+      build-configs: '[\"app-store\", \"developer-id\"]'
     secrets: inherit
