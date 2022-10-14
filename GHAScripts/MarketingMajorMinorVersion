@@ -1,0 +1,8 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+ver="$(grep XcodeGen/Base.yml -e 'MARKETING_VERSION: ".*"' | sed -e 's/.*MARKETING_VERSION: "\(.*\)"/\1/')"
+
+echo "$ver"
