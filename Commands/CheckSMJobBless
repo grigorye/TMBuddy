@@ -3,4 +3,4 @@
 set -x
 set -euo pipefail
 
-SMJobBlessUtil.py check DerivedData/Build/Products/Debug/TMBuddy.app
+SMJobBlessUtil-python3.py check Xcodeproj/.DerivedData/Build/Products/Debug/TMBuddy.dev.app
