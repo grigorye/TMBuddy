@@ -4,9 +4,12 @@ set -x
 set -euo pipefail
 shopt -s nullglob
 
-lastRun="$1"; shift
-secretsDir="$1"; shift
-casksDir="$1"; shift
+lastRun="$1"
+shift
+secretsDir="$1"
+shift
+casksDir="$1"
+shift
 
 bn=$(basename "$0")
 tmpdir=$(mktemp -d /tmp/"$bn".XXXXXX)
@@ -28,7 +31,7 @@ done
 dmgs=("$tmpdir"/dmg/*.dmg)
 dmg="${dmgs[0]}"
 dmgBasename=$(basename "$dmg")
-version=$(echo "$dmgBasename" | cut -d '-' -f 2 | sed -e 's/\.dmg$//')
+version=$(echo "$dmgBasename" | sed -e 's/\.dmg$//' | cut -d '-' -f 2,3 | sed 's/-/,/')
 
 ./Publishing/NotarizeDmg "$tmpdir"/dmg/*.dmg "$tmpdir"/notarized "$secretsDir" "$bundleID"
 
