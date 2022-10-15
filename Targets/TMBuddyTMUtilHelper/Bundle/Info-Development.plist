@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>GE_BUNDLE_ID_PREFIX.TMBuddy.TMUtilHelper</string>
+	<string>$(GE_BUNDLE_ID_PREFIX).TMBuddy.TMUtilHelper</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleVersion</key>
-	<string>BUNDLE_VERSION</string>
+	<string>$(BUNDLE_VERSION)</string>
 	<key>SMAuthorizedClients</key>
 	<array>
-		<string>identifier GE_APP_BUNDLE_ID_QUOTED and anchor apple generic and certificate leaf[subject.CN] = GE_DEVELOPMENT_CERTIFICATE_QUOTED and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
-		<string>identifier GE_APPEX_BUNDLE_ID_QUOTED and anchor apple generic and certificate leaf[subject.CN] = GE_DEVELOPMENT_CERTIFICATE_QUOTED and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<string>identifier "$(GE_APP_BUNDLE_ID)" and anchor apple generic and certificate leaf[subject.CN] = "$(GE_DEVELOPMENT_CERTIFICATE)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<string>identifier "$(GE_APPEX_BUNDLE_ID)" and anchor apple generic and certificate leaf[subject.CN] = "$(GE_DEVELOPMENT_CERTIFICATE)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</array>
 </dict>
 </plist>

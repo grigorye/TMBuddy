@@ -10,8 +10,8 @@
 	<string>$(PRODUCT_NAME)$(GE_DISPLAY_NAME_SUFFIX)</string>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
-		<key>GE_HELPER_BUNDLE_ID</key>
-		<string>identifier GE_HELPER_BUNDLE_ID_QUOTED and anchor apple generic and certificate leaf[subject.CN] = GE_DEVELOPMENT_CERTIFICATE_QUOTED and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		<key>PP_GE_HELPER_BUNDLE_ID</key>
+		<string>identifier "$(GE_HELPER_BUNDLE_ID)" and anchor apple generic and certificate leaf[subject.CN] = "$(GE_DEVELOPMENT_CERTIFICATE)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</dict>
 	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
 	<true/>
