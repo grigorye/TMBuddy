@@ -1,7 +1,0 @@
-#! /bin/bash
-
-set -x
-set -euo pipefail
-
-branch="$(git rev-parse --abbrev-ref HEAD)"
-gh run list -w build-app -b "$branch" --jq '.[]|select((.event == "push") or (.event == "pull_request"))' --json event,databaseId |head -1|jq -c '.databaseId'
