@@ -17,7 +17,7 @@ for suffix in ""; do
 	AppIconSet="$xcassets"/"$AppIcon".appiconset
 	mkdir -p "$AppIconSet"
 
-	for i in 16 32 128 256 512 1024; do # macOS
+	for i in 16 32 128 256 512; do # macOS
 		svg2png -w $i "$svg" > "$AppIconSet"/"$AppIcon"-${i}x${i}.png
 	done
 	for i in 16 32 128 256; do # macOS
