@@ -8,6 +8,7 @@ targets:
         excludes:
           - "**/*+Snapshots"
           - "**/*+Snapshots.swift"
+          - "**/*+Preview.swift"
     settings:
       GE_HELPER_ACTIVE_COMPILATION_CONDITIONS: GE_BLESS
     dependencies:

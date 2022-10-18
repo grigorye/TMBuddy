@@ -1,2 +1,2 @@
-class LegendViewActionsHandler: LegendViewActions, Traceable {
+final class LegendViewActionsHandler: LegendViewActions, Traceable {
 }

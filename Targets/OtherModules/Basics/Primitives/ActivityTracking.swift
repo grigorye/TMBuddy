@@ -4,7 +4,7 @@ protocol ActivityTracker {
     func beginActivity<T>(_ value: T, name: String, sourceInfo: SourceInfo) -> TrackedActivity
 }
 
-protocol TrackedActivity {
+protocol TrackedActivity: Sendable {
     func endActivity<T>(_ value: T, sourceInfo: (SourceInfo))
 }
 
@@ -15,7 +15,7 @@ extension TrackedActivity {
     }
 }
 
-var activityTrackers: [ActivityTracker] = []
+let activityTrackers: [ActivityTracker] = defaultActivityTrackers()
 
 func beginActivity<T>(_ value: T, name: String, sourceInfo: SourceInfo) -> TrackedActivity {
     let activities = activityTrackers.map {

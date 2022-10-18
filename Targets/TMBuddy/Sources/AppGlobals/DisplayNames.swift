@@ -2,8 +2,9 @@ import Foundation
 
 private let fileManager = FileManager.default
 
-var enforcedAppName: String?
-var appName: String {
+@MainActor var enforcedAppName: String? { defaultEnforcedAppName }
+
+@MainActor var appName: String {
     enforcedAppName ?? {
         fileManager.displayName(atPath: Bundle.main.bundlePath)
     }()
@@ -11,7 +12,7 @@ var appName: String {
 
 let finderName = fileManager.displayName(atPath: "/System/Library/CoreServices/Finder.app")
 
-var plugInName: String {
+@MainActor var plugInName: String {
     guard let plugInURL = plugInURL else {
         dump((), name: "unknownPlugInURL")
         return plugInFallbackName
@@ -19,6 +20,6 @@ var plugInName: String {
     return fileManager.displayName(atPath: plugInURL.path)
 }
 
-private var plugInFallbackName: String {
+@MainActor private var plugInFallbackName: String {
     "\(appName) Finder Extension"
 }

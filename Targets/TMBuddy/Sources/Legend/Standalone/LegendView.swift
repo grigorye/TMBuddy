@@ -99,10 +99,3 @@ func localizedStatus(_ status: TMStatus) -> LocalizedStringKey {
         return "Unknown"
     }
 }
-
-struct LegendView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        LegendView(state: .init(), actions: nil)
-    }
-}

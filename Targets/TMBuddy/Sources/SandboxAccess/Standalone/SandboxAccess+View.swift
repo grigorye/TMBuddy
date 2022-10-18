@@ -41,18 +41,4 @@ struct SandboxAccessView: View {
     }
 }
 
-struct SandboxAccessView_Previews : PreviewProvider {
-    
-    static var previews: some View {
-        SandboxAccessView(
-            state: .init(
-                showPostSMJobBless: true,
-                showPostInstall: true,
-                showDebug: true
-            )
-        )
-            .padding()
-    }
-}
-
 private let defaults = UserDefaults.standard

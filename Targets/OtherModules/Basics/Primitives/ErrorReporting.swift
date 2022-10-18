@@ -28,7 +28,7 @@ func hookErrorReportersForDump<T>(_ value: T, name: String?, sourceInfo: SourceI
     }
 }
 
-var errorReporters: [ErrorReporter] = []
+let errorReporters: [ErrorReporter] = defaultErrorReporters()
 
 protocol ErrorReporter {
     func reportError<T>(_ value: T, name: String?, sourceInfo: SourceInfo)

@@ -1,6 +1,6 @@
 import SwiftUI
 
-var enforcedBuildInfoString: String?
+let enforcedBuildInfoString: String? = nil
 
 var buildInfoString: String {
     enforcedBuildInfoString ?? {

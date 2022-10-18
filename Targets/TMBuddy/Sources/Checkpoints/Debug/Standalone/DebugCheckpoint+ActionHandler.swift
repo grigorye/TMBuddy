@@ -1,4 +1,4 @@
-class DebugCheckpointActionsHandler: Traceable, DebugCheckpointActions {
+final class DebugCheckpointActionsHandler: Traceable, DebugCheckpointActions {
     
     func crash() {
         dump((), name: "")

@@ -1,6 +1,7 @@
 import AppKit
 import SwiftUI
 
+@MainActor
 func mainWindowContentView() -> some View {
     ContentView()
         .fixedSize()
@@ -9,10 +10,12 @@ func mainWindowContentView() -> some View {
         }
 }
 
+@MainActor
 func mainWindow() -> NSWindow {
     mainWindow(contentView: mainWindowContentView())
 }
 
+@MainActor
 func mainWindow<ContentView: View>(contentView: ContentView) -> NSWindow {
     NSWindow(
         contentRect: .init(origin: .zero, size: .init(width: 100, height: 100)),
@@ -27,4 +30,4 @@ func mainWindow<ContentView: View>(contentView: ContentView) -> NSWindow {
     }
 }
 
-var applicationLoadActivity: TrackedActivity?
+@MainActor var applicationLoadActivity: TrackedActivity?

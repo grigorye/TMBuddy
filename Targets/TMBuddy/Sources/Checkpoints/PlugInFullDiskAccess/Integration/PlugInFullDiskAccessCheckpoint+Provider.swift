@@ -1,5 +1,7 @@
 import Foundation
 
+extension PlugInFullDiskAccessCheckpointProvider: @unchecked Sendable {}
+
 class PlugInFullDiskAccessCheckpointProvider: ObservableObject {
     
     typealias State = PlugInFullDiskAccessCheckpointState

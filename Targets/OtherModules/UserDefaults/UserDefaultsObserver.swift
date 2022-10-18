@@ -40,5 +40,4 @@ class UserDefaultsObserver: NSObject {
     }
 }
 
-private var KVOContextImp: Int = 0
-private let KVOContext = UnsafeMutableRawPointer(&KVOContextImp)
+private let KVOContext = malloc(1)

@@ -1,6 +1,7 @@
 import XCTest
 import SnapshotTesting
 
+@MainActor
 class MenuSnapshots: XCTestCase {
     
     private let record: Bool = false
@@ -24,6 +25,7 @@ class MenuSnapshots: XCTestCase {
         }
     }
     
+    @MainActor
     func testRevealParentExclusion() {
         assertMenuSnapshot(
             preselectedTitle: MenuGenerator.parentExclusionsMenuItemTitle,
@@ -54,6 +56,7 @@ class MenuSnapshots: XCTestCase {
         }
     }
     
+    @MainActor
     func assertMenuSnapshot(
         named name: String? = nil,
         preselectedTitle: String? = nil,

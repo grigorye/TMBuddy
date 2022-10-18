@@ -1,6 +1,7 @@
 import SnapshotTesting
 import SwiftUI
 
+@MainActor
 func assertSnapshot<View: SwiftUI.View>(
     matching view: View,
     named name: String? = nil,

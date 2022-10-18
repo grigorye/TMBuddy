@@ -24,4 +24,4 @@ protocol ElapsedTimeTracker {
     func trackElapsedTime<T>(_ value: T, name: String?, sourceInfo: SourceInfo)
 }
 
-var elapsedTimeTrackers: [ElapsedTimeTracker] = []
+let elapsedTimeTrackers: [ElapsedTimeTracker] = defaultElapsedTimeTrackers()

@@ -1,5 +1,7 @@
 import FinderSync
 
+extension FinderSyncExtensionCheckpointProvider: @unchecked Sendable {}
+
 class FinderSyncExtensionCheckpointProvider: ObservableObject {
     
     @Published var state: FinderSyncExtensionCheckpointState = .none

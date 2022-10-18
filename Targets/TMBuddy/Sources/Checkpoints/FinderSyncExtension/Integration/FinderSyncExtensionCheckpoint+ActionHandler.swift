@@ -1,7 +1,7 @@
 import AppKit
 import FinderSync
 
-class FinderSyncExtensionCheckpointActionsHandler: FinderSyncExtensionCheckpointActions, Traceable {
+final class FinderSyncExtensionCheckpointActionsHandler: FinderSyncExtensionCheckpointActions, Traceable {
     
     func showExtensionsPreferences() {
         dump((), name: "")

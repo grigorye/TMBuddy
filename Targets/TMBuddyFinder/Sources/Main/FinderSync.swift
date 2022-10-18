@@ -1,4 +1,5 @@
 import Cocoa
+import Foundation
 import FinderSync
 import os.signpost
 
@@ -11,6 +12,8 @@ func labelForStatus(_ status: TMStatus) -> String {
 }
 
 let syncController = FIFinderSyncController.default()
+
+extension FIFinderSync: @unchecked Sendable {}
 
 class FinderSync: FIFinderSync, MenuGeneratorActions {
 
@@ -249,19 +252,18 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
                 try await TMUtilPrivileged().setExcluded(exclude, privilege: .fixedPath, urls: nonVolumeURLs)
             }
         }
-        Task {
+        Task { @MainActor in
             let result = await task.result
             dump((result, exclude: exclude, items: itemURLs.map { $0.path }), name: "result")
-            DispatchQueue.main.async {
-                self.processResultForSetSelectedItemsPathExcludedFromTimeMachine(exclude, result: result)
-            }
+            processResultForSetSelectedItemsPathExcludedFromTimeMachine(exclude, result: result)
         }
     }
     
+    @MainActor
     private func processResultForSetSelectedItemsPathExcludedFromTimeMachine(_ exclude: Bool, result: Result<(), Error>) {
         if case let .failure(error) = result {
             dump((error, exclude: exclude), name: "setSelectedItemsPathExcludedFailed")
-            NSApp.presentError(error)
+            NSApplication.shared.presentError(error)
         }
     }
     
@@ -291,19 +293,18 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
             
             try metadataWriter.setExcluded(exclude, urls: itemURLs)
         }
-        Task {
+        Task { @MainActor in
             let result = await task.result
             dump((result, exclude: exclude, items: itemURLs.map { $0.path }), name: "result")
-            DispatchQueue.main.async {
-                self.processResultForSetSelectedItemsPathExcludedFromTimeMachine(exclude, result: result)
-            }
+            processResultForSetSelectedItemsPathExcludedFromTimeMachine(exclude, result: result)
         }
     }
     
+    @MainActor
     private func processResultForSetSelectedItemsStickyExcludedFromTimeMachine(_ exclude: Bool, result: Result<(), Error>) {
         if case let .failure(error) = result {
             dump((error, exclude: exclude), name: "setSelectedItemsStickyExcludedFailed")
-            NSApp.presentError(error)
+            NSApplication.shared.presentError(error)
         }
     }
 }

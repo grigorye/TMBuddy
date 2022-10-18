@@ -4,6 +4,7 @@ aggregateTargets:
       - TMBuddy
       - TMBuddyTests
       - TMBuddySnapshots
+      - TMBuddyPreviews
 
 targets:
   TMBuddy:
@@ -134,7 +135,9 @@ targets:
           - "**/*Snapshots.swift"
         excludes:
           - "**/*+Snapshots"
+          - "**/*+Preview.swift"
       - Targets/OtherTesting
+      - Targets/TMBuddySnapshots
     settings:
       LOCALIZATION_EXPORT_SUPPORTED: NO
 
@@ -143,9 +146,29 @@ targets:
     platform: macOS
     templates:
       - TMBuddyStandaloneViewsTarget
+    sources:
+      - Targets/TMBuddySnapshots
     settings:
       LOCALIZATION_EXPORT_SUPPORTED: NO
       LOCALIZED_STRING_SWIFTUI_SUPPORT: NO
+  
+  TMBuddyPreviews:
+    type: framework
+    platform: macOS
+    templates:
+      - TMBuddyStandaloneViewsTarget
+    sources:
+      - path: Targets/TMBuddySnapshots
+      - path: Targets/TMBuddy/Sources
+        includes:
+          - "**/*+Preview.swift"
+    settings:
+      LOCALIZATION_EXPORT_SUPPORTED: NO
+      LOCALIZED_STRING_SWIFTUI_SUPPORT: NO
+      # Workaround for "Main actor-isolated static property '_previews' cannot
+      # be used to satisfy nonisolated protocol requirement" warning.
+      GE_CONCURRENCY_SWIFT_FLAGS: ''
+      SWIFT_STRICT_CONCURRENCY: minimal 
 
 targetTemplates:
   TMBuddyIntrinsicsTarget:
@@ -180,6 +203,7 @@ targetTemplates:
           - Main
           - "**/*+Snapshots"
           - "**/*+Snapshots.swift"
+          - "**/*+Preview.swift"
           - "**/Integration"
       - path: Targets/TMBuddyFinder/Sources
         includes:
@@ -230,6 +254,9 @@ settings:
   GE_INFOPLIST_KIND: Development
   GE_BUNDLE_ID_EXTRA: .dev
   GE_PRODUCT_NAME_EXTRA: .dev
+  GE_CONCURRENCY_SWIFT_FLAGS: -warn-concurrency -enable-actor-data-race-checks
+  OTHER_SWIFT_FLAGS: $(GE_CONCURRENCY_SWIFT_FLAGS)
+  SWIFT_STRICT_CONCURRENCY: complete
 
 options:
   developmentLanguage: ca

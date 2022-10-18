@@ -2,6 +2,7 @@ import XCTest
 import SwiftUI
 import SnapshotTesting
 
+@MainActor
 class MainWindowSnapshots: XCTestCase {
     
     private let record: Bool = false
@@ -9,16 +10,16 @@ class MainWindowSnapshots: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        let savedEnforcedAppName = enforcedAppName
-        enforcedAppName = "TMBuddy"
+        let savedDefaultEnforcedAppName = defaultEnforcedAppName
+        defaultEnforcedAppName = "TMBuddy"
         addTeardownBlock {
-            enforcedAppName = savedEnforcedAppName
+            defaultEnforcedAppName = savedDefaultEnforcedAppName
         }
         
-        let savedEnforcedIsAppDistributedViaAppStore = enforcedIsAppDistributedViaAppStore
-        enforcedIsAppDistributedViaAppStore = true
+        let savedDefaultEnforcedIsAppDistributedViaAppStore = defaultEnforcedIsAppDistributedViaAppStore
+        defaultEnforcedIsAppDistributedViaAppStore = true
         addTeardownBlock {
-            enforcedIsAppDistributedViaAppStore = savedEnforcedIsAppDistributedViaAppStore
+            defaultEnforcedIsAppDistributedViaAppStore = savedDefaultEnforcedIsAppDistributedViaAppStore
         }
     }
     
