@@ -15,6 +15,7 @@ struct FolderSelectionCheckpointActionsActionHandler: FolderSelectionCheckpointA
     }
 }
 
+@MainActor
 private func selectDisks() {
     let panel = NSOpenPanel() ≈ {
         $0.message = String(localized: "Select all the disks available, to grant the read-only access to \(appName)")

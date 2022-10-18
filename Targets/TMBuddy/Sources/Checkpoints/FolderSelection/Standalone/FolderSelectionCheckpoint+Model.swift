@@ -2,6 +2,6 @@ enum FolderSelectionCheckpointState {
 }
 
 protocol FolderSelectionCheckpointActions: ViewActions {
-    func selectFolders()
-    func revokeAccess()
+    @MainActor func selectFolders()
+    @MainActor func revokeAccess()
 }

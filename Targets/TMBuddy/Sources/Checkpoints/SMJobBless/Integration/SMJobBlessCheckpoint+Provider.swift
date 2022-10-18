@@ -1,5 +1,7 @@
 import Foundation
 
+extension SMJobBlessCheckpointProvider: @unchecked Sendable {}
+
 class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
     
     @Published var state: SMJobBlessCheckpointState = .none
@@ -17,40 +19,40 @@ class SMJobBlessCheckpointProvider: ObservableObject, Traceable {
     }
     
     func invalidateInfoTick() {
-        
         let task = Task {
             try await helperVersion()
         }
-        Task {
+        Task { @MainActor in
             let result = await task.result
-            if defaults.bool(forKey: DefaultsKey.debugAlienPrivilegedHelper) {
+            if debugAlienPrivilegedHelper {
                 dump(result, name: "helperVersionResult")
             }
-            DispatchQueue.main.async { [weak self] in
-                switch result {
-                case .failure:
-                    self?.state = .missingBless
-                case let .success(version):
-                    self?.state = {
-                        switch version {
-                        case plugInHostConnectionVersion:
-                            return .blessed
-                        case let otherVersion:
-                            guard let otherVersionNumber = Int(otherVersion) else {
-                                return .alien(otherVersion)
-                            }
-                            guard otherVersionNumber >= minimumCompatibleHelperVersionNumber else {
-                                return .alien(otherVersion)
-                            }
-                            return .blessed
-                        }
-                    }()
-                }
-            }
+            processResultForHelperVersion(result)
         }
     }
     
-    private let defaults = sharedDefaults
+    @MainActor
+    private func processResultForHelperVersion(_ result: Result<String, Error>) {
+        switch result {
+        case .failure:
+            state = .missingBless
+        case let .success(version):
+            state = {
+                switch version {
+                case plugInHostConnectionVersion:
+                    return .blessed
+                case let otherVersion:
+                    guard let otherVersionNumber = Int(otherVersion) else {
+                        return .alien(otherVersion)
+                    }
+                    guard otherVersionNumber >= minimumCompatibleHelperVersionNumber else {
+                        return .alien(otherVersion)
+                    }
+                    return .blessed
+                }
+            }()
+        }
+    }
 }
 
 private func helperVersion() async throws -> String {
@@ -62,3 +64,7 @@ private func helperVersion() async throws -> String {
 }
 
 let minimumCompatibleHelperVersionNumber = 535
+
+var debugAlienPrivilegedHelper: Bool {
+    sharedDefaults.bool(forKey: DefaultsKey.debugAlienPrivilegedHelper)
+}

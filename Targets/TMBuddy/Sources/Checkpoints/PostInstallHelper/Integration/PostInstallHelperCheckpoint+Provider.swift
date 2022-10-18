@@ -1,5 +1,7 @@
 import Foundation
 
+extension PostInstallHelperCheckpointProvider: @unchecked Sendable {}
+
 class PostInstallHelperCheckpointProvider: ObservableObject, Traceable {
     
     @Published var state: PostInstallHelperCheckpointState = .none
@@ -17,7 +19,6 @@ class PostInstallHelperCheckpointProvider: ObservableObject, Traceable {
     }
     
     func invalidateInfoTick() {
-        
         let task = Task {
             try await postInstallNeeded()
         }

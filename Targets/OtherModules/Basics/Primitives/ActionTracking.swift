@@ -33,4 +33,4 @@ protocol ActionTracker {
     func trackAction(_ action: TrackedAction)
 }
 
-var actionTrackers: [ActionTracker] = []
+let actionTrackers: [ActionTracker] = defaultActionTrackers()

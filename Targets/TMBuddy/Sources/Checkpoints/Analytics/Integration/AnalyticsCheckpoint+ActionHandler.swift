@@ -1,6 +1,8 @@
 import Foundation
 
-class AnalyticsCheckpointActionsHandler: Traceable, AnalyticsCheckpointActions {
+extension AnalyticsCheckpointActionsHandler: @unchecked Sendable {}
+
+final class AnalyticsCheckpointActionsHandler: Traceable, AnalyticsCheckpointActions {
     
     let defaults = sharedDefaults
     

@@ -4,8 +4,8 @@ class PostInstallHelperCheckpointSnapshots: XCTestCase {
     
     private let record: Bool = false
 
-    func test() throws {
-        PostInstallHelperCheckpointView
+    func test() async throws {
+        await PostInstallHelperCheckpointView
             .snapshotSamples(
                 frameWidth: sampleCheckpointWidth,
                 record: record

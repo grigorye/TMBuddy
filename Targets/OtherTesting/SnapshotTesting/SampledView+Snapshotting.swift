@@ -1,6 +1,7 @@
 import SwiftUI
 import SnapshotTesting
 
+@MainActor
 extension SampledView {
     
     static func snapshotSamples(

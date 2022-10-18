@@ -1,7 +1,8 @@
 import AppKit
 import Blessed
 
-class SMJobBlessCheckpointActionHandler: SMJobBlessCheckpointActions, Traceable {
+@MainActor
+final class SMJobBlessCheckpointActionHandler: SMJobBlessCheckpointActions, Traceable {
     
     func reinstallHelper() {
         dump((), name: "")
@@ -30,7 +31,7 @@ class SMJobBlessCheckpointActionHandler: SMJobBlessCheckpointActions, Traceable 
             try LaunchdManager.authorizeAndBless(message: message, icon: icon)
         } catch {
             dump(error, name: "blessFailed")
-            NSApp.presentError(error)
+            NSApplication.shared.presentError(error)
         }
     }
 }

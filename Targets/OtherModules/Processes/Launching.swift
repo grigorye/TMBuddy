@@ -11,8 +11,8 @@ func runAndCaptureOutput(executableURL: URL, arguments: [String] = []) throws ->
         $0.standardError = standardError
     }
     
-    process.terminationHandler = {
-        assert($0 == process)
+    process.terminationHandler = { [objectIdentifierForProcess = ObjectIdentifier(process)] in
+        assert(ObjectIdentifier($0) == objectIdentifierForProcess)
     }
     
     process.launch()

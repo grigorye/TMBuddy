@@ -4,8 +4,8 @@ class FolderSelectionCheckpointSnapshots: XCTestCase {
     
     private let record: Bool = false
 
-    func test() throws {
-        FolderSelectionCheckpointView
+    func test() async throws {
+        await FolderSelectionCheckpointView
             .snapshotSamples(
                 frameWidth: sampleCheckpointWidth,
                 record: record

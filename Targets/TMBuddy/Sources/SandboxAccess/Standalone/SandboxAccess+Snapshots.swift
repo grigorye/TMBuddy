@@ -1,6 +1,7 @@
 import XCTest
 import SwiftUI
 
+@MainActor
 class SandboxAccessSnapshots: XCTestCase {
     
     private let record: Bool = false

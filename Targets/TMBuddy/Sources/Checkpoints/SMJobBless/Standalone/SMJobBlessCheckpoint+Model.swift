@@ -1,11 +1,11 @@
-enum SMJobBlessCheckpointState {
+enum SMJobBlessCheckpointState: Sendable {
     case none
     case blessed
     case alien(String)
     case missingBless
 }
 
-protocol SMJobBlessCheckpointActions: ViewActions {
+@MainActor protocol SMJobBlessCheckpointActions: ViewActions {
     func reinstallHelper()
     func installHelper()
     func updateHandler()

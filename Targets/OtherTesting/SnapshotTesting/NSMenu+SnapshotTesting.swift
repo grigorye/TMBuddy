@@ -1,8 +1,9 @@
-import XCTest
+@preconcurrency import XCTest
 import Carbon
 
 extension XCTestCase {
     
+    @MainActor
     func assertMenuSnapshot(
         menu: NSMenu,
         named name: String? = nil,
@@ -26,11 +27,11 @@ extension XCTestCase {
         
         let menuDelegate = MenuDelegate { menu in
             let windowNumbers = NSWindow.windowNumbers()!.map { $0.intValue }
-            guard let windowNumber = windowNumbers.first(where: { NSApp.window(withWindowNumber: $0)?.level == .popUpMenu }) else {
+            guard let windowNumber = windowNumbers.first(where: { NSApplication.shared.window(withWindowNumber: $0)?.level == .popUpMenu }) else {
                 XCTFail()
                 return
             }
-            let menuWindow = NSApp.window(withWindowNumber: windowNumber)!
+            let menuWindow = NSApplication.shared.window(withWindowNumber: windowNumber)!
             
             scheduledBeforeSnapshot.forEach { $0() }
             scheduledBeforeSnapshot = []
@@ -75,15 +76,17 @@ extension XCTestCase {
 
 private class MenuDelegate: NSObject, NSMenuDelegate {
     
-    init(menuDidOpen: @escaping (NSMenu) -> Void) {
+    init(menuDidOpen: @MainActor @Sendable @escaping (NSMenu) -> Void) {
         self.menuDidOpen = menuDidOpen
     }
     
-    let menuDidOpen: (NSMenu) -> Void
+    let menuDidOpen: @MainActor @Sendable (NSMenu) -> Void
     
     func menuWillOpen(_ menu: NSMenu) {
         let timer = Timer(timeInterval: 0, repeats: false) { [menuDidOpen] timer in
-            menuDidOpen(menu)
+            Task { @MainActor in
+                menuDidOpen(menu)
+            }
         }
         RunLoop.current.add(timer, forMode: .eventTracking)
     }

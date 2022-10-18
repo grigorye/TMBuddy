@@ -1,5 +1,7 @@
 import Foundation
 
+extension CommonHelperXPCImp: @unchecked Sendable {}
+
 class CommonHelperXPCImp: NSObject, CommonHelperXPC {
     
     func postInstallNeededAsync(sourceBundlePath: String, reply: @escaping (Error?, Bool) -> Void) {
@@ -20,15 +22,15 @@ class CommonHelperXPCImp: NSObject, CommonHelperXPC {
         result.send(to: reply)
     }
     
-    func crashAsync(_ reply: @escaping (Bool) -> Void) {
+    func crashAsync(_ reply: @Sendable @escaping (Bool) -> Void) {
         Task { reply(try await crash()) }
     }
     
-    func pingAsync(_ reply: @escaping (Bool) -> Void) {
+    func pingAsync(_ reply: @Sendable @escaping (Bool) -> Void) {
         Task { reply(await ping()) }
     }
     
-    func versionAsync(_ reply: @escaping (String) -> Void) {
+    func versionAsync(_ reply: @Sendable @escaping (String) -> Void) {
         reply(version())
     }
     

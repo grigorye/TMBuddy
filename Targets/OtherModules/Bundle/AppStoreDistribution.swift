@@ -1,8 +1,8 @@
 import Foundation
 
-var enforcedIsAppDistributedViaAppStore: Bool?
+@MainActor var enforcedIsAppDistributedViaAppStore: Bool? { defaultEnforcedIsAppDistributedViaAppStore }
 
-var isAppDistributedViaAppStore: Bool {
+@MainActor var isAppDistributedViaAppStore: Bool {
     enforcedIsAppDistributedViaAppStore ?? {
         guard let appStoreReceiptURL = Bundle.main.appStoreReceiptURL else {
             return false

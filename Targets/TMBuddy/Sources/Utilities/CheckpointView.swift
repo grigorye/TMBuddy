@@ -55,19 +55,4 @@ private let yellowCheckmark = Image(nsImage: NSImage(named: NSImage.statusPartia
 private let redXMark = Image(nsImage: NSImage(named: NSImage.statusUnavailableName)!)
 private let grayCheckmark = Image(nsImage: NSImage(named: NSImage.statusNoneName)!)
 
-struct CheckpointView_Previews : PreviewProvider {
-    
-    static var previews: some View {
-        CheckpointView(
-            title: .verbatim("Title"),
-            subtitle: .verbatim("Subtitle"),
-            value: .verbatim("Value"),
-            readiness: .ready
-        ) {
-            Text(.verbatim("Content"))
-        }
-        .frame(width: sampleCheckpointWidth, alignment: .leading)
-    }
-}
-
 let sampleCheckpointWidth: CGFloat = 360

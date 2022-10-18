@@ -2,10 +2,6 @@ import Foundation
 
 func onLaunch() {
     registerDefaults()
-    activateErrorReporting()
-    activateActionTracking()
-    activateElapsedTimeTracking()
-    activateActivityTracking()
     checkSanity()
 }
 
@@ -21,27 +17,32 @@ func registerDefaults() {
     )
 }
 
-func activateErrorReporting() {
+func defaultErrorReporters() -> [ErrorReporter] {
+    var errorReporters: [ErrorReporter] = []
     guard defaults.errorReportingEnabled || sharedDefaults.analyticsEnabled else {
-        return
+        return []
     }
 #if canImport(FirebaseCrashlytics)
     let crashlyticsErrorReporter = CrashlyticsErrorReporter()
     crashlyticsErrorReporter.activate()
     errorReporters += [crashlyticsErrorReporter]
 #endif
+    return errorReporters
 }
 
-func activateElapsedTimeTracking() {
+func defaultElapsedTimeTrackers() -> [ElapsedTimeTracker] {
+    var elapsedTimeTrackers: [ElapsedTimeTracker] = []
     guard defaults.elapsedTimeTrackingEnabled || sharedDefaults.analyticsEnabled else {
-        return
+        return []
     }
     elapsedTimeTrackers += [SimpleElapsedTimeTracker()]
+    return elapsedTimeTrackers
 }
 
-func activateActionTracking() {
+func defaultActionTrackers() -> [ActionTracker] {
+    var actionTrackers: [ActionTracker] = []
     guard defaults.actionTrackingEnabled || sharedDefaults.analyticsEnabled else {
-        return
+        return []
     }
     actionTrackers += [SimpleActionTracker()]
 #if canImport(FirebaseAnalytics)
@@ -49,11 +50,13 @@ func activateActionTracking() {
     firebaseActionTracker.activate()
     actionTrackers += [firebaseActionTracker]
 #endif
+    return actionTrackers
 }
 
-func activateActivityTracking() {
+func defaultActivityTrackers() -> [ActivityTracker] {
+    var activityTrackers: [ActivityTracker] = []
     guard defaults.activityTrackingEnabled || sharedDefaults.analyticsEnabled else {
-        return
+        return []
     }
     activityTrackers += [SimpleActivityTracker()]
 #if canImport(FirebasePerformance)
@@ -61,6 +64,7 @@ func activateActivityTracking() {
     firebaseActivityTracker.activate()
     activityTrackers += [firebaseActivityTracker]
 #endif
+    return activityTrackers
 }
 
 struct SimpleActionTracker: ActionTracker {
@@ -83,7 +87,8 @@ struct SimpleActivityTracker: ActivityTracker {
 }
 
 struct SimpleTrackedActivity: TrackedActivity {
-    let timestamp = Date()
+    let timeIntervalSinceReferenceDate = Date().timeIntervalSinceReferenceDate
+    var timestamp: Date { Date(timeIntervalSinceReferenceDate: timeIntervalSinceReferenceDate) }
     let name: String
     
     func endActivity<T>(_ value: T, sourceInfo: (SourceInfo)) {

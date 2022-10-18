@@ -1,10 +1,10 @@
 import AppKit
 
 @objc protocol MenuGeneratorActions {
-    func removePrivilegedExclusionFromTimeMachine(_ sender: AnyObject?)
-    func addPrivilegedExclusionInTimeMachine(_ sender: AnyObject?)
-    func removeExclusionFromTimeMachine(_ sender: AnyObject?)
-    func excludeFromTimeMachine(_ sender: AnyObject?)
+    @MainActor func removePrivilegedExclusionFromTimeMachine(_ sender: AnyObject?)
+    @MainActor func addPrivilegedExclusionInTimeMachine(_ sender: AnyObject?)
+    @MainActor func removeExclusionFromTimeMachine(_ sender: AnyObject?)
+    @MainActor func excludeFromTimeMachine(_ sender: AnyObject?)
 }
 
 class MenuGenerator {

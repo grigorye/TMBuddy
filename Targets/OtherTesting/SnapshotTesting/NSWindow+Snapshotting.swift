@@ -48,6 +48,7 @@ enum WindowSnapshotError: Swift.Error {
     case timedOut(attempts: Int, timeout: TimeInterval)
 }
 
+@MainActor
 extension XCTestCase {
     
     func snapshotFlakyBorderWindow(
@@ -82,7 +83,7 @@ extension XCTestCase {
         assert(!windowNumbers.isEmpty)
         
         let failures: [String] = windowNumbers.compactMap { windowNumber in
-            let window = NSApp.window(withWindowNumber: windowNumber)!
+            let window = NSApplication.shared.window(withWindowNumber: windowNumber)!
             
             return try! verifySnapshot(
                 matching: NSWindow.snapshot(windowNumbers: [windowNumber], imageOptions: [.bestResolution, .boundsIgnoreFraming]),
@@ -98,7 +99,7 @@ extension XCTestCase {
             XCTFail(failures.first!)
         }
         if !failures.isEmpty || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
-            let window = NSApp.window(withWindowNumber: windowNumber)!
+            let window = NSApplication.shared.window(withWindowNumber: windowNumber)!
             try assertSnapshot(
                 matching: NSWindow.snapshot(windowNumbers: windowNumbers, imageOptions: [.bestResolution]),
                 as: .image(scaleFactor: window.backingScaleFactor),

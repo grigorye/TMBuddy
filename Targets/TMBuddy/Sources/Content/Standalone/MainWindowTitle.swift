@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 func mainWindowTitle() -> String {
     if isAppDistributedViaAppStore || UserDefaults.standard.bool(forKey: DefaultsKey.forceAppStoreLikeWindowTitle.rawValue) {
         return appName

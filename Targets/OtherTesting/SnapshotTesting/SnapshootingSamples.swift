@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 func snapshotSamples<
     Content: View,
     T1: SampledView
@@ -25,6 +26,7 @@ func snapshotSamples<
     }
 }
 
+@MainActor
 func snapshotSamples<
     Content: View,
     T1: SampledView,
@@ -59,6 +61,7 @@ func snapshotSamples<
     }
 }
 
+@MainActor
 func snapshotSamples<
     Content: View,
     T1: SampledView,
@@ -99,6 +102,7 @@ func snapshotSamples<
     }
 }
 
+@MainActor
 func snapshotSamples<
     Content: View,
     T1: SampledView,
@@ -145,6 +149,7 @@ func snapshotSamples<
     }
 }
 
+@MainActor
 func snapshotSample<
     Content: View,
     T1: SampledView,
