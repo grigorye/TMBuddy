@@ -4,3 +4,7 @@
 [submodule "ReusableWorkflows"]
 	path = ReusableWorkflows
 	url = https://github.com/grigorye/ReusableWorkflows
+[submodule "Xcodeproj/swift-snapshot-testing"]
+	path = Xcodeproj/swift-snapshot-testing
+	url = https://github.com/grigorye/swift-snapshot-testing
+	branch = feature/IsRecording-From-Environment
