@@ -70,7 +70,7 @@ extension XCTestCase {
     
     func snapshotFlakyBorderWindow(
         windowNumber: Int,
-        listOptions: CGWindowListOption = .optionIncludingWindow,
+        listOptions: CGWindowListOption = [],
         named name: String?,
         record: Bool,
         file: StaticString = #file,
@@ -78,6 +78,8 @@ extension XCTestCase {
         line: UInt = #line
     ) {
         let windowNumbers = NSWindow.windowNumbers(listOptions: listOptions, windowNumber: windowNumber)
+        
+        assert(!windowNumbers.isEmpty)
         
         let failures: [String] = windowNumbers.compactMap { windowNumber in
             let window = NSApp.window(withWindowNumber: windowNumber)!
@@ -112,10 +114,15 @@ extension XCTestCase {
 
 extension NSWindow {
     
-    static func windowNumbers(listOptions: CGWindowListOption = .optionIncludingWindow, windowNumber: Int) -> [Int] {
-        let windowInfos = CGWindowListCopyWindowInfo(listOptions, CGWindowID(exactly: windowNumber)!)!
+    static func windowNumbers(listOptions: CGWindowListOption = [], windowNumber: Int) -> [Int] {
+        guard !listOptions.isEmpty else {
+            return [windowNumber]
+        }
+        
+        let rawWindowInfos = CGWindowListCopyWindowInfo(listOptions, CGWindowID(exactly: windowNumber)!)!
+        let windowInfos = rawWindowInfos as! [[CFString: Any]]
         let pid = ProcessInfo().processIdentifier
-        return (windowInfos as! [[CFString: Any]])
+        return windowInfos
             .filter { info in
                 (info[kCGWindowOwnerPID] as! Int) == pid
             }.map { info in
