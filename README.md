@@ -2,7 +2,7 @@
 
 # TMBuddy
 
-See and manipulate exclusions from Time Machine backup, right in Finder.
+See and manipulate Time Machine exclusions, right in Finder.
 
 ## Features
 
