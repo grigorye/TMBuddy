@@ -12,7 +12,7 @@ jobs:
   build-app:
     name: 'App'
     if: github.event.pull_request.draft == false
-    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v3
+    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v4
     with:
       macos-app-scheme: 'TMBuddy'
       build-configs: '[\"app-store\", \"developer-id\"]'
