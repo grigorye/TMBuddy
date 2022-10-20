@@ -17,6 +17,7 @@ jobs:
       should_build: ${{ steps.build_check.outputs.should_build }}
     steps:
       - uses: dorny/paths-filter@v2
+        if: github.event_name == 'pull_request'
         id: build_check
         with:
           filters: |
@@ -39,7 +40,7 @@ jobs:
   build-app:
     name: 'App'
     needs: [paths-filter]
-    if: github.event.pull_request.draft == false && needs.paths-filter.outputs.should_build == 'true'
+    if: github.event_name != 'pull_request' || (github.event.pull_request.draft == false && needs.paths-filter.outputs.should_build == 'true')
     uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v5
     with:
       macos-app-scheme: 'TMBuddy'
