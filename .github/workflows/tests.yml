@@ -44,7 +44,7 @@ jobs:
     name: 'Tests'
     needs: [paths-filter]
     if: github.event.pull_request.draft == false && needs.paths-filter.outputs.should_build == 'true'
-    uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v4
+    uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v5
     secrets: inherit
     with:
       runs-on: 'macos-12'
