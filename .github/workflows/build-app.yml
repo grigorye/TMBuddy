@@ -8,11 +8,50 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
+  paths-filter:
+    name: 'Check Paths'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      should_build: ${{ steps.build_check.outputs.should_build }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: build_check
+        with:
+          filters: |
+            should_build:
+              - '.github/**'
+              - 'Brewfile.*'
+              - 'Brewfile'
+              - 'Commands/**'
+              - 'dist/**'
+              - 'GHAScripts/**'
+              - 'GHAShortcuts/**'
+              - 'Mintfile'
+              - 'project.yml'
+              - 'ReusableWorkflows/**'
+              - 'Targets/**'
+              - 'ThirdParties/**'
+              - 'Xcodegen/**'
+              - 'Xcodeproj/**'
+
   build-app:
     name: 'App'
-    if: github.event.pull_request.draft == false
+    needs: [paths-filter]
+    if: github.event.pull_request.draft == false && needs.paths-filter.outputs.should_build == 'true'
     uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v4
     with:
       macos-app-scheme: 'TMBuddy'
       build-configs: '[\"app-store\", \"developer-id\"]'
     secrets: inherit
+
+  finalize-build-app:
+    name: 'Finalize App Build'
+    if: always()
+    needs: [build-app]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Report'
+        run: |
+          [ "${{ needs.build-app.result }}" == "success" ]

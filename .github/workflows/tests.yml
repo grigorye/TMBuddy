@@ -7,10 +7,43 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash --noprofile --norc -x -euo pipefail {0}
+
 jobs:
+  paths-filter:
+    name: 'Check Paths'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      should_build: ${{ steps.build_check.outputs.should_build }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: build_check
+        with:
+          filters: |
+            should_build:
+              - '.github/**'
+              - 'Brewfile.*'
+              - 'Brewfile'
+              - 'Commands/**'
+              - 'dist/**'
+              - 'GHAScripts/**'
+              - 'GHAShortcuts/**'
+              - 'Mintfile'
+              - 'project.yml'
+              - 'ReusableWorkflows/**'
+              - 'Targets/**'
+              - 'ThirdParties/**'
+              - 'Xcodegen/**'
+              - 'Xcodeproj/**'
+
   tests:
     name: 'Tests'
-    if: github.event.pull_request.draft == false
+    needs: [paths-filter]
+    if: github.event.pull_request.draft == false && needs.paths-filter.outputs.should_build == 'true'
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v4
     secrets: inherit
     with:
@@ -18,3 +51,13 @@ jobs:
       allScheme: 'TMBuddyAll'
       testsScheme: 'TMBuddyTests'
       snapshotsScheme: 'TMBuddySnapshots'
+
+  finalize-tests:
+    name: 'Finalize Tests'
+    if: always()
+    needs: [tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Report'
+        run: |
+          [ "${{ needs.tests.result }}" == "success" ]
