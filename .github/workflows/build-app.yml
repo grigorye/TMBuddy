@@ -15,7 +15,7 @@ jobs:
   build-app:
     name: 'App'
     needs: [paths-filter]
-    if: github.event_name != 'pull_request' || (github.event.pull_request.draft == false && needs.paths-filter.outputs.should_build == 'true')
+    if: github.event_name != 'pull_request' || (github.event.pull_request.draft == false && needs.paths-filter.outputs.should-build == 'true')
     uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v5
     with:
       macos-app-scheme: 'TMBuddy'
@@ -29,10 +29,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Check required build results'
-        if: needs.paths-filter.outputs.should_build != 'false'
+        if: needs.paths-filter.outputs.should-build != 'false'
         run: |
           [ "${{ needs.build-app.result }}" == "success" ]
       - name: 'Report success for skipped build'
-        if: needs.paths-filter.outputs.should_build == 'false'
+        if: needs.paths-filter.outputs.should-build == 'false'
         run: |
           echo 'No build required.'
