@@ -1,0 +1,37 @@
+name: paths-filter
+
+on:
+  workflow_call:
+    outputs:
+      should_build:
+        description: 'Whether to build or not'
+        value: ${{ jobs.paths-filter.outputs.should_build }}
+
+jobs:
+  paths-filter:
+    name: 'Check Paths'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      should_build: ${{ steps.build_check.outputs.should_build }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: build_check
+        with:
+          filters: |
+            should_build:
+              - '.github/**'
+              - 'Brewfile.*'
+              - 'Brewfile'
+              - 'Commands/**'
+              - 'dist/**'
+              - 'GHAScripts/**'
+              - 'GHAShortcuts/**'
+              - 'Mintfile'
+              - 'project.yml'
+              - 'ReusableWorkflows/**'
+              - 'Targets/**'
+              - 'ThirdParties/**'
+              - 'Xcodegen/**'
+              - 'Xcodeproj/**'
