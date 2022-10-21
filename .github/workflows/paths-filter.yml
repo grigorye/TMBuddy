@@ -3,12 +3,12 @@ name: paths-filter
 on:
   workflow_call:
     outputs:
-      should_build:
+      should-build:
         description: 'Whether to build or not'
-        value: ${{ jobs.paths-filter.outputs.should_build }}
-      should_test:
+        value: ${{ jobs.paths-filter.outputs.should-build }}
+      should-test:
         description: 'Whether to test or not'
-        value: ${{ jobs.paths-filter.outputs.should_test }}
+        value: ${{ jobs.paths-filter.outputs.should-test }}
 
 jobs:
   paths-filter:
@@ -17,8 +17,8 @@ jobs:
     permissions:
       pull-requests: read
     outputs:
-      should_build: ${{ steps.build_check.outputs.should-build-or-test }}
-      should_test: ${{ steps.build_check.outputs.should-build-or-test }}
+      should-build: ${{ steps.build_check.outputs.should-build-or-test }}
+      should-test: ${{ steps.build_check.outputs.should-build-or-test }}
     steps:
       - id: build_check
         if: github.event_name == 'pull_request'
