@@ -13,33 +13,9 @@ defaults:
 
 jobs:
   paths-filter:
-    name: 'Check Paths'
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: read
-    outputs:
-      should_build: ${{ steps.build_check.outputs.should_build }}
-    steps:
-      - uses: dorny/paths-filter@v2
-        if: github.event_name == 'pull_request' 
-        id: build_check
-        with:
-          filters: |
-            should_build:
-              - '.github/**'
-              - 'Brewfile.*'
-              - 'Brewfile'
-              - 'Commands/**'
-              - 'dist/**'
-              - 'GHAScripts/**'
-              - 'GHAShortcuts/**'
-              - 'Mintfile'
-              - 'project.yml'
-              - 'ReusableWorkflows/**'
-              - 'Targets/**'
-              - 'ThirdParties/**'
-              - 'Xcodegen/**'
-              - 'Xcodeproj/**'
+    name: 'Paths Filter'
+    if: github.event_name == 'pull_request'
+    uses: ./.github/workflows/paths-filter.yml
 
   tests:
     name: 'Tests'
