@@ -16,8 +16,9 @@ jobs:
     outputs:
       should_build: ${{ steps.build_check.outputs.should_build }}
     steps:
-      - uses: dorny/paths-filter@v2
-        id: build_check
+      - id: build_check
+        if: github.event_name == 'pull_request'
+        uses: dorny/paths-filter@v2
         with:
           filters: |
             should_build:

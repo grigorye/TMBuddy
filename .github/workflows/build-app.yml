@@ -10,7 +10,6 @@ on:
 jobs:
   paths-filter:
     name: 'Paths Filter'
-    if: github.event_name == 'pull_request'
     uses: ./.github/workflows/paths-filter.yml
 
   build-app:
