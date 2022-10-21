@@ -31,9 +31,14 @@ jobs:
   finalize-tests:
     name: 'Finalize Tests'
     if: always()
-    needs: [tests]
+    needs: [paths-filter, tests]
     runs-on: ubuntu-latest
     steps:
-      - name: 'Report'
+      - name: 'Check required test results'
+        if: needs.paths-filter.outputs.should_build != 'false'
         run: |
           [ "${{ needs.tests.result }}" == "success" ]
+      - name: 'Report success for skipped tests'
+        if: needs.paths-filter.outputs.should_build == 'false'
+        run: |
+          echo 'No tests required.'

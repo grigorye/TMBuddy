@@ -25,9 +25,14 @@ jobs:
   finalize-build-app:
     name: 'Finalize App Build'
     if: always()
-    needs: [build-app]
+    needs: [paths-filter, build-app]
     runs-on: ubuntu-latest
     steps:
-      - name: 'Report'
+      - name: 'Check required build results'
+        if: needs.paths-filter.outputs.should_build != 'false'
         run: |
           [ "${{ needs.build-app.result }}" == "success" ]
+      - name: 'Report success for skipped build'
+        if: needs.paths-filter.outputs.should_build == 'false'
+        run: |
+          echo 'No build required.'
