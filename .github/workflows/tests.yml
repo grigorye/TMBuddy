@@ -19,7 +19,7 @@ jobs:
   tests:
     name: 'Tests'
     needs: [paths-filter]
-    if: github.event_name != 'pull_request' || (github.event.pull_request.draft == false && needs.paths-filter.outputs.should_build == 'true')
+    if: github.event_name != 'pull_request' || (github.event.pull_request.draft == false && needs.paths-filter.outputs.should-test == 'true')
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v5
     secrets: inherit
     with:
@@ -35,10 +35,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Check required test results'
-        if: needs.paths-filter.outputs.should_build != 'false'
+        if: needs.paths-filter.outputs.should-test != 'false'
         run: |
           [ "${{ needs.tests.result }}" == "success" ]
       - name: 'Report success for skipped tests'
-        if: needs.paths-filter.outputs.should_build == 'false'
+        if: needs.paths-filter.outputs.should-test == 'false'
         run: |
           echo 'No tests required.'
