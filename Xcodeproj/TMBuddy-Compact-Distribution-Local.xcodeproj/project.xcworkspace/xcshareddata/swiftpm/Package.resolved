@@ -2,12 +2,39 @@
   "object": {
     "pins": [
       {
+        "package": "Authorized",
+        "repositoryURL": "https://github.com/trilemma-dev/Authorized.git",
+        "state": {
+          "branch": null,
+          "revision": "e490b9d3f4a0e8b17a8b39b5a9750b8e0be7548a",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "Blessed",
         "repositoryURL": "https://github.com/trilemma-dev/Blessed",
         "state": {
           "branch": "main",
-          "revision": "a19fa3a72d55a3e2f6f5f4ed91e28ca464ce8ca9",
+          "revision": "fc7c930f3cc1894a2481e1f884c336007712e6a8",
           "version": null
+        }
+      },
+      {
+        "package": "EmbeddedPropertyList",
+        "repositoryURL": "https://github.com/trilemma-dev/EmbeddedPropertyList.git",
+        "state": {
+          "branch": null,
+          "revision": "21bd832e28a9a66ecdb7b4c21910bb0487a22fe5",
+          "version": "2.0.2"
+        }
+      },
+      {
+        "package": "Required",
+        "repositoryURL": "https://github.com/trilemma-dev/Required.git",
+        "state": {
+          "branch": null,
+          "revision": "82a4fbd388346ca40b1bbe815014dc45a75d503c",
+          "version": "0.1.1"
         }
       }
     ]
