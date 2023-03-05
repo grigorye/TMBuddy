@@ -11,11 +11,20 @@
         }
       },
       {
+        "package": "Authorized",
+        "repositoryURL": "https://github.com/trilemma-dev/Authorized.git",
+        "state": {
+          "branch": null,
+          "revision": "e490b9d3f4a0e8b17a8b39b5a9750b8e0be7548a",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "Blessed",
         "repositoryURL": "https://github.com/trilemma-dev/Blessed",
         "state": {
           "branch": "main",
-          "revision": "a19fa3a72d55a3e2f6f5f4ed91e28ca464ce8ca9",
+          "revision": "fc7c930f3cc1894a2481e1f884c336007712e6a8",
           "version": null
         }
       },
@@ -26,6 +35,15 @@
           "branch": null,
           "revision": "734a8247442fde37df4364c21f6a0085b6a36728",
           "version": "0.7.2"
+        }
+      },
+      {
+        "package": "EmbeddedPropertyList",
+        "repositoryURL": "https://github.com/trilemma-dev/EmbeddedPropertyList.git",
+        "state": {
+          "branch": null,
+          "revision": "21bd832e28a9a66ecdb7b4c21910bb0487a22fe5",
+          "version": "2.0.2"
         }
       },
       {
@@ -51,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "15ccdfd25ac55b9239b82809531ff26605e7556e",
-          "version": "9.1.2"
+          "revision": "f6b558e3f801f2cac336b04f615ce111fa9ddaa0",
+          "version": "9.2.1"
         }
       },
       {
@@ -69,8 +87,8 @@
         "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
         "state": {
           "branch": null,
-          "revision": "eca9404a18f53727e4698211aaf2615eb93b962a",
-          "version": "1.7.1"
+          "revision": "4e9bbf2808b8fee444e84a48f5f3c12641987d3e",
+          "version": "1.7.2"
         }
       },
       {
@@ -105,8 +123,17 @@
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {
           "branch": null,
-          "revision": "611337c330350c9c1823ad6d671e7f936af5ee13",
-          "version": "2.0.0"
+          "revision": "ec957ccddbcc710ccc64c9dcbd4c7006fcf8b73a",
+          "version": "2.2.0"
+        }
+      },
+      {
+        "package": "Required",
+        "repositoryURL": "https://github.com/trilemma-dev/Required.git",
+        "state": {
+          "branch": null,
+          "revision": "82a4fbd388346ca40b1bbe815014dc45a75d503c",
+          "version": "0.1.1"
         }
       },
       {
@@ -114,8 +141,8 @@
         "repositoryURL": "https://github.com/apple/swift-protobuf.git",
         "state": {
           "branch": null,
-          "revision": "e1499bc69b9040b29184f7f2996f7bab467c1639",
-          "version": "1.19.0"
+          "revision": "0af9125c4eae12a4973fb66574c53a54962a9e1e",
+          "version": "1.21.0"
         }
       }
     ]
