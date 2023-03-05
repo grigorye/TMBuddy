@@ -10,5 +10,18 @@ for projectVariant in Default AppStore DeveloperID ExportLocalizations Compact-D
 done
 
 for i in Xcodeproj/*.xcodeproj; do
-    xcodebuild -resolvePackageDependencies -project "$i"
+    # It's important to delete Package.resolved before resolving dependencies,
+    # otherwise Xcode will not update dependencies.
+    find "$i" -name Package.resolved -delete
+
+    # It's also important to have derived data path different from the one used,
+    # otherwise Xcode will not update dependencies either, as
+    # DerivedData/Project-Name/SourcePackages will be reused.
+    derivedDataPath=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
+
+    argsToIgnoreDerivedData=(
+        -derivedDataPath "$derivedDataPath"
+        -scheme TMBuddyAll # "The flag -scheme, -testProductsPath, or -xctestrun is required when specifying -derivedDataPath".
+    )
+    xcodebuild "${argsToIgnoreDerivedData[@]}" -resolvePackageDependencies -project "$i"
 done
