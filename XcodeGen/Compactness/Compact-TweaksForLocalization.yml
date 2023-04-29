@@ -1,7 +1,7 @@
 include:
-  - path: ../Base.yml
+  - path: XcodeGen/Base.yml
     relativePaths: false
-  - path: ../Aspect/Helper.yml
+  - path: XcodeGen/Aspect/Helper.yml
     relativePaths: false
 
 targets:

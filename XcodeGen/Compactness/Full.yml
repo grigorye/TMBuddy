@@ -1,5 +1,5 @@
 include:
-  - path: Compact.yml
+  - path: XcodeGen/Compactness/Compact.yml
     relativePaths: false
-  - path: ../Aspect/Firebase.yml
+  - path: XcodeGen/Aspect/Firebase.yml
     relativePaths: false

@@ -1,9 +1,9 @@
 include:
-  - path: ../Compactness/Compact.yml
+  - path: XcodeGen/Compactness/Compact.yml
     relativePaths: false
-  - path: ../Aspect/Distribution-Settings.yml
+  - path: XcodeGen/Aspect/Distribution-Settings.yml
     relativePaths: false
-  - path: ../Aspect/Local.yml
+  - path: XcodeGen/Aspect/Local.yml
     relativePaths: true
 
 name: TMBuddy-Compact-Distribution-Local
