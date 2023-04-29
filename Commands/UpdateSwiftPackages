@@ -6,7 +6,7 @@ set -euo pipefail
 . "$(dirname "$0")"/Xcodebuild-env.sh
 
 for projectVariant in Default AppStore DeveloperID ExportLocalizations Compact-Distribution-Local Full-Local; do
-    xcodegen -s XcodeGen/Variant/"$projectVariant".yml -r . -p Xcodeproj
+    mint run xcodegen -s XcodeGen/Variant/"$projectVariant".yml -r . -p Xcodeproj
 done
 
 for i in Xcodeproj/*.xcodeproj; do
