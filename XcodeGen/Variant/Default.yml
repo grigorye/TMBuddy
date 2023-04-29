@@ -1,5 +1,5 @@
 include:
-  - path: ../Compactness/Compact.yml
+  - path: XcodeGen/Compactness/Compact.yml
     relativePaths: false
 
 name: TMBuddy

@@ -1,9 +1,9 @@
 include:
-  - path: ../Compactness/Compact-TweaksForLocalization.yml
+  - path: XcodeGen/Compactness/Compact-TweaksForLocalization.yml
     relativePaths: false
-  - path: ../Aspect/Distribution-Settings.yml
+  - path: XcodeGen/Aspect/Distribution-Settings.yml
     relativePaths: false
-  - path: ../Aspect/ExportLocalizations.yml
+  - path: XcodeGen/Aspect/ExportLocalizations.yml
     relativePaths: false
 
 name: TMBuddy-ExportLocalizations
