@@ -4,4 +4,4 @@ set -x
 set -euo pipefail
 
 # Brew dependencies
-time brew bundle install -d --file Brewfile.build-app
+time brew bundle install -v --no-lock --file Brewfile.build-app
