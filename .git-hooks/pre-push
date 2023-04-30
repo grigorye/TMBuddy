@@ -22,7 +22,7 @@ while read _ commit _ _; do
     fi
     mkdir "$commitDir"
 
-    env -u GIT_DIR git archive-all "$commit" >"$tmpdir/archive-$commit.tar"
+    env -u GIT_DIR git archive-all --format=tar "$commit" >"$tmpdir/archive-$commit.tar"
     cat "$tmpdir/archive-$commit.tar" | tar -x -C "$commitDir"
 
     (cd "$commitDir" && ./Commands/PrepareTests)
