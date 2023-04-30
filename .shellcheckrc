@@ -1,0 +1,8 @@
+# Avoid putting braces around variable references when not strictly required.
+disable=SC2250
+
+# Don't prefer [[ ]] over [ ] for tests in Bash/Ksh.shellcheck(2292)
+disable=SC2292
+
+# Allow "useless" cat.
+disable=SC2002
