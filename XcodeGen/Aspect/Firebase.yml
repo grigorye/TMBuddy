@@ -32,7 +32,7 @@ targetTemplates:
 
 packages:
   GoogleUtilities:
-    path: ThirdParties/GoogleUtilities
+    path: Xcodeproj/GoogleUtilities
   Firebase:
     url: https://github.com/grigorye/firebase-ios-sdk.git
     branch: feature/Performance-macOS
