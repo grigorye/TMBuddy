@@ -5,6 +5,8 @@ set -euo pipefail
 
 tmpdir=$(mktemp -d /tmp/"$(basename "$0")".XXXXXX)
 
+. ./Commands/Xcodebuild-env.sh
+
 runTests() {
     env -u GIT_DIR \
         ./Commands/RunTests \
@@ -34,8 +36,6 @@ while read _ commit _ _; do
     snapshotsLog="$tmpdir/$commit-Snapshots.log"
     snapshotsErrorLog="$tmpdir/$commit-Snapshots-error.log"
 
-    trap 'cat "$snapshotsErrorLog" "$testsErrorLog" > /dev/stderr' EXIT
-
     allBuildDir="${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-All"
     (
         cd "$commitDir"
@@ -48,8 +48,7 @@ while read _ commit _ _; do
             -IDECustomBuildProductsPath="" \
             -IDECustomBuildIntermediatesPath="" \
             -derivedDataPath "$allBuildDir"
-    ) >"$allLog" 2>"$allErrorLog" &
-    allPid=$!
+    ) | tee "$allLog" | xcpretty
 
     testsBuildDir="${PRE_PUSH_DERIVED_DATA_PATH:-DerivedData}-Tests"
     (
@@ -67,7 +66,16 @@ while read _ commit _ _; do
     ) >"$snapshotsLog" 2>"$snapshotsErrorLog" &
     snapshotsPid=$!
 
-    wait $snapshotsPid
-    wait $testsPid
-    wait $allPid
+    if ! wait "$snapshotsPid"; then
+        status=$?
+        cat "$snapshotsLog" | xcpretty
+        cat "$snapshotsErrorLog"
+        exit "$status"
+    fi
+    if ! wait "$testsPid"; then
+        status=$?
+        cat "$testsLog" | xcpretty
+        cat "$testsErrorLog"
+        exit "$status"
+    fi
 done
