@@ -3,3 +3,5 @@ include:
     relativePaths: false
   - path: XcodeGen/Aspect/Firebase.yml
     relativePaths: false
+  - path: XcodeGen/Aspect/Sentry.yml
+    relativePaths: false

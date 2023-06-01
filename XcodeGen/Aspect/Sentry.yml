@@ -1,0 +1,19 @@
+targets:
+  TMBuddy:
+    templates:
+      - SentryTarget
+
+  TMBuddyFinder:
+    templates:
+      - SentryTarget
+
+targetTemplates:
+  SentryTarget:
+    dependencies:
+      - package: Sentry
+        product: Sentry
+
+packages:
+  Sentry:
+    url: https://github.com/getsentry/sentry-cocoa.git
+    minorVersion: 8.7.3
