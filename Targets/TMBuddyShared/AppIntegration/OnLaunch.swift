@@ -1,6 +1,9 @@
 import Foundation
 
 func onLaunch() {
+    #if canImport(Sentry)
+    activateSentry()
+    #endif
     registerDefaults()
     checkSanity()
 }
