@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "f6b558e3f801f2cac336b04f615ce111fa9ddaa0",
-          "version": "9.2.1"
+          "revision": "7874c1b48cbffd086ce8a052c4be873a78613775",
+          "version": "9.2.3"
         }
       },
       {
@@ -134,6 +134,15 @@
           "branch": null,
           "revision": "82a4fbd388346ca40b1bbe815014dc45a75d503c",
           "version": "0.1.1"
+        }
+      },
+      {
+        "package": "Sentry",
+        "repositoryURL": "https://github.com/getsentry/sentry-cocoa.git",
+        "state": {
+          "branch": null,
+          "revision": "9cf7d2e514af1600cc2b3c5592e2848c6c5a76d6",
+          "version": "8.7.3"
         }
       },
       {
