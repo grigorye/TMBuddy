@@ -16,7 +16,7 @@ if [ "$brew" == "/opt/homebrew/bin/brew" ]; then
 
     if [ "$id" != "$brew_owner_id" ]; then
         brew() {
-            sudo -u admin command brew "$@"
+            sudo --set-home --user=admin command brew "$@"
         }
     fi
 fi
