@@ -3,6 +3,8 @@
 set -x
 set -euo pipefail
 
+. "$(dirname "$0")"/BrewLock.sh
+
 bn=$(basename "$0")
 
 if [ z"${FORCE_HOMEBREW_HOME:-}" == z"true" ]; then
@@ -13,11 +15,11 @@ fi
 mkdir -p homebrew && NONINTERACTIVE=1 time curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
 
 PATH="$PWD/homebrew/bin:$PATH"
-echo "PATH=$PATH" >> "$GITHUB_ENV"
+echo "PATH=$PATH" >>"$GITHUB_ENV"
 
 HOMEBREW_TEMP="$(mktemp -d /tmp/"$bn".XXXXXX)"
 export HOMEBREW_TEMP
-echo "HOMEBREW_TEMP=$HOMEBREW_TEMP" >> "$GITHUB_ENV"
+echo "HOMEBREW_TEMP=$HOMEBREW_TEMP" >>"$GITHUB_ENV"
 
 time brew tap homebrew/bundle
 time brew tap homebrew/core
