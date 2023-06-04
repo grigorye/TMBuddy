@@ -17,7 +17,7 @@ extension NSWindow {
         try Self.snapshot(windowNumbers: [windowNumber], imageOptions: options, timeout: timeout)
     }
     
-    static func snapshot(windowNumbers: [Int], imageOptions: CGWindowImageOption, timeout: TimeInterval = 1) throws -> NSImage {
+    static func snapshot(windowNumbers: [Int], imageOptions: CGWindowImageOption, timeout: TimeInterval = 5) throws -> NSImage {
         let deadline = Date(timeIntervalSinceNow: timeout)
         let cgImage: CGImage = try {
             var attempts = 0
