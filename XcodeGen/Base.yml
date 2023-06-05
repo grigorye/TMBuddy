@@ -140,6 +140,7 @@ targets:
       - Targets/TMBuddySnapshots
     settings:
       LOCALIZATION_EXPORT_SUPPORTED: NO
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) GE_SNAPSHOT_TESTING
 
   TMBuddySnapshotViews:
     type: framework
