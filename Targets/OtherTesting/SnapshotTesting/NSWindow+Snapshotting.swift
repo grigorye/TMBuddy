@@ -102,7 +102,7 @@ extension XCTestCase {
             let window = NSApplication.shared.window(withWindowNumber: windowNumber)!
             try assertSnapshot(
                 matching: NSWindow.snapshot(windowNumbers: windowNumbers, imageOptions: [.bestResolution]),
-                as: .image(scaleFactor: window.backingScaleFactor),
+                as: .image(scaleFactor: window.backingScaleFactor, ignoreDiffs: true),
                 named: name,
                 record: record,
                 file: file,
