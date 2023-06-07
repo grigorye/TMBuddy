@@ -2,7 +2,9 @@ import Foundation
 
 func onLaunch() {
     #if canImport(Sentry)
-    activateSentry()
+    if defaults.analyticsEnabled {
+        activateSentry()
+    }
     #endif
     registerDefaults()
     checkSanity()
