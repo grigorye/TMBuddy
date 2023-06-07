@@ -14,10 +14,6 @@ struct SandboxAccessView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Group {
-                FolderSelectionCheckpointView.new()
-                
-                Divider()
-                
                 #if GE_BLESS
                 if state.showPostSMJobBless {
                     SMJobBlessCheckpointView.new()

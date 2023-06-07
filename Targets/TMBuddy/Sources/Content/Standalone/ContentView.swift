@@ -6,6 +6,12 @@ struct ContentView: View {
     var body: some View {
         if #available(macOS 11.0, *) {
             TabView {
+                FoldersTab.new()
+                    .tabItem {
+                        Text("Folders")
+                    }
+                    .padding()
+
                 SandboxAccessView.new()
                     .tabItem {
                         Text("Setup")
@@ -38,6 +44,19 @@ struct ContentView: View {
                 }
             }
             .padding()
+        }
+    }
+}
+
+struct FoldersTab: View {
+    
+    static func new() -> some View {
+        self.init()
+    }
+
+    var body: some View {
+        VStack {
+            FolderSelectionCheckpointView.new()
         }
     }
 }
