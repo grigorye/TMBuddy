@@ -16,28 +16,41 @@ jobs:
     name: 'Paths Filter'
     uses: ./.github/workflows/paths-filter.yml
 
-  tests:
-    name: 'Tests'
+  unit-tests:
+    name: 'Unit Tests'
     needs: [paths-filter]
     if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false'
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v17
     secrets: inherit
     with:
       runs-on: 'macos-12'
-      allScheme: 'TMBuddyAll'
       testsScheme: 'TMBuddyTests'
-      snapshotsScheme: 'TMBuddySnapshots'
+      testsKind: 'UnitTests'
+      testsName: 'Unit Tests'
 
+  snapshot-tests:
+    name: 'Snapshots'
+    needs: [paths-filter]
+    if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false'
+    uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v17
+    secrets: inherit
+    with:
+      runs-on: 'macos-12'
+      testsScheme: 'TMBuddySnapshots'
+      testsKind: 'Snapshots'
+      testsName: 'Snapshots'
+  
   finalize-tests:
     name: 'Finalize Tests'
     if: always()
-    needs: [paths-filter, tests]
+    needs: [paths-filter, snapshot-tests, unit-tests]
     runs-on: ubuntu-latest
     steps:
       - name: 'Check required test results'
         if: needs.paths-filter.outputs.should-test != 'false'
         run: |
-          [ "${{ needs.tests.result }}" == "success" ] && [ "${{ needs.tests.outputs.all-tests-passed }}" == "true" ]
+          [ "${{ needs.unit-tests.result }}" == "success" ] && [ "${{ needs.unit-tests.outputs.tests-passed }}" == "true" ]
+          [ "${{ needs.snapshot-tests.result }}" == "success" ] && [ "${{ needs.snapshot-tests.outputs.tests-passed }}" == "true" ]
       - name: 'Report success for skipped tests'
         if: needs.paths-filter.outputs.should-test == 'false'
         run: |
