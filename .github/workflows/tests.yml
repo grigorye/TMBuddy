@@ -20,7 +20,7 @@ jobs:
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v17
     secrets: inherit
     with:
-      runs-on: 'macos-12'
+      runs-on: 'self-hosted,macos-12'
       testsScheme: 'TMBuddyTests'
       testsKind: 'UnitTests'
       testsName: 'Unit Tests'
@@ -32,7 +32,7 @@ jobs:
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v17
     secrets: inherit
     with:
-      runs-on: 'macos-12'
+      runs-on: 'self-hosted,macos-12'
       testsScheme: 'TMBuddySnapshots'
       testsKind: 'Snapshots'
       testsName: 'Snapshots'
