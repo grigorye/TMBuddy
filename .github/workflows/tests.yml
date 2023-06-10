@@ -1,54 +1,43 @@
 name: Tests
 
 on:
-  workflow_dispatch: {}
-  workflow_call: {}
+  workflow_call:
+    inputs:
+      unit-tests-scheme:
+        type: string
+        required: false
+      snapshot-tests-scheme:
+        type: string
+        required: false
+      runs-on:
+        type: string
+        required: true
+    outputs:
+      tests-passed:
+        value: "${{ (inputs.unit-tests-scheme == '' || (jobs.unit-tests.result == 'success' && jobs.unit-tests.outputs.tests-passed == 'true')) && (inputs.snapshot-tests-scheme == '' || (jobs.snapshot-tests.result == 'success' && jobs.snapshot-tests.outputs.tests-passed == 'true')) }}"
 
 defaults:
   run:
     shell: bash --noprofile --norc -x -euo pipefail {0}
 
 jobs:
-  paths-filter:
-    name: 'Paths Filter'
-    uses: ./.github/workflows/paths-filter.yml
-
   unit-tests:
     name: 'Unit Tests'
-    needs: [paths-filter]
-    if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false'
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v17
     secrets: inherit
     with:
-      runs-on: 'macos-12'
-      testsScheme: 'TMBuddyTests'
+      runs-on: ${{ inputs.runs-on }}
+      testsScheme: ${{ inputs.unit-tests-scheme }}
       testsKind: 'UnitTests'
       testsName: 'Unit Tests'
 
   snapshot-tests:
     name: 'Snapshots'
-    needs: [paths-filter]
-    if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false'
+    if: inputs.snapshot-tests-scheme != ''
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-reusable.yml@v17
     secrets: inherit
     with:
-      runs-on: 'macos-12'
-      testsScheme: 'TMBuddySnapshots'
+      runs-on: ${{ inputs.runs-on }}
+      testsScheme: ${{ inputs.snapshot-tests-scheme }}
       testsKind: 'Snapshots'
       testsName: 'Snapshots'
-  
-  finalize-tests:
-    name: 'Finalize Tests'
-    if: always()
-    needs: [paths-filter, snapshot-tests, unit-tests]
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Check required test results'
-        if: needs.paths-filter.outputs.should-test != 'false'
-        run: |
-          [ "${{ needs.unit-tests.result }}" == "success" ] && [ "${{ needs.unit-tests.outputs.tests-passed }}" == "true" ]
-          [ "${{ needs.snapshot-tests.result }}" == "success" ] && [ "${{ needs.snapshot-tests.outputs.tests-passed }}" == "true" ]
-      - name: 'Report success for skipped tests'
-        if: needs.paths-filter.outputs.should-test == 'false'
-        run: |
-          echo 'No tests required.'
