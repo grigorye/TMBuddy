@@ -8,7 +8,5 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
-  build-app:
-    uses: ./.github/workflows/build-app.yml
   tests:
     uses: ./.github/workflows/tests.yml
