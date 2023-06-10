@@ -13,7 +13,7 @@ jobs:
     name: 'App'
     needs: [paths-filter]
     if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-build != 'false'
-    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v17
+    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v18
     with:
       macos-app-scheme: 'TMBuddy'
       build-configs: '[\"app-store\", \"developer-id\"]'
