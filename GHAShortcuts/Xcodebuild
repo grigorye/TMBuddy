@@ -1,0 +1,8 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+xcodebuild \
+    -project Xcodeproj/*-"$PROJECT_KIND".xcodeproj \
+    "$@"
