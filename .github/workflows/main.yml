@@ -16,7 +16,7 @@ jobs:
     name: 'Tests'
     needs: [paths-filter]
     if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false'
-    uses: ./.github/workflows/tests.yml
+    uses: grigorye/ReusableWorkflows/.github/workflows/tests-generic.yml@v17
     secrets: inherit
     with:
       runs-on: 'macos-12'
