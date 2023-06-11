@@ -3,26 +3,37 @@ import Foundation
 
 struct ContentView: View {
     
+    enum TabTag: String {
+        case setup
+        case folders
+        case legend
+    }
+    
+    @State var selection: TabTag = .setup
+    
     var body: some View {
         if #available(macOS 11.0, *) {
-            TabView {
-                FoldersTab.new()
-                    .tabItem {
-                        Text("Folders")
-                    }
-                    .padding()
-
+            TabView(selection: $selection) {
                 SandboxAccessView.new()
                     .tabItem {
                         Text("Setup")
                     }
                     .padding()
+                    .tag(TabTag.setup)
                 
+                FoldersTab.new()
+                    .tabItem {
+                        Text("Folders")
+                    }
+                    .padding()
+                    .tag(TabTag.folders)
+
                 LegendView.new()
                     .frame(minHeight: 240)
                     .tabItem {
                         Text("Legend")
                     }
+                    .tag(TabTag.legend)
             }
             .padding()
             .frame(width: 640)
