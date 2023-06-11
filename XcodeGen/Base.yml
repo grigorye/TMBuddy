@@ -123,6 +123,7 @@ targets:
   TMBuddySnapshots:
     type: bundle.unit-test
     platform: macOS
+    deploymentTarget: 11.0
     templates:
       - TMBuddyIntrinsicsTarget
       - TMBuddyStandaloneViewsTarget
@@ -145,6 +146,7 @@ targets:
   TMBuddySnapshotViews:
     type: framework
     platform: macOS
+    deploymentTarget: 11.0
     templates:
       - TMBuddyStandaloneViewsTarget
     sources:
@@ -156,6 +158,7 @@ targets:
   TMBuddyPreviews:
     type: framework
     platform: macOS
+    deploymentTarget: 11.0
     templates:
       - TMBuddyStandaloneViewsTarget
     sources:
