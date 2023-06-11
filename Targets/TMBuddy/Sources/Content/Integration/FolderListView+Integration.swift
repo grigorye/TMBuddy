@@ -20,7 +20,7 @@ struct IntegratedFolderListView: View {
 
 @available(macOS 11.0, *)
 @MainActor
-func urlFromItemProvider(_ provider: NSItemProvider) async throws -> URL {
+func urlFromItemProvider(_ provider: NSItemProvider) async throws -> URL? {
     let data = try await provider.loadData(for: .fileURL)
     guard let path = String(data: data, encoding: .utf8) else {
         enum Error: Swift.Error {
@@ -34,5 +34,19 @@ func urlFromItemProvider(_ provider: NSItemProvider) async throws -> URL {
         }
         throw Error.pathNotConvertible(path)
     }
+    guard url.isDirectory() else {
+        return nil
+    }
     return url
+}
+
+extension URL {
+    func isDirectory() -> Bool {
+        do {
+            return try resourceValues(forKeys: [.isDirectoryKey]).isDirectory == true
+        } catch {
+            dump((error, path: self.path), name: "isDirectoryValueFailed")
+            return false
+        }
+    }
 }
