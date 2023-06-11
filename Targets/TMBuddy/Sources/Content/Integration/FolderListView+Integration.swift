@@ -14,7 +14,7 @@ struct IntegratedFolderListView: View {
     @StateObject var urlProvider = BookmarkedURLProvider()
 
     var body: some View {
-        FolderListView(urls: $urlProvider.urls, urlFromItemProvider: urlFromItemProvider)
+        FolderListView(urls: urlProvider.urls, urlFromItemProvider: urlFromItemProvider, updateURLs: processURLs)
     }
 }
 
