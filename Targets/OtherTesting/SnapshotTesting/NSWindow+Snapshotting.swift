@@ -96,7 +96,7 @@ extension XCTestCase {
             )
         }
         if !failures.isEmpty {
-            XCTFail(failures.first!)
+            XCTFail(failures.first!, file: file, line: line)
         }
         if !failures.isEmpty || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
             let window = NSApplication.shared.window(withWindowNumber: windowNumber)!
