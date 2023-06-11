@@ -14,7 +14,7 @@ struct IntegratedFolderListView: View {
     @StateObject var urlProvider = BookmarkedURLProvider()
 
     var body: some View {
-        FolderListView(urls: urlProvider.urls, urlFromItemProvider: urlFromItemProvider, updateURLs: processURLs)
+        FolderListView(urls: urlProvider.urls, handleFileDrop: handleFileDrop(providers:), removeURLs: removeURLs)
     }
 }
 
@@ -49,4 +49,21 @@ extension URL {
             return false
         }
     }
+}
+
+@available(macOS 11.0, *)
+@MainActor
+func handleFileDrop(providers: [NSItemProvider]) -> Bool {
+    for provider in providers {
+        Task {
+            guard let url = try await urlFromItemProvider(provider) else {
+                dump((provider), name: "rejectedItemProvider")
+                return
+            }
+            Task { @MainActor in
+                addURLs([url])
+            }
+        }
+    }
+    return true
 }
