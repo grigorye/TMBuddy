@@ -55,8 +55,12 @@ struct FoldersTab: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             FolderSelectionCheckpointView.new()
+            if #available(macOS 11.0, *) {
+                Spacer().padding(.bottom)
+                FolderListView.new()
+            }
         }
     }
 }
