@@ -3,13 +3,13 @@ import Foundation
 
 struct ContentView: View {
     
-    enum TabTag: String {
+    enum Tab: String {
         case setup
         case folders
         case legend
     }
     
-    @State var selection: TabTag = .setup
+    @SwiftUI.State var selection: Tab = .setup
     
     var body: some View {
         if #available(macOS 11.0, *) {
@@ -19,21 +19,21 @@ struct ContentView: View {
                         Text("Setup")
                     }
                     .padding()
-                    .tag(TabTag.setup)
+                    .tag(Tab.setup)
                 
                 FoldersTab.new()
                     .tabItem {
                         Text("Folders")
                     }
                     .padding()
-                    .tag(TabTag.folders)
+                    .tag(Tab.folders)
 
                 LegendView.new()
                     .frame(minHeight: 240)
                     .tabItem {
                         Text("Legend")
                     }
-                    .tag(TabTag.legend)
+                    .tag(Tab.legend)
             }
             .padding()
             .frame(width: 640)
@@ -75,3 +75,5 @@ struct FoldersTab: View {
         }
     }
 }
+
+extension ContentView.Tab: CaseIterable {}

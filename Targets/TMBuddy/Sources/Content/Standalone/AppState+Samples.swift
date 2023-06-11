@@ -1,19 +1,32 @@
 import SwiftUI
 
-enum AppStateSample: CaseIterable {
-    case allGreen
-    case allRed
+struct AppStateSample: CaseIterable {
+    var allGreen: Bool
+    var tab: ContentView.Tab
+
+    static var allCases: [AppStateSample] {
+        [true, false].flatMap { allGreen in
+            [ContentView.Tab]([.folders, .setup]).map { tab in
+                Self(allGreen: allGreen, tab: tab)
+            }
+        }
+    }
 }
 
 extension View {
     
     func appStateSample(_ state: AppStateSample) -> some SwiftUI.View {
-        switch state {
-        case .allGreen:
-            return AnyView(allGreen())
-        case .allRed:
-            return AnyView(allRed())
+        let view: AnyView
+        if state.allGreen {
+            view = AnyView(allGreen())
+        } else {
+            view = AnyView(allRed())
         }
+        return view
+            .state(
+                .init(tab: state.tab),
+                for: ContentView.self
+            )
     }
     
     private func allGreen() -> some SwiftUI.View {

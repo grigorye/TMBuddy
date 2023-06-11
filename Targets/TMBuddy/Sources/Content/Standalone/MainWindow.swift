@@ -3,7 +3,7 @@ import SwiftUI
 
 @MainActor
 func mainWindowContentView() -> some View {
-    ContentView()
+    ContentView.new()
         .fixedSize()
         .onAppear {
             applicationLoadActivity?.end(())
