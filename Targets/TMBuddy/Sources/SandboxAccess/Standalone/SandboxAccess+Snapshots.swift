@@ -15,13 +15,19 @@ class SandboxAccessSnapshots: XCTestCase {
             FolderSelectionCheckpointView.self,
             record: record
         ) {
-            ContentView()
+            ContentView.new()
         }
     }
     
-    func testBuddyGreen() {
+    func testBuddyGreenSetup() {
         let view = mainWindowContentView()
-            .appStateSample(.allGreen)
+            .appStateSample(.init(allGreen: true, tab: .setup))
+        assertSnapshot(matching: view, record: record)
+    }
+    
+    func testBuddyGreenFolders() {
+        let view = mainWindowContentView()
+            .appStateSample(.init(allGreen: true, tab: .folders))
         assertSnapshot(matching: view, record: record)
     }
 }
