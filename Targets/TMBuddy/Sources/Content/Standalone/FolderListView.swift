@@ -3,19 +3,21 @@ import SwiftUI
 @available(macOS 11.0, *)
 struct FolderListView: View {
     
-    init(urls: Binding<[URL]>, selection: Set<URL> = [], urlFromItemProvider: @escaping (NSItemProvider) async throws -> URL) {
+    init(urls: [URL], selection: Set<URL> = [], urlFromItemProvider: @escaping (NSItemProvider) async throws -> URL, updateURLs: @escaping ([URL]) -> Void) {
+        self.urls = urls
         self.selection = selection
         self.urlFromItemProvider = urlFromItemProvider
-        self._urls = urls
+        self.updateURLs = updateURLs
     }
     
-    @Binding var urls: [URL]
+    let urls: [URL]
     
     @SwiftUI.State var selection: Set<URL> = []
     @SwiftUI.State private var dragOver = false
     
-    private let urlFromItemProvider: (NSItemProvider) async throws -> URL
-    
+    private let urlFromItemProvider: (NSItemProvider) async throws -> URL?
+    private let updateURLs: ([URL]) async throws -> Void
+
     var body: some View {
         VStack() {
             List(urls, id: \.self, selection: $selection) { url in
@@ -35,7 +37,7 @@ struct FolderListView: View {
                     Task {
                         let url = try await urlFromItemProvider(provider)
                         Task { @MainActor in
-                            urls += [url]
+                            try await self.updateURLs(urls + [url])
                         }
                     }
                 }
@@ -43,7 +45,9 @@ struct FolderListView: View {
             }
             .keyboardShortcut(.delete, modifiers: [])
             .onDeleteCommand(perform: {
-                self.urls = urls.filter { !selection.contains($0) }
+                Task {
+                    try await updateURLs(urls.filter { !selection.contains($0) })
+                }
             })
             .frame(minHeight: 200, maxHeight: .infinity)
             .border(dragOver ? Color.accentColor : Color.clear)

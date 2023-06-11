@@ -11,8 +11,9 @@ extension FolderListView {
     
     init(state: State, actions: ()?) {
         self.init(
-            urls: .constant(state.urls),
-            urlFromItemProvider: { _ in fatalError() }
+            urls: state.urls,
+            urlFromItemProvider: { _ in fatalError() },
+            updateURLs: { _ in fatalError() }
         )
     }
 }
