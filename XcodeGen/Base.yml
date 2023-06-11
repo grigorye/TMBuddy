@@ -262,7 +262,7 @@ settings:
 options:
   developmentLanguage: ca
   bundleIdPrefix: $(GE_BUNDLE_ID_PREFIX)
-  xcodeVersion: 13.2.1
+  xcodeVersion: 14.3.1
   deploymentTarget:
     macOS: 10.15
   createIntermediateGroups: true
