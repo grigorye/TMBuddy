@@ -11,8 +11,8 @@ struct FolderListView: View {
     
     @Binding var urls: [URL]
     
-    @State var selection: Set<URL> = []
-    @State private var dragOver = false
+    @SwiftUI.State var selection: Set<URL> = []
+    @SwiftUI.State private var dragOver = false
     
     private let urlFromItemProvider: (NSItemProvider) async throws -> URL
     

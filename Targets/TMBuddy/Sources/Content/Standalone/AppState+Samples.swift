@@ -33,6 +33,14 @@ extension View {
                 for: FolderSelectionCheckpointView.self
             )
             .state(
+                .init(urls: [
+                    URL(fileURLWithPath: "/"),
+                    FileManager.default.homeDirectory(forUser: "admin") ?? URL(fileURLWithPath: "/tmp"),
+                    URL(fileURLWithPath: "/Users/Shared"),
+                ]),
+                for: FolderListView.self
+            )
+            .state(
                 .init(
                     fullDiskAccess: .granted,
                     finderSync: .init(enabled: true, alienInfo: .same)
@@ -60,6 +68,10 @@ extension View {
             .state(
                 .none,
                 for: FolderSelectionCheckpointView.self
+            )
+            .state(
+                .none,
+                for: FolderListView.self
             )
             .state(
                 .init(fullDiskAccess: .denied, finderSync: .init(enabled: false, alienInfo: .none)),
