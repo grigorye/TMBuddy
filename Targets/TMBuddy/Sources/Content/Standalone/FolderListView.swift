@@ -3,7 +3,7 @@ import SwiftUI
 @available(macOS 11.0, *)
 struct FolderListView: View {
     
-    init(urls: [URL], selection: Set<URL> = [], urlFromItemProvider: @escaping (NSItemProvider) async throws -> URL, updateURLs: @escaping ([URL]) -> Void) {
+    init(urls: [URL], selection: Set<URL> = [], urlFromItemProvider: @escaping (NSItemProvider) async throws -> URL?, updateURLs: @escaping ([URL]) -> Void) {
         self.urls = urls
         self.selection = selection
         self.urlFromItemProvider = urlFromItemProvider
@@ -35,7 +35,10 @@ struct FolderListView: View {
             .onDrop(of: [.fileURL], isTargeted: $dragOver) { providers -> Bool in
                 for provider in providers {
                     Task {
-                        let url = try await urlFromItemProvider(provider)
+                        guard let url = try await urlFromItemProvider(provider) else {
+                            dump((provider), name: "rejectedItemProvider")
+                            return
+                        }
                         Task { @MainActor in
                             try await self.updateURLs(urls + [url])
                         }
