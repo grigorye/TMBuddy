@@ -235,7 +235,7 @@ schemes:
           isEnabled: false
       targets:
         - name: TMBuddySnapshots
-          parallelizable: true
+          parallelizable: false # Window snapshots may otherwise overlap/obscure each other.
 
 packages:
   SnapshotTesting:
