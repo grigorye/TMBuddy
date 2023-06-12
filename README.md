@@ -43,11 +43,13 @@ See and manipulate Time Machine exclusions, right in Finder.
 
 2. Launch the app and follow the checklist, making sure all the red lights:
 
-   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/macOS-13.3/test.allRed.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/macOS-13.3/test.AppStateSample-allGreen-false-tab-TMBuddySnapshots-ContentView-Tab-setup.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/macOS-13.3/test.AppStateSample-allGreen-false-tab-TMBuddySnapshots-ContentView-Tab-folders.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
 
    turned green:
 
-   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/macOS-13.3/test.allGreen.@2x.png" alt="Checklist-Green.png" width=75% style="zoom:50%;" />
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/macOS-13.3/test.AppStateSample-allGreen-true-tab-TMBuddySnapshots-ContentView-Tab-setup.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
+   <img src="Targets/TMBuddy/Sources/Content/Standalone/MainWindow+Snapshots/macOS-13.3/test.AppStateSample-allGreen-true-tab-TMBuddySnapshots-ContentView-Tab-folders.@2x.png" alt="Checklist-Red.png" width=75% style="zoom:50%;" />
 
 When selecting folders for the application, typically you want to navigate to Computer and select all the disks for which you want to employ TMBuddy:
 
