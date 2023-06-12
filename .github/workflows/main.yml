@@ -16,7 +16,7 @@ jobs:
     name: 'Tests'
     needs: [paths-filter]
     if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false'
-    uses: grigorye/ReusableWorkflows/.github/workflows/tests-generic.yml@v18
+    uses: grigorye/ReusableWorkflows/.github/workflows/tests-generic.yml@v19
     secrets: inherit
     with:
       runs-on: 'macos-12'
@@ -27,7 +27,7 @@ jobs:
     name: 'App'
     needs: [paths-filter]
     if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-build != 'false'
-    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v18
+    uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v19
     with:
       macos-app-scheme: 'TMBuddy'
       build-configs: '[\"app-store\", \"developer-id\"]'
