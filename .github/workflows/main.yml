@@ -46,7 +46,14 @@ jobs:
       - name: 'Check required test results'
         if: needs.paths-filter.outputs.should-test != 'false'
         run: |
-          [ "${{ needs.tests.result }}" == "success" ] && [ "${{ needs.tests.outputs.tests-passed }}" == "true" ]
+          if [ "${{ needs.tests.result }}" != "success" ]; then
+            echo "Some expected tests did not run."
+            exit 1
+          fi
+          if [ "${{ needs.tests.outputs.tests-passed }}" != "true" ]; then
+            echo "Some tests did fail."
+            exit 1
+          fi
       - name: 'Report success for skipped jobs'
         if: needs.paths-filter.outputs.should-test == 'false' && needs.paths-filter.outputs.should-build == 'false'
         run: |
