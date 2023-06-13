@@ -40,20 +40,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Check required build results'
-        if: needs.paths-filter.outputs.should-build != 'false'
-        run: |
-          [ "${{ needs.build-app.result }}" == "success" ]
+        if: needs.paths-filter.outputs.should-build != 'false' && needs.build-app.result != 'success'
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Some app build did not succeed.')
       - name: 'Check required test results'
-        if: needs.paths-filter.outputs.should-test != 'false'
-        run: |
-          if [ "${{ needs.tests.result }}" != "success" ]; then
-            echo "Some expected tests did not run."
-            exit 1
-          fi
-          if [ "${{ needs.tests.outputs.tests-passed }}" != "true" ]; then
-            echo "Some tests did fail."
-            exit 1
-          fi
+        if: needs.paths-filter.outputs.should-test != 'false' && needs.tests.result != 'success'
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Some tests did not run.')
+      - name: 'Check required test results'
+        if: needs.paths-filter.outputs.should-test != 'false' && needs.tests.outputs.tests-passed != 'true'
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Some tests did fail.')
       - name: 'Report success for skipped jobs'
         if: needs.paths-filter.outputs.should-test == 'false' && needs.paths-filter.outputs.should-build == 'false'
         run: |
