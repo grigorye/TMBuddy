@@ -1,7 +1,19 @@
 name: main
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      skip-tests:
+        description: Skip tests
+        required: false
+        default: false
+        type: boolean
+      skip-build-app:
+        description: Skip build-app
+        required: false
+        default: false
+        type: boolean
+  
   push:
     branches: [main]
   pull_request:
@@ -15,7 +27,7 @@ jobs:
   tests:
     name: 'Tests'
     needs: [paths-filter]
-    if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false'
+    if: ${{ !inputs.skip-tests && github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false' }}
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-generic.yml@v19
     secrets: inherit
     with:
@@ -26,7 +38,7 @@ jobs:
   build-app:
     name: 'App'
     needs: [paths-filter]
-    if: github.event.pull_request.draft != true && needs.paths-filter.outputs.should-build != 'false'
+    if: ${{ !inputs.skip-build-app && github.event.pull_request.draft != true && needs.paths-filter.outputs.should-build != 'false' }}
     uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v19
     with:
       macos-app-scheme: 'TMBuddy'
