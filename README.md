@@ -8,7 +8,7 @@ See and manipulate Time Machine exclusions, right in Finder.
 
 - See exclusion status for every item of each monitored folder/disk:
   
-  <img src="./Targets/TMBuddy/Sources/Legend/LegendView+Snapshots/macOS-13.3/test.1.@2x.png" alt="test.1" width=50% style="zoom:50%;" />
+  <img src="./Targets/TMBuddy/Sources/Legend/Standalone/LegendView+Snapshots/macOS-13.3/test.1.@2x.png" alt="test.1" width=50% style="zoom:50%;" />
   
 - Toggle *sticky* or *fixed-path* [^*] exclusion via contextual menu (or toolbar item):
   
