@@ -98,18 +98,18 @@ extension XCTestCase {
         if !failures.isEmpty {
             XCTFail(failures.first!, file: file, line: line)
         }
-        if !failures.isEmpty || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES" {
-            let window = NSApplication.shared.window(withWindowNumber: windowNumber)!
-            try assertSnapshot(
-                matching: NSWindow.snapshot(windowNumbers: windowNumbers, imageOptions: [.bestResolution]),
-                as: .image(scaleFactor: window.backingScaleFactor, ignoreDiffs: true),
-                named: name,
-                record: record,
-                file: file,
-                testName: testName,
-                line: line
-            )
-        }
+        
+        let recordFlaky = !failures.isEmpty || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES"
+        let window = NSApplication.shared.window(withWindowNumber: windowNumber)!
+        assertSnapshot(
+            matching: try NSWindow.snapshot(windowNumbers: windowNumbers, imageOptions: [.bestResolution]),
+            as: .image(scaleFactor: window.backingScaleFactor, ignoreDiffs: !recordFlaky),
+            named: name,
+            record: record,
+            file: file,
+            testName: testName,
+            line: line
+        )
     }
 }
 
