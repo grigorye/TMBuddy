@@ -99,11 +99,10 @@ extension XCTestCase {
             XCTFail(failures.first!, file: file, line: line)
         }
         
-        let recordFlaky = !failures.isEmpty || ProcessInfo().environment["FORCE_RUN_FLAKY_SNAPSHOTS"] == "YES"
         let window = NSApplication.shared.window(withWindowNumber: windowNumber)!
         assertSnapshot(
             matching: try NSWindow.snapshot(windowNumbers: windowNumbers, imageOptions: [.bestResolution]),
-            as: .image(scaleFactor: window.backingScaleFactor, ignoreDiffs: !recordFlaky),
+            as: .image(scaleFactor: window.backingScaleFactor, ignoreDiffs: failures.isEmpty),
             named: name,
             record: record,
             file: file,
