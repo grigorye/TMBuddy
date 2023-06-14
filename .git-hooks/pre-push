@@ -16,6 +16,9 @@ runTests() {
 
 # shellcheck disable=SC2162
 while read _ commit _ _; do
+    if [ "$commit" == "0000000000000000000000000000000000000000" ]; then
+        continue # We're dealing with something special, like 'git push origin --delete xxx', that has nothing to do to the current branch.
+    fi
     if [ z"${PRE_PUSH_COMMIT_DIR:-}" != z"" ]; then
         rm -rf "$PRE_PUSH_COMMIT_DIR"
         commitDir="$PRE_PUSH_COMMIT_DIR"
