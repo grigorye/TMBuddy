@@ -230,9 +230,6 @@ schemes:
     run:
     test:
       environmentVariables:
-        - variable: FORCE_RUN_FLAKY_SNAPSHOTS
-          value: YES
-          isEnabled: false
         - variable: SNAPSHOT_RECORDING
           value: YES
           isEnabled: false
