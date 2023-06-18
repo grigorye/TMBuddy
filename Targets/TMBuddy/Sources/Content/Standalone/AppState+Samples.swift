@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AppStateSample: CaseIterable {
+struct AppStateSample: CaseIterable, Codable {
     var allGreen: Bool
     var tab: ContentView.Tab
 
@@ -10,6 +10,13 @@ struct AppStateSample: CaseIterable {
                 Self(allGreen: allGreen, tab: tab)
             }
         }
+    }
+    
+    var sampleName: String {
+        [
+            allGreen ? "allGreen" : "allRed",
+            "tab-\(tab.rawValue)"
+        ].joined(separator: "_")
     }
 }
 
