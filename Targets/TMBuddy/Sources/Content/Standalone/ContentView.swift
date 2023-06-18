@@ -3,7 +3,7 @@ import Foundation
 
 struct ContentView: View {
     
-    enum Tab: String {
+    enum Tab: String, Codable {
         case setup
         case folders
         case legend
