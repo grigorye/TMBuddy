@@ -33,7 +33,7 @@ jobs:
     with:
       runs-on: 'macos-12'
       unit-tests-scheme: 'TMBuddyTests'
-      snapshot-tests-scheme: 'TMBuddySnapshots'
+      snapshot-tests-scheme: 'TMBuddyAllSnapshots'
 
   build-app:
     name: 'App'
