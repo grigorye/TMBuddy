@@ -7,6 +7,11 @@ aggregateTargets:
       - TMBuddyUITestSnapshotsHost
       - TMBuddyUITestSnapshots
       - TMBuddyPreviews
+  TMBuddyAllSnapshots:
+    scheme:
+      testTargets:
+        - TMBuddySnapshots
+        - TMBuddyUITestSnapshots
 
 targets:
   TMBuddy:
