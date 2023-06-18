@@ -4,6 +4,8 @@ aggregateTargets:
       - TMBuddy
       - TMBuddyTests
       - TMBuddySnapshots
+      - TMBuddyUITestSnapshotsHost
+      - TMBuddyUITestSnapshots
       - TMBuddyPreviews
 
 targets:
@@ -142,6 +144,46 @@ targets:
     settings:
       LOCALIZATION_EXPORT_SUPPORTED: NO
       SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) GE_SNAPSHOT_TESTING
+
+  TMBuddyUITestSnapshots:
+    type: bundle.ui-testing
+    platform: macOS
+    deploymentTarget: 11.0
+    scheme:
+      testTargets:
+        - TMBuddyUITestSnapshots
+    templates:
+      - TMBuddyIntrinsicsTarget
+    dependencies:
+      - package: SnapshotTesting
+      - target: TMBuddyUITestSnapshotsHost
+    sources:
+      - path: Targets/TMBuddyUITestSnapshots
+        excludes:
+          - "**/*+Snapshots"
+      - Targets/OtherTesting/SnapshotTesting/Paths+SnapshotTesting.swift
+    settings:
+      LOCALIZATION_EXPORT_SUPPORTED: NO
+
+  TMBuddyUITestSnapshotsHost:
+    type: application
+    platform: macOS
+    deploymentTarget: 11.0
+    scheme: {}
+    templates:
+      - TMBuddyIntrinsicsTarget
+    sources:
+      - path: Targets/TMBuddyUITestSnapshotsHost/Bundle
+        buildPhase: none
+      - Targets/TMBuddyUITestSnapshotsHost/Sources
+      - Targets/TMBuddyUITestSnapshotsHost/Resources
+      - Targets/OtherTesting/Snapshotting
+    settings:
+      PRODUCT_MODULE_NAME: $(TARGET_NAME)
+      PRODUCT_NAME: $(TARGET_NAME)$(GE_PRODUCT_NAME_EXTRA)
+      INFOPLIST_FILE: Targets/TMBuddyUITestSnapshotsHost/Bundle/Info.plist
+    dependencies:
+      - target: TMBuddySnapshotViews
 
   TMBuddySnapshotViews:
     type: framework
