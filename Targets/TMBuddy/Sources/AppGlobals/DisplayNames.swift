@@ -6,7 +6,7 @@ private let fileManager = FileManager.default
 
 @MainActor var appName: String {
 #if !GE_SNAPSHOT_TESTING
-    fileManager.displayName(atPath: Bundle.main.bundlePath)
+    Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? fileManager.displayName(atPath: Bundle.main.bundlePath)
 #else
     "TMBuddy"
 #endif
