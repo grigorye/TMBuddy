@@ -1,6 +1,17 @@
 #! /bin/bash
 
-set +x
+[ "${RUNNER_DEBUG:-}" == "1" ] && set -x
+
 set -euo pipefail
 
-find Targets/"$TESTS_SCHEME" -path '**+Snapshots/**/*.png'
+case "$TESTS_SCHEME" in
+TMBuddySnapshots)
+    find Targets -path '**+Snapshots/**/*.png'
+    ;;
+TMBuddyUITestSnapshots)
+    find Targets -path '**+UITestSnapshots/**/*.png'
+    ;;
+*)
+    exit 1
+    ;;
+esac
