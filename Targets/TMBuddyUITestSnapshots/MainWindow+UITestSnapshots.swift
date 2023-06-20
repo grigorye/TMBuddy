@@ -2,7 +2,7 @@
 @testable import func SnapshotTesting.sanitizePathComponent
 import XCTest
 
-final class MainWindowSnapshots: XCTestCase {
+final class MainWindowUITestSnapshots: XCTestCase {
 
     override func setUpWithError() throws {
         continueAfterFailure = false
