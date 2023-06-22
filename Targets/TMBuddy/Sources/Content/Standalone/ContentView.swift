@@ -1,5 +1,6 @@
 import SwiftUI
 import Foundation
+import SFSafeSymbols
 
 struct ContentView: View {
     
@@ -16,14 +17,14 @@ struct ContentView: View {
             TabView(selection: $selection) {
                 SandboxAccessView.new()
                     .tabItem {
-                        Text("Setup")
+                        Label("Setup", systemSymbol: .gear)
                     }
                     .padding()
                     .tag(Tab.setup)
                 
                 FoldersTab.new()
                     .tabItem {
-                        Text("Folders")
+                        Label("Folders", systemSymbol: .folder)
                     }
                     .padding()
                     .tag(Tab.folders)
@@ -31,7 +32,7 @@ struct ContentView: View {
                 LegendView.new()
                     .frame(minHeight: 240)
                     .tabItem {
-                        Text("Legend")
+                        Label("Legend", systemSymbol: .paintpalette)
                     }
                     .tag(Tab.legend)
             }
