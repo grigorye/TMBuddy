@@ -36,6 +36,15 @@
           "revision": "82a4fbd388346ca40b1bbe815014dc45a75d503c",
           "version": "0.1.1"
         }
+      },
+      {
+        "package": "SFSafeSymbols",
+        "repositoryURL": "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
+        "state": {
+          "branch": null,
+          "revision": "7cca2d60925876b5953a2cf7341cd80fbeac983c",
+          "version": "4.1.1"
+        }
       }
     ]
   },
