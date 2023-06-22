@@ -1,22 +1,24 @@
 import SwiftUI
 
 @available(macOS 11.0, *)
+@main
 struct TMBuddyApp: App {
+    @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    
     var body: some Scene {
-        WindowGroup {
+        Settings {
             mainWindowContentView().fixedSize()
         }
     }
 }
 
-@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         dump(Bundle.main.bundlePath, name: "bundlePath")
         onLaunch()
         applicationLoadActivity = beginActivity((), name: "applicationLoad")
-        mainWindow().makeKeyAndOrderFront(nil)
+        openSettings()
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
