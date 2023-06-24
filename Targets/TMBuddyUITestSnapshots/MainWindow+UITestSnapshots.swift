@@ -14,6 +14,9 @@ final class MainWindowUITestSnapshots: XCTestCase {
         for state in AppStateSample.allCases {
             let snapshotBasePath = snapshotDirectory(forFile: #file) + "/" + sanitizePathComponent(#function) + ".\(state.sampleName)"
             let appStateSampleJsonBase64 = try! JSONEncoder().encode(state).base64EncodedString()
+            app.launchEnvironment = [
+                "SNAPSHOT_RECORDING": "YES"
+            ]
             app.launchArguments = [
                 "-appStateSampleJsonBase64", appStateSampleJsonBase64,
                 "-snapshotBasePath", snapshotBasePath
