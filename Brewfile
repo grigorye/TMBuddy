@@ -1,2 +1,1 @@
 brew "mint"
-brew "xcbeautify"
