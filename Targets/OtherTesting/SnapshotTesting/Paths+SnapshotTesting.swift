@@ -1,6 +1,7 @@
 import Foundation
 
 func snapshotDirectory(forFile file: String) -> String {
+    let file = adjustForSrcRootRelocation(file: file)
     let fileUrl = URL(fileURLWithPath: file, isDirectory: false)
     let snapshotDirectoryUrl = fileUrl
         .deletingPathExtension()
