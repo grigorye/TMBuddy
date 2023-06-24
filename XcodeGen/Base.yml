@@ -167,6 +167,7 @@ targets:
         excludes:
           - "**/*+Snapshots"
       - Targets/OtherTesting/SnapshotTesting/Paths+SnapshotTesting.swift
+      - Targets/OtherTesting/SnapshotTesting/Paths+SrcRootRelocation.swift
     settings:
       LOCALIZATION_EXPORT_SUPPORTED: NO
 
@@ -280,6 +281,10 @@ schemes:
         - variable: SNAPSHOT_RECORDING
           value: YES
           isEnabled: false
+        - variable: SRCROOT
+          value: $(SRCROOT)
+        - variable: OLD_SRCROOT
+          value: $(SRCROOT)
       targets:
         - name: TMBuddySnapshots
           parallelizable: false # Window snapshots may otherwise overlap/obscure each other.
