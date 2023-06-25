@@ -185,6 +185,7 @@ targets:
       - Targets/TMBuddyUITestSnapshotsHost/Sources
       - Targets/TMBuddyUITestSnapshotsHost/Resources
       - Targets/OtherTesting/Snapshotting
+      - Targets/TMBuddy/Sources/Utilities/OpeningSettings.swift
     settings:
       PRODUCT_MODULE_NAME: $(TARGET_NAME)
       PRODUCT_NAME: $(TARGET_NAME)$(GE_PRODUCT_NAME_EXTRA)
