@@ -5,7 +5,8 @@ import Accessibility
 @available(macOS 13.0, *)
 @main
 struct TMBuddySnapshotHostApp: App {
-    
+    @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
+
     @AppStorage("appStateSampleJsonBase64") var appStateSampleJsonBase64: String?
     
     var appStateSample: AppStateSample {
@@ -16,11 +17,17 @@ struct TMBuddySnapshotHostApp: App {
     }
 
     var body: some Scene {
-        WindowGroup {
-            mainWindowContentView().fixedSize()
+        mainScene {
+            mainWindowContentView()
                 .appStateSample(appStateSample)
                 .snapshottingUITestWindow()
         }
-        .windowResizability(.contentSize)
+    }
+}
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+    
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        openSettings()
     }
 }
