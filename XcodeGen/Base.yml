@@ -165,7 +165,7 @@ targets:
     sources:
       - path: Targets/TMBuddyUITestSnapshots
         excludes:
-          - "**/*+Snapshots"
+          - "**/*+UITestSnapshots"
       - Targets/OtherTesting/SnapshotTesting/Paths+SnapshotTesting.swift
       - Targets/OtherTesting/SnapshotTesting/Paths+SrcRootRelocation.swift
     settings:
