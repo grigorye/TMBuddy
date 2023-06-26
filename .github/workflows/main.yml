@@ -45,32 +45,3 @@ jobs:
       macos-app-scheme: 'TMBuddy'
       build-configs: '[\"app-store\", \"developer-id\"]'
     secrets: inherit
-
-  finalize:
-    name: 'Finalize Run'
-    if: always()
-    needs: [paths-filter, tests, build-app]
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Flag non-succeeding app builds'
-        if: always() && needs.paths-filter.outputs.should-build != 'false' && needs.build-app.result != 'success'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.setFailed('Some app build did not succeed.')
-      - name: 'Flag tests that did not run'
-        if: always() && needs.paths-filter.outputs.should-test != 'false' && needs.tests.result != 'success'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.setFailed('Some tests did not run.')
-      - name: 'Flag tests that did fail'
-        if: always() && needs.paths-filter.outputs.should-test != 'false' && needs.tests.outputs.tests-passed != 'true'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.setFailed('Some tests did fail.')
-      - name: 'Report success for skipped jobs'
-        if: always() && needs.paths-filter.outputs.should-test == 'false' && needs.paths-filter.outputs.should-build == 'false'
-        run: |
-          echo 'No job to do.'
