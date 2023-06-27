@@ -26,61 +26,19 @@ defaults:
 jobs:
   tests-filter:
     name: 'Filter Tests'
-    runs-on: ubuntu-latest
-    outputs:
-      should-run: ${{ steps.filter.outputs.should-run }}
-    env:
-      GH_TOKEN: ${{ secrets.ON_DEMAND_TRIGGER_GH_TOKEN }}
-    steps:
-      - name: 'Filter'
-        id: filter
-        run: |
-          action="test"
-          if ${{ github.event_name != 'pull_request' }}; then
-            if ${{ inputs.skip-tests == 'false' }}; then
-              should_run=true
-            else
-              should_run=false
-            fi
-          else
-            PR_NUMBER=${{ github.event.pull_request.number }}
-            labels=($(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json labels --jq .labels.[].name))
-            if [[ " ${labels[@]} " =~ "ci: $action" ]]; then
-              printf -v "should_run" "%s" "true" # https://stackoverflow.com/a/16973754/1859783
-            else
-              printf -v "should_run" "%s" "false"
-            fi
-          fi
-          echo "should-run=$should_run" >> $GITHUB_OUTPUT
+    uses: ./.github/workflows/filter-on-pr-label-or-input.yml
+    secrets: inherit
+    with:
+      action: 'tests'
+      skip-non-pr: ${{ inputs.skip-tests }}
 
   build-app-filter:
     name: 'Filter Build App'
-    runs-on: ubuntu-latest
-    outputs:
-      should-run: ${{ steps.filter.outputs.should-run }}
-    env:
-      GH_TOKEN: ${{ secrets.ON_DEMAND_TRIGGER_GH_TOKEN }}
-    steps:
-      - name: 'Filter'
-        id: filter
-        run: |
-          action="build-app"
-          if ${{ github.event_name != 'pull_request' }}; then
-            if ${{ inputs.skip-build-app == 'false' }}; then
-              should_run=true
-            else
-              should_run=false
-            fi
-          else
-            PR_NUMBER=${{ github.event.pull_request.number }}
-            labels=($(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json labels --jq .labels.[].name))
-            if [[ " ${labels[@]} " =~ "ci: $action" ]]; then
-              printf -v "should_run" "%s" "true" # https://stackoverflow.com/a/16973754/1859783
-            else
-              printf -v "should_run" "%s" "false"
-            fi
-          fi
-          echo "should-run=$should_run" >> $GITHUB_OUTPUT
+    uses: ./.github/workflows/filter-on-pr-label-or-input.yml
+    secrets: inherit
+    with:
+      action: 'build-app'
+      skip-non-pr: ${{ inputs.skip-build-app }}
         
   paths-filter:
     name: 'Paths Filter'
