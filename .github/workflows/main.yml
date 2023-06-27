@@ -24,54 +24,72 @@ defaults:
     shell: bash --noprofile --norc -x -euo pipefail {0}    
 
 jobs:
-  pr-trigger:
-    name: 'PR Trigger Filter'
+  tests-filter:
+    name: 'Filter Tests'
     runs-on: ubuntu-latest
     outputs:
-      should-test: ${{ steps.filter.outputs.should-test }}
-      should-build: ${{ steps.filter.outputs.should-build }}
+      should-run: ${{ steps.filter.outputs.should-run }}
     env:
       GH_TOKEN: ${{ secrets.ON_DEMAND_TRIGGER_GH_TOKEN }}
-
     steps:
-      - name: 'Filter body'
-        if: ${{ github.event_name == 'pull_request' && github.event.action == 'edited' }}
+      - name: 'Filter'
         id: filter
         run: |
-          echo "should-test=false" >> $GITHUB_OUTPUT
-          echo "should-build=false" >> $GITHUB_OUTPUT
-          jq . "$GITHUB_EVENT_PATH"
-          new_body=$(jq -r '.pull_request.body' "$GITHUB_EVENT_PATH")
-          old_body=$(jq -r '.changes.body.from' "$GITHUB_EVENT_PATH")
-          if ! [[ "$new_body" =~ '- [x] *Run* checks:' && "$old_body" =~ '- [ ] *Run* checks:' ]]; then
-            exit 0
+          action="test"
+          if ${{ github.event_name != 'pull_request' }}; then
+            if ${{ inputs.skip-tests == 'false' }}; then
+              should_run=true
+            else
+              should_run=false
+            fi
+          else
+            PR_NUMBER=${{ github.event.pull_request.number }}
+            labels=($(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json labels --jq .labels.[].name))
+            if [[ " ${labels[@]} " =~ "ci: $action" ]]; then
+              printf -v "should_run" "%s" "true" # https://stackoverflow.com/a/16973754/1859783
+            else
+              printf -v "should_run" "%s" "false"
+            fi
           fi
-          if [[ "$new_body" =~ '- [x] all' ]]; then
-            echo "should-test=true" >> $GITHUB_OUTPUT
-            echo "should-build=true" >> $GITHUB_OUTPUT
-          fi
-          if [[ "$new_body" =~ '- [x] tests' ]]; then
-            echo "should-test=true" >> $GITHUB_OUTPUT
-          fi
-          if [[ "$new_body" =~ '- [x] build app' ]]; then
-            echo "should-build=true" >> $GITHUB_OUTPUT
-          fi
+          echo "should-run=$should_run" >> $GITHUB_OUTPUT
 
-          # Change the body, to allow re-triggering.
-          updated_body=$(echo "$new_body" | sed 's/- \[x\] \*Run\* checks:/- [ ] \*Run\* checks:/')
-          pr_number=${{ github.event.pull_request.number }}
-          gh pr edit "$pr_number" --body "$updated_body" --repo "${{ github.repository }}"
-
+  build-app-filter:
+    name: 'Filter Build App'
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.filter.outputs.should-run }}
+    env:
+      GH_TOKEN: ${{ secrets.ON_DEMAND_TRIGGER_GH_TOKEN }}
+    steps:
+      - name: 'Filter'
+        id: filter
+        run: |
+          action="build-app"
+          if ${{ github.event_name != 'pull_request' }}; then
+            if ${{ inputs.skip-build-app == 'false' }}; then
+              should_run=true
+            else
+              should_run=false
+            fi
+          else
+            PR_NUMBER=${{ github.event.pull_request.number }}
+            labels=($(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json labels --jq .labels.[].name))
+            if [[ " ${labels[@]} " =~ "ci: $action" ]]; then
+              printf -v "should_run" "%s" "true" # https://stackoverflow.com/a/16973754/1859783
+            else
+              printf -v "should_run" "%s" "false"
+            fi
+          fi
+          echo "should-run=$should_run" >> $GITHUB_OUTPUT
+        
   paths-filter:
-    needs: pr-trigger
-    if : ${{ github.event_name != 'pull_request' || needs.pr-trigger.outputs.should-test == 'true' || needs.pr-trigger.outputs.should-build == 'true' }}
     name: 'Paths Filter'
     uses: ./.github/workflows/paths-filter.yml
 
   tests:
     name: 'Tests'
-    needs: [paths-filter, pr-trigger]
-    if: ${{ !inputs.skip-tests && github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false' && (github.event_name != 'pull_request' || needs.pr-trigger.outputs.should-test == 'true') }}
+    needs: [paths-filter, tests-filter]
+    if: ${{ !inputs.skip-tests && github.event.pull_request.draft != true && needs.paths-filter.outputs.should-test != 'false' && needs.tests-filter.outputs.should-run == 'true' }}
     uses: grigorye/ReusableWorkflows/.github/workflows/tests-generic.yml@v20
     secrets: inherit
     with:
@@ -82,8 +100,8 @@ jobs:
 
   build-app:
     name: 'App'
-    needs: [paths-filter, pr-trigger]
-    if: ${{ !inputs.skip-build-app && github.event.pull_request.draft != true && needs.paths-filter.outputs.should-build != 'false' && (github.event_name != 'pull_request' || needs.pr-trigger.outputs.should-build == 'true') }}
+    needs: [paths-filter, build-app-filter]
+    if: ${{ !inputs.skip-build-app && github.event.pull_request.draft != true && needs.paths-filter.outputs.should-build != 'false' && needs.build-app-filter.outputs.should-run == 'true' }}
     uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v20
     with:
       macos-app-scheme: 'TMBuddy'
