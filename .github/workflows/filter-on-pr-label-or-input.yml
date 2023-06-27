@@ -1,0 +1,48 @@
+name: main
+
+on:
+  workflow_call:
+    inputs:
+      action:
+        description: "Action (xxx `ci: xxx` in PR labels)"
+        type: string
+      skip-non-pr:
+        description: "Whether to skip non-PR events"
+        type: boolean
+    outputs:
+      should-run:
+        value: ${{ jobs.filter.outputs.should-run }}
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -x -euo pipefail {0}    
+
+jobs:
+  filter:
+    name: 'Analysis'
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.filter.outputs.should-run }}
+    env:
+      GH_TOKEN: ${{ secrets.ON_DEMAND_TRIGGER_GH_TOKEN }}
+    steps:
+      - name: 'Filter'
+        id: filter
+        run: |
+          action="${{ inputs.action }}"
+          if ${{ github.event_name != 'pull_request' }}; then
+            if ${{ inputs.skip-non-pr == 'false' }}; then
+              should_run=true
+            else
+              should_run=false
+            fi
+          else
+            PR_NUMBER=${{ github.event.pull_request.number }}
+            labels=($(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json labels --jq .labels.[].name))
+            if [[ " ${labels[@]} " =~ "ci: $action" ]]; then
+              printf -v "should_run" "%s" "true" # https://stackoverflow.com/a/16973754/1859783
+            else
+              printf -v "should_run" "%s" "false"
+            fi
+          fi
+          echo "should-run=$should_run" >> $GITHUB_OUTPUT
