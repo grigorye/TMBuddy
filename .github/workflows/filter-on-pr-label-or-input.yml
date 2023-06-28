@@ -8,7 +8,9 @@ on:
         type: string
       skip-non-pr:
         description: "Whether to skip non-PR events"
-        type: boolean
+        type: string # true | false
+        default: 'true'
+        required: false
     outputs:
       should-run:
         value: ${{ jobs.filter.outputs.should-run }}
