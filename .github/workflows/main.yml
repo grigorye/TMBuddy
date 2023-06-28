@@ -13,11 +13,11 @@ on:
         required: false
         default: false
         type: boolean
-  
+
   push:
     branches: [main]
-  pull_request:
-    types: [opened, synchronize, reopened, ready_for_review, edited]
+
+  pull_request: {}
 
 defaults:
   run:
