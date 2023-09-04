@@ -63,6 +63,6 @@ jobs:
     uses: grigorye/ReusableWorkflows/.github/workflows/build-app-generic.yml@v24
     with:
       macos-app-scheme: 'TMBuddy'
-      build-configs: '[\"app-store\", \"developer-id\"]'
+      build-configs: '["app-store", "developer-id"]'
       runs-on: '["macos-12", "build"]'
     secrets: inherit
