@@ -138,6 +138,7 @@ targets:
     dependencies:
       - package: SnapshotTesting
       - target: TMBuddySnapshotViews
+      - package: SFSafeSymbols
     sources:
       - path: Targets/TMBuddy/Sources
         includes:
@@ -226,6 +227,8 @@ targets:
       # be used to satisfy nonisolated protocol requirement" warning.
       GE_CONCURRENCY_SWIFT_FLAGS: ''
       SWIFT_STRICT_CONCURRENCY: minimal 
+    dependencies:
+      - package: SFSafeSymbols
 
 targetTemplates:
   TMBuddyIntrinsicsTarget:
