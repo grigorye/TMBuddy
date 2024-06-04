@@ -20,7 +20,7 @@ func hookElapsedTimeTrackersForDump<T>(_ value: T, name: String?, sourceInfo: So
     }
 }
 
-protocol ElapsedTimeTracker {
+protocol ElapsedTimeTracker: Sendable {
     func trackElapsedTime<T>(_ value: T, name: String?, sourceInfo: SourceInfo)
 }
 

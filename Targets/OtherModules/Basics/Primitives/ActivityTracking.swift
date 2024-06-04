@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ActivityTracker {
+protocol ActivityTracker: Sendable {
     func beginActivity<T>(_ value: T, name: String, sourceInfo: SourceInfo) -> TrackedActivity
 }
 
