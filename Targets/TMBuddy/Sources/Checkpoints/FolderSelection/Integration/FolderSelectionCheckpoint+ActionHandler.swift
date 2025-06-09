@@ -55,4 +55,4 @@ func removeURLs(_ urls: [URL]) {
     processURLs(updatedURLs)
 }
 
-private let defaults = UserDefaults.standard
+private nonisolated(unsafe) let defaults = UserDefaults.standard

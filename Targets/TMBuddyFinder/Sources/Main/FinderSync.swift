@@ -309,4 +309,4 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
     }
 }
 
-private let defaults = UserDefaults.standard
+private var defaults: UserDefaults { .standard }
