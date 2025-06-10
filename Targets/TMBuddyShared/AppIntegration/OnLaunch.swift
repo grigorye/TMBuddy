@@ -102,4 +102,4 @@ struct SimpleTrackedActivity: TrackedActivity {
     }
 }
 
-private var defaults: UserDefaults { .standard }
+private nonisolated(unsafe) let defaults = UserDefaults.standard

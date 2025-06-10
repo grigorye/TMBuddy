@@ -25,4 +25,4 @@ func saveSandboxedBookmark(urls: [URL], in defaults: UserDefaults) throws {
     defaults.sandboxedBookmarks = bookmarks
 }
 
-private var defaults: UserDefaults { .standard }
+private nonisolated(unsafe) let defaults = UserDefaults.standard

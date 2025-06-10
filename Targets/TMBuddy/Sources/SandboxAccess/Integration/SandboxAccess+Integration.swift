@@ -31,7 +31,7 @@ private let shouldShowPostInstall: Bool = {
     }
 }()
 
-private var defaults: UserDefaults { .standard }
+private nonisolated(unsafe) let defaults = UserDefaults.standard
 
 func isSandboxed() -> Bool {
     let bundleURL = Bundle.main.bundleURL

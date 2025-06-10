@@ -12,4 +12,4 @@ func processURLs(_ urls: [URL]) {
     }
 }
 
-private var defaults: UserDefaults { .standard }
+private nonisolated(unsafe) let defaults = UserDefaults.standard
