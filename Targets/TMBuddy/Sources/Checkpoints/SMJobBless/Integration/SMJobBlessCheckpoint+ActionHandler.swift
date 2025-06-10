@@ -1,5 +1,5 @@
 import AppKit
-import Blessed
+@preconcurrency import Blessed
 
 @MainActor
 final class SMJobBlessCheckpointActionHandler: SMJobBlessCheckpointActions, Traceable {
