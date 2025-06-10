@@ -40,4 +40,4 @@ class UserDefaultsObserver: NSObject {
     }
 }
 
-private let KVOContext = malloc(1)
+nonisolated(unsafe) private let KVOContext = malloc(1)
