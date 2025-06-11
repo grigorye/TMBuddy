@@ -1,6 +1,6 @@
 import Foundation
 
-private let fileManager = FileManager.default
+private var fileManager: FileManager { FileManager.default }
 
 @MainActor var enforcedAppName: String? { defaultEnforcedAppName }
 

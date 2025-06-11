@@ -14,4 +14,4 @@ enum SandboxSanityCheckingError: Swift.Error {
     case fileIsNotReadOnly(atPath: String)
 }
 
-private let fileManager = FileManager.default
+private var fileManager: FileManager { .default }
