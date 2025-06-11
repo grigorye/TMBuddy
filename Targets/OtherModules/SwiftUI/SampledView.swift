@@ -15,10 +15,10 @@ protocol StateProducing {
     var state: State { get }
 }
 
+@MainActor
 protocol SampledView: View {
     associatedtype State: StateWithSample
     associatedtype Actions
-    @MainActor
     init(state: State, actions: Actions?)
     static var sampleStateEnvironmentValuesKeyPath: WritableKeyPath<EnvironmentValues, State> { get }
 }
