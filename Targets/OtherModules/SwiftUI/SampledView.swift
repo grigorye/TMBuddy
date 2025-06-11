@@ -18,6 +18,7 @@ protocol StateProducing {
 protocol SampledView: View {
     associatedtype State: StateWithSample
     associatedtype Actions
+    @MainActor
     init(state: State, actions: Actions?)
     static var sampleStateEnvironmentValuesKeyPath: WritableKeyPath<EnvironmentValues, State> { get }
 }
