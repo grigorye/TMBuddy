@@ -83,11 +83,9 @@ private class MenuDelegate: NSObject, NSMenuDelegate {
     let menuDidOpen: @MainActor @Sendable (NSMenu) -> Void
     
     func menuWillOpen(_ menu: NSMenu) {
-        let timer = Timer(timeInterval: 0, repeats: false) { [menuDidOpen] timer in
-            Task { @MainActor in
-                menuDidOpen(menu)
-            }
+        Task { @MainActor in
+            try await Task.sleep(nanoseconds: 0)
+            menuDidOpen(menu)
         }
-        RunLoop.current.add(timer, forMode: .eventTracking)
     }
 }

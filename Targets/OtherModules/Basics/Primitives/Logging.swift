@@ -29,7 +29,7 @@ enum LoggingImp {
     }
 }
 
-private let defaults = UserDefaults.standard
+private nonisolated(unsafe) let defaults = UserDefaults.standard
 
 private let nsLogIsEnabled = defaults.bool(forKey: "suppressNSLog") == false
 private let dumpIsEnabled = defaults.bool(forKey: "enableDump")

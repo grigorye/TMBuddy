@@ -15,6 +15,7 @@ protocol StateProducing {
     var state: State { get }
 }
 
+@MainActor
 protocol SampledView: View {
     associatedtype State: StateWithSample
     associatedtype Actions

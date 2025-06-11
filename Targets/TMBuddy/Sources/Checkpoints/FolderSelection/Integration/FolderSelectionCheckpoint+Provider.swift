@@ -13,4 +13,4 @@ class BookmarkCountProvider: ObservableObject {
     }
 }
 
-private let defaults = UserDefaults.standard
+private nonisolated(unsafe) let defaults = UserDefaults.standard

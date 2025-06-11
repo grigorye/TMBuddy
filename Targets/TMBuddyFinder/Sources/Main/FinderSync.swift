@@ -11,11 +11,11 @@ func labelForStatus(_ status: TMStatus) -> String {
     "\(status)"
 }
 
-let syncController = FIFinderSyncController.default()
+nonisolated(unsafe) let syncController = FIFinderSyncController.default()
 
-extension FIFinderSync: @unchecked Sendable {}
+extension FIFinderSync: @unchecked @retroactive Sendable {}
 
-class FinderSync: FIFinderSync, MenuGeneratorActions {
+class FinderSync: FIFinderSync, MenuGeneratorActions, @unchecked Sendable {
 
     let hostAppConnectionController = HostAppConnectionController()
     
@@ -309,4 +309,4 @@ class FinderSync: FIFinderSync, MenuGeneratorActions {
     }
 }
 
-private let defaults = UserDefaults.standard
+private nonisolated(unsafe) let defaults = UserDefaults.standard

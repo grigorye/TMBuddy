@@ -29,7 +29,7 @@ struct TrackedAction {
     let name: String
 }
 
-protocol ActionTracker {
+protocol ActionTracker: Sendable {
     func trackAction(_ action: TrackedAction)
 }
 

@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "7874c1b48cbffd086ce8a052c4be873a78613775",
-          "version": "9.2.3"
+          "revision": "a637d318ae7ae246b02d7305121275bc75ed5565",
+          "version": "9.4.0"
         }
       },
       {
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
           "branch": null,
-          "revision": "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
-          "version": "1.22.2"
+          "revision": "a0bc79961d7be727d258d33d5a6b2f1023270ba1",
+          "version": "1.22.5"
         }
       },
       {
@@ -123,8 +123,8 @@
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {
           "branch": null,
-          "revision": "ec957ccddbcc710ccc64c9dcbd4c7006fcf8b73a",
-          "version": "2.2.0"
+          "revision": "540318ecedd63d883069ae7f1ed811a2df00b6ac",
+          "version": "2.4.0"
         }
       },
       {
@@ -141,8 +141,8 @@
         "repositoryURL": "https://github.com/getsentry/sentry-cocoa.git",
         "state": {
           "branch": null,
-          "revision": "584a5fc997172c843f2c341d02dd520b944cda41",
-          "version": "8.7.4"
+          "revision": "930b78a63f47549c81e6e63c9172584f7d3dfdd6",
+          "version": "8.52.1"
         }
       },
       {
@@ -150,8 +150,8 @@
         "repositoryURL": "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
         "state": {
           "branch": null,
-          "revision": "7cca2d60925876b5953a2cf7341cd80fbeac983c",
-          "version": "4.1.1"
+          "revision": "afd0a1da4ed62bab1413caa6dd6b60a7a7089ed2",
+          "version": "5.2.0"
         }
       },
       {
@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/apple/swift-protobuf.git",
         "state": {
           "branch": null,
-          "revision": "f25867a208f459d3c5a06935dceb9083b11cd539",
-          "version": "1.22.0"
+          "revision": "102a647b573f60f73afdce5613a51d71349fe507",
+          "version": "1.30.0"
         }
       }
     ]

@@ -37,4 +37,4 @@ struct SandboxAccessView: View {
     }
 }
 
-private let defaults = UserDefaults.standard
+private nonisolated(unsafe) let defaults = UserDefaults.standard

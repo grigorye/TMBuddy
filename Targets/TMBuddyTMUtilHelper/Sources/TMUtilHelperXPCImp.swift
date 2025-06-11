@@ -1,6 +1,6 @@
 import Foundation
 
-final class TMUtilHelperXPCImp: CommonHelperXPCImp, TMUtilHelperXPC {
+final class TMUtilHelperXPCImp: CommonHelperXPCImp, TMUtilHelperXPC, @unchecked Sendable {
     
     func setExcluded(_ value: Bool, privilege: TMPrivilegedExclusionKind, paths: [String], reply: @escaping (Error?) -> Void) {
         let result = Result {

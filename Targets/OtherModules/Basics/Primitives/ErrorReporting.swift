@@ -30,6 +30,6 @@ func hookErrorReportersForDump<T>(_ value: T, name: String?, sourceInfo: SourceI
 
 let errorReporters: [ErrorReporter] = defaultErrorReporters()
 
-protocol ErrorReporter {
+protocol ErrorReporter: Sendable {
     func reportError<T>(_ value: T, name: String?, sourceInfo: SourceInfo)
 }
