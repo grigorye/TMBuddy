@@ -16,4 +16,4 @@ targetTemplates:
 packages:
   Sentry:
     url: https://github.com/getsentry/sentry-cocoa.git
-    minorVersion: 8.7.3
+    minorVersion: 8.52.1
