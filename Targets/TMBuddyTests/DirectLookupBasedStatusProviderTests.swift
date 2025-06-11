@@ -19,6 +19,7 @@ class DirectLookupBasedStatusProviderTests: XCTestCase {
         stickyExcludedDirectoryChild = stickyExcludedDirectory.appendingPathComponent("Child")
         try fileManager.createDirectory(at: stickyExcludedDirectoryChild, withIntermediateDirectories: true, attributes: nil)
         addTeardownBlock { [testDirectory = testDirectory!] in
+            let fileManager = FileManager.default
             try! fileManager.removeItem(at: testDirectory)
         }
         
