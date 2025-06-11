@@ -3,7 +3,7 @@
 import Firebase
 import Foundation
 
-class FirebaseAnalyticsEnabler: NSObject {
+class FirebaseAnalyticsEnabler: NSObject, @unchecked Sendable {
     
     var userDefaultsObserver: UserDefaultsObserver?
     let defaults = sharedDefaults

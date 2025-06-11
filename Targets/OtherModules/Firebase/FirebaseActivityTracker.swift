@@ -1,6 +1,6 @@
 #if canImport(FirebasePerformance)
 
-import FirebasePerformance
+@preconcurrency import FirebasePerformance
 
 struct FirebaseActivityTracker: ActivityTracker {
     
