@@ -19,7 +19,6 @@ struct IntegratedFolderListView: View {
 }
 
 @available(macOS 11.0, *)
-@MainActor
 func urlFromItemProvider(_ provider: NSItemProvider) async throws -> URL? {
     let data = try await provider.loadData(for: .fileURL)
     guard let path = String(data: data, encoding: .utf8) else {
